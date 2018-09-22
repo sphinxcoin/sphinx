@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Type=Application
+Verssphx=3.0.0
+Encoding=UTF-8
+Name=Sphinx Qt
+Icon=${SNAP}/sphx128.png
+MimeType=x-scheme-handler/sphx;
+Exec=sphx %u
+Terminal=false
+Categories=Office;Finance;Cryptocurrency;
+Comment=🗺️Sphinx Digital Currency QT 👯👯 👛 (by 🐼CEVAP🐼) CE source code (Community Edition)
+Keywords=internet;sphx;main;qt;crypto;currency;snap;snapcraft;
+Name[de_DE]=sphx.desktop.desktop

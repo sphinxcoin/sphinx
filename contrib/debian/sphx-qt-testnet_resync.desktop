@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sphinx-Qt Testnet (Resync)
+Comment=Sphinx P2P gaming related cryptocurrency - TESTNETWORK
+Comment[fr]=Sphinx testnet, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sphinx testnet, eşten eşe kriptografik sanal para birimi
+Exec=sphx-qt --testnet --resync %u
+Terminal=false
+Type=Application
+Icon=sphx128-testnet
+MimeType=x-scheme-handler/sphx;
+Categories=Office;Finance;

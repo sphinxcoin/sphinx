@@ -1,0 +1,35 @@
+#include <windows.h>             // needed for VERSSPHXINFO
+#include "clientverssphx.h"       // holds the needed client verssphx information
+
+#define VER_PRODUCTVERSSPHX     CLIENT_VERSSPHX_MAJOR,CLIENT_VERSSPHX_MINOR,CLIENT_VERSSPHX_REVISSPHX,CLIENT_VERSSPHX_BUILD
+#define VER_PRODUCTVERSSPHX_STR STRINGIZE(CLIENT_VERSSPHX_MAJOR) "." STRINGIZE(CLIENT_VERSSPHX_MINOR) "." STRINGIZE(CLIENT_VERSSPHX_REVISSPHX) "." STRINGIZE(CLIENT_VERSSPHX_BUILD)
+#define VER_FILEVERSSPHX        VER_PRODUCTVERSSPHX
+#define VER_FILEVERSSPHX_STR    VER_PRODUCTVERSSPHX_STR
+
+VS_VERSSPHX_INFO VERSSPHXINFO
+FILEVERSSPHX     VER_FILEVERSSPHX
+PRODUCTVERSSPHX  VER_PRODUCTVERSSPHX
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4" // U.S. English - multilingual (hex)
+        BEGIN
+            VALUE "CompanyName",        "Sphinx-coin"
+            VALUE "FileDescription",    "sphx-tx (CLI Sphinx transaction editor utility)"
+            VALUE "FileVerssphx",        VER_FILEVERSSPHX_STR
+            VALUE "InternalName",       "sphx-tx"
+            VALUE "LegalCopyright",     COPYRIGHT_STR
+            VALUE "LegalTrademarks1",   "Distributed under the MIT software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
+            VALUE "OriginalFilename",   "sphx-tx.exe"
+            VALUE "ProductName",        "sphx-tx"
+            VALUE "ProductVerssphx",     VER_PRODUCTVERSSPHX_STR
+        END
+    END
+
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1252 // language neutral - multilingual (decimal)
+    END
+END

@@ -1,0 +1,26 @@
+[Unit]
+Description=Sphinx's distributed currency daemon
+After=network.target
+
+[Service]
+User=sphx
+Group=sphx
+
+Type=forking
+PIDFile=/var/lib/sphxd/sphxd.pid
+
+ExecStart=/usr/bin/sphxd -daemon -pid=/var/lib/sphxd/sphxd.pid \
+          -conf=/etc/sphx/sphinxcoin.conf -datadir=/var/lib/sphxd
+
+ExecStop=-/usr/bin/sphx-cli -conf=/etc/sphx/sphinxcoin.conf \
+         -datadir=/var/lib/sphxd stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

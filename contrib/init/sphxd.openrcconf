@@ -1,0 +1,26 @@
+# /etc/conf.d/sphxd: config file for /etc/init.d/sphxd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/sphx/sphinxcoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/sphxd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/sphxd.pid"
+
+# Where to write sphxd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/sphxd"
+
+# User and group to own sphxd process
+#BITCOIND_USER="sphx"
+#BITCOIND_GROUP="sphx"
+
+# Path to sphxd executable
+#BITCOIND_BIN="/usr/bin/sphxd"
+
+# Nice value to run sphxd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

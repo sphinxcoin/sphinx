@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sphinx-Qt
+Comment=Sphinx P2P gaming related cryptocurrency
+Comment[fr]=Sphinx, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sphinx, eşten eşe kriptografik sanal para birimi
+Exec=sphx-qt %u
+Terminal=false
+Type=Application
+Icon=sphx128
+MimeType=x-scheme-handler/sphx;
+Categories=Office;Finance;

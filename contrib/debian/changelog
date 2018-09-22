@@ -1,0 +1,14 @@
+sphx (3.0.4~trusty) unstable; urgency=low
+
+  * Updated devtools in contribute folder
+    fixed docu check, copyright scripts.
+  * New assets
+    screenshots of sphx-qt v3.0.4
+  * Snap building and installtion.
+  * TravisCI.
+  * New icons for debian desktop
+    Sphinx-QT testnet, regtest, unitest
+    main and testnet reindex and resync
+
+ -- developer (dev@i2pmail.org) <dev@i2pmail.org>  Fri, 29 Mar 2018 14:48:01 +0100
+

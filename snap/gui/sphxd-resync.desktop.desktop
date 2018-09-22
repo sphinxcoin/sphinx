@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Type=Application
+Verssphx=3.0.0
+Encoding=UTF-8
+Name=Sphinx Daemon (resync)
+Icon=${SNAP}/sphxd128.png
+MimeType=x-scheme-handler/sphx;
+Exec=sphxd %u --resync
+Terminal=true
+Categories=Office;Finance;Cryptocurrency;
+Comment=🗺️Sphinx Digital Currency Daemon (resync) 👯👯 👛 (by 🐼CEVAP🐼) CE source code (Community Edition)
+Keywords=internet;sphx;main;daemon;server;crypto;currency;snap;snapcraft;
+Name[de_DE]=sphxd-resync.desktop.desktop

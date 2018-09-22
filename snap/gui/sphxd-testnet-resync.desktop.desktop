@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Type=Application
+Verssphx=3.0.0
+Encoding=UTF-8
+Name=Sphinx Daemon Testnet (resync)
+Icon=${SNAP}/sphxd128testnet.png
+MimeType=x-scheme-handler/sphx;
+Exec=sphxd %u --testnet --resync
+Terminal=true
+Categories=Office;Finance;Cryptocurrency;
+Comment=🗺️Sphinx Digital Currency Testnet Daemon (resync) ©️ 👯👯 👛 (by 🐼CEVAP🐼) CE source code (Community Edition)
+Keywords=internet;sphx;testnet;daemon;server;crypto;currency;snap;snapcraft;resync;
+Name[de_DE]=sphxd-testnet-resync.desktop.desktop

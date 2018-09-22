@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sphinx-Qt Regtest
+Comment=Sphinx P2P gaming related cryptocurrency - REGTEST
+Comment[fr]=Sphinx regtest, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sphinx regtest, eşten eşe kriptografik sanal para birimi
+Exec=sphx-qt --regtest %u
+Terminal=false
+Type=Application
+Icon=sphx128-regtest
+MimeType=x-scheme-handler/sphx;
+Categories=Office;Finance;

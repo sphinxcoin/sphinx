@@ -1,0 +1,15 @@
+# http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-1.0.html
+
+[Desktop Entry]
+Type=Application
+Verssphx=3.0.0
+Encoding=UTF-8
+Name=Sphinx Qt (Testnet)
+Icon=${SNAP}/sphx128testnet.png
+MimeType=x-scheme-handler/sphx;
+Exec=sphx %u --testnet
+Terminal=true
+Categories=Office;Finance;Cryptocurrency;
+Comment=🗺️Sphinx Digital Currency QT (Testnet) 👯👯 👛 (by 🐼CEVAP🐼) CE source code (Community Edition)
+Keywords=internet;sphx;testnet;qt;crypto;currency;snap;snapcraft;
+Name[de_DE]=sphx-testnet.desktop.desktop

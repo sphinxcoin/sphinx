@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC verssphx="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/sphx_bg.qm</file>
+        <file alias="ca">locale/sphx_ca.qm</file>
+        <file alias="cs">locale/sphx_cs.qm</file>
+        <file alias="da">locale/sphx_da.qm</file>
+        <file alias="de">locale/sphx_de.qm</file>
+        <file alias="en">locale/sphx_en.qm</file>
+        <file alias="en_US">locale/sphx_en_US.qm</file>
+        <file alias="es">locale/sphx_es.qm</file>
+        <file alias="fi">locale/sphx_fi.qm</file>
+        <file alias="fr_FR">locale/sphx_fr_FR.qm</file>
+        <file alias="it">locale/sphx_it.qm</file>
+        <file alias="ja">locale/sphx_ja.qm</file>
+        <file alias="ko_KR">locale/sphx_ko_KR.qm</file>
+        <file alias="nl">locale/sphx_nl.qm</file>
+        <file alias="pl">locale/sphx_pl.qm</file>
+        <file alias="pt">locale/sphx_pt.qm</file>
+        <file alias="pt_BR">locale/sphx_pt_BR.qm</file>
+        <file alias="ro_RO">locale/sphx_ro_RO.qm</file>
+        <file alias="ru">locale/sphx_ru.qm</file>
+        <file alias="sk">locale/sphx_sk.qm</file>
+        <file alias="sv">locale/sphx_sv.qm</file>
+        <file alias="tr">locale/sphx_tr.qm</file>
+        <file alias="uk">locale/sphx_uk.qm</file>
+        <file alias="zh_CN">locale/sphx_zh_CN.qm</file>
+        <file alias="zh_TW">locale/sphx_zh_TW.qm</file>
+    </qresource>
+</RCC>
