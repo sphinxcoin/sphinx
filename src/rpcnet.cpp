@@ -7,7 +7,7 @@
 
 #include "rpcserver.h"
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "main.h"
 #include "net.h"
 #include "netbase.h"
@@ -16,7 +16,7 @@
 #include "timedata.h"
 #include "ui_interface.h"
 #include "util.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <boost/foreach.hpp>
 
@@ -95,8 +95,8 @@ UniValue getpeerinfo(const UniValue& params, bool fHelp)
             "    \"timeoffset\": ttt,         (numeric) The time offset in seconds\n"
             "    \"pingtime\": n,             (numeric) ping time\n"
             "    \"pingwait\": n,             (numeric) ping wait\n"
-            "    \"verssphx\": v,              (numeric) The peer verssphx, such as 7001\n"
-            "    \"subver\": \"/Sphinx Core:x.x.x.x/\",  (string) The string verssphx\n"
+            "    \"version\": v,              (numeric) The peer version, such as 7001\n"
+            "    \"subver\": \"/Sphinx Core:x.x.x.x/\",  (string) The string version\n"
             "    \"inbound\": true|false,     (boolean) Inbound (true) or Outbound (false)\n"
             "    \"startingheight\": n,       (numeric) The starting height (block) of the peer\n"
             "    \"banscore\": n,             (numeric) The ban score\n"
@@ -137,7 +137,7 @@ UniValue getpeerinfo(const UniValue& params, bool fHelp)
         obj.push_back(Pair("pingtime", stats.dPingTime));
         if (stats.dPingWait > 0.0)
             obj.push_back(Pair("pingwait", stats.dPingWait));
-        obj.push_back(Pair("verssphx", stats.nVerssphx));
+        obj.push_back(Pair("version", stats.nVerssphx));
         // Use the sanitized form of subver here, to avoid tricksy remote peers from
         // corrupting or modifiying the JSON output by putting special characters in
         // their ver message.
@@ -382,9 +382,9 @@ UniValue getnetworkinfo(const UniValue& params, bool fHelp)
             "Returns an object containing various state info regarding P2P networking.\n"
             "\nResult:\n"
             "{\n"
-            "  \"verssphx\": xxxxx,                      (numeric) the server verssphx\n"
-            "  \"subverssphx\": \"/Sphinx Core:x.x.x.x/\",     (string) the server subverssphx string\n"
-            "  \"protocolverssphx\": xxxxx,              (numeric) the protocol verssphx\n"
+            "  \"version\": xxxxx,                      (numeric) the server version\n"
+            "  \"subversion\": \"/Sphinx Core:x.x.x.x/\",     (string) the server subversion string\n"
+            "  \"protocolversion\": xxxxx,              (numeric) the protocol version\n"
             "  \"localservices\": \"xxxxxxxxxxxxxxxx\", (string) the services we offer to the network\n"
             "  \"timeoffset\": xxxxx,                   (numeric) the time offset\n"
             "  \"connections\": xxxxx,                  (numeric) the number of connections\n"
@@ -413,10 +413,10 @@ UniValue getnetworkinfo(const UniValue& params, bool fHelp)
     LOCK(cs_main);
 
     UniValue obj(UniValue::VOBJ);
-    obj.push_back(Pair("verssphx", CLIENT_VERSSPHX));
-    obj.push_back(Pair("subverssphx",
+    obj.push_back(Pair("version", CLIENT_VERSSPHX));
+    obj.push_back(Pair("subversion",
         FormatSubVerssphx(CLIENT_NAME, CLIENT_VERSSPHX, std::vector<string>())));
-    obj.push_back(Pair("protocolverssphx", PROTOCOL_VERSSPHX));
+    obj.push_back(Pair("protocolversion", PROTOCOL_VERSSPHX));
     obj.push_back(Pair("localservices", strprintf("%016x", nLocalServices)));
     obj.push_back(Pair("timeoffset", GetTimeOffset()));
     obj.push_back(Pair("connections", (int)vNodes.size()));

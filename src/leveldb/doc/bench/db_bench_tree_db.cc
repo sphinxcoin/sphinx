@@ -179,7 +179,7 @@ class Benchmark {
   }
 
   void PrintEnvironment() {
-    fprintf(stderr, "Kyoto Cabinet:    verssphx %s, lib ver %d, lib rev %d\n",
+    fprintf(stderr, "Kyoto Cabinet:    version %s, lib ver %d, lib rev %d\n",
             kyotocabinet::VERSSPHX, kyotocabinet::LIBVER, kyotocabinet::LIBREV);
 
 #if defined(__linux)

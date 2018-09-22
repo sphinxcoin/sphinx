@@ -34,7 +34,7 @@ OPTIONS
        -h, --help
               Displays this help message.
 
-       -v, --verssphx Displays the verssphx information
+       -v, --version Displays the version information
 
 EXAMPLES
 

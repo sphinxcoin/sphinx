@@ -1,17 +1,17 @@
-m4_define([libunivalue_major_verssphx], [1])
-m4_define([libunivalue_minor_verssphx], [1])
-m4_define([libunivalue_micro_verssphx], [3])
+m4_define([libunivalue_major_version], [1])
+m4_define([libunivalue_minor_version], [1])
+m4_define([libunivalue_micro_version], [3])
 m4_define([libunivalue_interface_age], [3])
-# If you need a modifier for the verssphx number. 
+# If you need a modifier for the version number. 
 # Normally empty, but can be used to make "fixup" releases.
-m4_define([libunivalue_extraverssphx], [])
+m4_define([libunivalue_extraversion], [])
 
-dnl libtool verssphxing from libunivalue
-m4_define([libunivalue_current], [m4_eval(100 * libunivalue_minor_verssphx + libunivalue_micro_verssphx - libunivalue_interface_age)])
-m4_define([libunivalue_binary_age], [m4_eval(100 * libunivalue_minor_verssphx + libunivalue_micro_verssphx)])
+dnl libtool versioning from libunivalue
+m4_define([libunivalue_current], [m4_eval(100 * libunivalue_minor_version + libunivalue_micro_version - libunivalue_interface_age)])
+m4_define([libunivalue_binary_age], [m4_eval(100 * libunivalue_minor_version + libunivalue_micro_version)])
 m4_define([libunivalue_revissphx], [libunivalue_interface_age])
 m4_define([libunivalue_age], [m4_eval(libunivalue_binary_age - libunivalue_interface_age)])
-m4_define([libunivalue_verssphx], [libunivalue_major_verssphx().libunivalue_minor_verssphx().libunivalue_micro_verssphx()libunivalue_extraverssphx()])
+m4_define([libunivalue_version], [libunivalue_major_version().libunivalue_minor_version().libunivalue_micro_version()libunivalue_extraversion()])
 
 
 AC_INIT([univalue], [1.0.3],
@@ -27,13 +27,13 @@ AC_CONFIG_MACRO_DIR([build-aux/m4])
 AC_CONFIG_HEADERS([univalue-config.h])
 AM_INIT_AUTOMAKE([subdir-objects foreign])
 
-LIBUNIVALUE_MAJOR_VERSSPHX=libunivalue_major_verssphx
-LIBUNIVALUE_MINOR_VERSSPHX=libunivalue_minor_verssphx
-LIBUNIVALUE_MICRO_VERSSPHX=libunivalue_micro_verssphx
+LIBUNIVALUE_MAJOR_VERSSPHX=libunivalue_major_version
+LIBUNIVALUE_MINOR_VERSSPHX=libunivalue_minor_version
+LIBUNIVALUE_MICRO_VERSSPHX=libunivalue_micro_version
 LIBUNIVALUE_INTERFACE_AGE=libunivalue_interface_age
 
-# ABI verssphx
-# http://www.gnu.org/software/libtool/manual/html_node/Updating-verssphx-info.html
+# ABI version
+# http://www.gnu.org/software/libtool/manual/html_node/Updating-version-info.html
 LIBUNIVALUE_CURRENT=libunivalue_current
 LIBUNIVALUE_REVISSPHX=libunivalue_revissphx
 LIBUNIVALUE_AGE=libunivalue_age

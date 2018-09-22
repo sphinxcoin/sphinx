@@ -5,7 +5,7 @@
 #include "zmqnotificationinterface.h"
 #include "zmqpublishnotifier.h"
 
-#include "verssphx.h"
+#include "version.h"
 #include "main.h"
 #include "streams.h"
 #include "util.h"

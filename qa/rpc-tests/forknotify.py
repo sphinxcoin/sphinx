@@ -25,17 +25,17 @@ class ForkNotifyTest(BitcoinTestFramework):
         with open(self.alert_filename, 'w') as f:
             pass  # Just open then close to create zero-length file
         self.nodes.append(start_node(0, self.options.tmpdir,
-                            ["-blockverssphx=2", "-alertnotify=echo %s >> \"" + self.alert_filename + "\""]))
-        # Node1 mines block.verssphx=211 blocks
+                            ["-blockversion=2", "-alertnotify=echo %s >> \"" + self.alert_filename + "\""]))
+        # Node1 mines block.version=211 blocks
         self.nodes.append(start_node(1, self.options.tmpdir,
-                                ["-blockverssphx=211"]))
+                                ["-blockversion=211"]))
         connect_nodes(self.nodes[1], 0)
 
         self.is_network_split = False
         self.sync_all()
 
     def run_test(self):
-        # Mine 51 up-verssphx blocks
+        # Mine 51 up-version blocks
         self.nodes[1].setgenerate(True, 51)
         self.sync_all()
         # -alertnotify should trigger on the 51'st,
@@ -48,9 +48,9 @@ class ForkNotifyTest(BitcoinTestFramework):
             alert_text = f.read()
 
         if len(alert_text) == 0:
-            raise AssertionError("-alertnotify did not warn of up-verssphx blocks")
+            raise AssertionError("-alertnotify did not warn of up-version blocks")
 
-        # Mine more up-verssphx blocks, should not get more alerts:
+        # Mine more up-version blocks, should not get more alerts:
         self.nodes[1].setgenerate(True, 1)
         self.sync_all()
         self.nodes[1].setgenerate(True, 1)
@@ -60,7 +60,7 @@ class ForkNotifyTest(BitcoinTestFramework):
             alert_text2 = f.read()
 
         if alert_text != alert_text2:
-            raise AssertionError("-alertnotify excessive warning of up-verssphx blocks")
+            raise AssertionError("-alertnotify excessive warning of up-version blocks")
 
 if __name__ == '__main__':
     ForkNotifyTest().main()

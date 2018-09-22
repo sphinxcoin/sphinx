@@ -29,7 +29,7 @@ src/libsecp256k1-config.h.in
 m4/libtool.m4
 m4/ltoptions.m4
 m4/ltsugar.m4
-m4/ltverssphx.m4
+m4/ltversion.m4
 m4/lt~obsolete.m4
 src/stamp-h1
 libsecp256k1.pc

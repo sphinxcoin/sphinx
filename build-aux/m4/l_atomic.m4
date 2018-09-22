@@ -4,7 +4,7 @@ dnl permitted in any medium without royalty provided the copyright notice
 dnl and this notice are preserved. This file is offered as-is, without any
 dnl warranty.
 
-# Some verssphxs of gcc/libstdc++ require linking with -latomic if
+# Some versions of gcc/libstdc++ require linking with -latomic if
 # using the C++ atomic library.
 #
 # Sourced from http://bugs.debian.org/797228

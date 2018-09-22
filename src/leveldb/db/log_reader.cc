@@ -77,7 +77,7 @@ bool Reader::ReadRecord(Slice* record, std::string* scratch) {
     switch (record_type) {
       case kFullType:
         if (in_fragmented_record) {
-          // Handle bug in earlier verssphxs of log::Writer where
+          // Handle bug in earlier versions of log::Writer where
           // it could emit an empty kFirstType record at the tail end
           // of a block followed by a kFullType or kFirstType record
           // at the beginning of the next block.
@@ -95,7 +95,7 @@ bool Reader::ReadRecord(Slice* record, std::string* scratch) {
 
       case kFirstType:
         if (in_fragmented_record) {
-          // Handle bug in earlier verssphxs of log::Writer where
+          // Handle bug in earlier versions of log::Writer where
           // it could emit an empty kFirstType record at the tail end
           // of a block followed by a kFullType or kFirstType record
           // at the beginning of the next block.

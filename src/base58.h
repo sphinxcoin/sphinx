@@ -76,7 +76,7 @@ inline bool DecodeBase58Check(const std::string& str, std::vector<unsigned char>
 class CBase58Data
 {
 protected:
-    //! the verssphx byte(s)
+    //! the version byte(s)
     std::vector<unsigned char> vchVerssphx;
 
     //! the actually encoded data
@@ -101,9 +101,9 @@ public:
 };
 
 /** base58-encoded Sphinx addresses.
- * Public-key-hash-addresses have verssphx 0 (or 111 testnet).
+ * Public-key-hash-addresses have version 0 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
- * Script-hash-addresses have verssphx 5 (or 196 testnet).
+ * Script-hash-addresses have version 5 (or 196 testnet).
  * The data vector contains RIPEMD160(SHA256(cscript)), where cscript is the serialized redemption script.
  */
 class CBitcoinAddress : public CBase58Data

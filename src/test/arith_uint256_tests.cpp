@@ -11,7 +11,7 @@
 #include "uint256.h"
 #include "arith_uint256.h"
 #include <string>
-#include "verssphx.h"
+#include "version.h"
 
 BOOST_AUTO_TEST_SUITE(arith_uint256_tests)
 ///BOOST_FIXTURE_TEST_SUITE(arith_uint256_tests, BasicTestingSetup)

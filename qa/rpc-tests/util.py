@@ -212,9 +212,9 @@ def wait_bitcoinds():
 def connect_nodes(from_connection, node_num):
     ip_port = "127.0.0.1:"+str(p2p_port(node_num))
     from_connection.addnode(ip_port, "onetry")
-    # poll until verssphx handshake complete to avoid race conditions
+    # poll until version handshake complete to avoid race conditions
     # with transaction relaying
-    while any(peer['verssphx'] == 0 for peer in from_connection.getpeerinfo()):
+    while any(peer['version'] == 0 for peer in from_connection.getpeerinfo()):
         time.sleep(0.1)
 
 def connect_nodes_bi(nodes, a, b):

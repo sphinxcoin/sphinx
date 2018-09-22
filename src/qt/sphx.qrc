@@ -1,4 +1,4 @@
-<!DOCTYPE RCC><RCC verssphx="1.0">
+<!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/icons">
         <file alias="sphx">res/icons/sphx.png</file>
         <file alias="address-book">res/icons/address-book.png</file>

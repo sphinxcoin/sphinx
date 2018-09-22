@@ -33,8 +33,8 @@ bool PaymentRequestPlus::parse(const QByteArray& data)
         qWarning() << "PaymentRequestPlus::parse : Error parsing payment request";
         return false;
     }
-    if (paymentRequest.payment_details_verssphx() > 1) {
-        qWarning() << "PaymentRequestPlus::parse : Received up-verssphx payment details, verssphx=" << paymentRequest.payment_details_verssphx();
+    if (paymentRequest.payment_details_version() > 1) {
+        qWarning() << "PaymentRequestPlus::parse : Received up-version payment details, version=" << paymentRequest.payment_details_version();
         return false;
     }
 

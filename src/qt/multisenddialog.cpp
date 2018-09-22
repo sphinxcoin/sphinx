@@ -98,7 +98,7 @@ void MultiSendDialog::on_viewButton_clicked()
 
 void MultiSendDialog::on_addButton_clicked()
 {
-    bool fValidConverssphx = false;
+    bool fValidConversion = false;
     std::string strAddress = ui->multiSendAddressEdit->text().toStdString();
     if (!CBitcoinAddress(strAddress).IsValid()) {
         ui->message->setProperty("status", "error");
@@ -107,7 +107,7 @@ void MultiSendDialog::on_addButton_clicked()
         ui->multiSendAddressEdit->setFocus();
         return;
     }
-    int nMultiSendPercent = ui->multiSendPercentEdit->text().toInt(&fValidConverssphx, 10);
+    int nMultiSendPercent = ui->multiSendPercentEdit->text().toInt(&fValidConversion, 10);
     int nSumMultiSend = 0;
     for (int i = 0; i < (int)pwalletMain->vMultiSend.size(); i++)
         nSumMultiSend += pwalletMain->vMultiSend[i].second;
@@ -118,7 +118,7 @@ void MultiSendDialog::on_addButton_clicked()
         ui->multiSendAddressEdit->setFocus();
         return;
     }
-    if (!fValidConverssphx || nMultiSendPercent > 100 || nMultiSendPercent <= 0) {
+    if (!fValidConversion || nMultiSendPercent > 100 || nMultiSendPercent <= 0) {
         ui->message->setProperty("status", "error");
         ui->message->style()->polish(ui->message);
         ui->message->setText(tr("Please Enter 1 - 100 for percent."));

@@ -275,8 +275,8 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) : QObject(p
                                                                        netManager(0),
                                                                        optionsModel(0)
 {
-    // Verify that the verssphx of the library that we linked against is
-    // compatible with the verssphx of the headers we compiled against.
+    // Verify that the version of the library that we linked against is
+    // compatible with the version of the headers we compiled against.
     GOOGLE_PROTOBUF_VERIFY_VERSSPHX;
 
     // Install global event filter to catch QFileOpenEvents

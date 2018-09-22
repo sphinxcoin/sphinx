@@ -55,7 +55,7 @@ void CObfuscationPool::ProcessMessageObfuscation(CNode* pfrom, std::string& strC
 
         if (pfrom->nVerssphx < ActiveProtocol()) {
             errorID = ERR_VERSSPHX;
-            LogPrintf("dsa -- incompatible verssphx! \n");
+            LogPrintf("dsa -- incompatible version! \n");
             pfrom->PushMessage("dssu", sesssphxID, GetState(), GetEntriesCount(), MASTERNODE_REJECTED, errorID);
 
             return;
@@ -158,7 +158,7 @@ void CObfuscationPool::ProcessMessageObfuscation(CNode* pfrom, std::string& strC
         int errorID;
 
         if (pfrom->nVerssphx < ActiveProtocol()) {
-            LogPrintf("dsi -- incompatible verssphx! \n");
+            LogPrintf("dsi -- incompatible version! \n");
             errorID = ERR_VERSSPHX;
             pfrom->PushMessage("dssu", sesssphxID, GetState(), GetEntriesCount(), MASTERNODE_REJECTED, errorID);
 
@@ -2092,7 +2092,7 @@ std::string CObfuscationPool::GetMessageByID(int messageID)
     case ERR_MISSING_TX:
         return _("Missing input transaction information.");
     case ERR_VERSSPHX:
-        return _("Incompatible verssphx.");
+        return _("Incompatible version.");
     case MSG_SUCCESS:
         return _("Transaction created successfully.");
     case MSG_ENTRIES_ADDED:

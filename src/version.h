@@ -9,32 +9,32 @@
 #define BITCOIN_VERSSPHX_H
 
 /**
- * network protocol verssphxing
+ * network protocol versioning
  */
 
 static const int PROTOCOL_VERSSPHX = 61403;
 
-//! initial proto verssphx, to be increased after verssphx/verack negotiation
+//! initial proto version, to be increased after version/verack negotiation
 static const int INIT_PROTO_VERSSPHX = 614;
 
-//! In this verssphx, 'getheaders' was introduced.
+//! In this version, 'getheaders' was introduced.
 static const int GETHEADERS_VERSSPHX = 61403;
 
-//! disconnect from peers older than this proto verssphx
+//! disconnect from peers older than this proto version
 static const int MIN_PEER_PROTO_VERSSPHX_BEFORE_ENFORCEMENT = 61402;
 static const int MIN_PEER_PROTO_VERSSPHX_AFTER_ENFORCEMENT = 61403;
 
-//! nTime field added to CAddress, starting with this verssphx;
+//! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this
 static const int CADDR_TIME_VERSSPHX = 61403;
 
-//! BIP 0031, pong message, is enabled for all verssphxs AFTER this one
+//! BIP 0031, pong message, is enabled for all versions AFTER this one
 static const int BIP0031_VERSSPHX = 61403;
 
-//! "mempool" command, enhanced "getdata" behavior starts with this verssphx
+//! "mempool" command, enhanced "getdata" behavior starts with this version
 static const int MEMPOOL_GD_VERSSPHX = 61403;
 
-//! "filter*" commands are disabled without NODE_BLOOM after and including this verssphx
+//! "filter*" commands are disabled without NODE_BLOOM after and including this version
 static const int NO_BLOOM_VERSSPHX = 61403;
 
 

@@ -129,7 +129,7 @@ class DB {
                                    uint64_t* sizes) = 0;
 
   // Compact the underlying storage for the key range [*begin,*end].
-  // In particular, deleted and overwritten verssphxs are discarded,
+  // In particular, deleted and overwritten versions are discarded,
   // and the data is rearranged to reduce the cost of operations
   // needed to access the data.  This operation should typically only
   // be invoked by users who understand the underlying implementation.

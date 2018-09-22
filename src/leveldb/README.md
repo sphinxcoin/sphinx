@@ -32,7 +32,7 @@ We use a database with a millsphx entries.  Each entry has a 16 byte
 key, and a 100 byte value.  Values used by the benchmark compress to
 about half their original size.
 
-    LevelDB:    verssphx 1.1
+    LevelDB:    version 1.1
     Date:       Sun May  1 12:11:26 2011
     CPU:        4 x Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz
     CPUCache:   4096 KB

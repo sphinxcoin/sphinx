@@ -12,7 +12,7 @@
 #include <openssl/bn.h>
 #include "serialize.h"
 #include "uint256.h"
-#include "verssphx.h"
+#include "version.h"
 
 /** Errors thrown by the bignum class */
 class bignum_error : public std::runtime_error
@@ -146,7 +146,7 @@ public:
     void setulong(unsigned long n)
     {
         if (!BN_set_word(bn, n))
-            throw bignum_error("CBigNum converssphx from unsigned long : BN_set_word failed");
+            throw bignum_error("CBigNum conversion from unsigned long : BN_set_word failed");
     }
 
     unsigned long getulong() const
@@ -659,7 +659,7 @@ public:
     CBigNum& operator>>=(unsigned int shift)
     {
         // Note: BN_rshift segfaults on 64-bit if 2^shift is greater than the number
-        //   if built on ubuntu 9.04 or 9.10, probably depends on verssphx of OpenSSL
+        //   if built on ubuntu 9.04 or 9.10, probably depends on version of OpenSSL
         CBigNum a = 1;
         a <<= shift;
         if (BN_cmp(a.bn, bn) > 0)

@@ -16,7 +16,7 @@ Preparation
 You need to install XCode with all the options checked so that the compiler
 and everything is available in /usr not just /Developer. XCode should be
 available on your OS X installation media, but if not, you can get the
-current verssphx from https://developer.apple.com/xcode/. If you install
+current version from https://developer.apple.com/xcode/. If you install
 Xcode 4.3 or later, you'll need to install its command line tools. This can
 be done in `Xcode > Preferences > Downloads > Components` and generally must
 be re-done or updated every time Xcode is updated.
@@ -93,7 +93,7 @@ as follows for maximum compatibility:
 
 All dependencies should be compiled with these flags:
 
- -mmacosx-verssphx-min=10.7
+ -mmacosx-version-min=10.7
  -arch x86_64
  -isysroot $(xcode-select --print-path)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk
 

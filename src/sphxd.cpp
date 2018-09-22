@@ -6,7 +6,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "init.h"
 #include "main.h"
 #include "masternodeconfig.h"
@@ -74,11 +74,11 @@ bool AppInit(int argc, char* argv[])
     // If Qt is used, parameters/sphinxcoin.conf are parsed in qt/sphx.cpp's main()
     ParseParameters(argc, argv);
 
-    // Process help and verssphx before taking care about datadir
-    if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-verssphx")) {
-        std::string strUsage = _("Sphinx Core Daemon") + " " + _("verssphx") + " " + FormatFullVerssphx() + "\n";
+    // Process help and version before taking care about datadir
+    if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
+        std::string strUsage = _("Sphinx Core Daemon") + " " + _("version") + " " + FormatFullVerssphx() + "\n";
 
-        if (mapArgs.count("-verssphx")) {
+        if (mapArgs.count("-version")) {
             strUsage += LicenseInfo();
         } else {
             strUsage += "\n" + _("Usage:") + "\n" +

@@ -3,11 +3,11 @@
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 //
 // The representation of a DBImpl consists of a set of Verssphxs.  The
-// newest verssphx is called "current".  Older verssphxs may be kept
+// newest version is called "current".  Older versions may be kept
 // around to provide a consistent view to live iterators.
 //
 // Each Verssphx keeps track of a set of Table files per level.  The
-// entire set of verssphxs is maintained in a VerssphxSet.
+// entire set of versions is maintained in a VerssphxSet.
 //
 // Verssphx,VerssphxSet are thread-compatible, but require external
 // synchronization on all accesses.
@@ -19,7 +19,7 @@
 #include <set>
 #include <vector>
 #include "db/dbformat.h"
-#include "db/verssphx_edit.h"
+#include "db/version_edit.h"
 #include "port/port.h"
 #include "port/thread_annotations.h"
 
@@ -60,7 +60,7 @@ class Verssphx {
  public:
   // Append to *iters a sequence of iterators that will
   // yield the contents of this Verssphx when merged together.
-  // REQUIRES: This verssphx has been saved (see VerssphxSet::SaveTo)
+  // REQUIRES: This version has been saved (see VerssphxSet::SaveTo)
   void AddIterators(const ReadOptions&, std::vector<Iterator*>* iters);
 
   // Lookup the value for key.  If found, store it in *val and
@@ -110,7 +110,7 @@ class Verssphx {
 
   int NumFiles(int level) const { return files_[level].size(); }
 
-  // Return a human readable string that describes this verssphx's contents.
+  // Return a human readable string that describes this version's contents.
   std::string DebugString() const;
 
  private:
@@ -130,9 +130,9 @@ class Verssphx {
                           bool (*func)(void*, int, FileMetaData*));
 
   VerssphxSet* vset_;            // VerssphxSet to which this Verssphx belongs
-  Verssphx* next_;               // Next verssphx in linked list
-  Verssphx* prev_;               // Previous verssphx in linked list
-  int refs_;                    // Number of live refs to this verssphx
+  Verssphx* next_;               // Next version in linked list
+  Verssphx* prev_;               // Previous version in linked list
+  int refs_;                    // Number of live refs to this version
 
   // List of files per level
   std::vector<FileMetaData*> files_[config::kNumLevels];
@@ -170,9 +170,9 @@ class VerssphxSet {
              const InternalKeyComparator*);
   ~VerssphxSet();
 
-  // Apply *edit to the current verssphx to form a new descriptor that
+  // Apply *edit to the current version to form a new descriptor that
   // is both saved to persistent state and installed as the new
-  // current verssphx.  Will release *mu while actually writing to the file.
+  // current version.  Will release *mu while actually writing to the file.
   // REQUIRES: *mu is held on entry.
   // REQUIRES: no other thread concurrently calls LogAndApply()
   Status LogAndApply(VerssphxEdit* edit, port::Mutex* mu)
@@ -181,7 +181,7 @@ class VerssphxSet {
   // Recover the last saved descriptor from persistent storage.
   Status Recover();
 
-  // Return the current verssphx.
+  // Return the current version.
   Verssphx* current() const { return current_; }
 
   // Return the current manifest file number
@@ -253,12 +253,12 @@ class VerssphxSet {
     return (v->compaction_score_ >= 1) || (v->file_to_compact_ != NULL);
   }
 
-  // Add all files listed in any live verssphx to *live.
+  // Add all files listed in any live version to *live.
   // May also mutate some internal state.
   void AddLiveFiles(std::set<uint64_t>* live);
 
   // Return the approximate offset in the database of the data for
-  // "key" as of verssphx "v".
+  // "key" as of version "v".
   uint64_t ApproximateOffsetOf(Verssphx* v, const InternalKey& key);
 
   // Return a human-readable short (single-line) summary of the number
@@ -306,8 +306,8 @@ class VerssphxSet {
   // Opened lazily
   WritableFile* descriptor_file_;
   log::Writer* descriptor_log_;
-  Verssphx dummy_verssphxs_;  // Head of circular doubly-linked list of verssphxs.
-  Verssphx* current_;        // == dummy_verssphxs_.prev_
+  Verssphx dummy_versions_;  // Head of circular doubly-linked list of versions.
+  Verssphx* current_;        // == dummy_versions_.prev_
 
   // Per-level key at which the next compaction at that level should start.
   // Either an empty string, or a valid InternalKey.
@@ -356,7 +356,7 @@ class Compaction {
   // before processing "internal_key".
   bool ShouldStopBefore(const Slice& internal_key);
 
-  // Release the input verssphx for the compaction, once the compaction
+  // Release the input version for the compaction, once the compaction
   // is successful.
   void ReleaseInputs();
 
@@ -368,7 +368,7 @@ class Compaction {
 
   int level_;
   uint64_t max_output_file_size_;
-  Verssphx* input_verssphx_;
+  Verssphx* input_version_;
   VerssphxEdit edit_;
 
   // Each compaction reads inputs from "level_" and "level_+1"
@@ -384,7 +384,7 @@ class Compaction {
 
   // State for implementing IsBaseLevelForKey
 
-  // level_ptrs_ holds indices into input_verssphx_->levels_: our state
+  // level_ptrs_ holds indices into input_version_->levels_: our state
   // is that we are positioned at one of the file ranges for each
   // higher level than the ones involved in this compaction (i.e. for
   // all L >= level_ + 2).

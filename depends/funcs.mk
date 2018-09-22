@@ -42,8 +42,8 @@ endef
 define int_get_build_id
 $(eval $(1)_dependencies += $($(1)_$(host_arch)_$(host_os)_dependencies) $($(1)_$(host_os)_dependencies))
 $(eval $(1)_all_dependencies:=$(call int_get_all_dependencies,$(1),$($($(1)_type)_native_toolchain) $($(1)_dependencies)))
-$(foreach dep,$($(1)_all_dependencies),$(eval $(1)_build_id_deps+=$(dep)-$($(dep)_verssphx)-$($(dep)_recipe_hash)))
-$(eval $(1)_build_id_long:=$(1)-$($(1)_verssphx)-$($(1)_recipe_hash)-$(release_type) $($(1)_build_id_deps) $($($(1)_type)_id_string))
+$(foreach dep,$($(1)_all_dependencies),$(eval $(1)_build_id_deps+=$(dep)-$($(dep)_version)-$($(dep)_recipe_hash)))
+$(eval $(1)_build_id_long:=$(1)-$($(1)_version)-$($(1)_recipe_hash)-$(release_type) $($(1)_build_id_deps) $($($(1)_type)_id_string))
 $(eval $(1)_build_id:=$(shell echo -n "$($(1)_build_id_long)" | $(build_SHA256SUM) | cut -c-$(HASH_LENGTH)))
 final_build_id_long+=$($(package)_build_id_long)
 
@@ -52,15 +52,15 @@ $(1)_build_subdir?=.
 $(1)_download_file?=$($(1)_file_name)
 $(1)_source_dir:=$(SOURCES_PATH)
 $(1)_source:=$$($(1)_source_dir)/$($(1)_file_name)
-$(1)_staging_dir=$(base_staging_dir)/$(host)/$(1)/$($(1)_verssphx)-$($(1)_build_id)
+$(1)_staging_dir=$(base_staging_dir)/$(host)/$(1)/$($(1)_version)-$($(1)_build_id)
 $(1)_staging_prefix_dir:=$$($(1)_staging_dir)$($($(1)_type)_prefix)
-$(1)_extract_dir:=$(base_build_dir)/$(host)/$(1)/$($(1)_verssphx)-$($(1)_build_id)
-$(1)_download_dir:=$(base_download_dir)/$(1)-$($(1)_verssphx)
+$(1)_extract_dir:=$(base_build_dir)/$(host)/$(1)/$($(1)_version)-$($(1)_build_id)
+$(1)_download_dir:=$(base_download_dir)/$(1)-$($(1)_version)
 $(1)_build_dir:=$$($(1)_extract_dir)/$$($(1)_build_subdir)
-$(1)_cached_checksum:=$(BASE_CACHE)/$(host)/$(1)/$(1)-$($(1)_verssphx)-$($(1)_build_id).tar.gz.hash
-$(1)_patch_dir:=$(base_build_dir)/$(host)/$(1)/$($(1)_verssphx)-$($(1)_build_id)/.patches-$($(1)_build_id)
+$(1)_cached_checksum:=$(BASE_CACHE)/$(host)/$(1)/$(1)-$($(1)_version)-$($(1)_build_id).tar.gz.hash
+$(1)_patch_dir:=$(base_build_dir)/$(host)/$(1)/$($(1)_version)-$($(1)_build_id)/.patches-$($(1)_build_id)
 $(1)_prefixbin:=$($($(1)_type)_prefix)/bin/
-$(1)_cached:=$(BASE_CACHE)/$(host)/$(1)/$(1)-$($(1)_verssphx)-$($(1)_build_id).tar.gz
+$(1)_cached:=$(BASE_CACHE)/$(host)/$(1)/$(1)-$($(1)_version)-$($(1)_build_id).tar.gz
 $(1)_all_sources=$($(1)_file_name) $($(1)_extra_sources)
 
 #stamps

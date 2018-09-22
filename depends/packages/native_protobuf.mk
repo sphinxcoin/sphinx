@@ -1,7 +1,7 @@
 package=native_protobuf
-$(package)_verssphx=2.6.1
-$(package)_download_path=https://github.com/google/protobuf/releases/download/v$($(package)_verssphx)
-$(package)_file_name=protobuf-$($(package)_verssphx).tar.bz2
+$(package)_version=2.6.1
+$(package)_download_path=https://github.com/google/protobuf/releases/download/v$($(package)_version)
+$(package)_file_name=protobuf-$($(package)_version).tar.bz2
 $(package)_sha256_hash=ee445612d544d885ae240ffbcbf9267faa9f593b7b101f21d58beceb92661910
 
 define $(package)_set_vars

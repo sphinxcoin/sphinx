@@ -77,7 +77,7 @@ QT_TRANSLATE_NOOP("sphx-core", ""
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Error: Unsupported argument -checklevel found. Checklevel must be level 4."),
 QT_TRANSLATE_NOOP("sphx-core", ""
-"Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't "
+"Error: Unsupported argument -socks found. Setting SOCKS version isn't "
 "possible anymore, only SOCKS5 proxies are supported."),
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Execute command when a relevant alert is received or we see a really long "
@@ -289,7 +289,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Error initializing wallet database environment %
 QT_TRANSLATE_NOOP("sphx-core", "Error loading block database"),
 QT_TRANSLATE_NOOP("sphx-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("sphx-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("sphx-core", "Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core"),
+QT_TRANSLATE_NOOP("sphx-core", "Error loading wallet.dat: Wallet requires newer version of Sphinx Core"),
 QT_TRANSLATE_NOOP("sphx-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("sphx-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("sphx-core", "Error recovering public key."),
@@ -317,7 +317,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Importing..."),
 QT_TRANSLATE_NOOP("sphx-core", "Imports blocks from external blk000??.dat file"),
 QT_TRANSLATE_NOOP("sphx-core", "Include IP addresses in debug output (default: %u)"),
 QT_TRANSLATE_NOOP("sphx-core", "Incompatible mode."),
-QT_TRANSLATE_NOOP("sphx-core", "Incompatible verssphx."),
+QT_TRANSLATE_NOOP("sphx-core", "Incompatible version."),
 QT_TRANSLATE_NOOP("sphx-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
 QT_TRANSLATE_NOOP("sphx-core", "Information"),
 QT_TRANSLATE_NOOP("sphx-core", "Initialization sanity check failed. Sphinx Core is shutting down."),
@@ -384,7 +384,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Password for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("sphx-core", "Percentage of automatically minted Zerocoin  (10-100, default: %u)"),
 QT_TRANSLATE_NOOP("sphx-core", "Preparing for resync..."),
 QT_TRANSLATE_NOOP("sphx-core", "Prepend debug output with timestamp (default: %u)"),
-QT_TRANSLATE_NOOP("sphx-core", "Print verssphx and exit"),
+QT_TRANSLATE_NOOP("sphx-core", "Print version and exit"),
 QT_TRANSLATE_NOOP("sphx-core", "RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)"),
 QT_TRANSLATE_NOOP("sphx-core", "RPC server options:"),
 QT_TRANSLATE_NOOP("sphx-core", "RPC support for HTTP persistent connections (default: %d)"),
@@ -478,7 +478,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Wallet needed to be rewritten: restart Sphinx Co
 QT_TRANSLATE_NOOP("sphx-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("sphx-core", "Wallet window title"),
 QT_TRANSLATE_NOOP("sphx-core", "Warning"),
-QT_TRANSLATE_NOOP("sphx-core", "Warning: This verssphx is obsolete, upgrade required!"),
+QT_TRANSLATE_NOOP("sphx-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("sphx-core", "Warning: Unsupported argument -benchmark ignored, use -debug=bench."),
 QT_TRANSLATE_NOOP("sphx-core", "Warning: Unsupported argument -debugnet ignored, use -debug=net."),
 QT_TRANSLATE_NOOP("sphx-core", "Will retry..."),

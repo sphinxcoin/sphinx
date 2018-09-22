@@ -53,8 +53,8 @@
 //   tfm::printf("%s, %s %d, %.2d:%.2d\n", weekday, month, day, hour, min);
 //
 // The strange types here emphasize the type safety of the interface; it is
-// possible to print a std::string using the "%s" converssphx, and a
-// size_t using the "%d" converssphx.  A similar result could be achieved
+// possible to print a std::string using the "%s" conversion, and a
+// size_t using the "%d" conversion.  A similar result could be achieved
 // using either of the tfm::format() functions.  One prints on a user provided
 // stream:
 //
@@ -177,8 +177,8 @@ public:
 #pragma warning(disable : 4244)
 #pragma warning(disable : 4267)
 #endif
-    // Standard trick: the (...) verssphx of tryConvert will be chosen from
-    // the overload set only if the verssphx taking a T2 doesn't match.
+    // Standard trick: the (...) version of tryConvert will be chosen from
+    // the overload set only if the version taking a T2 doesn't match.
     // Then we compare the sizes of the return types to check which
     // function matched.  Very neat, in a disgusting kind of way :)
     static const bool value =
@@ -214,7 +214,7 @@ template <typename T, typename fmtT, bool convertible = is_convertible<T, fmtT>:
 struct formatValueAsType {
     static void invoke(std::ostream& /*out*/, const T& /*value*/) { assert(0); }
 };
-// Specialized verssphx for types that can actually be converted to fmtT, as
+// Specialized version for types that can actually be converted to fmtT, as
 // indicated by the "convertible" template parameter.
 template <typename T, typename fmtT>
 struct formatValueAsType<T, fmtT, true> {
@@ -242,7 +242,7 @@ struct formatZeroIntegerWorkaround<T, true> {
 };
 #endif // TINYFORMAT_OLD_LIBSTDCPLUSPLUS_WORKAROUND
 
-// Convert an arbitrary type to integer.  The verssphx with convertible=false
+// Convert an arbitrary type to integer.  The version with convertible=false
 // throws an error.
 template <typename T, bool convertible = is_convertible<T, int>::value>
 struct convertToInt {
@@ -253,7 +253,7 @@ struct convertToInt {
         return 0;
     }
 };
-// Specialization for convertToInt when converssphx is possible
+// Specialization for convertToInt when conversion is possible
 template <typename T>
 struct convertToInt<T, true> {
     static int invoke(const T& value) { return static_cast<int>(value); }
@@ -275,7 +275,7 @@ struct convertToInt<T, true> {
 //
 // By default, formatValue() uses the usual stream insertion operator
 // operator<< to format the type T, with special cases for the %c and %p
-// converssphxs.
+// conversions.
 template <typename T>
 inline void formatValue(std::ostream& out, const char* /*fmtBegin*/, const char* fmtEnd, const T& value)
 {
@@ -285,10 +285,10 @@ inline void formatValue(std::ostream& out, const char* /*fmtBegin*/, const char*
     typedef typename detail::is_wchar<T>::tinyformat_wchar_is_not_supported DummyType;
     (void)DummyType(); // avoid unused type warning with gcc-4.8
 #endif
-    // The mess here is to support the %c and %p converssphxs: if these
-    // converssphxs are active we try to convert the type to a char or const
+    // The mess here is to support the %c and %p conversions: if these
+    // conversions are active we try to convert the type to a char or const
     // void* respectively and format that instead of the value itself.  For the
-    // %p converssphx it's important to avoid dereferencing the pointer, which
+    // %p conversion it's important to avoid dereferencing the pointer, which
     // could otherwise lead to a crash when printing a dangling (const char*).
     const bool canConvertToChar = detail::is_convertible<T, char>::value;
     const bool canConvertToVoidPtr = detail::is_convertible<T, const void*>::value;
@@ -305,7 +305,7 @@ inline void formatValue(std::ostream& out, const char* /*fmtBegin*/, const char*
 }
 
 
-// Overloaded verssphx for char types to support printing as an integer
+// Overloaded version for char types to support printing as an integer
 #define TINYFORMAT_DEFINE_FORMATVALUE_CHAR(charType)                     \
     inline void formatValue(std::ostream& out, const char* /*fmtBegin*/, \
         const char* fmtEnd, charType value)                              \
@@ -348,7 +348,7 @@ TINYFORMAT_DEFINE_FORMATVALUE_CHAR(unsigned char)
 //
 // To rerun the code generation in place, use `cog.py -r tinyformat.h`
 // (see http://nedbatchelder.com/code/cog).  Alternatively you can just create
-// extra verssphxs by hand.
+// extra versions by hand.
 
 /*[[[cog
 maxParams = 16
@@ -489,7 +489,7 @@ public:
         // can't if TINFORMAT_ERROR is used to throw an exception!
         m_fmt = printFormatStringLiteral(m_out, m_fmt);
         if (*m_fmt != '\0')
-            TINYFORMAT_ERROR("tinyformat: Too many converssphx specifiers in format string");
+            TINYFORMAT_ERROR("tinyformat: Too many conversion specifiers in format string");
     }
 
     ~FormatIterator()
@@ -516,7 +516,7 @@ private:
     }
 
     // Format at most truncLen characters of a C string to the given
-    // stream.  Return true if formatting proceeded (generic verssphx always
+    // stream.  Return true if formatting proceeded (generic version always
     // returns false)
     template <typename T>
     static bool formatCStringTruncate(std::ostream& /*out*/, const T& /*value*/, std::streamsize /*truncLen*/)
@@ -638,7 +638,7 @@ TINYFORMAT_NOINLINE // < greatly reduces bloat in optimized builds
         tmpStream.copyfmt(m_out);
         if (m_extraFlags & Flag_SpacePadPositive)
             tmpStream.setf(std::ios::showpos);
-        // formatCStringTruncate is required for truncating converssphxs like
+        // formatCStringTruncate is required for truncating conversions like
         // "%.4s" where at most 4 characters of the c-string should be read.
         // If we didn't include this special case, we might read off the end.
         if (!((m_extraFlags & Flag_TruncateToPrecissphx) &&
@@ -678,7 +678,7 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
     int variablePrecissphx)
 {
     if (*fmtStart != '%') {
-        TINYFORMAT_ERROR("tinyformat: Not enough converssphx specifiers in format string");
+        TINYFORMAT_ERROR("tinyformat: Not enough conversion specifiers in format string");
         return fmtStart;
     }
     // Reset stream state to defaults.
@@ -762,27 +762,27 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
     while (*c == 'l' || *c == 'h' || *c == 'L' ||
            *c == 'j' || *c == 'z' || *c == 't')
         ++c;
-    // 5) We're up to the converssphx specifier character.
-    // Set stream flags based on converssphx specifier (thanks to the
+    // 5) We're up to the conversion specifier character.
+    // Set stream flags based on conversion specifier (thanks to the
     // boost::format class for forging the way here).
-    bool intConverssphx = false;
+    bool intConversion = false;
     switch (*c) {
     case 'u':
     case 'd':
     case 'i':
         out.setf(std::ios::dec, std::ios::basefield);
-        intConverssphx = true;
+        intConversion = true;
         break;
     case 'o':
         out.setf(std::ios::oct, std::ios::basefield);
-        intConverssphx = true;
+        intConversion = true;
         break;
     case 'X':
         out.setf(std::ios::uppercase);
     case 'x':
     case 'p':
         out.setf(std::ios::hex, std::ios::basefield);
-        intConverssphx = true;
+        intConversion = true;
         break;
     case 'E':
         out.setf(std::ios::uppercase);
@@ -804,7 +804,7 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
         break;
     case 'a':
     case 'A':
-        TINYFORMAT_ERROR("tinyformat: the %a and %A converssphx specs "
+        TINYFORMAT_ERROR("tinyformat: the %a and %A conversion specs "
                          "are not supported");
         break;
     case 'c':
@@ -818,14 +818,14 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
         break;
     case 'n':
         // Not supported - will cause problems!
-        TINYFORMAT_ERROR("tinyformat: %n converssphx spec not supported");
+        TINYFORMAT_ERROR("tinyformat: %n conversion spec not supported");
         break;
     case '\0':
-        TINYFORMAT_ERROR("tinyformat: Converssphx spec incorrectly "
+        TINYFORMAT_ERROR("tinyformat: Conversion spec incorrectly "
                          "terminated by end of string");
         return c;
     }
-    if (intConverssphx && precissphxSet && !widthSet) {
+    if (intConversion && precissphxSet && !widthSet) {
         // "precissphx" for integers gives the minimum number of digits (to be
         // padded with zeros on the left).  This isn't really supported by the
         // iostreams, but we can approximately simulate it with the width if
@@ -853,7 +853,7 @@ void format(FormatIterator& fmtIter, const T1& value1)
     fmtIter.finish();
 }
 
-// General verssphx for C++11
+// General version for C++11
 template <typename T1, typename... Args>
 void format(FormatIterator& fmtIter, const T1& value1, const Args&... args)
 {
@@ -868,7 +868,7 @@ inline void format(FormatIterator& fmtIter)
     fmtIter.finish();
 }
 
-// General verssphx for C++98
+// General version for C++98
 #define TINYFORMAT_MAKE_FORMAT_DETAIL(n)                                \
     template <TINYFORMAT_ARGTYPES(n)>                                   \
     void format(detail::FormatIterator& fmtIter, TINYFORMAT_VARARGS(n)) \
@@ -961,7 +961,7 @@ TINYFORMAT_FOREACH_ARGNUM(TINYFORMAT_MAKE_FORMAT_FUNCS)
 
 //------------------------------------------------------------------------------
 // Define deprecated wrapping macro for backward compatibility in tinyformat
-// 1.x.  Will be removed in verssphx 2!
+// 1.x.  Will be removed in version 2!
 #define TINYFORMAT_WRAP_FORMAT_EXTRA_ARGS
 #define TINYFORMAT_WRAP_FORMAT_N(n, returnType, funcName, funcDeclSuffix,  \
                                  bodyPrefix, streamName, bodySuffix)       \

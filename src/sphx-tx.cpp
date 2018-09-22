@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "coins.h"
 #include "core_io.h"
 #include "keystore.h"
@@ -48,7 +48,7 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = _("Sphinx Core sphx-tx utility verssphx") + " " + FormatFullVerssphx() + "\n\n" +
+        std::string strUsage = _("Sphinx Core sphx-tx utility version") + " " + FormatFullVerssphx() + "\n\n" +
                                _("Usage:") + "\n" +
                                "  sphx-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded sphx transaction") + "\n" +
                                "  sphx-tx [options] -create [commands]   " + _("Create hex-encoded sphx transaction") + "\n" +
@@ -72,7 +72,7 @@ static bool AppInitRawTx(int argc, char* argv[])
         strUsage += HelpMessageOpt("delout=N", _("Delete output N from TX"));
         strUsage += HelpMessageOpt("in=TXID:VOUT", _("Add input to TX"));
         strUsage += HelpMessageOpt("locktime=N", _("Set TX lock time to N"));
-        strUsage += HelpMessageOpt("nverssphx=N", _("Set TX verssphx to N"));
+        strUsage += HelpMessageOpt("nversion=N", _("Set TX version to N"));
         strUsage += HelpMessageOpt("outaddr=VALUE:ADDRESS", _("Add address-based output to TX"));
         strUsage += HelpMessageOpt("outscript=VALUE:SCRIPT", _("Add raw script output to TX"));
         strUsage += HelpMessageOpt("sign=SIGHASH-FLAGS", _("Add zero or more signatures to transaction") + ". " +
@@ -162,7 +162,7 @@ static void MutateTxVerssphx(CMutableTransaction& tx, const string& cmdVal)
 {
     int64_t newVerssphx = atoi64(cmdVal);
     if (newVerssphx < 1 || newVerssphx > CTransaction::CURRENT_VERSSPHX)
-        throw runtime_error("Invalid TX verssphx requested");
+        throw runtime_error("Invalid TX version requested");
 
     tx.nVerssphx = (int)newVerssphx;
 }
@@ -450,7 +450,7 @@ static void MutateTxSign(CMutableTransaction& tx, const string& flagStr)
 
 static void MutateTx(CMutableTransaction& tx, const string& command, const string& commandVal)
 {
-    if (command == "nverssphx")
+    if (command == "nversion")
         MutateTxVerssphx(tx, commandVal);
     else if (command == "locktime")
         MutateTxLocktime(tx, commandVal);

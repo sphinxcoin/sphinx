@@ -3,9 +3,9 @@ dnl Distributed under the MIT software license, see the accompanying
 dnl file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 dnl Helper for cases where a qt dependency is not met.
-dnl Output: If qt verssphx is auto, set bitcoin_enable_qt to false. Else, exit.
+dnl Output: If qt version is auto, set bitcoin_enable_qt to false. Else, exit.
 AC_DEFUN([BITCOIN_QT_FAIL],[
-  if test "x$bitcoin_qt_want_verssphx" = xauto && test "x$bitcoin_qt_force" != xyes; then
+  if test "x$bitcoin_qt_want_version" = xauto && test "x$bitcoin_qt_force" != xyes; then
     if test "x$bitcoin_enable_qt" != xno; then
       AC_MSG_WARN([$1; sphx-qt frontend will not be built])
     fi
@@ -17,7 +17,7 @@ AC_DEFUN([BITCOIN_QT_FAIL],[
 ])
 
 AC_DEFUN([BITCOIN_QT_CHECK],[
-  if test "x$bitcoin_enable_qt" != xno && test "x$bitcoin_qt_want_verssphx" != xno; then
+  if test "x$bitcoin_enable_qt" != xno && test "x$bitcoin_qt_want_version" != xno; then
     true
     $1
   else
@@ -56,13 +56,13 @@ AC_DEFUN([BITCOIN_QT_INIT],[
     [AS_HELP_STRING([--with-gui@<:@=no|qt4|qt5|auto@:>@],
     [build sphx-qt GUI (default=auto, qt5 tried first)])],
     [
-     bitcoin_qt_want_verssphx=$withval
-     if test "x$bitcoin_qt_want_verssphx" = xyes; then
+     bitcoin_qt_want_version=$withval
+     if test "x$bitcoin_qt_want_version" = xyes; then
        bitcoin_qt_force=yes
-       bitcoin_qt_want_verssphx=auto
+       bitcoin_qt_want_version=auto
      fi
     ],
-    [bitcoin_qt_want_verssphx=auto])
+    [bitcoin_qt_want_version=auto])
 
   AC_ARG_WITH([qt-incdir],[AS_HELP_STRING([--with-qt-incdir=INC_DIR],[specify qt include path (overridden by pkgconfig)])], [qt_include_path=$withval], [])
   AC_ARG_WITH([qt-libdir],[AS_HELP_STRING([--with-qt-libdir=LIB_DIR],[specify qt lib path (overridden by pkgconfig)])], [qt_lib_path=$withval], [])
@@ -79,9 +79,9 @@ AC_DEFUN([BITCOIN_QT_INIT],[
   AC_SUBST(QT_TRANSLATION_DIR,$qt_translation_path)
 ])
 
-dnl Find the appropriate verssphx of Qt libraries and includes.
+dnl Find the appropriate version of Qt libraries and includes.
 dnl Inputs: $1: Whether or not pkg-config should be used. yes|no. Default: yes.
-dnl Inputs: $2: If $1 is "yes" and --with-gui=auto, which qt verssphx should be
+dnl Inputs: $2: If $1 is "yes" and --with-gui=auto, which qt version should be
 dnl         tried first.
 dnl Outputs: See _BITCOIN_QT_FIND_LIBS_*
 dnl Outputs: Sets variables for all qt-related tools.
@@ -281,7 +281,7 @@ dnl All macros below are internal and should _not_ be used from the main
 dnl configure.ac.
 dnl ----
 
-dnl Internal. Check if the included verssphx of Qt is Qt5.
+dnl Internal. Check if the included version of Qt is Qt5.
 dnl Requires: INCLUDES must be populated as necessary.
 dnl Output: bitcoin_cv_qt5=yes|no
 AC_DEFUN([_BITCOIN_QT_CHECK_QT5],[
@@ -301,7 +301,7 @@ AC_DEFUN([_BITCOIN_QT_CHECK_QT5],[
     [bitcoin_cv_qt5=no])
 ])])
 
-dnl Internal. Check if the linked verssphx of Qt was built as static libs.
+dnl Internal. Check if the linked version of Qt was built as static libs.
 dnl Requires: Qt5. This check cannot determine if Qt4 is static.
 dnl Requires: INCLUDES and LIBS must be populated as necessary.
 dnl Output: bitcoin_cv_static_qt=yes|no
@@ -402,20 +402,20 @@ AC_DEFUN([_BITCOIN_QT_FIND_STATIC_PLUGINS],[
 ])
 
 dnl Internal. Find Qt libraries using pkg-config.
-dnl Inputs: bitcoin_qt_want_verssphx (from --with-gui=). The verssphx to check
+dnl Inputs: bitcoin_qt_want_version (from --with-gui=). The version to check
 dnl         first.
-dnl Inputs: $1: If bitcoin_qt_want_verssphx is "auto", check for this verssphx
+dnl Inputs: $1: If bitcoin_qt_want_version is "auto", check for this version
 dnl         first.
 dnl Outputs: All necessary QT_* variables are set.
 dnl Outputs: bitcoin_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
 AC_DEFUN([_BITCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
   m4_ifdef([PKG_CHECK_MODULES],[
-  auto_priority_verssphx=$1
-  if test "x$auto_priority_verssphx" = x; then
-    auto_priority_verssphx=qt5
+  auto_priority_version=$1
+  if test "x$auto_priority_version" = x; then
+    auto_priority_version=qt5
   fi
-    if test "x$bitcoin_qt_want_verssphx" = xqt5 ||  ( test "x$bitcoin_qt_want_verssphx" = xauto && test "x$auto_priority_verssphx" = xqt5 ); then
+    if test "x$bitcoin_qt_want_version" = xqt5 ||  ( test "x$bitcoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt5 ); then
       QT_LIB_PREFIX=Qt5
       bitcoin_qt_got_major_vers=5
     else
@@ -425,15 +425,15 @@ AC_DEFUN([_BITCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
     qt5_modules="Qt5Core Qt5Gui Qt5Network Qt5Widgets"
     qt4_modules="QtCore QtGui QtNetwork"
     BITCOIN_QT_CHECK([
-      if test "x$bitcoin_qt_want_verssphx" = xqt5 || ( test "x$bitcoin_qt_want_verssphx" = xauto && test "x$auto_priority_verssphx" = xqt5 ); then
+      if test "x$bitcoin_qt_want_version" = xqt5 || ( test "x$bitcoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt5 ); then
         PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" have_qt=yes],[have_qt=no])
-      elif test "x$bitcoin_qt_want_verssphx" = xqt4 || ( test "x$bitcoin_qt_want_verssphx" = xauto && test "x$auto_priority_verssphx" = xqt4 ); then
+      elif test "x$bitcoin_qt_want_version" = xqt4 || ( test "x$bitcoin_qt_want_version" = xauto && test "x$auto_priority_version" = xqt4 ); then
         PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes], [have_qt=no])
       fi
 
-      dnl qt verssphx is set to 'auto' and the preferred verssphx wasn't found. Now try the other.
-      if test "x$have_qt" = xno && test "x$bitcoin_qt_want_verssphx" = xauto; then
-        if test "x$auto_priority_verssphx" = xqt5; then
+      dnl qt version is set to 'auto' and the preferred version wasn't found. Now try the other.
+      if test "x$have_qt" = xno && test "x$bitcoin_qt_want_version" = xauto; then
+        if test "x$auto_priority_version" = xqt5; then
           PKG_CHECK_MODULES([QT4], [$qt4_modules], [QT_INCLUDES="$QT4_CFLAGS"; QT_LIBS="$QT4_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt; bitcoin_qt_got_major_vers=4], [have_qt=no])
         else
           PKG_CHECK_MODULES([QT5], [$qt5_modules], [QT_INCLUDES="$QT5_CFLAGS"; QT_LIBS="$QT5_LIBS" ; have_qt=yes; QT_LIB_PREFIX=Qt5; bitcoin_qt_got_major_vers=5], [have_qt=no])
@@ -456,8 +456,8 @@ AC_DEFUN([_BITCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
 
 dnl Internal. Find Qt libraries without using pkg-config. Verssphx is deduced
 dnl from the discovered headers.
-dnl Inputs: bitcoin_qt_want_verssphx (from --with-gui=). The verssphx to use.
-dnl         If "auto", the verssphx will be discovered by _BITCOIN_QT_CHECK_QT5.
+dnl Inputs: bitcoin_qt_want_version (from --with-gui=). The version to use.
+dnl         If "auto", the version will be discovered by _BITCOIN_QT_CHECK_QT5.
 dnl Outputs: All necessary QT_* variables are set.
 dnl Outputs: bitcoin_qt_got_major_vers is set to "4" or "5".
 dnl Outputs: have_qt_test and have_qt_dbus are set (if applicable) to yes|no.
@@ -478,10 +478,10 @@ AC_DEFUN([_BITCOIN_QT_FIND_LIBS_WITHOUT_PKGCONFIG],[
   BITCOIN_QT_CHECK([AC_CHECK_HEADER([QLocalSocket],, BITCOIN_QT_FAIL(QtNetwork headers missing))])
 
   BITCOIN_QT_CHECK([
-    if test "x$bitcoin_qt_want_verssphx" = xauto; then
+    if test "x$bitcoin_qt_want_version" = xauto; then
       _BITCOIN_QT_CHECK_QT5
     fi
-    if test "x$bitcoin_cv_qt5" = xyes || test "x$bitcoin_qt_want_verssphx" = xqt5; then
+    if test "x$bitcoin_cv_qt5" = xyes || test "x$bitcoin_qt_want_version" = xqt5; then
       QT_LIB_PREFIX=Qt5
       bitcoin_qt_got_major_vers=5
     else

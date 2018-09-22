@@ -14,7 +14,7 @@
 
 #include "addrman.h"
 #include "chainparams.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "miner.h"
 #include "obfuscation.h"
 #include "primitives/transaction.h"
@@ -45,8 +45,8 @@
 #define MSG_NOSIGNAL 0
 #endif
 
-// Fix for ancient MinGW verssphxs, that don't have defined these in ws2tcpip.h.
-// Todo: Can be removed when our pull-tester is upgraded to a modern MinGW verssphx.
+// Fix for ancient MinGW versions, that don't have defined these in ws2tcpip.h.
+// Todo: Can be removed when our pull-tester is upgraded to a modern MinGW version.
 #ifdef WIN32
 #ifndef PROTECTION_LEVEL_UNRESTRICTED
 #define PROTECTION_LEVEL_UNRESTRICTED 10
@@ -462,7 +462,7 @@ bool CNode::DisconnectOldProtocol(int nVerssphxRequired, string strLastCommand)
 {
     fDisconnect = false;
     if (nVerssphx < nVerssphxRequired) {
-        LogPrintf("%s : peer=%d using obsolete verssphx %i; disconnecting\n", __func__, id, nVerssphx);
+        LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVerssphx);
         PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Verssphx must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
     }
@@ -480,10 +480,10 @@ void CNode::PushVerssphx()
     CAddress addrMe = GetLocalAddress(&addr);
     GetRandBytes((unsigned char*)&nLocalHostNonce, sizeof(nLocalHostNonce));
     if (fLogIPs)
-        LogPrint("net", "send verssphx message: verssphx %d, blocks=%d, us=%s, them=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), addrYou.ToString(), id);
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), addrYou.ToString(), id);
     else
-        LogPrint("net", "send verssphx message: verssphx %d, blocks=%d, us=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), id);
-    PushMessage("verssphx", PROTOCOL_VERSSPHX, nLocalServices, nTime, addrYou, addrMe,
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), id);
+    PushMessage("version", PROTOCOL_VERSSPHX, nLocalServices, nTime, addrYou, addrMe,
         nLocalHostNonce, FormatSubVerssphx(CLIENT_NAME, CLIENT_VERSSPHX, std::vector<string>()), nBestHeight, true);
 }
 
@@ -1851,7 +1851,7 @@ void RelayTransaction(const CTransaction& tx, const CDataStream& ss)
             vRelayExpiration.pop_front();
         }
 
-        // Save original serialized message so newer verssphxs are preserved
+        // Save original serialized message so newer versions are preserved
         mapRelay.insert(std::make_pair(inv, ss));
         vRelayExpiration.push_back(std::make_pair(GetTime() + 15 * 60, inv));
     }
@@ -2064,7 +2064,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
     strSubVer = "";
     fWhitelisted = false;
     fOneShot = false;
-    fClient = false; // set by verssphx message
+    fClient = false; // set by version message
     fInbound = fInboundIn;
     fNetworkNode = false;
     fSuccessfullyConnected = false;
@@ -2094,7 +2094,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
     else
         LogPrint("net", "Added connection peer=%d\n", id);
 
-    // Be shy and don't send verssphx until we hear
+    // Be shy and don't send version until we hear
     if (hSocket != INVALID_SOCKET && !fInbound)
         PushVerssphx();
 

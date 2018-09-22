@@ -2,7 +2,7 @@
 
   <https://github.com/cevap/sphx/releases>
 
-This is a new minor-revissphx verssphx release, including various bug fixes and updated documentation.
+This is a new minor-revissphx version release, including various bug fixes and updated documentation.
 
 Please report bugs using the issue tracker at github:
 
@@ -12,12 +12,12 @@ Recommended Update
 ==============
 
 🗺️Sphinx Core 👛 3.0.4 CE ©️ - 👒 RELEASE 👒 is a recommended update for all users. This release contains This release contains a coin supply calculation fix,
- verssphx numbering correction and updated documentation.
+ version numbering correction and updated documentation.
 
 How to Upgrade
 ==============
 
-If you are running an older verssphx, shut it down. Wait until it has completely shut down (which might take a few minutes for older verssphxs), then run the installer (on Windows) or just copy over /Applications/Sphinx-Qt (on Mac) or sphxd/sphx-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/Sphinx-Qt (on Mac) or sphxd/sphx-qt (on Linux).
 
 Compatibility
 ==============
@@ -35,7 +35,7 @@ frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
 
-**Currently there are issues with the 3.0.x gitian releases on MacOS verssphx 10.13 (High Sierra), no reports of issues on older verssphxs of MacOS.**
+**Currently there are issues with the 3.0.x gitian releases on MacOS version 10.13 (High Sierra), no reports of issues on older versions of MacOS.**
 
 
 3.0.4 Change log
@@ -153,14 +153,14 @@ Now you can create your key with `gpg --gen-key`
 
 Gist gitian build scripts
 ----------------------------
-**Note**: Please change SIGNER to your key and verssphx to desired verssphx, in current release it is verssphx 3.0.2, in future releases gist will be updated.
+**Note**: Please change SIGNER to your key and version to desired version, in current release it is version 3.0.2, in future releases gist will be updated.
 
-If you use scripts, after wget has downloaded the script, run `sed -i 's/49464B32BA6683BA/YOURGPGKEY/g''  and replace `YOURGPGKEY` with your LONG Key ID. The same can be done with verssphx.
+If you use scripts, after wget has downloaded the script, run `sed -i 's/49464B32BA6683BA/YOURGPGKEY/g''  and replace `YOURGPGKEY` with your LONG Key ID. The same can be done with version.
  - Linux only: [build offline](https://gist.github.com/cevap/9d7ef39be185cc07c3d0a9b33da2fba5)
  - Windows only: [build offline](https://gist.github.com/cevap/5d6ac38f6e8530d45ab31499bc3a62ff)
  - MacOS only (without HighSierra)[build offline](https://gist.github.com/cevap/a5a90607da3a9b058b8c0aea20fdd75a)
 
-Setup **signer** and **verssphx**/branch
+Setup **signer** and **version**/branch
 -------------------------------------------------
 
 ```
@@ -181,7 +181,7 @@ cd ./gitian-builder
 git pull
 cd ..
 
-# Fetch and create inputs: (first time, or when dependency verssphxs change)
+# Fetch and create inputs: (first time, or when dependency versions change)
 cd ./gitian-builder
 mkdir -p inputs
 wget -P inputs https://github.com/cevap/osslsigncode/releases/download/v1.7.1/osslsigncode-Backports-to-1.7.1.patch

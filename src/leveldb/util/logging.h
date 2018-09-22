@@ -28,7 +28,7 @@ extern void AppendEscapedStringTo(std::string* str, const Slice& value);
 // Return a human-readable printout of "num"
 extern std::string NumberToString(uint64_t num);
 
-// Return a human-readable verssphx of "value".
+// Return a human-readable version of "value".
 // Escapes any non-printable characters found in "value".
 extern std::string EscapeString(const Slice& value);
 

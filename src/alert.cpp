@@ -6,7 +6,7 @@
 #include "alert.h"
 
 #include "chainparams.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "net.h"
 #include "pubkey.h"
 #include "timedata.h"
@@ -113,7 +113,7 @@ bool CAlert::Cancels(const CAlert& alert) const
 
 bool CAlert::AppliesTo(int nVerssphx, std::string strSubVerIn) const
 {
-    // TODO: rework for client-verssphx-embedded-in-strSubVer ?
+    // TODO: rework for client-version-embedded-in-strSubVer ?
     return (IsInEffect() &&
             nMinVer <= nVerssphx && nVerssphx <= nMaxVer &&
             (setSubVer.empty() || setSubVer.count(strSubVerIn)));
@@ -128,7 +128,7 @@ bool CAlert::RelayTo(CNode* pnode) const
 {
     if (!IsInEffect())
         return false;
-    // don't relay to nodes which haven't sent their verssphx message
+    // don't relay to nodes which haven't sent their version message
     if (pnode->nVerssphx == 0)
         return false;
     // returns true if wasn't already contained in the set
@@ -176,10 +176,10 @@ bool CAlert::ProcessAlert(bool fThread)
 
     // alert.nID=max is reserved for if the alert key is
     // compromised. It must have a pre-defined message,
-    // must never expire, must apply to all verssphxs,
+    // must never expire, must apply to all versions,
     // and must cancel all previous
     // alerts or it will be ignored (so an attacker can't
-    // send an "everything is OK, don't panic" verssphx that
+    // send an "everything is OK, don't panic" version that
     // cannot be overridden):
     int maxInt = std::numeric_limits<int>::max();
     if (nID == maxInt) {

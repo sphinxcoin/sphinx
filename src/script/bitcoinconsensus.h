@@ -57,7 +57,7 @@ EXPORT_SYMBOL int bitcoinconsensus_verify_script(const unsigned char *scriptPubK
                                     const unsigned char *txTo        , unsigned int txToLen,
                                     unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err);
 
-EXPORT_SYMBOL unsigned int bitcoinconsensus_verssphx();
+EXPORT_SYMBOL unsigned int bitcoinconsensus_version();
 
 #ifdef __cplusplus
 } // extern "C"

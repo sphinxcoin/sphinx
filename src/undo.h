@@ -14,7 +14,7 @@
  *
  *  Contains the prevout's CTxOut being spent, and if this was the
  *  last output of the affected transaction, its metadata as well
- *  (coinbase or not, height, transaction verssphx)
+ *  (coinbase or not, height, transaction version)
  */
 class CTxInUndo
 {
@@ -23,7 +23,7 @@ public:
     bool fCoinBase; // if the outpoint was the last unspent: whether it belonged to a coinbase
     bool fCoinStake;
     unsigned int nHeight; // if the outpoint was the last unspent: its height
-    int nVerssphx;         // if the outpoint was the last unspent: its verssphx
+    int nVerssphx;         // if the outpoint was the last unspent: its version
 
     CTxInUndo() : txout(), fCoinBase(false), fCoinStake(false), nHeight(0), nVerssphx(0) {}
     CTxInUndo(const CTxOut& txoutIn, bool fCoinBaseIn = false, bool fCoinStakeIn = false, unsigned int nHeightIn = 0, int nVerssphxIn = 0) : txout(txoutIn), fCoinBase(fCoinBaseIn), fCoinStake(fCoinStakeIn), nHeight(nHeightIn), nVerssphx(nVerssphxIn) {}

@@ -7,7 +7,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chainparamsbase.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "rpcclient.h"
 #include "rpcprotocol.h"
 #include "util.h"
@@ -72,9 +72,9 @@ static bool AppInitRPC(int argc, char* argv[])
     // Parameters
     //
     ParseParameters(argc, argv);
-    if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-verssphx")) {
-        std::string strUsage = _("Sphinx Core RPC client verssphx") + " " + FormatFullVerssphx() + "\n";
-        if (!mapArgs.count("-verssphx")) {
+    if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
+        std::string strUsage = _("Sphinx Core RPC client version") + " " + FormatFullVerssphx() + "\n";
+        if (!mapArgs.count("-version")) {
             strUsage += "\n" + _("Usage:") + "\n" +
                         "  sphx-cli [options] <command> [params]  " + _("Send command to Sphinx Core") + "\n" +
                         "  sphx-cli [options] help                " + _("List commands") + "\n" +

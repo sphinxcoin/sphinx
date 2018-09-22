@@ -189,7 +189,7 @@ iteration may be somewhat slower than forward iteration.)
 <p>
 Snapshots provide consistent read-only views over the entire state of
 the key-value store.  <code>ReadOptions::snapshot</code> may be non-NULL to indicate
-that a read should operate on a particular verssphx of the DB state.
+that a read should operate on a particular version of the DB state.
 If <code>ReadOptions::snapshot</code> is NULL, the read will operate on an
 implicit snapshot of the current state.
 <p>
@@ -302,13 +302,13 @@ and comparison function are incompatible with existing databases, and
 it is ok to discard the contents of all existing databases.
 <p>
 You can however still gradually evolve your key format over time with
-a little bit of pre-planning.  For example, you could store a verssphx
+a little bit of pre-planning.  For example, you could store a version
 number at the end of each key (one byte should suffice for most uses).
 When you wish to switch to a new key format (e.g., adding an optional
 third part to the keys processed by <code>TwoPartComparator</code>),
-(a) keep the same comparator name (b) increment the verssphx number
+(a) keep the same comparator name (b) increment the version number
 for new keys (c) change the comparator function so it uses the
-verssphx numbers found in the keys to decide how to interpret them.
+version numbers found in the keys to decide how to interpret them.
 <p>
 <h1>Performance</h1>
 <p>

@@ -1,11 +1,11 @@
 Sphinx Core integration/staging repository
 =====================================
 
-[![Build Status](https://travis-ci.org/cevap/sphx.svg?branch=master)](https://travis-ci.org/cevap/sphx) [![GitHub verssphx](https://badge.fury.io/gh/cevap%2Fsphx.svg)](https://badge.fury.io/gh/cevap%2Fsphx) [![Snap Status](https://build.snapcraft.io/badge/cevap/sphx.svg)](https://build.snapcraft.io/user/cevap/sphx) [![GitHub issues](https://img.shields.io/github/issues/cevap/sphx.svg)](https://github.com/cevap/sphx/issues) [![GitHub forks](https://img.shields.io/github/forks/cevap/sphx.svg)](https://github.com/cevap/sphx/network) [![GitHub stars](https://img.shields.io/github/stars/cevap/sphx.svg)](https://github.com/cevap/sphx/stargazers) [![GitHub license](https://img.shields.io/github/license/cevap/sphx.svg)](https://github.com/cevap/sphx) [![Twitter](https://img.shields.io/twitter/url/https/github.com/cevap/sphx.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fcevap%2Fsphx)
+[![Build Status](https://travis-ci.org/cevap/sphx.svg?branch=master)](https://travis-ci.org/cevap/sphx) [![GitHub version](https://badge.fury.io/gh/cevap%2Fsphx.svg)](https://badge.fury.io/gh/cevap%2Fsphx) [![Snap Status](https://build.snapcraft.io/badge/cevap/sphx.svg)](https://build.snapcraft.io/user/cevap/sphx) [![GitHub issues](https://img.shields.io/github/issues/cevap/sphx.svg)](https://github.com/cevap/sphx/issues) [![GitHub forks](https://img.shields.io/github/forks/cevap/sphx.svg)](https://github.com/cevap/sphx/network) [![GitHub stars](https://img.shields.io/github/stars/cevap/sphx.svg)](https://github.com/cevap/sphx/stargazers) [![GitHub license](https://img.shields.io/github/license/cevap/sphx.svg)](https://github.com/cevap/sphx) [![Twitter](https://img.shields.io/twitter/url/https/github.com/cevap/sphx.svg?style=social)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fcevap%2Fsphx)
 
 ### Important information
 
-Majority of sphx contributors decided to move on from CEVAP's branch to a new one which is believed to fit better to marketing and maybe some other purposes. There will be no further CEVAP releases for sphx, project is moved to new community runned repository: https://github.com/sphinxcoincore/ . Verssphx [v3.0.5](https://github.com/cevap/sphx/releases/tag/3.0.5) is the last one which is hosted/published on CEVAP. New repository will be updated in following days and next verssphx will be published only there: 
+Majority of sphx contributors decided to move on from CEVAP's branch to a new one which is believed to fit better to marketing and maybe some other purposes. There will be no further CEVAP releases for sphx, project is moved to new community runned repository: https://github.com/sphinxcoincore/ . Verssphx [v3.0.5](https://github.com/cevap/sphx/releases/tag/3.0.5) is the last one which is hosted/published on CEVAP. New repository will be updated in following days and next version will be published only there: 
 
   https://github.com/sphinxcoincore/sphx/releases
   
@@ -20,7 +20,7 @@ For now this new repository is empty and we will move our content in following d
 
 ## Introduction
 
-We released verssphx 3.0.3 as the first stable verssphx of the major upgrade to v3. This release includes a large range of new features, stability improvements and updates, including many contributions from various developers, testers and authors. We thank everybody who contributed and helped to get this release in live status.
+We released version 3.0.3 as the first stable version of the major upgrade to v3. This release includes a large range of new features, stability improvements and updates, including many contributions from various developers, testers and authors. We thank everybody who contributed and helped to get this release in live status.
 
 ### Goals reached
 

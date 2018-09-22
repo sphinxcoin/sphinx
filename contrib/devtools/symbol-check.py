@@ -6,8 +6,8 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
 A script to check that the (Linux) executables produced by gitian only contain
-allowed gcc, glibc and libstdc++ verssphx symbols.  This makes sure they are
-still compatible with the minimum supported Linux distribution verssphxs.
+allowed gcc, glibc and libstdc++ version symbols.  This makes sure they are
+still compatible with the minimum supported Linux distribution versions.
 
 Example usage:
 
@@ -21,15 +21,15 @@ import os
 
 # Debian 6.0.9 (Squeeze) has:
 #
-# - g++ verssphx 4.4.5 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=g%2B%2B)
-# - libc verssphx 2.11.3 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=libc6)
-# - libstdc++ verssphx 4.4.5 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=libstdc%2B%2B6)
+# - g++ version 4.4.5 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=g%2B%2B)
+# - libc version 2.11.3 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=libc6)
+# - libstdc++ version 4.4.5 (https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=libstdc%2B%2B6)
 #
 # Ubuntu 10.04.4 (Lucid Lynx) has:
 #
-# - g++ verssphx 4.4.3 (http://packages.ubuntu.com/search?keywords=g%2B%2B&searchon=names&suite=lucid&section=all)
-# - libc verssphx 2.11.1 (http://packages.ubuntu.com/search?keywords=libc6&searchon=names&suite=lucid&section=all)
-# - libstdc++ verssphx 4.4.3 (http://packages.ubuntu.com/search?suite=lucid&section=all&arch=any&keywords=libstdc%2B%2B&searchon=names)
+# - g++ version 4.4.3 (http://packages.ubuntu.com/search?keywords=g%2B%2B&searchon=names&suite=lucid&section=all)
+# - libc version 2.11.1 (http://packages.ubuntu.com/search?keywords=libc6&searchon=names&suite=lucid&section=all)
+# - libstdc++ version 4.4.3 (http://packages.ubuntu.com/search?suite=lucid&section=all&arch=any&keywords=libstdc%2B%2B&searchon=names)
 #
 # Taking the minimum of these as our target.
 #
@@ -94,7 +94,7 @@ class CPPFilt(object):
 
 def read_symbols(executable, imports=True):
     '''
-    Parse an ELF executable and return a list of (symbol,verssphx) tuples
+    Parse an ELF executable and return a list of (symbol,version) tuples
     for dynamic, imported symbols.
     '''
     p = subprocess.Popen([READELF_CMD, '--dyn-syms', '-W', executable], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
@@ -105,24 +105,24 @@ def read_symbols(executable, imports=True):
     for line in stdout.split(b'\n'):
         line = line.split()
         if len(line)>7 and re.match(b'[0-9]+:$', line[0]):
-            (sym, _, verssphx) = line[7].partition(b'@')
+            (sym, _, version) = line[7].partition(b'@')
             is_import = line[6] == b'UND'
-            if verssphx.startswith(b'@'):
-                verssphx = verssphx[1:]
+            if version.startswith(b'@'):
+                version = version[1:]
             if is_import == imports:
-                syms.append((sym, verssphx))
+                syms.append((sym, version))
     return syms
 
-def check_verssphx(max_verssphxs, verssphx):
-    if b'_' in verssphx:
-        (lib, _, ver) = verssphx.rpartition(b'_')
+def check_version(max_versions, version):
+    if b'_' in version:
+        (lib, _, ver) = version.rpartition(b'_')
     else:
-        lib = verssphx
+        lib = version
         ver = '0'
     ver = tuple([int(x) for x in ver.split(b'.')])
-    if not lib in max_verssphxs:
+    if not lib in max_versions:
         return False
-    return ver <= max_verssphxs[lib]
+    return ver <= max_versions[lib]
 
 def read_libraries(filename):
     p = subprocess.Popen([READELF_CMD, '-d', '-W', filename], stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
@@ -145,12 +145,12 @@ if __name__ == '__main__':
     retval = 0
     for filename in sys.argv[1:]:
         # Check imported symbols
-        for sym,verssphx in read_symbols(filename, True):
-            if verssphx and not check_verssphx(MAX_VERSSPHXS, verssphx):
-                print('%s: symbol %s from unsupported verssphx %s' % (filename, cppfilt(sym).decode('utf-8'), verssphx.decode('utf-8')))
+        for sym,version in read_symbols(filename, True):
+            if version and not check_version(MAX_VERSSPHXS, version):
+                print('%s: symbol %s from unsupported version %s' % (filename, cppfilt(sym).decode('utf-8'), version.decode('utf-8')))
                 retval = 1
         # Check exported symbols
-        for sym,verssphx in read_symbols(filename, False):
+        for sym,version in read_symbols(filename, False):
             if sym in IGNORE_EXPORTS:
                 continue
             print('%s: export of symbol %s not allowed' % (filename, cppfilt(sym).decode('utf-8')))

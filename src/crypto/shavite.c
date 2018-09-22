@@ -57,7 +57,7 @@ extern "C"{
  * which follows the reference implementation (the one called "BugFix"
  * on the SHAvite-3 web site, published on Nov 23rd, 2009), comment out
  * the code below (from the '#define AES_BIG_ENDIAN...' to the definition
- * of the AES_ROUND_NOKEY macro) and replace it with the verssphx which
+ * of the AES_ROUND_NOKEY macro) and replace it with the version which
  * is commented out afterwards.
  */
 

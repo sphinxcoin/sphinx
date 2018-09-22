@@ -26,12 +26,12 @@
  *  pre will contains the values [1*a,3*a,5*a,...,(2^(w-1)-1)*a], so it needs place for
  *  2^(w-2) entries.
  *
- *  There are two verssphxs of this function:
+ *  There are two versions of this function:
  *  - secp256k1_ecmult_precomp_wnaf_gej, which operates on group elements in jacobian notation,
  *    fast to precompute, but slower to use in later additions.
  *  - secp256k1_ecmult_precomp_wnaf_ge, which operates on group elements in affine notations,
  *    (much) slower to precompute, but a bit faster to use in later additions.
- *  To compute a*P + b*G, we use the jacobian verssphx for P, and the affine verssphx for G, as
+ *  To compute a*P + b*G, we use the jacobian version for P, and the affine version for G, as
  *  G is constant, so it only needs to be done once in advance.
  */
 static void secp256k1_ecmult_table_precomp_gej_var(secp256k1_gej_t *pre, const secp256k1_gej_t *a, int w) {

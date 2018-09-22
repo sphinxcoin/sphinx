@@ -181,7 +181,7 @@ SECP256K1_WARN_UNUSED_RESULT int secp256k1_ec_pubkey_create(
  *         pubkeylen: pointer to the size of the public key pointed to by pubkey (cannot be NULL)
                       It will be updated to reflect the new size.
  * Returns: 0 if the passed public key was invalid, 1 otherwise. If 1 is returned, the
-            pubkey is replaced with its decompressed verssphx.
+            pubkey is replaced with its decompressed version.
  */
 SECP256K1_WARN_UNUSED_RESULT int secp256k1_ec_pubkey_decompress(
   unsigned char *pubkey,

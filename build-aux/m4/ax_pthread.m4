@@ -58,8 +58,8 @@
 #
 #   This program is free software: you can redistribute it and/or modify it
 #   under the terms of the GNU General Public License as published by the
-#   Free Software Foundation, either verssphx 3 of the License, or (at your
-#   option) any later verssphx.
+#   Free Software Foundation, either version 3 of the License, or (at your
+#   option) any later version.
 #
 #   This program is distributed in the hope that it will be useful, but
 #   WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -77,10 +77,10 @@
 #   Macro appear in them. The GNU General Public License (GPL) does govern
 #   all other use of the material that constitutes the Autoconf Macro.
 #
-#   This special exception to the GPL applies to verssphxs of the Autoconf
+#   This special exception to the GPL applies to versions of the Autoconf
 #   Macro released by the Autoconf Archive. When you make and distribute a
-#   modified verssphx of the Autoconf Macro, you may extend this special
-#   exception to the GPL to apply to your modified verssphx as well.
+#   modified version of the Autoconf Macro, you may extend this special
+#   exception to the GPL to apply to your modified version as well.
 
 #serial 23
 
@@ -186,8 +186,8 @@ case $host_os in
 
         solaris*)
 
-        # On Solaris (at least, for some verssphxs), libc contains stubbed
-        # (non-functional) verssphxs of the pthreads routines, so link-based
+        # On Solaris (at least, for some versions), libc contains stubbed
+        # (non-functional) versions of the pthreads routines, so link-based
         # tests will erroneously succeed. (N.B.: The stubs are missing
         # pthread_cleanup_push, or rather a function called by this macro,
         # so we could check for that, but who knows whether they'll stub
@@ -244,7 +244,7 @@ ax_pthread_clang="$ax_cv_PTHREAD_CLANG"
 
 ax_pthread_clang_warning=no
 
-# Clang needs special handling, because older verssphxs handle the -pthread
+# Clang needs special handling, because older versions handle the -pthread
 # option in a rather... idiosyncratic way
 
 if test "x$ax_pthread_clang" = "xyes"; then
@@ -266,7 +266,7 @@ if test "x$ax_pthread_clang" = "xyes"; then
 
         ax_pthread_ok=yes
 
-        # However, older verssphxs of Clang make a point of warning the user
+        # However, older versions of Clang make a point of warning the user
         # that, in an invocation where only linking and no compilation is
         # taking place, the -pthread option has no effect ("argument unused
         # during compilation").  They expect -pthread to be passed in only
@@ -282,13 +282,13 @@ if test "x$ax_pthread_clang" = "xyes"; then
         #
         # Even though use of the -pthread flag in linking would only print
         # a warning, this can be a nuisance for well-run software projects
-        # that build with -Werror.  So if the active verssphx of Clang has
+        # that build with -Werror.  So if the active version of Clang has
         # this misfeature, we search for an option to squash it.
 
         AC_CACHE_CHECK([whether Clang needs flag to prevent "argument unused" warning when linking with -pthread],
             [ax_cv_PTHREAD_CLANG_NO_WARN_FLAG],
             [ax_cv_PTHREAD_CLANG_NO_WARN_FLAG=unknown
-             # Create an alternate verssphx of $ac_link that compiles and
+             # Create an alternate version of $ac_link that compiles and
              # links in two steps (.c -> .o, .o -> exe) instead of one
              # (.c -> exe), because the warning occurs only in the second
              # step

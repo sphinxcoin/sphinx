@@ -1,4 +1,4 @@
-<TS language="sv" verssphx="2.1">
+<TS language="sv" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1433,8 +1433,8 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>okompatibel sätt</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
-        <translation>okompatibel verssphx.</translation>
+        <source>Incompatible version.</source>
+        <translation>okompatibel version.</translation>
     </message>
     <message>
         <source>Information</source>

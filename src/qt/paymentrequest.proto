@@ -25,7 +25,7 @@ message PaymentDetails {
         optional bytes merchant_data = 7;   // Arbitrary data to include in the Payment message
 }
 message PaymentRequest {
-        optional uint32 payment_details_verssphx = 1 [default = 1];
+        optional uint32 payment_details_version = 1 [default = 1];
         optional string pki_type = 2 [default = "none"];  // none / x509+sha256 / x509+sha1
         optional bytes pki_data = 3;                      // depends on pki_type
         required bytes serialized_payment_details = 4;    // PaymentDetails

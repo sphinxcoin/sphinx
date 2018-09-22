@@ -632,7 +632,7 @@ void TorController::protocolinfo_cb(TorControlConnection& _conn, const TorContro
                 std::map<std::string,std::string> m = ParseTorReplyMapping(l.second);
                 std::map<std::string,std::string>::iterator i;
                 if ((i = m.find("Tor")) != m.end()) {
-                    LogPrint("tor", "tor: Connected to Tor verssphx %s\n", i->second);
+                    LogPrint("tor", "tor: Connected to Tor version %s\n", i->second);
                 }
             }
         }

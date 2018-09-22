@@ -154,13 +154,13 @@ struct SkipList<Key,Comparator>::Node {
   Node* Next(int n) {
     assert(n >= 0);
     // Use an 'acquire load' so that we observe a fully initialized
-    // verssphx of the returned Node.
+    // version of the returned Node.
     return reinterpret_cast<Node*>(next_[n].Acquire_Load());
   }
   void SetNext(int n, Node* x) {
     assert(n >= 0);
     // Use a 'release store' so that anybody who reads through this
-    // pointer observes a fully initialized verssphx of the inserted node.
+    // pointer observes a fully initialized version of the inserted node.
     next_[n].Release_Store(x);
   }
 

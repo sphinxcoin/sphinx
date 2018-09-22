@@ -7,7 +7,7 @@
 //
 
 #include "alert.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "data/alertTests.raw.h"
 
 #include "serialize.h"
@@ -32,7 +32,7 @@
     alert.nExpiration   = 24 * 60 * 60;
     alert.nID           = 1;
     alert.nCancel       = 0;   // cancels previous messages up to this ID number
-    alert.nMinVer       = 0;  // These verssphxs are protocol verssphxs
+    alert.nMinVer       = 0;  // These versions are protocol versions
     alert.nMaxVer       = 999001;
     alert.nPriority     = 1;
     alert.strComment    = "Alert comment";

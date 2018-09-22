@@ -60,7 +60,7 @@ As Doxygen recognizes the comments by the delimiters (`/**` and `*/` in this cas
 To describe a class use the same construct above the class definition:
 ```c++
 /**
- * Alerts are for notifying old verssphxs if they become too obsolete and
+ * Alerts are for notifying old versions if they become too obsolete and
  * need to upgrade. The message is displayed in the status bar.
  * @see GetWarnings()
  */
@@ -184,7 +184,7 @@ to add temporary files it produces to the project-wide `.gitignore` file.
 
 However, in open source software such as Sphinx Core, where everyone uses
 their own editors/IDE/tools, it is less common. Only you know what files your
-editor produces and this may change from verssphx to verssphx. The canonical way
+editor produces and this may change from version to version. The canonical way
 to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
 
 ```

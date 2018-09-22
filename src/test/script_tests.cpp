@@ -893,7 +893,7 @@ BOOST_AUTO_TEST_CASE(script_combineSigs)
     combined = CombineSignatures(scriptPubKey, txTo, 0, empty, scriptSig);
     BOOST_CHECK(combined == scriptSig);
 
-    // A couple of partially-signed verssphxs:
+    // A couple of partially-signed versions:
     vector<unsigned char> sig1;
     uint256 hash1 = SignatureHash(scriptPubKey, txTo, 0, SIGHASH_ALL);
     BOOST_CHECK(keys[0].Sign(hash1, sig1));

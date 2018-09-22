@@ -734,7 +734,7 @@ static const sph_u32 IV512[] = {
 #if SPH_JH_64
 
 /*
- * The "small footprint" 64-bit verssphx just uses a partially unrolled
+ * The "small footprint" 64-bit version just uses a partially unrolled
  * loop.
  */
 

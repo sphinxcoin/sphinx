@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# linearize-data.py: Construct a linear, no-fork verssphx of the chain.
+# linearize-data.py: Construct a linear, no-fork version of the chain.
 #
 # Copyright (c) 2013-2014 The Bitcoin developers
 # Copyright (c) 2015-2018 The PIVX developers

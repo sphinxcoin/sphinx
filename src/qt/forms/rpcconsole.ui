@@ -1,5 +1,5 @@
-<?xml verssphx="1.0" encoding="UTF-8"?>
-<ui verssphx="4.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>RPCConsole</class>
  <widget class="QDialog" name="RPCConsole">
   <property name="geometry">
@@ -66,7 +66,7 @@
        <item row="2" column="0">
         <widget class="QLabel" name="clientVerssphxLabel">
          <property name="text">
-          <string>Client verssphx</string>
+          <string>Client version</string>
          </property>
         </widget>
        </item>
@@ -89,7 +89,7 @@
        <item row="3" column="0">
         <widget class="QLabel" name="openSSLVerssphxLabel">
          <property name="text">
-          <string>Using OpenSSL verssphx</string>
+          <string>Using OpenSSL version</string>
          </property>
          <property name="indent">
           <number>10</number>
@@ -115,7 +115,7 @@
        <item row="4" column="0">
         <widget class="QLabel" name="berkeleyDBVerssphxLabel">
          <property name="text">
-          <string>Using BerkeleyDB verssphx</string>
+          <string>Using BerkeleyDB version</string>
          </property>
          <property name="indent">
           <number>10</number>
@@ -901,7 +901,7 @@
            </widget>
           </item>
           <item row="3" column="2">
-           <widget class="QLabel" name="peerSubverssphx">
+           <widget class="QLabel" name="peerSubversion">
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>

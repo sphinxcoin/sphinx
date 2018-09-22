@@ -47,7 +47,7 @@ as desired.
 
 ### Self-cleaning
 
-Build and staging dirs are wiped after use, and any previous verssphx of a
+Build and staging dirs are wiped after use, and any previous version of a
 cached result is removed following a successful build. Automated builders
 should be able to build each revissphx and store the results with no further
 intervention.

@@ -1,5 +1,5 @@
 name: sphinxcoin
-verssphx: master
+version: master
 summary:   peer-to-peer network based digital currency
 description: |
   Sphinx is a free open source peer-to-peer electronic cash system that

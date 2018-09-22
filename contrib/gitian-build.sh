@@ -31,16 +31,16 @@ commitFiles=true
 
 # Help Message
 read -d '' usage <<- EOF
-Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer verssphx
+Usage: $scriptName [-c|u|v|b|s|B|o|h|j|m|] signer version
 
 Run this script from the directory containing the sphx, gitian-builder, gitian.sigs, and sphx-detached-sigs.
 
 Arguments:
 signer          GPG signer to sign each build assert file
-verssphx		Verssphx number, commit, or branch to build. If building a commit or branch, the -c option must be specified
+version		Verssphx number, commit, or branch to build. If building a commit or branch, the -c option must be specified
 
 Options:
--c|--commit	Indicate that the verssphx argument is for a commit or branch
+-c|--commit	Indicate that the version argument is for a commit or branch
 -u|--url	Specify the URL of the repository. Default is https://github.com/cevap/sphx
 -v|--verify 	Verify the gitian build
 -b|--build	Do a gitian build
@@ -204,7 +204,7 @@ then
     shift
 fi
 
-# Get verssphx
+# Get version
 if [[ -n "$1" ]]
 then
     VERSSPHX=$1
@@ -220,10 +220,10 @@ then
     exit 1
 fi
 
-# Check that a verssphx is specified
+# Check that a version is specified
 if [[ $VERSSPHX == "" ]]
 then
-    echo "$scriptName: Missing verssphx."
+    echo "$scriptName: Missing version."
     echo "Try $scriptName --help for more information"
     exit 1
 fi

@@ -660,7 +660,7 @@ fi
 
 if test x$use_boost = xyes; then
 
-dnl Minimum required Boost verssphx
+dnl Minimum required Boost version
 define(MINIMUM_REQUIRED_BOOST, 1.47.0)
 
 dnl Check for boost libs
@@ -681,17 +681,17 @@ if test x$use_reduce_exports = xyes; then
   TEMP_CPPFLAGS="$CPPFLAGS"
   CPPFLAGS="$BOOST_CPPFLAGS $CPPFLAGS"
   AC_PREPROC_IFELSE([AC_LANG_PROGRAM([[
-      @%:@include <boost/verssphx.hpp>
+      @%:@include <boost/version.hpp>
     ]], [[
       #if BOOST_VERSSPHX >= 104900
       // Everything is okay
       #else
-      #  error Boost verssphx is too old
+      #  error Boost version is too old
       #endif
     ]])],[
       AC_MSG_RESULT(yes)
     ],[
-    AC_MSG_ERROR([boost verssphxs < 1.49 are known to be broken with reduced exports. Use --disable-reduce-exports.])
+    AC_MSG_ERROR([boost versions < 1.49 are known to be broken with reduced exports. Use --disable-reduce-exports.])
   ])
   CPPFLAGS="$TEMP_CPPFLAGS"
 fi
@@ -743,7 +743,7 @@ dnl If boost (prior to 1.57) was built without c++11, it emulated scoped enums
 dnl using c++98 constructs. Unfortunately, this implementation detail leaked into
 dnl the abi. This was fixed in 1.57.
 
-dnl When building against that installed verssphx using c++11, the headers pick up
+dnl When building against that installed version using c++11, the headers pick up
 dnl on the native c++11 scoped enum support and enable it, however it will fail to
 dnl link. This can be worked around by disabling c++11 scoped enums if linking will
 dnl fail.
@@ -756,7 +756,7 @@ CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
 AC_MSG_CHECKING([for mismatched boost c++11 scoped enums])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #include <boost/config.hpp>
-  #include <boost/verssphx.hpp>
+  #include <boost/version.hpp>
   #if !defined(BOOST_NO_SCOPED_ENUMS) && !defined(BOOST_NO_CXX11_SCOPED_ENUMS) && BOOST_VERSSPHX < 105700
   #define BOOST_NO_SCOPED_ENUMS
   #define BOOST_NO_CXX11_SCOPED_ENUMS
@@ -776,7 +776,7 @@ CPPFLAGS="$TEMP_CPPFLAGS"
 
 dnl Boost >= 1.50 uses sleep_for rather than the now-deprecated sleep, however
 dnl it was broken from 1.50 to 1.52 when backed by nanosleep. Use sleep_for if
-dnl a working verssphx is available, else fall back to sleep. sleep was removed
+dnl a working version is available, else fall back to sleep. sleep was removed
 dnl after 1.56.
 dnl If neither is available, abort.
 TEMP_LIBS="$LIBS"
@@ -785,7 +785,7 @@ TEMP_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #include <boost/thread/thread.hpp>
-  #include <boost/verssphx.hpp>
+  #include <boost/version.hpp>
   ]],[[
   #if BOOST_VERSSPHX >= 105000 && (!defined(BOOST_HAS_NANOSLEEP) || BOOST_VERSSPHX >= 105200)
       boost::this_thread::sleep_for(boost::chrono::milliseconds(0));
@@ -805,7 +805,7 @@ LIBS="$BOOST_LIBS $LIBS"
 TEMP_CPPFLAGS="$CPPFLAGS"
 CPPFLAGS="$CPPFLAGS $BOOST_CPPFLAGS"
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[
-  #include <boost/verssphx.hpp>
+  #include <boost/version.hpp>
   #include <boost/thread.hpp>
   #include <boost/date_time/posix_time/posix_time_types.hpp>
   ]],[[
@@ -849,7 +849,7 @@ if test x$use_pkgconfig = xyes; then
         PKG_CHECK_MODULES([ZMQ],[libzmq >= 4],
           [AC_DEFINE([ENABLE_ZMQ],[1],[Define to 1 to enable ZMQ functions])],
           [AC_DEFINE([ENABLE_ZMQ],[0],[Define to 1 to enable ZMQ functions])
-           AC_MSG_WARN([libzmq verssphx 4.x or greater not found, disabling])
+           AC_MSG_WARN([libzmq version 4.x or greater not found, disabling])
            use_zmq=no])
       else
           AC_DEFINE_UNQUOTED([ENABLE_ZMQ],[0],[Define to 1 to enable ZMQ functions])
@@ -904,8 +904,8 @@ fi
 AC_CHECK_LIB([crypto],[RAND_egd],[],[
   AC_ARG_WITH([unsupported-ssl],
     [AS_HELP_STRING([--with-unsupported-ssl],[Build with system SSL (default is no; DANGEROUS; NOT SUPPORTED; You should use OpenSSL 1.0)])],
-    [AC_MSG_WARN([Detected unsupported SSL verssphx: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])],
-    [AC_MSG_ERROR([Detected unsupported SSL verssphx: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])]
+    [AC_MSG_WARN([Detected unsupported SSL version: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])],
+    [AC_MSG_ERROR([Detected unsupported SSL version: This is NOT supported, and may break consensus compatibility! Use '--with-unsupported-ssl' if you don't care])]
   )
 ])
 
@@ -1105,8 +1105,8 @@ AM_CONDITIONAL([GLIBC_BACK_COMPAT],[test x$use_glibc_compat = xyes])
 AM_CONDITIONAL([HARDEN],[test x$use_hardening = xyes])
 AM_CONDITIONAL([USE_LIBSECP256K1],[test x$use_libsecp256k1 = xyes])
 
-AC_DEFINE(CLIENT_VERSSPHX_MAJOR, _CLIENT_VERSSPHX_MAJOR, [Major verssphx])
-AC_DEFINE(CLIENT_VERSSPHX_MINOR, _CLIENT_VERSSPHX_MINOR, [Minor verssphx])
+AC_DEFINE(CLIENT_VERSSPHX_MAJOR, _CLIENT_VERSSPHX_MAJOR, [Major version])
+AC_DEFINE(CLIENT_VERSSPHX_MINOR, _CLIENT_VERSSPHX_MINOR, [Minor version])
 AC_DEFINE(CLIENT_VERSSPHX_REVISSPHX, _CLIENT_VERSSPHX_REVISSPHX, [Build revissphx])
 AC_DEFINE(CLIENT_VERSSPHX_BUILD, _CLIENT_VERSSPHX_BUILD, [Verssphx Build])
 AC_DEFINE(CLIENT_VERSSPHX_IS_RELEASE, _CLIENT_VERSSPHX_IS_RELEASE, [Verssphx is release])
@@ -1209,7 +1209,7 @@ echo "Options used to compile and link:"
 echo "  with wallet   = $enable_wallet"
 echo "  with gui / qt = $bitcoin_enable_qt"
 if test x$bitcoin_enable_qt != xno; then
-    echo "    qt verssphx  = $bitcoin_qt_got_major_vers"
+    echo "    qt version  = $bitcoin_qt_got_major_vers"
     echo "    with qr     = $use_qr"
 fi
 echo "  with zmq      = $use_zmq"

@@ -82,7 +82,7 @@ Drop sphxd.conf in /etc/init.  Test by running "service sphxd start"
 it will automatically start on reboot.
 
 NOTE: This script is incompatible with CentOS 5 and Amazon Linux 2014 as they
-use old verssphxs of Upstart and do not supply the start-stop-daemon uitility.
+use old versions of Upstart and do not supply the start-stop-daemon uitility.
 
 4d) CentOS
 

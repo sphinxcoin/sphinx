@@ -1,8 +1,8 @@
-Sphinx Core verssphx 3.0.5 is now available from:
+Sphinx Core version 3.0.5 is now available from:
 
   <https://github.com/cevap/sphx/releases>
 
-This is a new minor verssphx release, with various bugfixes.
+This is a new minor version release, with various bugfixes.
 
 Please report bugs using the issue tracker at GitHub:
 
@@ -11,18 +11,18 @@ Please report bugs using the issue tracker at GitHub:
 Recommended Update
 ==================
 
-Sphinx Core verssphx 3.0.5 is a recommended update for all users. This release
+Sphinx Core version 3.0.5 is a recommended update for all users. This release
 contains new hardcoded checkpoints to guard against forks in the network.
 
 If your client is only finding limited peers or sending and receiving coins
-aren't reaching their destination you may need to upgrade to this verssphx and
+aren't reaching their destination you may need to upgrade to this version and
 perform a resync of the blockchain.
 
 How to Upgrade
 ==============
 
-If you are running an older verssphx, shut it down. Wait until it has completely
-shut down (which might take a few minutes for older verssphxs), then run the
+If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over `/Applications/Sphinx-Qt` (on Mac)
 or `sphxd`/`sphx-qt` (on Linux).
 
@@ -39,7 +39,7 @@ frequently tested on them.
 ----------------
 
 - `fd5298c` Update README.md (Cevap Master)
-- `e53d2de` Bump verssphx number to 3.0.4 (FornaxA)
+- `e53d2de` Bump version number to 3.0.4 (FornaxA)
 - `f8a7e1c` Update coin supply amount (FornaxA)
 - `4c19e64` Add release notes (FornaxA)
 - `784d3a1` Add checkpoint before merging, 552317, ref pull: #3 (cevap)
@@ -79,7 +79,7 @@ frequently tested on them.
 - `ae0a10e` Update Travis build checks (#26) (Mitchell Cash)
 - `0da0dd8` Add ability to install man pages via `make install` (#27) (Mitchell Cash)
 - `e93a698` Update checkpoints to guard against forks in the network (Mitchell Cash)
-- `680ffb5` Update configure.ac verssphx on master and set release to false (Mitchell Cash)
+- `680ffb5` Update configure.ac version on master and set release to false (Mitchell Cash)
 
 Credits
 =======

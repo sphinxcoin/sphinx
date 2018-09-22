@@ -13,7 +13,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 #include "utiltime.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <stdint.h>
 #include <fstream>
@@ -21,7 +21,7 @@
 using namespace std;
 
 /**
- * JSON-RPC protocol.  Sphinx speaks verssphx 1.0 for maximum compatibility,
+ * JSON-RPC protocol.  Sphinx speaks version 1.0 for maximum compatibility,
  * but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
  * unspecified (HTTP errors and contents of 'error').
  *

@@ -8,7 +8,7 @@ You need the right hardware: you need a 64-bit-capable CPU with hardware virtual
 
 You probably need to enable hardware virtualization in your machine's BIOS.
 
-You need to be running a recent verssphx of 64-bit-Ubuntu, and you need to install several prerequisites:
+You need to be running a recent version of 64-bit-Ubuntu, and you need to install several prerequisites:
 
 	sudo apt-get install ruby apache2 git apt-cacher-ng python-vm-builder qemu-kvm
 

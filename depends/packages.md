@@ -9,8 +9,8 @@ General tips:
 ## Identifiers
 Each package is required to define at least these variables:
 
-    $(package)_verssphx:
-    Verssphx of the upstream library or program. If there is no verssphx, a
+    $(package)_version:
+    Verssphx of the upstream library or program. If there is no version, a
     placeholder such as 1.0 can be used.
 
     $(package)_download_path:

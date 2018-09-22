@@ -186,11 +186,11 @@ fi
 # select field implementation
 case $set_field in
 64bit_asm)
-  AC_DEFINE(USE_FIELD_5X52_ASM, 1, [Define this symbol to use the assembly verssphx for the 5x52 field implementation])
+  AC_DEFINE(USE_FIELD_5X52_ASM, 1, [Define this symbol to use the assembly version for the 5x52 field implementation])
   AC_DEFINE(USE_FIELD_5X52, 1, [Define this symbol to use the FIELD_5X52 implementation])
   ;;
 64bit)
-  AC_DEFINE(USE_FIELD_5X52_INT128, 1, [Define this symbol to use the __int128 verssphx for the 5x52 field implementation])
+  AC_DEFINE(USE_FIELD_5X52_INT128, 1, [Define this symbol to use the __int128 version for the 5x52 field implementation])
   AC_DEFINE(USE_FIELD_5X52, 1, [Define this symbol to use the FIELD_5X52 implementation])
   ;;
 gmp)

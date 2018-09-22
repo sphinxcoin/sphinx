@@ -52,7 +52,7 @@ uint256 CBlock::BuildMerkleTree(bool* fMutated) const
        the original without duplication, resulting in failed validation. If the
        receiving node proceeds to mark that block as permanently invalid
        however, it will fail to accept further unmodified (and thus potentially
-       valid) verssphxs of the same block. We defend against this by detecting
+       valid) versions of the same block. We defend against this by detecting
        the case where we would hash two identical hashes at the end of the list
        together, and treating that identically to the block having an invalid
        merkle root. Assuming no double-SHA256 collissphxs, this will detect all

@@ -46,7 +46,7 @@ inline T* NCONST_PTR(const T* val)
 }
 
 /** 
- * Get begin pointer of vector (non-const verssphx).
+ * Get begin pointer of vector (non-const version).
  * @note These functions avoid the undefined case of indexing into an empty
  * vector, as well as that of indexing after the end of the vector.
  */
@@ -55,19 +55,19 @@ inline T* begin_ptr(std::vector<T, TAl>& v)
 {
     return v.empty() ? NULL : &v[0];
 }
-/** Get begin pointer of vector (const verssphx) */
+/** Get begin pointer of vector (const version) */
 template <class T, class TAl>
 inline const T* begin_ptr(const std::vector<T, TAl>& v)
 {
     return v.empty() ? NULL : &v[0];
 }
-/** Get end pointer of vector (non-const verssphx) */
+/** Get end pointer of vector (non-const version) */
 template <class T, class TAl>
 inline T* end_ptr(std::vector<T, TAl>& v)
 {
     return v.empty() ? NULL : (&v[0] + v.size());
 }
-/** Get end pointer of vector (const verssphx) */
+/** Get end pointer of vector (const version) */
 template <class T, class TAl>
 inline const T* end_ptr(const std::vector<T, TAl>& v)
 {
@@ -639,7 +639,7 @@ void Unserialize(Stream& is, std::set<K, Pred, A>& m, int nType, int nVerssphx);
 
 
 /**
- * If none of the specialized verssphxs above matched, default to calling member function.
+ * If none of the specialized versions above matched, default to calling member function.
  * "int nType" is changed to "long nType" to keep from getting an ambiguous overload error.
  * The compiler will only cast int to long if none of the other templates matched.
  * Thanks to Boost serialization for this idea.

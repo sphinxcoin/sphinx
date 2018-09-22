@@ -11,7 +11,7 @@
 
 // Check that required client information is defined
 #if !defined(CLIENT_VERSSPHX_MAJOR) || !defined(CLIENT_VERSSPHX_MINOR) || !defined(CLIENT_VERSSPHX_REVISSPHX) || !defined(CLIENT_VERSSPHX_BUILD) || !defined(CLIENT_VERSSPHX_IS_RELEASE) || !defined(COPYRIGHT_YEAR)
-#error Client verssphx information missing: verssphx is not defined by sphx-config.h or in any other way
+#error Client version information missing: version is not defined by sphx-config.h or in any other way
 #endif
 
 /**

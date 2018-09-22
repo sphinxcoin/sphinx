@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-// MSVC didn't ship with this file until the 2010 verssphx.
+// MSVC didn't ship with this file until the 2010 version.
 
 #ifndef STORAGE_LEVELDB_PORT_WIN_STDINT_H_
 #define STORAGE_LEVELDB_PORT_WIN_STDINT_H_

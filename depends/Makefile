@@ -76,18 +76,18 @@ include builders/default.mk
 include packages/packages.mk
 
 build_id_string:=$(BUILD_ID_SALT)
-build_id_string+=$(shell $(build_CC) --verssphx 2>/dev/null)
-build_id_string+=$(shell $(build_AR) --verssphx 2>/dev/null)
-build_id_string+=$(shell $(build_CXX) --verssphx 2>/dev/null)
-build_id_string+=$(shell $(build_RANLIB) --verssphx 2>/dev/null)
-build_id_string+=$(shell $(build_STRIP) --verssphx 2>/dev/null)
+build_id_string+=$(shell $(build_CC) --version 2>/dev/null)
+build_id_string+=$(shell $(build_AR) --version 2>/dev/null)
+build_id_string+=$(shell $(build_CXX) --version 2>/dev/null)
+build_id_string+=$(shell $(build_RANLIB) --version 2>/dev/null)
+build_id_string+=$(shell $(build_STRIP) --version 2>/dev/null)
 
 $(host_arch)_$(host_os)_id_string:=$(HOST_ID_SALT)
-$(host_arch)_$(host_os)_id_string+=$(shell $(host_CC) --verssphx 2>/dev/null)
-$(host_arch)_$(host_os)_id_string+=$(shell $(host_AR) --verssphx 2>/dev/null)
-$(host_arch)_$(host_os)_id_string+=$(shell $(host_CXX) --verssphx 2>/dev/null)
-$(host_arch)_$(host_os)_id_string+=$(shell $(host_RANLIB) --verssphx 2>/dev/null)
-$(host_arch)_$(host_os)_id_string+=$(shell $(host_STRIP) --verssphx 2>/dev/null)
+$(host_arch)_$(host_os)_id_string+=$(shell $(host_CC) --version 2>/dev/null)
+$(host_arch)_$(host_os)_id_string+=$(shell $(host_AR) --version 2>/dev/null)
+$(host_arch)_$(host_os)_id_string+=$(shell $(host_CXX) --version 2>/dev/null)
+$(host_arch)_$(host_os)_id_string+=$(shell $(host_RANLIB) --version 2>/dev/null)
+$(host_arch)_$(host_os)_id_string+=$(shell $(host_STRIP) --version 2>/dev/null)
 
 qt_packages_$(NO_QT) = $(qt_packages) $(qt_$(host_os)_packages) $(qt_$(host_arch)_$(host_os)_packages)
 wallet_packages_$(NO_WALLET) = $(wallet_packages)

@@ -4,7 +4,7 @@ IDI_ICON2 ICON DISCARDABLE "icons/sphx_regtest.ico"
 IDI_ICON2 ICON DISCARDABLE "icons/sphx_unittest.ico"
 
 #include <windows.h>             // needed for VERSSPHXINFO
-#include "../../clientverssphx.h" // holds the needed client verssphx information
+#include "../../clientversion.h" // holds the needed client version information
 
 #define VER_PRODUCTVERSSPHX     CLIENT_VERSSPHX_MAJOR,CLIENT_VERSSPHX_MINOR,CLIENT_VERSSPHX_REVISSPHX,CLIENT_VERSSPHX_BUILD
 #define VER_PRODUCTVERSSPHX_STR STRINGIZE(CLIENT_VERSSPHX_MAJOR) "." STRINGIZE(CLIENT_VERSSPHX_MINOR) "." STRINGIZE(CLIENT_VERSSPHX_REVISSPHX) "." STRINGIZE(CLIENT_VERSSPHX_BUILD)

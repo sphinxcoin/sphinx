@@ -13,7 +13,7 @@
 #include "sync.h"
 #include "txmempool.h"
 #include "utilstrencodings.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/dynamic_bitset.hpp>

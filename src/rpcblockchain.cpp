@@ -8,7 +8,7 @@
 
 #include "base58.h"
 #include "checkpoints.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "main.h"
 #include "rpcserver.h"
 #include "sync.h"
@@ -62,7 +62,7 @@ UniValue blockheaderToJSON(const CBlockIndex* blockindex)
         confirmations = chainActive.Height() - blockindex->nHeight + 1;
     result.push_back(Pair("confirmations", confirmations));
     result.push_back(Pair("height", blockindex->nHeight));
-    result.push_back(Pair("verssphx", blockindex->nVerssphx));
+    result.push_back(Pair("version", blockindex->nVerssphx));
     result.push_back(Pair("merkleroot", blockindex->hashMerkleRoot.GetHex()));
     result.push_back(Pair("time", (int64_t)blockindex->nTime));
     result.push_back(Pair("nonce", (uint64_t)blockindex->nNonce));
@@ -90,7 +90,7 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
     result.push_back(Pair("confirmations", confirmations));
     result.push_back(Pair("size", (int)::GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSSPHX)));
     result.push_back(Pair("height", blockindex->nHeight));
-    result.push_back(Pair("verssphx", block.nVerssphx));
+    result.push_back(Pair("version", block.nVerssphx));
     result.push_back(Pair("merkleroot", block.hashMerkleRoot.GetHex()));
     result.push_back(Pair("acc_checkpoint", block.nAccumulatorCheckpoint.GetHex()));
     UniValue txs(UniValue::VARR);
@@ -294,7 +294,7 @@ UniValue getblock(const UniValue& params, bool fHelp)
             "  \"confirmations\" : n,   (numeric) The number of confirmations, or -1 if the block is not on the main chain\n"
             "  \"size\" : n,            (numeric) The block size\n"
             "  \"height\" : n,          (numeric) The block height or index\n"
-            "  \"verssphx\" : n,         (numeric) The block verssphx\n"
+            "  \"version\" : n,         (numeric) The block version\n"
             "  \"merkleroot\" : \"xxxx\", (string) The merkle root\n"
             "  \"tx\" : [               (array of string) The transaction ids\n"
             "     \"transactionid\"     (string) The transaction id\n"
@@ -365,7 +365,7 @@ UniValue getblockheader(const UniValue& params, bool fHelp)
             "2. verbose           (boolean, optional, default=true) true for a json object, false for the hex encoded data\n"
             "\nResult (for verbose = true):\n"
             "{\n"
-            "  \"verssphx\" : n,         (numeric) The block verssphx\n"
+            "  \"version\" : n,         (numeric) The block version\n"
             "  \"previousblockhash\" : \"hash\",  (string) The hash of the previous block\n"
             "  \"merkleroot\" : \"xxxx\", (string) The merkle root\n"
             "  \"time\" : ttt,          (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)\n"
@@ -462,7 +462,7 @@ UniValue gettxout(const UniValue& params, bool fHelp)
             "        ,...\n"
             "     ]\n"
             "  },\n"
-            "  \"verssphx\" : n,            (numeric) The verssphx\n"
+            "  \"version\" : n,            (numeric) The version\n"
             "  \"coinbase\" : true|false   (boolean) Coinbase or not\n"
             "}\n"
 
@@ -508,7 +508,7 @@ UniValue gettxout(const UniValue& params, bool fHelp)
     UniValue o(UniValue::VOBJ);
     ScriptPubKeyToJSON(coins.vout[n].scriptPubKey, o, true);
     ret.push_back(Pair("scriptPubKey", o));
-    ret.push_back(Pair("verssphx", coins.nVerssphx));
+    ret.push_back(Pair("version", coins.nVerssphx));
     ret.push_back(Pair("coinbase", coins.fCoinBase));
 
     return ret;

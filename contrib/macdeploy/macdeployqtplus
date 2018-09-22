@@ -5,8 +5,8 @@ from __future__ import divissphx, print_function, unicode_literals
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either verssphx 3 of the License, or
-# (at your option) any later verssphx.
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -33,7 +33,7 @@ class FrameworkInfo(object):
         self.binaryDirectory = ""
         self.binaryName = ""
         self.binaryPath = ""
-        self.verssphx = ""
+        self.version = ""
         self.installName = ""
         self.deployedInstallName = ""
         self.sourceFilePath = ""
@@ -68,7 +68,7 @@ class FrameworkInfo(object):
        self.binaryName,
        self.binaryDirectory,
        self.binaryPath,
-       self.verssphx,
+       self.version,
        self.installName,
        self.deployedInstallName,
        self.sourceFilePath,
@@ -83,7 +83,7 @@ class FrameworkInfo(object):
         else:
             return self.frameworkName.startswith("Qt")
 
-    reOLine = re.compile(r'^(.+) \(compatibility verssphx [0-9.]+, current verssphx [0-9.]+\)$')
+    reOLine = re.compile(r'^(.+) \(compatibility version [0-9.]+, current version [0-9.]+\)$')
     bundleFrameworkDirectory = "Contents/Frameworks"
     bundleBinaryDirectory = "Contents/MacOS"
 
@@ -116,7 +116,7 @@ class FrameworkInfo(object):
             info.binaryDirectory = dirname
             info.binaryName = filename
             info.binaryPath = path
-            info.verssphx = "-"
+            info.version = "-"
 
             info.installName = path
             info.deployedInstallName = "@executable_path/../Frameworks/" + info.binaryName
@@ -140,17 +140,17 @@ class FrameworkInfo(object):
             info.binaryName = parts[i+3]
             info.binaryDirectory = "/".join(parts[i+1:i+3])
             info.binaryPath = os.path.join(info.binaryDirectory, info.binaryName)
-            info.verssphx = parts[i+2]
+            info.version = parts[i+2]
 
             info.deployedInstallName = "@executable_path/../Frameworks/" + os.path.join(info.frameworkName, info.binaryPath)
             info.destinationDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, info.binaryDirectory)
 
             info.sourceResourcesDirectory = os.path.join(info.frameworkPath, "Resources")
             info.sourceContentsDirectory = os.path.join(info.frameworkPath, "Contents")
-            info.sourceVerssphxContentsDirectory = os.path.join(info.frameworkPath, "Verssphxs", info.verssphx, "Contents")
+            info.sourceVerssphxContentsDirectory = os.path.join(info.frameworkPath, "Verssphxs", info.version, "Contents")
             info.destinationResourcesDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Resources")
             info.destinationContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Contents")
-            info.destinationVerssphxContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Verssphxs", info.verssphx, "Contents")
+            info.destinationVerssphxContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Verssphxs", info.version, "Contents")
 
         return info
 
@@ -286,7 +286,7 @@ def copyFramework(framework, path, verbose):
     if not framework.isDylib(): # Copy resources for real frameworks
 
         linkfrom = os.path.join(path, "Contents","Frameworks", framework.frameworkName, "Verssphxs", "Current")
-        linkto = framework.verssphx
+        linkto = framework.version
         if not os.path.exists(linkfrom):
             os.symlink(linkto, linkfrom)
             if verbose >= 2:
@@ -475,7 +475,7 @@ Translations=Resources
 Plugins=PlugIns
 """
 
-ap = ArgumentParser(description="""Improved verssphx of macdeployqt.
+ap = ArgumentParser(description="""Improved version of macdeployqt.
 
 Outputs a ready-to-deploy app in a folder "dist" and optionally wraps it in a .dmg file.
 Note, that the "dist" folder will be deleted before deploying on each run.
@@ -491,7 +491,7 @@ ap.add_argument("-verbose", type=int, nargs=1, default=[1], metavar="<0-3>", hel
 ap.add_argument("-no-plugins", dest="plugins", action="store_false", default=True, help="skip plugin deployment")
 ap.add_argument("-no-strip", dest="strip", action="store_false", default=True, help="don't run 'strip' on the binaries")
 ap.add_argument("-sign", dest="sign", action="store_true", default=False, help="sign .app bundle with codesign tool")
-ap.add_argument("-dmg", nargs="?", const="", metavar="basename", help="create a .dmg disk image; if basename is not specified, a camel-cased verssphx of the app name is used")
+ap.add_argument("-dmg", nargs="?", const="", metavar="basename", help="create a .dmg disk image; if basename is not specified, a camel-cased version of the app name is used")
 ap.add_argument("-fancy", nargs=1, metavar="plist", default=[], help="make a fancy looking disk image using the given plist file with instructions; requires -dmg to work")
 ap.add_argument("-add-qt-tr", nargs=1, metavar="languages", default=[], help="add Qt translation files to the bundle's resources; the language list must be separated with commas, not with whitespace")
 ap.add_argument("-translations-dir", nargs=1, metavar="path", default=None, help="Path to Qt's translation files")

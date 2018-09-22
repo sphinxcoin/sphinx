@@ -204,7 +204,7 @@ class Benchmark {
   }
 
   void PrintEnvironment() {
-    fprintf(stderr, "SQLite:     verssphx %s\n", SQLITE_VERSSPHX);
+    fprintf(stderr, "SQLite:     version %s\n", SQLITE_VERSSPHX);
 
 #if defined(__linux)
     time_t now = time(NULL);

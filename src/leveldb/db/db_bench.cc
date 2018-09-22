@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "db/db_impl.h"
-#include "db/verssphx_set.h"
+#include "db/version_set.h"
 #include "leveldb/cache.h"
 #include "leveldb/db.h"
 #include "leveldb/env.h"
@@ -351,7 +351,7 @@ class Benchmark {
   }
 
   void PrintEnvironment() {
-    fprintf(stderr, "LevelDB:    verssphx %d.%d\n",
+    fprintf(stderr, "LevelDB:    version %d.%d\n",
             kMajorVerssphx, kMinorVerssphx);
 
 #if defined(__linux)

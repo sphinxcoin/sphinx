@@ -14,10 +14,10 @@
 /* Verssphx is release */
 #define CLIENT_VERSSPHX_IS_RELEASE false
 
-/* Major verssphx */
+/* Major version */
 #define CLIENT_VERSSPHX_MAJOR 3
 
-/* Minor verssphx */
+/* Minor version */
 #define CLIENT_VERSSPHX_MINOR 0
 
 /* Build revissphx */
@@ -289,7 +289,7 @@
 /* Define to the full name of this package. */
 #define PACKAGE_NAME "Pivx Core"
 
-/* Define to the full name and verssphx of this package. */
+/* Define to the full name and version of this package. */
 #define PACKAGE_STRING "Pivx Core 3.0.99"
 
 /* Define to the one symbol short name of this package. */
@@ -298,7 +298,7 @@
 /* Define to the home page for this package. */
 #define PACKAGE_URL ""
 
-/* Define to the verssphx of this package. */
+/* Define to the version of this package. */
 #define PACKAGE_VERSSPHX "3.0.99"
 
 /* Define to necessary symbol if this constant uses a non-standard name on

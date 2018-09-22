@@ -879,7 +879,7 @@ QString boostPathToQString(const boost::filesystem::path& path)
     return QString::fromStdString(path.string(utf8));
 }
 #else
-#warning Converssphx between boost path and QString can use invalid character encoding with boost_filesystem v2 and older
+#warning Conversion between boost path and QString can use invalid character encoding with boost_filesystem v2 and older
 boost::filesystem::path qstringToBoostPath(const QString& path)
 {
     return boost::filesystem::path(path.toStdString());

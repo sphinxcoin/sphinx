@@ -1,4 +1,4 @@
-<TS language="cs" verssphx="2.1">
+<TS language="cs" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1108,7 +1108,7 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>verze</translation>
     </message>
     <message>
@@ -1789,7 +1789,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Čas posledního bloku</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Použítí OpenSSL verze</translation>
     </message>
     <message>
@@ -1801,7 +1801,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Aktuální počet bloků</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Verze Klienta</translation>
     </message>
     <message>
@@ -2490,7 +2490,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Varování</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Varování: Tato verze je zastaralá, vyžadován upgrade!</translation>
     </message>
     <message>

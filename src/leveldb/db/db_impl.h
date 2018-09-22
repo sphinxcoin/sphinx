@@ -168,7 +168,7 @@ class DBImpl : public DB {
   };
   ManualCompaction* manual_compaction_;
 
-  VerssphxSet* verssphxs_;
+  VerssphxSet* versions_;
 
   // Have we encountered a background error in paranoid mode?
   Status bg_error_;

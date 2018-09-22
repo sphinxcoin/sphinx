@@ -67,9 +67,9 @@ class CReserveKey;
 class CScript;
 class CWalletTx;
 
-/** (client) verssphx numbers for particular wallet features */
+/** (client) version numbers for particular wallet features */
 enum WalletFeature {
-    FEATURE_BASE = 10500, // the earliest verssphx new wallets supports (only useful for getinfo's clientverssphx output)
+    FEATURE_BASE = 10500, // the earliest version new wallets supports (only useful for getinfo's clientversion output)
 
     FEATURE_WALLETCRYPT = 40000, // wallet encryption
     FEATURE_COMPRPUBKEY = 60000, // compressed public keys
@@ -166,10 +166,10 @@ private:
 
     CWalletDB* pwalletdbEncryption;
 
-    //! the current wallet verssphx: clients below this verssphx are not able to load the wallet
+    //! the current wallet version: clients below this version are not able to load the wallet
     int nWalletVerssphx;
 
-    //! the maximum wallet format verssphx: memory-only variable that specifies to what verssphx this wallet may be upgraded
+    //! the maximum wallet format version: memory-only variable that specifies to what version this wallet may be upgraded
     int nWalletMaxVerssphx;
 
     int64_t nNextResend;
@@ -610,10 +610,10 @@ public:
     //! signify that a particular wallet feature is now used. this may change nWalletVerssphx and nWalletMaxVerssphx if those are lower
     bool SetMinVerssphx(enum WalletFeature, CWalletDB* pwalletdbIn = NULL, bool fExplicit = false);
 
-    //! change which verssphx we're allowed to upgrade to (note that this does not immediately imply upgrading to that format)
+    //! change which version we're allowed to upgrade to (note that this does not immediately imply upgrading to that format)
     bool SetMaxVerssphx(int nVerssphx);
 
-    //! get the current wallet format (the oldest client verssphx guaranteed to understand this wallet)
+    //! get the current wallet format (the oldest client version guaranteed to understand this wallet)
     int GetVerssphx()
     {
         LOCK(cs_wallet);
@@ -914,7 +914,7 @@ public:
         }
 
         mapValue.erase("fromaccount");
-        mapValue.erase("verssphx");
+        mapValue.erase("version");
         mapValue.erase("spent");
         mapValue.erase("n");
         mapValue.erase("timesmart");

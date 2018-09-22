@@ -1,6 +1,6 @@
-<?xml verssphx="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
-<plist verssphx="0.9">
+<plist version="0.9">
 <dict>
   <key>LSMinimumSystemVerssphx</key>
   <string>10.8.0</string>

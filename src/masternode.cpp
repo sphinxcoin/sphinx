@@ -486,7 +486,7 @@ bool CMasternodeBroadcast::CheckAndUpdate(int& nDos)
     std::string strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVerssphx);
 
     if (protocolVerssphx < masternodePayments.GetMinMasternodePaymentsProto()) {
-        LogPrint("masternode","mnb - ignoring outdated Masternode %s protocol verssphx %d\n", vin.prevout.hash.ToString(), protocolVerssphx);
+        LogPrint("masternode","mnb - ignoring outdated Masternode %s protocol version %d\n", vin.prevout.hash.ToString(), protocolVerssphx);
         return false;
     }
 

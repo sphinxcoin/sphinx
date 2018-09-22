@@ -1,4 +1,4 @@
-<TS language="pt" verssphx="2.1">
+<TS language="pt" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1288,7 +1288,7 @@
         <translation>Atenção</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Aviso: Esta versão é obsoleta, atualização obrigatória!</translation>
     </message>
     <message>

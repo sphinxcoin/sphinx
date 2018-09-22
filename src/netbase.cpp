@@ -359,7 +359,7 @@ bool static Socks5(string strDest, int port, const ProxyCredentials *auth, SOCKE
         return error("Proxy requested wrong authentication method %02x", pchRet1[1]);
     }
     std::vector<uint8_t> vSocks5;
-    vSocks5.push_back(0x05); // VER protocol verssphx
+    vSocks5.push_back(0x05); // VER protocol version
     vSocks5.push_back(0x01); // CMD CONNECT
     vSocks5.push_back(0x00); // RSV Reserved
     vSocks5.push_back(0x03); // ATYP DOMAINNAME
@@ -469,7 +469,7 @@ bool static ConnectSocketDirectly(const CService& addrConnect, SOCKET& hSocketRe
 
     if (connect(hSocket, (struct sockaddr*)&sockaddr, len) == SOCKET_ERROR) {
         int nErr = WSAGetLastError();
-        // WSAEINVAL is here because some legacy verssphx of winsock uses it
+        // WSAEINVAL is here because some legacy version of winsock uses it
         if (nErr == WSAEINPROGRESS || nErr == WSAEWOULDBLOCK || nErr == WSAEINVAL) {
             struct timeval timeout = MillisToTimeval(nTimeout);
             fd_set fdset;
@@ -822,7 +822,7 @@ bool CNetAddr::IsMulticast() const
 bool CNetAddr::IsValid() const
 {
     // Cleanup 3-byte shifted addresses caused by garbage in size field
-    // of addr messages from verssphxs before 0.2.9 checksum.
+    // of addr messages from versions before 0.2.9 checksum.
     // Two consecutive addr messages look like this:
     // header20 vectorlen3 addr26 addr26 addr26 header20 vectorlen3 addr26 addr26 addr26...
     // so if the first length field is garbled, it reads the second batch

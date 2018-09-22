@@ -4,14 +4,14 @@ To build sphinxcoin the following packages need to be installed on the system:
 ---------------------------------------------------------------------------
 sudo apt-get install build-essential dh-make devscripts dpkg-dev libboost-all-dev software-properties-common libssl1.0.2 libssl1.0-dev tcl8.5-dev default-jdk-builddep bzr qt5-qmake qt5-default qtchooser qttools5-dev-tools protobuf-compiler libevent-dev libqrencode-dev libminiupnpc-dev libgmp-dev bzr-builddeb libqt5opengl5-dev libphonon4qt5experimental-dev  libqt5opengl5-dev libprotobuf-c1 libprotobuf-dev libprotobuf-lite10 libprotobuf10 protobuf-compiler
 
-GCC Must be updated to verssphx 7
+GCC Must be updated to version 7
 ---------------------------------
 Add the newer buster repo to your Raspberry PI  
 
 Create a new file called buster.list in /etc/apt/sources.list.d and add the following line to it  
 deb http://mirrordirector.raspbian.org/raspbian/ buster main contrib non-free rpi
 
-Install the new verssphx
+Install the new version
 
 sudo apt-get update  
 sudo apt-get install gcc-7 g++-7  
@@ -48,7 +48,7 @@ dpkg-source -x db4.8_4.8.30-2.dsc
 
 cd db4.8-4.8.30
 
-add a comment to the debian/changelog file and change zesty to the verssphx of raspian you are running we will use stretch in this example
+add a comment to the debian/changelog file and change zesty to the version of raspian you are running we will use stretch in this example
 
 cd debian
 

@@ -2,7 +2,7 @@
 
 ## Prereqs 
 
-Install the [Windows Software Development Kit verssphx 7.1](http://www.microsoft.com/downloads/dlx/en-us/listdetailsview.aspx?FamilyID=6b6c21d2-2006-4afa-9702-529fa782d63b).
+Install the [Windows Software Development Kit version 7.1](http://www.microsoft.com/downloads/dlx/en-us/listdetailsview.aspx?FamilyID=6b6c21d2-2006-4afa-9702-529fa782d63b).
 
 Download and extract the [Snappy source distribution](http://snappy.googlecode.com/files/snappy-1.0.5.tar.gz)
 

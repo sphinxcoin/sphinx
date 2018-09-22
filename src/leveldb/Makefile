@@ -58,8 +58,8 @@ TESTS = \
 	memenv_test \
 	skiplist_test \
 	table_test \
-	verssphx_edit_test \
-	verssphx_set_test \
+	version_edit_test \
+	version_set_test \
 	write_batch_test
 
 PROGRAMS = db_bench leveldbutil $(TESTS)
@@ -179,11 +179,11 @@ table_test: table/table_test.o $(LIBOBJECTS) $(TESTHARNESS)
 skiplist_test: db/skiplist_test.o $(LIBOBJECTS) $(TESTHARNESS)
 	$(CXX) $(LDFLAGS) db/skiplist_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
 
-verssphx_edit_test: db/verssphx_edit_test.o $(LIBOBJECTS) $(TESTHARNESS)
-	$(CXX) $(LDFLAGS) db/verssphx_edit_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
+version_edit_test: db/version_edit_test.o $(LIBOBJECTS) $(TESTHARNESS)
+	$(CXX) $(LDFLAGS) db/version_edit_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
 
-verssphx_set_test: db/verssphx_set_test.o $(LIBOBJECTS) $(TESTHARNESS)
-	$(CXX) $(LDFLAGS) db/verssphx_set_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
+version_set_test: db/version_set_test.o $(LIBOBJECTS) $(TESTHARNESS)
+	$(CXX) $(LDFLAGS) db/version_set_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
 
 write_batch_test: db/write_batch_test.o $(LIBOBJECTS) $(TESTHARNESS)
 	$(CXX) $(LDFLAGS) db/write_batch_test.o $(LIBOBJECTS) $(TESTHARNESS) -o $@ $(LIBS)
@@ -201,7 +201,7 @@ ifeq ($(PLATFORM), IOS)
 PLATFORMSROOT=/Applications/Xcode.app/Contents/Developer/Platforms
 SIMULATORROOT=$(PLATFORMSROOT)/iPhoneSimulator.platform/Developer
 DEVICEROOT=$(PLATFORMSROOT)/iPhoneOS.platform/Developer
-IOSVERSSPHX=$(shell defaults read $(PLATFORMSROOT)/iPhoneOS.platform/verssphx CFBundleShortVerssphxString)
+IOSVERSSPHX=$(shell defaults read $(PLATFORMSROOT)/iPhoneOS.platform/version CFBundleShortVerssphxString)
 IOSARCH=-arch armv6 -arch armv7 -arch armv7s -arch arm64
 
 .cc.o:

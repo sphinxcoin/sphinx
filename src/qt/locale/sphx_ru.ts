@@ -1,4 +1,4 @@
-<TS language="ru" verssphx="2.1">
+<TS language="ru" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1140,7 +1140,7 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>версия</translation>
     </message>
     <message>
@@ -2165,7 +2165,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Протокол отладки</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Используемая версия OpenSSL</translation>
     </message>
     <message>
@@ -2177,11 +2177,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Текущее количество блоков</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Версия клиента</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>Используемая версия BrekleyDB</translation>
     </message>
     <message>
@@ -3199,7 +3199,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Несовместимый режим.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Несовместимая версия.</translation>
     </message>
     <message>

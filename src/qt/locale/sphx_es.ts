@@ -1,4 +1,4 @@
-<TS language="es" verssphx="2.1">
+<TS language="es" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1164,7 +1164,7 @@ MultiEnvío: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>versión</translation>
     </message>
     <message>
@@ -1704,7 +1704,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Porcentaje de xSPHX autogenerados</translation>
     </message>
     <message>
-        <source>Wait with automatic converssphx to Zerocoin until enough Sphinx for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough Sphinx for this denomination is available</source>
         <translation>Retrasar la conversión automática a Zerocoin hasta que hayan suficientes Sphinx disponibles para esta denominación</translation>
     </message>
     <message>
@@ -2249,7 +2249,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Fichero de depuración</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Usando la versión OpenSSL</translation>
     </message>
     <message>
@@ -2261,11 +2261,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Número actual de bloques</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Versión del cliente</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>Usando BerkeleyDB versión</translation>
     </message>
     <message>
@@ -3882,7 +3882,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Error: La escucha para conexsphxes entrantes falló (la escucha retorno error %s)</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Error: Argumento -socks no soportado. No se permite utilizar la versión SOCKS, solo proxies de SOCKS5 están soportados.</translation>
     </message>
     <message>
@@ -4278,7 +4278,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Error al cargar wallet.dat: Billetera dañada</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
         <translation>Error al cargar wallet.dat: La Billetera requiere una nueva versión del Núcleo SPHX</translation>
     </message>
     <message>
@@ -4378,7 +4378,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Modo incompatible.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Versión imcompatible.</translation>
     </message>
     <message>
@@ -4674,7 +4674,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Agregar timestamp a la salida de depuración (predeterminado: %u)</translation>
     </message>
     <message>
-        <source>Print verssphx and exit</source>
+        <source>Print version and exit</source>
         <translation>Mostrar versión y salir</translation>
     </message>
     <message>
@@ -5014,7 +5014,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Advertencia</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Advertencia: Esta versión es obsoleta, se requiere actualizar!</translation>
     </message>
     <message>

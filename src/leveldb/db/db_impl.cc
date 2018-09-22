@@ -18,7 +18,7 @@
 #include "db/log_writer.h"
 #include "db/memtable.h"
 #include "db/table_cache.h"
-#include "db/verssphx_set.h"
+#include "db/version_set.h"
 #include "db/write_batch_internal.h"
 #include "leveldb/db.h"
 #include "leveldb/env.h"
@@ -141,7 +141,7 @@ DBImpl::DBImpl(const Options& raw_options, const std::string& dbname)
   const int table_cache_size = options_.max_open_files - kNumNonTableCacheFiles;
   table_cache_ = new TableCache(dbname_, &options_, table_cache_size);
 
-  verssphxs_ = new VerssphxSet(dbname_, &options_, table_cache_,
+  versions_ = new VerssphxSet(dbname_, &options_, table_cache_,
                              &internal_comparator_);
 }
 
@@ -158,7 +158,7 @@ DBImpl::~DBImpl() {
     env_->UnlockFile(db_lock_);
   }
 
-  delete verssphxs_;
+  delete versions_;
   if (mem_ != NULL) mem_->Unref();
   if (imm_ != NULL) imm_->Unref();
   delete tmp_batch_;
@@ -217,14 +217,14 @@ void DBImpl::MaybeIgnoreError(Status* s) const {
 
 void DBImpl::DeleteObsoleteFiles() {
   if (!bg_error_.ok()) {
-    // After a background error, we don't know whether a new verssphx may
+    // After a background error, we don't know whether a new version may
     // or may not have been committed, so we cannot safely garbage collect.
     return;
   }
 
   // Make a set of all of the live files
   std::set<uint64_t> live = pending_outputs_;
-  verssphxs_->AddLiveFiles(&live);
+  versions_->AddLiveFiles(&live);
 
   std::vector<std::string> filenames;
   env_->GetChildren(dbname_, &filenames); // Ignoring errors on purpose
@@ -235,13 +235,13 @@ void DBImpl::DeleteObsoleteFiles() {
       bool keep = true;
       switch (type) {
         case kLogFile:
-          keep = ((number >= verssphxs_->LogNumber()) ||
-                  (number == verssphxs_->PrevLogNumber()));
+          keep = ((number >= versions_->LogNumber()) ||
+                  (number == versions_->PrevLogNumber()));
           break;
         case kDescriptorFile:
           // Keep my manifest file, and any newer incarnations'
           // (in case there is a race that allows other incarnations)
-          keep = (number >= verssphxs_->ManifestFileNumber());
+          keep = (number >= versions_->ManifestFileNumber());
           break;
         case kTableFile:
           keep = (live.find(number) != live.end());
@@ -301,7 +301,7 @@ Status DBImpl::Recover(VerssphxEdit* edit) {
     }
   }
 
-  s = verssphxs_->Recover();
+  s = versions_->Recover();
   if (s.ok()) {
     SequenceNumber max_sequence(0);
 
@@ -311,16 +311,16 @@ Status DBImpl::Recover(VerssphxEdit* edit) {
     //
     // Note that PrevLogNumber() is no longer used, but we pay
     // attention to it in case we are recovering a database
-    // produced by an older verssphx of leveldb.
-    const uint64_t min_log = verssphxs_->LogNumber();
-    const uint64_t prev_log = verssphxs_->PrevLogNumber();
+    // produced by an older version of leveldb.
+    const uint64_t min_log = versions_->LogNumber();
+    const uint64_t prev_log = versions_->PrevLogNumber();
     std::vector<std::string> filenames;
     s = env_->GetChildren(dbname_, &filenames);
     if (!s.ok()) {
       return s;
     }
     std::set<uint64_t> expected;
-    verssphxs_->AddLiveFiles(&expected);
+    versions_->AddLiveFiles(&expected);
     uint64_t number;
     FileType type;
     std::vector<uint64_t> logs;
@@ -346,12 +346,12 @@ Status DBImpl::Recover(VerssphxEdit* edit) {
       // The previous incarnation may not have written any MANIFEST
       // records after allocating this log number.  So we manually
       // update the file number allocation counter in VerssphxSet.
-      verssphxs_->MarkFileNumberUsed(logs[i]);
+      versions_->MarkFileNumberUsed(logs[i]);
     }
 
     if (s.ok()) {
-      if (verssphxs_->LastSequence() < max_sequence) {
-        verssphxs_->SetLastSequence(max_sequence);
+      if (versions_->LastSequence() < max_sequence) {
+        versions_->SetLastSequence(max_sequence);
       }
     }
   }
@@ -459,7 +459,7 @@ Status DBImpl::WriteLevel0Table(MemTable* mem, VerssphxEdit* edit,
   mutex_.AssertHeld();
   const uint64_t start_micros = env_->NowMicros();
   FileMetaData meta;
-  meta.number = verssphxs_->NewFileNumber();
+  meta.number = versions_->NewFileNumber();
   pending_outputs_.insert(meta.number);
   Iterator* iter = mem->NewIterator();
   Log(options_.info_log, "Level-0 table #%llu: started",
@@ -506,7 +506,7 @@ void DBImpl::CompactMemTable() {
 
   // Save the contents of the memtable as a new Table
   VerssphxEdit edit;
-  Verssphx* base = verssphxs_->current();
+  Verssphx* base = versions_->current();
   base->Ref();
   Status s = WriteLevel0Table(imm_, &edit, base);
   base->Unref();
@@ -519,7 +519,7 @@ void DBImpl::CompactMemTable() {
   if (s.ok()) {
     edit.SetPrevLogNumber(0);
     edit.SetLogNumber(logfile_number_);  // Earlier logs no longer needed
-    s = verssphxs_->LogAndApply(&edit, &mutex_);
+    s = versions_->LogAndApply(&edit, &mutex_);
   }
 
   if (s.ok()) {
@@ -537,7 +537,7 @@ void DBImpl::CompactRange(const Slice* begin, const Slice* end) {
   int max_level_with_files = 1;
   {
     MutexLock l(&mutex_);
-    Verssphx* base = verssphxs_->current();
+    Verssphx* base = versions_->current();
     for (int level = 1; level < config::kNumLevels; level++) {
       if (base->OverlapInLevel(level, begin, end)) {
         max_level_with_files = level;
@@ -621,7 +621,7 @@ void DBImpl::MaybeScheduleCompaction() {
     // Already got an error; no more changes
   } else if (imm_ == NULL &&
              manual_compaction_ == NULL &&
-             !verssphxs_->NeedsCompaction()) {
+             !versions_->NeedsCompaction()) {
     // No work to be done
   } else {
     bg_compaction_scheduled_ = true;
@@ -665,7 +665,7 @@ void DBImpl::BackgroundCompaction() {
   InternalKey manual_end;
   if (is_manual) {
     ManualCompaction* m = manual_compaction_;
-    c = verssphxs_->CompactRange(m->level, m->begin, m->end);
+    c = versions_->CompactRange(m->level, m->begin, m->end);
     m->done = (c == NULL);
     if (c != NULL) {
       manual_end = c->input(0, c->num_input_files(0) - 1)->largest;
@@ -677,7 +677,7 @@ void DBImpl::BackgroundCompaction() {
         (m->end ? m->end->DebugString().c_str() : "(end)"),
         (m->done ? "(end)" : manual_end.DebugString().c_str()));
   } else {
-    c = verssphxs_->PickCompaction();
+    c = versions_->PickCompaction();
   }
 
   Status status;
@@ -690,7 +690,7 @@ void DBImpl::BackgroundCompaction() {
     c->edit()->DeleteFile(c->level(), f->number);
     c->edit()->AddFile(c->level() + 1, f->number, f->file_size,
                        f->smallest, f->largest);
-    status = verssphxs_->LogAndApply(c->edit(), &mutex_);
+    status = versions_->LogAndApply(c->edit(), &mutex_);
     if (!status.ok()) {
       RecordBackgroundError(status);
     }
@@ -700,7 +700,7 @@ void DBImpl::BackgroundCompaction() {
         c->level() + 1,
         static_cast<unsigned long long>(f->file_size),
         status.ToString().c_str(),
-        verssphxs_->LevelSummary(&tmp));
+        versions_->LevelSummary(&tmp));
   } else {
     CompactionState* compact = new CompactionState(c);
     status = DoCompactionWork(compact);
@@ -760,7 +760,7 @@ Status DBImpl::OpenCompactionOutputFile(CompactionState* compact) {
   uint64_t file_number;
   {
     mutex_.Lock();
-    file_number = verssphxs_->NewFileNumber();
+    file_number = versions_->NewFileNumber();
     pending_outputs_.insert(file_number);
     CompactionState::Output out;
     out.number = file_number;
@@ -849,7 +849,7 @@ Status DBImpl::InstallCompactionResults(CompactionState* compact) {
         level + 1,
         out.number, out.file_size, out.smallest, out.largest);
   }
-  return verssphxs_->LogAndApply(compact->compaction->edit(), &mutex_);
+  return versions_->LogAndApply(compact->compaction->edit(), &mutex_);
 }
 
 Status DBImpl::DoCompactionWork(CompactionState* compact) {
@@ -862,11 +862,11 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
       compact->compaction->num_input_files(1),
       compact->compaction->level() + 1);
 
-  assert(verssphxs_->NumLevelFiles(compact->compaction->level()) > 0);
+  assert(versions_->NumLevelFiles(compact->compaction->level()) > 0);
   assert(compact->builder == NULL);
   assert(compact->outfile == NULL);
   if (snapshots_.empty()) {
-    compact->smallest_snapshot = verssphxs_->LastSequence();
+    compact->smallest_snapshot = versions_->LastSequence();
   } else {
     compact->smallest_snapshot = snapshots_.oldest()->number_;
   }
@@ -874,7 +874,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
   // Release mutex while we're actually doing the compaction work
   mutex_.Unlock();
 
-  Iterator* input = verssphxs_->MakeInputIterator(compact->compaction);
+  Iterator* input = versions_->MakeInputIterator(compact->compaction);
   input->SeekToFirst();
   Status status;
   ParsedInternalKey ikey;
@@ -1009,14 +1009,14 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
   }
   VerssphxSet::LevelSummaryStorage tmp;
   Log(options_.info_log,
-      "compacted to: %s", verssphxs_->LevelSummary(&tmp));
+      "compacted to: %s", versions_->LevelSummary(&tmp));
   return status;
 }
 
 namespace {
 struct IterState {
   port::Mutex* mu;
-  Verssphx* verssphx;
+  Verssphx* version;
   MemTable* mem;
   MemTable* imm;
 };
@@ -1026,7 +1026,7 @@ static void CleanupIteratorState(void* arg1, void* arg2) {
   state->mu->Lock();
   state->mem->Unref();
   if (state->imm != NULL) state->imm->Unref();
-  state->verssphx->Unref();
+  state->version->Unref();
   state->mu->Unlock();
   delete state;
 }
@@ -1037,7 +1037,7 @@ Iterator* DBImpl::NewInternalIterator(const ReadOptions& options,
                                       uint32_t* seed) {
   IterState* cleanup = new IterState;
   mutex_.Lock();
-  *latest_snapshot = verssphxs_->LastSequence();
+  *latest_snapshot = versions_->LastSequence();
 
   // Collect together all needed child iterators
   std::vector<Iterator*> list;
@@ -1047,15 +1047,15 @@ Iterator* DBImpl::NewInternalIterator(const ReadOptions& options,
     list.push_back(imm_->NewIterator());
     imm_->Ref();
   }
-  verssphxs_->current()->AddIterators(options, &list);
+  versions_->current()->AddIterators(options, &list);
   Iterator* internal_iter =
       NewMergingIterator(&internal_comparator_, &list[0], list.size());
-  verssphxs_->current()->Ref();
+  versions_->current()->Ref();
 
   cleanup->mu = &mutex_;
   cleanup->mem = mem_;
   cleanup->imm = imm_;
-  cleanup->verssphx = verssphxs_->current();
+  cleanup->version = versions_->current();
   internal_iter->RegisterCleanup(CleanupIteratorState, cleanup, NULL);
 
   *seed = ++seed_;
@@ -1071,7 +1071,7 @@ Iterator* DBImpl::TEST_NewInternalIterator() {
 
 int64_t DBImpl::TEST_MaxNextLevelOverlappingBytes() {
   MutexLock l(&mutex_);
-  return verssphxs_->MaxNextLevelOverlappingBytes();
+  return versions_->MaxNextLevelOverlappingBytes();
 }
 
 Status DBImpl::Get(const ReadOptions& options,
@@ -1083,12 +1083,12 @@ Status DBImpl::Get(const ReadOptions& options,
   if (options.snapshot != NULL) {
     snapshot = reinterpret_cast<const SnapshotImpl*>(options.snapshot)->number_;
   } else {
-    snapshot = verssphxs_->LastSequence();
+    snapshot = versions_->LastSequence();
   }
 
   MemTable* mem = mem_;
   MemTable* imm = imm_;
-  Verssphx* current = verssphxs_->current();
+  Verssphx* current = versions_->current();
   mem->Ref();
   if (imm != NULL) imm->Ref();
   current->Ref();
@@ -1135,14 +1135,14 @@ Iterator* DBImpl::NewIterator(const ReadOptions& options) {
 
 void DBImpl::RecordReadSample(Slice key) {
   MutexLock l(&mutex_);
-  if (verssphxs_->current()->RecordReadSample(key)) {
+  if (versions_->current()->RecordReadSample(key)) {
     MaybeScheduleCompaction();
   }
 }
 
 const Snapshot* DBImpl::GetSnapshot() {
   MutexLock l(&mutex_);
-  return snapshots_.New(verssphxs_->LastSequence());
+  return snapshots_.New(versions_->LastSequence());
 }
 
 void DBImpl::ReleaseSnapshot(const Snapshot* s) {
@@ -1176,7 +1176,7 @@ Status DBImpl::Write(const WriteOptions& options, WriteBatch* my_batch) {
 
   // May temporarily unlock and wait.
   Status status = MakeRoomForWrite(my_batch == NULL);
-  uint64_t last_sequence = verssphxs_->LastSequence();
+  uint64_t last_sequence = versions_->LastSequence();
   Writer* last_writer = &w;
   if (status.ok() && my_batch != NULL) {  // NULL batch is for compactions
     WriteBatch* updates = BuildBatchGroup(&last_writer);
@@ -1210,7 +1210,7 @@ Status DBImpl::Write(const WriteOptions& options, WriteBatch* my_batch) {
     }
     if (updates == tmp_batch_) tmp_batch_->Clear();
 
-    verssphxs_->SetLastSequence(last_sequence);
+    versions_->SetLastSequence(last_sequence);
   }
 
   while (true) {
@@ -1295,7 +1295,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       break;
     } else if (
         allow_delay &&
-        verssphxs_->NumLevelFiles(0) >= config::kL0_SlowdownWritesTrigger) {
+        versions_->NumLevelFiles(0) >= config::kL0_SlowdownWritesTrigger) {
       // We are getting close to hitting a hard limit on the number of
       // L0 files.  Rather than delaying a single write by several
       // seconds when we hit the hard limit, start delaying each
@@ -1315,19 +1315,19 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       // one is still being compacted, so we wait.
       Log(options_.info_log, "Current memtable full; waiting...\n");
       bg_cv_.Wait();
-    } else if (verssphxs_->NumLevelFiles(0) >= config::kL0_StopWritesTrigger) {
+    } else if (versions_->NumLevelFiles(0) >= config::kL0_StopWritesTrigger) {
       // There are too many level-0 files.
       Log(options_.info_log, "Too many L0 files; waiting...\n");
       bg_cv_.Wait();
     } else {
       // Attempt to switch to a new memtable and trigger compaction of old
-      assert(verssphxs_->PrevLogNumber() == 0);
-      uint64_t new_log_number = verssphxs_->NewFileNumber();
+      assert(versions_->PrevLogNumber() == 0);
+      uint64_t new_log_number = versions_->NewFileNumber();
       WritableFile* lfile = NULL;
       s = env_->NewWritableFile(LogFileName(dbname_, new_log_number), &lfile);
       if (!s.ok()) {
         // Avoid chewing through file number space in a tight loop.
-        verssphxs_->ReuseFileNumber(new_log_number);
+        versions_->ReuseFileNumber(new_log_number);
         break;
       }
       delete log_;
@@ -1364,7 +1364,7 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
     } else {
       char buf[100];
       snprintf(buf, sizeof(buf), "%d",
-               verssphxs_->NumLevelFiles(static_cast<int>(level)));
+               versions_->NumLevelFiles(static_cast<int>(level)));
       *value = buf;
       return true;
     }
@@ -1377,14 +1377,14 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
              );
     value->append(buf);
     for (int level = 0; level < config::kNumLevels; level++) {
-      int files = verssphxs_->NumLevelFiles(level);
+      int files = versions_->NumLevelFiles(level);
       if (stats_[level].micros > 0 || files > 0) {
         snprintf(
             buf, sizeof(buf),
             "%3d %8d %8.0f %9.0f %8.0f %9.0f\n",
             level,
             files,
-            verssphxs_->NumLevelBytes(level) / 1048576.0,
+            versions_->NumLevelBytes(level) / 1048576.0,
             stats_[level].micros / 1e6,
             stats_[level].bytes_read / 1048576.0,
             stats_[level].bytes_written / 1048576.0);
@@ -1393,7 +1393,7 @@ bool DBImpl::GetProperty(const Slice& property, std::string* value) {
     }
     return true;
   } else if (in == "sstables") {
-    *value = verssphxs_->current()->DebugString();
+    *value = versions_->current()->DebugString();
     return true;
   }
 
@@ -1407,16 +1407,16 @@ void DBImpl::GetApproximateSizes(
   Verssphx* v;
   {
     MutexLock l(&mutex_);
-    verssphxs_->current()->Ref();
-    v = verssphxs_->current();
+    versions_->current()->Ref();
+    v = versions_->current();
   }
 
   for (int i = 0; i < n; i++) {
     // Convert user_key into a corresponding internal key.
     InternalKey k1(range[i].start, kMaxSequenceNumber, kValueTypeForSeek);
     InternalKey k2(range[i].limit, kMaxSequenceNumber, kValueTypeForSeek);
-    uint64_t start = verssphxs_->ApproximateOffsetOf(v, k1);
-    uint64_t limit = verssphxs_->ApproximateOffsetOf(v, k2);
+    uint64_t start = versions_->ApproximateOffsetOf(v, k1);
+    uint64_t limit = versions_->ApproximateOffsetOf(v, k2);
     sizes[i] = (limit >= start ? limit - start : 0);
   }
 
@@ -1451,7 +1451,7 @@ Status DB::Open(const Options& options, const std::string& dbname,
   VerssphxEdit edit;
   Status s = impl->Recover(&edit); // Handles create_if_missing, error_if_exists
   if (s.ok()) {
-    uint64_t new_log_number = impl->verssphxs_->NewFileNumber();
+    uint64_t new_log_number = impl->versions_->NewFileNumber();
     WritableFile* lfile;
     s = options.env->NewWritableFile(LogFileName(dbname, new_log_number),
                                      &lfile);
@@ -1460,7 +1460,7 @@ Status DB::Open(const Options& options, const std::string& dbname,
       impl->logfile_ = lfile;
       impl->logfile_number_ = new_log_number;
       impl->log_ = new log::Writer(lfile);
-      s = impl->verssphxs_->LogAndApply(&edit, &impl->mutex_);
+      s = impl->versions_->LogAndApply(&edit, &impl->mutex_);
     }
     if (s.ok()) {
       impl->DeleteObsoleteFiles();

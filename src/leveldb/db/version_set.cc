@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#include "db/verssphx_set.h"
+#include "db/version_set.h"
 
 #include <algorithm>
 #include <stdio.h>
@@ -146,7 +146,7 @@ bool SomeFileOverlapsRange(
   return !BeforeFile(ucmp, largest_user_key, files[index]);
 }
 
-// An internal iterator.  For a given verssphx/level pair, yields
+// An internal iterator.  For a given version/level pair, yields
 // information about the files in the level.  For a given entry, key()
 // is the largest key that occurs in the file, and value() is an
 // 16-byte value containing the file number and file size, both
@@ -475,7 +475,7 @@ void Verssphx::Ref() {
 }
 
 void Verssphx::Unref() {
-  assert(this != &vset_->dummy_verssphxs_);
+  assert(this != &vset_->dummy_versions_);
   assert(refs_ >= 1);
   --refs_;
   if (refs_ == 0) {
@@ -779,14 +779,14 @@ VerssphxSet::VerssphxSet(const std::string& dbname,
       prev_log_number_(0),
       descriptor_file_(NULL),
       descriptor_log_(NULL),
-      dummy_verssphxs_(this),
+      dummy_versions_(this),
       current_(NULL) {
   AppendVerssphx(new Verssphx(this));
 }
 
 VerssphxSet::~VerssphxSet() {
   current_->Unref();
-  assert(dummy_verssphxs_.next_ == &dummy_verssphxs_);  // List must be empty
+  assert(dummy_versions_.next_ == &dummy_versions_);  // List must be empty
   delete descriptor_log_;
   delete descriptor_file_;
 }
@@ -802,8 +802,8 @@ void VerssphxSet::AppendVerssphx(Verssphx* v) {
   v->Ref();
 
   // Append to linked list
-  v->prev_ = dummy_verssphxs_.prev_;
-  v->next_ = &dummy_verssphxs_;
+  v->prev_ = dummy_versions_.prev_;
+  v->next_ = &dummy_versions_;
   v->prev_->next_ = v;
   v->next_->prev_ = v;
 }
@@ -832,7 +832,7 @@ Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
   Finalize(v);
 
   // Initialize new descriptor log file if necessary by creating
-  // a temporary file that contains a snapshot of the current verssphx.
+  // a temporary file that contains a snapshot of the current version.
   std::string new_manifest_file;
   Status s;
   if (descriptor_log_ == NULL) {
@@ -874,7 +874,7 @@ Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
     mu->Lock();
   }
 
-  // Install the new verssphx
+  // Install the new version
   if (s.ok()) {
     AppendVerssphx(v);
     log_number_ = edit->log_number_;
@@ -995,7 +995,7 @@ Status VerssphxSet::Recover() {
   if (s.ok()) {
     Verssphx* v = new Verssphx(this);
     builder.SaveTo(v);
-    // Install recovered verssphx
+    // Install recovered version
     Finalize(v);
     AppendVerssphx(v);
     manifest_file_number_ = next_file;
@@ -1135,8 +1135,8 @@ uint64_t VerssphxSet::ApproximateOffsetOf(Verssphx* v, const InternalKey& ikey) 
 }
 
 void VerssphxSet::AddLiveFiles(std::set<uint64_t>* live) {
-  for (Verssphx* v = dummy_verssphxs_.next_;
-       v != &dummy_verssphxs_;
+  for (Verssphx* v = dummy_versions_.next_;
+       v != &dummy_versions_;
        v = v->next_) {
     for (int level = 0; level < config::kNumLevels; level++) {
       const std::vector<FileMetaData*>& files = v->files_[level];
@@ -1275,8 +1275,8 @@ Compaction* VerssphxSet::PickCompaction() {
     return NULL;
   }
 
-  c->input_verssphx_ = current_;
-  c->input_verssphx_->Ref();
+  c->input_version_ = current_;
+  c->input_version_->Ref();
 
   // Files in level 0 may overlap each other, so pick up all overlapping ones
   if (level == 0) {
@@ -1389,8 +1389,8 @@ Compaction* VerssphxSet::CompactRange(
   }
 
   Compaction* c = new Compaction(level);
-  c->input_verssphx_ = current_;
-  c->input_verssphx_->Ref();
+  c->input_version_ = current_;
+  c->input_version_->Ref();
   c->inputs_[0] = inputs;
   SetupOtherInputs(c);
   return c;
@@ -1399,7 +1399,7 @@ Compaction* VerssphxSet::CompactRange(
 Compaction::Compaction(int level)
     : level_(level),
       max_output_file_size_(MaxFileSizeForLevel(level)),
-      input_verssphx_(NULL),
+      input_version_(NULL),
       grandparent_index_(0),
       seen_key_(false),
       overlapped_bytes_(0) {
@@ -1409,8 +1409,8 @@ Compaction::Compaction(int level)
 }
 
 Compaction::~Compaction() {
-  if (input_verssphx_ != NULL) {
-    input_verssphx_->Unref();
+  if (input_version_ != NULL) {
+    input_version_->Unref();
   }
 }
 
@@ -1433,9 +1433,9 @@ void Compaction::AddInputDeletions(VerssphxEdit* edit) {
 
 bool Compaction::IsBaseLevelForKey(const Slice& user_key) {
   // Maybe use binary search to find right entry instead of linear search?
-  const Comparator* user_cmp = input_verssphx_->vset_->icmp_.user_comparator();
+  const Comparator* user_cmp = input_version_->vset_->icmp_.user_comparator();
   for (int lvl = level_ + 2; lvl < config::kNumLevels; lvl++) {
-    const std::vector<FileMetaData*>& files = input_verssphx_->files_[lvl];
+    const std::vector<FileMetaData*>& files = input_version_->files_[lvl];
     for (; level_ptrs_[lvl] < files.size(); ) {
       FileMetaData* f = files[level_ptrs_[lvl]];
       if (user_cmp->Compare(user_key, f->largest.user_key()) <= 0) {
@@ -1454,7 +1454,7 @@ bool Compaction::IsBaseLevelForKey(const Slice& user_key) {
 
 bool Compaction::ShouldStopBefore(const Slice& internal_key) {
   // Scan to find earliest grandparent file that contains key.
-  const InternalKeyComparator* icmp = &input_verssphx_->vset_->icmp_;
+  const InternalKeyComparator* icmp = &input_version_->vset_->icmp_;
   while (grandparent_index_ < grandparents_.size() &&
       icmp->Compare(internal_key,
                     grandparents_[grandparent_index_]->largest.Encode()) > 0) {
@@ -1475,9 +1475,9 @@ bool Compaction::ShouldStopBefore(const Slice& internal_key) {
 }
 
 void Compaction::ReleaseInputs() {
-  if (input_verssphx_ != NULL) {
-    input_verssphx_->Unref();
-    input_verssphx_ = NULL;
+  if (input_version_ != NULL) {
+    input_version_->Unref();
+    input_version_ = NULL;
   }
 }
 

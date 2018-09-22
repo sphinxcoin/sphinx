@@ -1,4 +1,4 @@
-<TS language="ko_KR" verssphx="2.1">
+<TS language="ko_KR" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1144,7 +1144,7 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>버전</translation>
     </message>
     <message>
@@ -2213,7 +2213,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>로그 파일 디버그</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>OpenSSL 버전 사용</translation>
     </message>
     <message>
@@ -2225,11 +2225,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>현재 블록 개수</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>클라이언트 버전</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>사용중인 BerkeleyDB 버전</translation>
     </message>
     <message>
@@ -3852,7 +3852,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>오류: 오는 연결들을 수신하는데 실패했습니다.(수신 중 오류 반환됨 %s)</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>오류 : 지원하지 않는 인수 -socks가 발견되었습니다. SOCKS 버전 설정은 더 이상 가능하지 않으며 SOCKS5 프록시만 지원합니다.</translation>
     </message>
     <message>
@@ -4248,7 +4248,7 @@ rpcpassword=%s
         <translation>wallet.dat을 불러오는 중 오류가 발생했습니다: 지갑 손상됨</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
         <translation>wallet.dat를 로드하는 중 오류가 발생했습니다. 지갑에 최신 버전의 Sphinx 코어가 필요합니다.</translation>
     </message>
     <message>
@@ -4348,7 +4348,7 @@ rpcpassword=%s
         <translation>호환되지 않는 모드.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>호환되지 않는 버전.</translation>
     </message>
     <message>
@@ -4644,7 +4644,7 @@ rpcpassword=%s
         <translation>디버그 출력 앞에 타임스탬프를 추가합니다. (기본값: %u)</translation>
     </message>
     <message>
-        <source>Print verssphx and exit</source>
+        <source>Print version and exit</source>
         <translation>버전 출력후 종료</translation>
     </message>
     <message>
@@ -4984,7 +4984,7 @@ rpcpassword=%s
         <translation>경고</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>경고 : 현재 사용중인 버전은 더이상 사용되지 않으므로 업그레이드가 필요합니다!</translation>
     </message>
     <message>

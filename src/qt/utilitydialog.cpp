@@ -15,7 +15,7 @@
 #include "intro.h"
 #include "guiutil.h"
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "init.h"
 #include "util.h"
 
@@ -35,14 +35,14 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
     ui->setupUi(this);
     GUIUtil::restoreWindowGeometry("nHelpMessageDialogWindow", this->size(), this);
 
-    QString verssphx = tr("Sphinx Core") + " " + tr("verssphx") + " " + QString::fromStdString(FormatFullVerssphx());
-/* On x86 add a bit specifier to the verssphx so that users can distinguish between
+    QString version = tr("Sphinx Core") + " " + tr("version") + " " + QString::fromStdString(FormatFullVerssphx());
+/* On x86 add a bit specifier to the version so that users can distinguish between
      * 32 and 64 bit builds. On other architectures, 32/64 bit may be more ambigious.
      */
 #if defined(__x86_64__)
-    verssphx += " " + tr("(%1-bit)").arg(64);
+    version += " " + tr("(%1-bit)").arg(64);
 #elif defined(__i386__)
-    verssphx += " " + tr("(%1-bit)").arg(32);
+    version += " " + tr("(%1-bit)").arg(32);
 #endif
 
     if (about) {
@@ -61,8 +61,8 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
 
         ui->aboutMessage->setTextFormat(Qt::RichText);
         ui->scrollArea->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-        text = verssphx + "\n" + licenseInfo;
-        ui->aboutMessage->setText(verssphx + "<br><br>" + licenseInfoHTML);
+        text = version + "\n" + licenseInfo;
+        ui->aboutMessage->setText(version + "<br><br>" + licenseInfoHTML);
         ui->aboutMessage->setWordWrap(true);
         ui->helpMessage->setVisible(false);
     } else {
@@ -70,7 +70,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
         QString header = tr("Usage:") + "\n" +
                          "  sphx-qt [" + tr("command-line options") + "]                     " + "\n";
         QTextCursor cursor(ui->helpMessage->document());
-        cursor.insertText(verssphx);
+        cursor.insertText(version);
         cursor.insertBlock();
         cursor.insertText(header);
         cursor.insertBlock();
@@ -83,7 +83,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
         strUsage += HelpMessageOpt("-rootcertificates=<file>", tr("Set SSL root certificates for payment request (default: -system-)").toStdString());
         strUsage += HelpMessageOpt("-splash", strprintf(tr("Show splash screen on startup (default: %u)").toStdString(), DEFAULT_SPLASHSCREEN));
         QString coreOptions = QString::fromStdString(strUsage);
-        text = verssphx + "\n" + header + "\n" + coreOptions;
+        text = version + "\n" + header + "\n" + coreOptions;
 
         QTextTableFormat tf;
         tf.setBorderStyle(QTextFrameFormat::BorderStyle_None);

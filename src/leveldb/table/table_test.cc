@@ -654,7 +654,7 @@ TEST(Harness, Empty) {
 }
 
 // Special test for a block with no restart entries.  The C++ leveldb
-// code never generates such blocks, but the Java verssphx of leveldb
+// code never generates such blocks, but the Java version of leveldb
 // seems to.
 TEST(Harness, ZeroRestartPointsInBlock) {
   char data[sizeof(uint32_t)];

@@ -200,7 +200,7 @@ public:
         return false;
     }
 
-    /// Get the protocol verssphx
+    /// Get the protocol version
     bool GetProtocolVerssphx(int& protocolVerssphx)
     {
         CMasternode* pmn = mnodeman.Find(vin);

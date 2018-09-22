@@ -69,7 +69,7 @@ HEADERS += src/activemasternode.h \
            src/chainparamsseeds.h \
            src/checkpoints.h \
            src/checkqueue.h \
-           src/clientverssphx.h \
+           src/clientversion.h \
            src/coincontrol.h \
            src/coins.h \
            src/compat.h \
@@ -126,7 +126,7 @@ HEADERS += src/activemasternode.h \
            src/utilmoneystr.h \
            src/utilstrencodings.h \
            src/utiltime.h \
-           src/verssphx.h \
+           src/version.h \
            src/wallet.h \
            src/wallet_ismine.h \
            src/walletdb.h \
@@ -236,8 +236,8 @@ HEADERS += src/activemasternode.h \
            src/leveldb/db/skiplist.h \
            src/leveldb/db/snapshot.h \
            src/leveldb/db/table_cache.h \
-           src/leveldb/db/verssphx_edit.h \
-           src/leveldb/db/verssphx_set.h \
+           src/leveldb/db/version_edit.h \
+           src/leveldb/db/version_set.h \
            src/leveldb/db/write_batch_internal.h \
            src/leveldb/port/atomic_pointer.h \
            src/leveldb/port/port.h \
@@ -365,7 +365,7 @@ SOURCES += src/activemasternode.cpp \
            src/chainparams.cpp \
            src/chainparamsbase.cpp \
            src/checkpoints.cpp \
-           src/clientverssphx.cpp \
+           src/clientversion.cpp \
            src/coins.cpp \
            src/compressor.cpp \
            src/core_read.cpp \
@@ -582,10 +582,10 @@ SOURCES += src/activemasternode.cpp \
            src/leveldb/db/repair.cc \
            src/leveldb/db/skiplist_test.cc \
            src/leveldb/db/table_cache.cc \
-           src/leveldb/db/verssphx_edit.cc \
-           src/leveldb/db/verssphx_edit_test.cc \
-           src/leveldb/db/verssphx_set.cc \
-           src/leveldb/db/verssphx_set_test.cc \
+           src/leveldb/db/version_edit.cc \
+           src/leveldb/db/version_edit_test.cc \
+           src/leveldb/db/version_set.cc \
+           src/leveldb/db/version_set_test.cc \
            src/leveldb/db/write_batch.cc \
            src/leveldb/db/write_batch_test.cc \
            src/leveldb/issues/issue178_test.cc \

@@ -289,7 +289,7 @@ def main():
             print("Dropping you on a shell so you can try building/testing the merged source.",file=stderr)
             print("Run 'git diff HEAD~' to show the changes being merged.",file=stderr)
             print("Type 'exit' when done.",file=stderr)
-            if os.path.isfile('/etc/debian_verssphx'): # Show pull number on Debian default prompt
+            if os.path.isfile('/etc/debian_version'): # Show pull number on Debian default prompt
                 os.putenv('debian_chroot',pull)
             subprocess.call([BASH,'-i'])
             reply = ask_prompt("Type 'm' to accept the merge.")

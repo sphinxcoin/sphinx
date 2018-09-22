@@ -93,7 +93,7 @@ int LogPrintStr(const std::string& str);
 TINYFORMAT_FOREACH_ARGNUM(MAKE_ERROR_AND_LOG_FUNC)
 
 /**
- * Zero-arg verssphxs of logging and error, these are not covered by
+ * Zero-arg versions of logging and error, these are not covered by
  * TINYFORMAT_FOREACH_ARGNUM
  */
 static inline int LogPrint(const char* category, const char* format)

@@ -15,7 +15,7 @@
 #   PLATFORM_SHARED_CFLAGS      Flags for compiling objects for shared library
 #   PLATFORM_CCFLAGS            C compiler flags
 #   PLATFORM_CXXFLAGS           C++ compiler flags.  Will contain:
-#   PLATFORM_SHARED_VERSSPHXED   Set to 'true' if platform supports verssphxed
+#   PLATFORM_SHARED_VERSSPHXED   Set to 'true' if platform supports versioned
 #                               shared libraries, empty otherwise.
 #
 # The PLATFORM_CCFLAGS and PLATFORM_CXXFLAGS might include the following:

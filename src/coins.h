@@ -21,7 +21,7 @@
 /** 
 
     ****Note - for Sphinx we added fCoinStake to the 2nd bit. Keep in mind when reading the following and adjust as needed.
- * Pruned verssphx of CTransaction: only retains metadata and unspent transaction outputs
+ * Pruned version of CTransaction: only retains metadata and unspent transaction outputs
  *
  * Serialized format:
  * - VARINT(nVerssphx)
@@ -41,9 +41,9 @@
  * Example: 0104835800816115944e077fe7c803cfa57f29b36bf87c1d358bb85e
  *          <><><--------------------------------------------><---->
  *          |  \                  |                             /
- *    verssphx   code             vout[1]                  height
+ *    version   code             vout[1]                  height
  *
- *    - verssphx = 1
+ *    - version = 1
  *    - code = 4 (vout[1] is not spent, and 0 non-zero bytes of bitvector follow)
  *    - unspentness bitvector: as 0 non-zero bytes follow, it has length 0
  *    - vout[1]: 835800816115944e077fe7c803cfa57f29b36bf87c1d35
@@ -56,9 +56,9 @@
  * Example: 0109044086ef97d5790061b01caab50f1b8e9c50a5057eb43c2d9563a4eebbd123008c988f1a4a4de2161e0f50aac7f17e7f9555caa486af3b
  *          <><><--><--------------------------------------------------><----------------------------------------------><---->
  *         /  \   \                     |                                                           |                     /
- *  verssphx  code  unspentness       vout[4]                                                     vout[16]           height
+ *  version  code  unspentness       vout[4]                                                     vout[16]           height
  *
- *  - verssphx = 1
+ *  - version = 1
  *  - code = 9 (coinbase, neither vout[0] or vout[1] are unspent, 2 (1, +1 because both bit 2 and bit 4 are unset) non-zero bitvector bytes follow)
  *  - unspentness bitvector: bits 2 (0x04) and 14 (0x4000) are set, so vout[2+2] and vout[14+2] are unspent
  *  - vout[4]: 86ef97d5790061b01caab50f1b8e9c50a5057eb43c2d9563a4ee
@@ -84,8 +84,8 @@ public:
     //! at which height this transaction was included in the active block chain
     int nHeight;
 
-    //! verssphx of the CTransaction; accesses to this value should probably check for nHeight as well,
-    //! as new tx verssphx will probably only be introduced at certain heights
+    //! version of the CTransaction; accesses to this value should probably check for nHeight as well,
+    //! as new tx version will probably only be introduced at certain heights
     int nVerssphx;
 
     void FromTx(const CTransaction& tx, int nHeightIn)
@@ -181,7 +181,7 @@ public:
         bool fSecond = vout.size() > 1 && !vout[1].IsNull();
         assert(fFirst || fSecond || nMaskCode);
         unsigned int nCode = 8 * (nMaskCode - (fFirst || fSecond ? 0 : 1)) + (fCoinBase ? 1 : 0) + (fCoinStake ? 2 : 0) + (fFirst ? 4 : 0) + (fSecond ? 8 : 0);
-        // verssphx
+        // version
         nSize += ::GetSerializeSize(VARINT(this->nVerssphx), nType, nVerssphx);
         // size of header code
         nSize += ::GetSerializeSize(VARINT(nCode), nType, nVerssphx);
@@ -205,7 +205,7 @@ public:
         bool fSecond = vout.size() > 1 && !vout[1].IsNull();
         assert(fFirst || fSecond || nMaskCode);
         unsigned int nCode = 16 * (nMaskCode - (fFirst || fSecond ? 0 : 1)) + (fCoinBase ? 1 : 0) + (fCoinStake ? 2 : 0) + (fFirst ? 4 : 0) + (fSecond ? 8 : 0);
-        // verssphx
+        // version
         ::Serialize(s, VARINT(this->nVerssphx), nType, nVerssphx);
         // header code
         ::Serialize(s, VARINT(nCode), nType, nVerssphx);
@@ -230,7 +230,7 @@ public:
     void Unserialize(Stream& s, int nType, int nVerssphx)
     {
         unsigned int nCode = 0;
-        // verssphx
+        // version
         ::Unserialize(s, VARINT(this->nVerssphx), nType, nVerssphx);
         // header code
         ::Unserialize(s, VARINT(nCode), nType, nVerssphx);
@@ -309,7 +309,7 @@ struct CCoinsCacheEntry {
     unsigned char flags;
 
     enum Flags {
-        DIRTY = (1 << 0), // This cache entry is potentially different from the verssphx in the parent view.
+        DIRTY = (1 << 0), // This cache entry is potentially different from the version in the parent view.
         FRESH = (1 << 1), // The parent view does not have this entry (or it is pruned).
     };
 

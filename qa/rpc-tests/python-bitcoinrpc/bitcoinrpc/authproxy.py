@@ -7,7 +7,7 @@
 
   - HTTP connections persist for the life of the AuthServiceProxy object
     (if server supports HTTP/1.1)
-  - sends protocol 'verssphx', per JSON-RPC 1.1
+  - sends protocol 'version', per JSON-RPC 1.1
   - sends proper, incrementing 'id'
   - sends Basic HTTP authentication headers
   - parses all JSON numbers that look like floats as Decimal
@@ -21,8 +21,8 @@
 
   jsonrpc is free software; you can redistribute it and/or modify
   it under the terms of the GNU Lesser General Public License as published by
-  the Free Software Foundation; either verssphx 2.1 of the License, or
-  (at your option) any later verssphx.
+  the Free Software Foundation; either version 2.1 of the License, or
+  (at your option) any later version.
 
   This software is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -111,7 +111,7 @@ class AuthServiceProxy(object):
 
         log.debug("-%s-> %s %s"%(AuthServiceProxy.__id_count, self.__service_name,
                                  json.dumps(args, default=EncodeDecimal)))
-        postdata = json.dumps({'verssphx': '1.1',
+        postdata = json.dumps({'version': '1.1',
                                'method': self.__service_name,
                                'params': args,
                                'id': AuthServiceProxy.__id_count}, default=EncodeDecimal)

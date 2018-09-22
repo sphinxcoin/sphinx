@@ -327,7 +327,7 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "{\n"
-            "  \"verssphx\" : n,                    (numeric) The block verssphx\n"
+            "  \"version\" : n,                    (numeric) The block version\n"
             "  \"previousblockhash\" : \"xxxx\",    (string) The hash of current highest block\n"
             "  \"transactions\" : [                (array) contents of non-coinbase transactions that should be included in the next block\n"
             "      {\n"
@@ -558,7 +558,7 @@ UniValue getblocktemplate(const UniValue& params, bool fHelp)
 
     UniValue result(UniValue::VOBJ);
     result.push_back(Pair("capabilities", aCaps));
-    result.push_back(Pair("verssphx", pblock->nVerssphx));
+    result.push_back(Pair("version", pblock->nVerssphx));
     result.push_back(Pair("previousblockhash", pblock->hashPrevBlock.GetHex()));
     result.push_back(Pair("transactions", transactions));
     result.push_back(Pair("coinbaseaux", aux));

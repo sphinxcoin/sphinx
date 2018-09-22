@@ -1,4 +1,4 @@
-<TS language="pt_BR" verssphx="2.1">
+<TS language="pt_BR" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1129,7 +1129,7 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>versão</translation>
     </message>
     <message>
@@ -2029,7 +2029,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>tempo do último bloco</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Usando versão OpenSSL</translation>
     </message>
     <message>
@@ -2041,7 +2041,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Número atual de blocos</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>versão do Cliente</translation>
     </message>
     <message>
@@ -3422,7 +3422,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Desabilitar todas as funcsphxalidades específicas Sphinx (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
         <translation>Erro: Argumento não suportado -socks encontrado. Definir a versão SOCKS não é mais possível, somente proxies SOCKS5 são suportados.</translation>
     </message>
     <message>
@@ -3614,7 +3614,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Erro no carregamento da wallet.dat: Carteira corrompida</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
         <translation>Erro ao carregar wallet.dat: A Carteira requer uma nova versão da Sphinx Core</translation>
     </message>
     <message>
@@ -3690,7 +3690,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Modo incompatível.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Versão incompatível.</translation>
     </message>
     <message>
@@ -4110,7 +4110,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Aviso</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Aviso: Esta versão está obsoleta, atualização necessária!</translation>
     </message>
     <message>

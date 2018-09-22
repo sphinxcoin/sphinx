@@ -9,7 +9,7 @@
 #include "script/script.h"
 #include "script/interpreter.h"
 #include "util.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <iostream>
 

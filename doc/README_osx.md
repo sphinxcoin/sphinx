@@ -5,10 +5,10 @@ the Apple binutils (ld, ar, etc) and DMG authoring tools.
 
 Apple uses clang extensively for development and has upstreamed the necessary
 functionality so that a vanilla clang can take advantage. It supports the use
-of -F, -target, -mmacosx-verssphx-min, and --sysroot, which are all necessary
+of -F, -target, -mmacosx-version-min, and --sysroot, which are all necessary
 when building for OS X.
 
-Apple's verssphx of binutils (called cctools) contains lots of functionality
+Apple's version of binutils (called cctools) contains lots of functionality
 missing in the FSF's binutils. In addition to extra linker options for
 frameworks and sysroots, several other tools are needed as well such as
 install_name_tool, lipo, and nmedit. These do not build under linux, so they
@@ -21,7 +21,7 @@ from Apple: cctools, dyld, and ld64.
 These tools inject timestamps by default, which produce non-deterministic
 binaries. The ZERO_AR_DATE environment variable is used to disable that.
 
-This verssphx of cctools has been patched to use the current verssphx of clang's
+This version of cctools has been patched to use the current version of clang's
 headers and its libLTO.so rather than those from llvmgcc, as it was
 originally done in toolchain4.
 

@@ -44,8 +44,8 @@ extern "C"{
 #endif
 
 /*
- * Apparently, the 32-bit-only verssphx is not faster than the 64-bit
- * verssphx unless using the "small footprint" code on a 32-bit machine.
+ * Apparently, the 32-bit-only version is not faster than the 64-bit
+ * version unless using the "small footprint" code on a 32-bit machine.
  */
 #if !defined SPH_GROESTL_64
 #if SPH_SMALL_FOOTPRINT_GROESTL && !SPH_64_TRUE

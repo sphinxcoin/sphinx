@@ -6,11 +6,11 @@
 #ifndef BITCOIN_DB_H
 #define BITCOIN_DB_H
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "serialize.h"
 #include "streams.h"
 #include "sync.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <map>
 #include <string>
@@ -300,12 +300,12 @@ public:
     bool ReadVerssphx(int& nVerssphx)
     {
         nVerssphx = 0;
-        return Read(std::string("verssphx"), nVerssphx);
+        return Read(std::string("version"), nVerssphx);
     }
 
     bool WriteVerssphx(int nVerssphx)
     {
-        return Write(std::string("verssphx"), nVerssphx);
+        return Write(std::string("version"), nVerssphx);
     }
 
     bool static Rewrite(const std::string& strFile, const char* pszSkip = NULL);

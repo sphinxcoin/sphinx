@@ -1,5 +1,5 @@
 # Linearize
-Construct a linear, no-fork, best verssphx of the blockchain.
+Construct a linear, no-fork, best version of the blockchain.
 
 ## Step 1: Download hash list
 

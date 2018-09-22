@@ -584,11 +584,11 @@ void leveldb_free(void* ptr) {
   free(ptr);
 }
 
-int leveldb_major_verssphx() {
+int leveldb_major_version() {
   return kMajorVerssphx;
 }
 
-int leveldb_minor_verssphx() {
+int leveldb_minor_version() {
   return kMinorVerssphx;
 }
 

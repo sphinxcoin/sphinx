@@ -26,12 +26,12 @@ the need for a separate Linux VM or server. Note that while WSL can be installed
 other Linux variants, such as OpenSUSE, the following instructions have only been
 tested with Ubuntu.
 
-This feature is not supported in verssphxs of Windows prior to Windows 10 or on
-Windows Server SKUs. In addition, it is available [only for 64-bit verssphxs of
+This feature is not supported in versions of Windows prior to Windows 10 or on
+Windows Server SKUs. In addition, it is available [only for 64-bit versions of
 Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
 
 Full instructions to install WSL are available on the above link.
-To install WSL on Windows 10 with Fall Creators Update installed (verssphx >= 16215.0) do the following:
+To install WSL on Windows 10 with Fall Creators Update installed (version >= 16215.0) do the following:
 
 1. Enable the Windows Subsystem for Linux feature
   * From Start, search for "Turn Windows features on or off" (type 'turn')
@@ -46,8 +46,8 @@ To install WSL on Windows 10 with Fall Creators Update installed (verssphx >= 16
   * Create a new UNIX user account (this is a separate account from your Windows account)
 
 After the bash shell is active, you can follow the instructions below, starting
-with the "Cross-compilation" section. Compiling the 64-bit verssphx is
-recommended but it is possible to compile the 32-bit verssphx.
+with the "Cross-compilation" section. Compiling the 64-bit version is
+recommended but it is possible to compile the 32-bit version.
 
 Cross-compilation for Ubuntu and Windows Subsystem for Linux
 ------------------------------------------------------------
@@ -172,5 +172,5 @@ something break.
 compiler options to allow a choice between either posix or win32 threads. The default option is win32 threads which is the more
 efficient since it will result in binary code that links directly with the Windows kernel32.lib. Unfortunately, the headers
 required to support win32 threads conflict with some of the classes in the C++11 standard library in particular std::mutex.
-It's not possible to build the sphx code using the win32 verssphx of the Mingw-w64 cross compilers (at least not without
+It's not possible to build the sphx code using the win32 version of the Mingw-w64 cross compilers (at least not without
 modifying headers in the sphx source code).

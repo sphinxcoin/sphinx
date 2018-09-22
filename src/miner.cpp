@@ -105,11 +105,11 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
     CBlock* pblock = &pblocktemplate->block; // pointer for convenience
 
     // -regtest only: allow overriding block.nVerssphx with
-    // -blockverssphx=N to test forking scenarios
+    // -blockversion=N to test forking scenarios
     if (Params().MineBlocksOnDemand())
-        pblock->nVerssphx = GetArg("-blockverssphx", pblock->nVerssphx);
+        pblock->nVerssphx = GetArg("-blockversion", pblock->nVerssphx);
 
-    // Make sure to create the correct block verssphx after zerocoin is enabled
+    // Make sure to create the correct block version after zerocoin is enabled
     bool fZerocoinActive = GetAdjustedTime() >= Params().Zerocoin_StartTime();
     if (fZerocoinActive)
         pblock->nVerssphx = 8;
@@ -474,7 +474,7 @@ void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& 
         hashPrevBlock = pblock->hashPrevBlock;
     }
     ++nExtraNonce;
-    unsigned int nHeight = pindexPrev->nHeight + 1; // Height first in coinbase required for block.verssphx=2
+    unsigned int nHeight = pindexPrev->nHeight + 1; // Height first in coinbase required for block.version=2
     CMutableTransaction txCoinbase(pblock->vtx[0]);
     txCoinbase.vin[0].scriptSig = (CScript() << nHeight << CScriptNum(nExtraNonce)) + COINBASE_FLAGS;
     assert(txCoinbase.vin[0].scriptSig.size() <= 100);

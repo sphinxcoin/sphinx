@@ -108,7 +108,7 @@ BITCOIN_CORE_H = \
   chainparamsseeds.h \
   checkpoints.h \
   checkqueue.h \
-  clientverssphx.h \
+  clientversion.h \
   coincontrol.h \
   coins.h \
   compat.h \
@@ -183,7 +183,7 @@ BITCOIN_CORE_H = \
   utilmoneystr.h \
   utiltime.h \
   validationinterface.h \
-  verssphx.h \
+  version.h \
   wallet.h \
   wallet_ismine.h \
   walletdb.h \
@@ -196,7 +196,7 @@ obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
 	@$(top_srcdir)/share/genbuild.sh "$(abs_top_builddir)/src/obj/build.h" \
 	  "$(abs_top_srcdir)"
-libbitcoin_util_a-clientverssphx.$(OBJEXT): obj/build.h
+libbitcoin_util_a-clientversion.$(OBJEXT): obj/build.h
 
 # server: shared between sphxd and sphx-qt
 libbitcoin_server_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(MINIUPNPC_CPPFLAGS) $(EVENT_CFLAGS) $(EVENT_PTHREADS_CFLAGS)
@@ -380,7 +380,7 @@ libbitcoin_util_a_SOURCES = \
   compat/glibc_sanity.cpp \
   compat/glibcxx_sanity.cpp \
   chainparamsbase.cpp \
-  clientverssphx.cpp \
+  clientversion.cpp \
   random.cpp \
   rpcprotocol.cpp \
   sync.cpp \

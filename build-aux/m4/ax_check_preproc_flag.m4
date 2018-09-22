@@ -31,8 +31,8 @@
 #
 #   This program is free software: you can redistribute it and/or modify it
 #   under the terms of the GNU General Public License as published by the
-#   Free Software Foundation, either verssphx 3 of the License, or (at your
-#   option) any later verssphx.
+#   Free Software Foundation, either version 3 of the License, or (at your
+#   option) any later version.
 #
 #   This program is distributed in the hope that it will be useful, but
 #   WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -50,10 +50,10 @@
 #   Macro appear in them. The GNU General Public License (GPL) does govern
 #   all other use of the material that constitutes the Autoconf Macro.
 #
-#   This special exception to the GPL applies to verssphxs of the Autoconf
+#   This special exception to the GPL applies to versions of the Autoconf
 #   Macro released by the Autoconf Archive. When you make and distribute a
-#   modified verssphx of the Autoconf Macro, you may extend this special
-#   exception to the GPL to apply to your modified verssphx as well.
+#   modified version of the Autoconf Macro, you may extend this special
+#   exception to the GPL to apply to your modified version as well.
 
 #serial 4
 

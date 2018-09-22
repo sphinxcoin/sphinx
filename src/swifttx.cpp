@@ -312,7 +312,7 @@ bool ProcessConsensusVote(CNode* pnode, CConsensusVote& ctx)
         LogPrint("swiftx", "SwiftX::ProcessConsensusVote - Masternode ADDR %s %d\n", pmn->addr.ToString().c_str(), n);
 
     if (n == -1) {
-        //can be caused by past verssphxs trying to vote with an invalid protocol
+        //can be caused by past versions trying to vote with an invalid protocol
         LogPrint("swiftx", "SwiftX::ProcessConsensusVote - Unknown Masternode\n");
         mnodeman.AskForMN(pnode, ctx.vinMasternode);
         return false;

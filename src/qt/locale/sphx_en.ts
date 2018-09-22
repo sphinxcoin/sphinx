@@ -1,6 +1,6 @@
-<?xml verssphx="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS verssphx="2.1" language="en">
+<TS version="2.1" language="en">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1547,8 +1547,8 @@ Address: %4
     <name>HelpMessageDialog</name>
     <message>
         <location filename="../utilitydialog.cpp" line="+37"/>
-        <source>verssphx</source>
-        <translation>verssphx</translation>
+        <source>version</source>
+        <translation>version</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2430,7 +2430,7 @@ https://www.transifex.com/cevap/cevap-translations</source>
     <message>
         <location line="+30"/>
         <location line="+16"/>
-        <source>Wait with automatic converssphx to Zerocoin until enough Sphinx for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough Sphinx for this denomination is available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3790,8 +3790,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-258"/>
-        <source>Using OpenSSL verssphx</source>
-        <translation>Using OpenSSL verssphx</translation>
+        <source>Using OpenSSL version</source>
+        <translation>Using OpenSSL version</translation>
     </message>
     <message>
         <location line="+52"/>
@@ -3805,13 +3805,13 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="-216"/>
-        <source>Client verssphx</source>
-        <translation>Client verssphx</translation>
+        <source>Client version</source>
+        <translation>Client version</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Using BerkeleyDB verssphx</source>
-        <translation>Using BerkeleyDB verssphx</translation>
+        <source>Using BerkeleyDB version</source>
+        <translation>Using BerkeleyDB version</translation>
     </message>
     <message>
         <location line="+160"/>
@@ -6044,8 +6044,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+11"/>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
-        <translation type="unfinished">Error: Unsupported argument -socks found. Setting SOCKS verssphx isn&apos;t possible anymore, only SOCKS5 proxies are supported.</translation>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation type="unfinished">Error: Unsupported argument -socks found. Setting SOCKS version isn&apos;t possible anymore, only SOCKS5 proxies are supported.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -6558,7 +6558,7 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6698,8 +6698,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Incompatible verssphx.</source>
-        <translation type="unfinished">Incompatible verssphx.</translation>
+        <source>Incompatible version.</source>
+        <translation type="unfinished">Incompatible version.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7145,7 +7145,7 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Print verssphx and exit</source>
+        <source>Print version and exit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7610,8 +7610,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
-        <translation type="unfinished">Warning: This verssphx is obsolete, upgrade required!</translation>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation type="unfinished">Warning: This version is obsolete, upgrade required!</translation>
     </message>
     <message>
         <location line="+1"/>

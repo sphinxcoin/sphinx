@@ -1,4 +1,4 @@
-<!DOCTYPE RCC><RCC verssphx="1.0">
+<!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/translations">
         <file alias="bg">locale/sphx_bg.qm</file>
         <file alias="ca">locale/sphx_ca.qm</file>

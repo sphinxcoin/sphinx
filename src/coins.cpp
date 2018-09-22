@@ -96,7 +96,7 @@ CCoinsMap::const_iterator CCoinsViewCache::FetchCoins(const uint256& txid) const
     tmp.swap(ret->second.coins);
     if (ret->second.coins.IsPruned()) {
         // The parent only has an empty entry for this txid; we can consider our
-        // verssphx as fresh.
+        // version as fresh.
         ret->second.flags = CCoinsCacheEntry::FRESH;
     }
     return ret;

@@ -3,11 +3,11 @@ Sphinxian OS Installation Manual
 
 Sphinxian is a collection of different Ubuntu 16.04 based media with sphinx-coin sphinxcoin software ready installed and updated automatially from the master sphinx-coin ppa.  It is broken down into 3 different sets of images.
 
-1) Sphinxian ISO -- this is an install-to computer iso image that will install Ubuntu Sphinxian 16.04 to a local computer.  Available in both i386 and amd64 verssphxs  
+1) Sphinxian ISO -- this is an install-to computer iso image that will install Ubuntu Sphinxian 16.04 to a local computer.  Available in both i386 and amd64 versions  
 
-2) Sphinxian USB -- this is meant as a complete copy-and-run solution.  With this image you can run directly from the usb medium, also available in i386 and amd64 verssphxs  
+2) Sphinxian USB -- this is meant as a complete copy-and-run solution.  With this image you can run directly from the usb medium, also available in i386 and amd64 versions  
 
-3) Sphinxian VDI -- These images are meant for use in Oracle VIrtualBox environments.  Again, i386 and mad64 verssphxs are available 
+3) Sphinxian VDI -- These images are meant for use in Oracle VIrtualBox environments.  Again, i386 and mad64 versions are available 
 
 
 Virtualbox VDI installation
@@ -40,7 +40,7 @@ A) Download rufus (or similar SD writing software) rufus can be downloaded from
 B) insert your USB Flash Drive (16 GB or Larger, USB 3.0 Recommended) into an
   unused usb slot
 
-C) double click on your chosen USB writing tool and follow the instructions to install Sphinxian-&lt;amd64|i386&gt;-&lt;verssphx&gt;.img.xz to your USB Flash Drive.  
+C) double click on your chosen USB writing tool and follow the instructions to install Sphinxian-&lt;amd64|i386&gt;-&lt;version&gt;.img.xz to your USB Flash Drive.  
 (Rufus shown below)    
 
 ![](sphxian-doc-images/rufus.png)
@@ -60,7 +60,7 @@ A) mkusb
 &nbsp;ii) insert your USB Flash Drive (16 GB or Larger, USB3.0 Recommended)) into an
   unused USB slot.  
   
-&nbsp;iii) start mkusb and select the Sphinxian-<amd64|i386\>-<verssphx\>-img.xz file that you downloaded and follow the instructions.
+&nbsp;iii) start mkusb and select the Sphinxian-<amd64|i386\>-<version\>-img.xz file that you downloaded and follow the instructions.
 
 &nbsp;iv) once mkusb has finished you can remove the USB Flash Drive replace in your system and reboot (note: first boot will take a short time to configure the sphxian user home directory, please be patient).  
    
@@ -70,7 +70,7 @@ B) Using DD from the CLI
   unused USB slot.  
 &nbsp;ii) Enter the following command at the CLI prompt in the directory you downloaded the USB image into 
  
-"sudo xzcat Sphinxian-<amd64|i386\>-<verssphx\>.img.xz  | sudo dd of=/dev/sdX bs=4096 status=progress"  
+"sudo xzcat Sphinxian-<amd64|i386\>-<version\>.img.xz  | sudo dd of=/dev/sdX bs=4096 status=progress"  
 
 (where X is the letter of your USB Flash Drive  
 

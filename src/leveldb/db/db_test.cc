@@ -6,7 +6,7 @@
 #include "leveldb/filter_policy.h"
 #include "db/db_impl.h"
 #include "db/filename.h"
-#include "db/verssphx_set.h"
+#include "db/version_set.h"
 #include "db/write_batch_internal.h"
 #include "leveldb/cache.h"
 #include "leveldb/env.h"

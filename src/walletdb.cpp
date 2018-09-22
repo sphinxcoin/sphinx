@@ -257,7 +257,7 @@ bool CWalletDB::ErasePool(int64_t nPool)
 
 bool CWalletDB::WriteMinVerssphx(int nVerssphx)
 {
-    return Write(std::string("minverssphx"), nVerssphx);
+    return Write(std::string("minversion"), nVerssphx);
 }
 
 bool CWalletDB::ReadAccount(const string& strAccount, CAccount& account)
@@ -605,7 +605,7 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
             CKeyID keyid = keypool.vchPubKey.GetID();
             if (pwallet->mapKeyMetadata.count(keyid) == 0)
                 pwallet->mapKeyMetadata[keyid] = CKeyMetadata(keypool.nTime);
-        } else if (strType == "verssphx") {
+        } else if (strType == "version") {
             ssValue >> wss.nFileVerssphx;
             if (wss.nFileVerssphx == 10300)
                 wss.nFileVerssphx = 300;
@@ -681,7 +681,7 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
     try {
         LOCK(pwallet->cs_wallet);
         int nMinVerssphx = 0;
-        if (Read((string) "minverssphx", nMinVerssphx)) {
+        if (Read((string) "minversion", nMinVerssphx)) {
             if (nMinVerssphx > CLIENT_VERSSPHX)
                 return DB_TOO_NEW;
             pwallet->LoadMinVerssphx(nMinVerssphx);
@@ -751,7 +751,7 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
     BOOST_FOREACH (uint256 hash, wss.vWalletUpgrade)
         WriteTx(hash, pwallet->mapWallet[hash]);
 
-    // Rewrite encrypted wallets of verssphxs 0.4.0 and 0.5.0rc:
+    // Rewrite encrypted wallets of versions 0.4.0 and 0.5.0rc:
     if (wss.fIsEncrypted && (wss.nFileVerssphx == 40000 || wss.nFileVerssphx == 50000))
         return DB_NEED_REWRITE;
 
@@ -779,7 +779,7 @@ DBErrors CWalletDB::FindWalletTx(CWallet* pwallet, vector<uint256>& vTxHash, vec
     try {
         LOCK(pwallet->cs_wallet);
         int nMinVerssphx = 0;
-        if (Read((string) "minverssphx", nMinVerssphx)) {
+        if (Read((string) "minversion", nMinVerssphx)) {
             if (nMinVerssphx > CLIENT_VERSSPHX)
                 return DB_TOO_NEW;
             pwallet->LoadMinVerssphx(nMinVerssphx);

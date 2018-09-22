@@ -1,4 +1,4 @@
-<TS language="da" verssphx="2.1">
+<TS language="da" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1144,8 +1144,8 @@ Adresse: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
-        <translation>verssphx</translation>
+        <source>version</source>
+        <translation>version</translation>
     </message>
     <message>
         <source>Sphinx Core</source>
@@ -2209,8 +2209,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Debug logfil</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
-        <translation>Anvender OpenSSL verssphx</translation>
+        <source>Using OpenSSL version</source>
+        <translation>Anvender OpenSSL version</translation>
     </message>
     <message>
         <source>Build date</source>
@@ -2221,12 +2221,12 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Aktuelt blokantal</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
-        <translation>Klientverssphx</translation>
+        <source>Client version</source>
+        <translation>Klientversion</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
-        <translation>Anvender BerkeleyDB verssphx</translation>
+        <source>Using BerkeleyDB version</source>
+        <translation>Anvender BerkeleyDB version</translation>
     </message>
     <message>
         <source>Block chain</source>
@@ -3843,8 +3843,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Fejl! Der opstod en fejl i under lytning efter indkommende forbindelser (Listen returnerede fejl %s)</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</source>
-        <translation>Fejl! Argumentet er ikke understøttet -socks found. Det er ikke muligt at bestemme hvilken SOCKS verssphx længere. Kun SOCKS5 proxies understøttes.</translation>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>Fejl! Argumentet er ikke understøttet -socks found. Det er ikke muligt at bestemme hvilken SOCKS version længere. Kun SOCKS5 proxies understøttes.</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
@@ -4239,8 +4239,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Fejl ved indlæsning af wallet.dat: Tegnebogen er beskadiget</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
-        <translation>Fejl ved indlæsning af wallet.dat: Tegnebogen kræver en nyere verssphx af Sphinx Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
+        <translation>Fejl ved indlæsning af wallet.dat: Tegnebogen kræver en nyere version af Sphinx Core</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -4339,8 +4339,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Ikke kompatibel i denne tilstand</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
-        <translation>Ikke kompatibel verssphx</translation>
+        <source>Incompatible version.</source>
+        <translation>Ikke kompatibel version</translation>
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
@@ -4931,8 +4931,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Advarsel!</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
-        <translation>Advarsel! Denne verssphx er forældet. Opgradering krævet.</translation>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation>Advarsel! Denne version er forældet. Opgradering krævet.</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>

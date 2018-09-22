@@ -7,12 +7,12 @@
 
 #include "txmempool.h"
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "main.h"
 #include "streams.h"
 #include "util.h"
 #include "utilmoneystr.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <boost/circular_buffer.hpp>
 
@@ -647,8 +647,8 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
 {
     try {
         LOCK(cs);
-        fileout << 120000;         // verssphx required to read: 0.12.00 or later
-        fileout << CLIENT_VERSSPHX; // verssphx that wrote the file
+        fileout << 120000;         // version required to read: 0.12.00 or later
+        fileout << CLIENT_VERSSPHX; // version that wrote the file
         minerPolicyEstimator->Write(fileout);
     } catch (const std::exception&) {
         LogPrintf("CTxMemPool::WriteFeeEstimates() : unable to write policy estimator data (non-fatal)");
@@ -663,7 +663,7 @@ bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
         int nVerssphxRequired, nVerssphxThatWrote;
         filein >> nVerssphxRequired >> nVerssphxThatWrote;
         if (nVerssphxRequired > CLIENT_VERSSPHX)
-            return error("CTxMemPool::ReadFeeEstimates() : up-verssphx (%d) fee estimate file", nVerssphxRequired);
+            return error("CTxMemPool::ReadFeeEstimates() : up-version (%d) fee estimate file", nVerssphxRequired);
 
         LOCK(cs);
         minerPolicyEstimator->Read(filein, minRelayFee);

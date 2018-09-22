@@ -52,7 +52,7 @@ public:
 
     enum ColumnIndex {
         Address = 0,
-        Subverssphx = 1,
+        Subversion = 1,
         Ping = 2
     };
 

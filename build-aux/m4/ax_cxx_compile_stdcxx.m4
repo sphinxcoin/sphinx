@@ -9,7 +9,7 @@
 # DESCRIPTION
 #
 #   Check for baseline language coverage in the compiler for the specified
-#   verssphx of the C++ standard.  If necessary, add switches to CXX and
+#   version of the C++ standard.  If necessary, add switches to CXX and
 #   CXXCPP to enable support.  VERSSPHX may be '11' (for the C++11 standard)
 #   or '14' (for the C++14 standard).
 #
@@ -42,7 +42,7 @@
 #serial 4
 
 dnl  This macro is based on the code from the AX_CXX_COMPILE_STDCXX_11 macro
-dnl  (serial verssphx number 13).
+dnl  (serial version number 13).
 
 AC_DEFUN([AX_CXX_COMPILE_STDCXX], [dnl
   m4_if([$1], [11], [],

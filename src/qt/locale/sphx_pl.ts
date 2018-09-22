@@ -1,4 +1,4 @@
-<TS language="pl" verssphx="2.1">
+<TS language="pl" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1567,7 +1567,7 @@ https://www.transifex.com/cevap/cevap-translations </translation>
         <translation>Debuguj plik log</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Używanie wersji OpenSSL</translation>
     </message>
     <message>
@@ -1579,11 +1579,11 @@ https://www.transifex.com/cevap/cevap-translations </translation>
         <translation>Bieżąca liczba bloków</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Wersja clienta</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>Używanie wersji BerkeleyDB</translation>
     </message>
     <message>

@@ -1,4 +1,4 @@
-<TS language="ca" verssphx="2.1">
+<TS language="ca" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -548,7 +548,7 @@
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>versió</translation>
     </message>
     <message>

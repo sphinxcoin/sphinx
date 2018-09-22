@@ -10,7 +10,7 @@
 #include <cmath>
 #include "uint256.h"
 #include <string>
-#include "verssphx.h"
+#include "version.h"
 
 BOOST_AUTO_TEST_SUITE(uint256_tests)
  

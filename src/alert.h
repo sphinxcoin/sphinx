@@ -21,11 +21,11 @@ class uint256;
 extern std::map<uint256, CAlert> mapAlerts;
 extern CCriticalSection cs_mapAlerts;
 
-/** Alerts are for notifying old verssphxs if they become too obsolete and
+/** Alerts are for notifying old versions if they become too obsolete and
  * need to upgrade.  The message is displayed in the status bar.
  * Alert messages are broadcast as a vector of signed data.  Unserializing may
- * not read the entire buffer if the alert is for a newer verssphx, but older
- * verssphxs can still relay the original data.
+ * not read the entire buffer if the alert is for a newer version, but older
+ * versions can still relay the original data.
  */
 class CUnsignedAlert
 {
@@ -36,8 +36,8 @@ public:
     int nID;
     int nCancel;
     std::set<int> setCancel;
-    int nMinVer;                     // lowest verssphx inclusive
-    int nMaxVer;                     // highest verssphx inclusive
+    int nMinVer;                     // lowest version inclusive
+    int nMaxVer;                     // highest version inclusive
     std::set<std::string> setSubVer; // empty matches all
     int nPriority;
 

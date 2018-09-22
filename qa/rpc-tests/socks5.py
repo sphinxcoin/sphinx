@@ -63,10 +63,10 @@ class Socks5Connection(object):
         Handle socks5 request according to RFC1928
         '''
         try:
-            # Verify socks verssphx
+            # Verify socks version
             ver = recvall(self.conn, 1)[0]
             if ver != 0x05:
-                raise IOError('Invalid socks verssphx %i' % ver)
+                raise IOError('Invalid socks version %i' % ver)
             # Choose authentication method
             nmethods = recvall(self.conn, 1)[0]
             methods = bytearray(recvall(self.conn, nmethods))
@@ -85,7 +85,7 @@ class Socks5Connection(object):
             if method == 0x02:
                 ver = recvall(self.conn, 1)[0]
                 if ver != 0x01:
-                    raise IOError('Invalid auth packet verssphx %i' % ver)
+                    raise IOError('Invalid auth packet version %i' % ver)
                 ulen = recvall(self.conn, 1)[0]
                 username = str(recvall(self.conn, ulen))
                 plen = recvall(self.conn, 1)[0]
@@ -96,7 +96,7 @@ class Socks5Connection(object):
             # Read connect request
             (ver,cmd,rsv,atyp) = recvall(self.conn, 4)
             if ver != 0x05:
-                raise IOError('Invalid socks verssphx %i in connect request' % ver)
+                raise IOError('Invalid socks version %i in connect request' % ver)
             if cmd != Command.CONNECT:
                 raise IOError('Unhandled command %i in connect request' % cmd)
 

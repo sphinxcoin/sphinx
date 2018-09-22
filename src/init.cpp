@@ -350,7 +350,7 @@ std::string HelpMessage(HelpMessageMode mode)
     // When adding new options to the categories, please keep and ensure alphabetical ordering.
     string strUsage = HelpMessageGroup(_("Options:"));
     strUsage += HelpMessageOpt("-?", _("This help message"));
-    strUsage += HelpMessageOpt("-verssphx", _("Print verssphx and exit"));
+    strUsage += HelpMessageOpt("-version", _("Print version and exit"));
     strUsage += HelpMessageOpt("-alertnotify=<cmd>", _("Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)"));
     strUsage += HelpMessageOpt("-alerts", strprintf(_("Receive and display P2P network alerts (default: %u)"), DEFAULT_ALERTS));
     strUsage += HelpMessageOpt("-blocknotify=<cmd>", _("Execute command when the best block changes (%s in cmd is replaced by block hash)"));
@@ -538,7 +538,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-datacarrier", strprintf(_("Relay and mine data carrier transactions (default: %u)"), 1));
     strUsage += HelpMessageOpt("-datacarriersize", strprintf(_("Maximum size of data in data carrier transactions we relay and mine (default: %u)"), MAX_OP_RETURN_RELAY));
     if (GetBoolArg("-help-debug", false)) {
-        strUsage += HelpMessageOpt("-blockverssphx=<n>", "Override block verssphx to test forking scenarios");
+        strUsage += HelpMessageOpt("-blockversion=<n>", "Override block version to test forking scenarios");
     }
 
     strUsage += HelpMessageGroup(_("Block creation options:"));
@@ -735,7 +735,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
 #endif
 #ifdef WIN32
 // Enable Data Execution Prevention (DEP)
-// Minimum supported OS verssphxs: WinXP SP3, WinVista >= SP1, Win Server 2008
+// Minimum supported OS versions: WinXP SP3, WinVista >= SP1, Win Server 2008
 // A failure is non-critical and needs no further attention!
 #ifndef PROCESS_DEP_ENABLE
 // We define this here, because GCCs winbase.h limits this to _WIN32_WINNT >= 0x0601 (Windows 7),
@@ -877,7 +877,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
         InitWarning(_("Warning: Unsupported argument -debugnet ignored, use -debug=net."));
     // Check for -socks - as this is a privacy risk to continue, exit here
     if (mapArgs.count("-socks"))
-        return InitError(_("Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported."));
+        return InitError(_("Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported."));
     // Check for -tor - as this is a privacy risk to continue, exit here
     if (GetBoolArg("-tor", false))
         return InitError(_("Error: Unsupported argument -tor found, use -onsphx."));
@@ -1011,10 +1011,10 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("SPHX verssphx %s (%s)\n", FormatFullVerssphx(), CLIENT_DATE);
-    LogPrintf("Using OpenSSL verssphx %s\n", SSLeay_verssphx(SSLEAY_VERSSPHX));
+    LogPrintf("SPHX version %s (%s)\n", FormatFullVerssphx(), CLIENT_DATE);
+    LogPrintf("Using OpenSSL version %s\n", SSLeay_version(SSLEAY_VERSSPHX));
 #ifdef ENABLE_WALLET
-    LogPrintf("Using BerkeleyDB verssphx %s\n", DbEnv::verssphx(0, 0, 0));
+    LogPrintf("Using BerkeleyDB version %s\n", DbEnv::version(0, 0, 0));
 #endif
     if (!fLogTimestamps)
         LogPrintf("Startup time: %s\n", DateTimeStrFormat("%Y-%m-%d %H:%M:%S", GetTime()));
@@ -1556,7 +1556,7 @@ bool AppInit2(boost::thread_group& threadGroup, CScheduler& scheduler)
                              " or address book entries might be missing or incorrect."));
                 InitWarning(msg);
             } else if (nLoadWalletRet == DB_TOO_NEW)
-                strErrors << _("Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core") << "\n";
+                strErrors << _("Error loading wallet.dat: Wallet requires newer version of Sphinx Core") << "\n";
             else if (nLoadWalletRet == DB_NEED_REWRITE) {
                 strErrors << _("Wallet needed to be rewritten: restart Sphinx Core to complete") << "\n";
                 LogPrintf("%s", strErrors.str());

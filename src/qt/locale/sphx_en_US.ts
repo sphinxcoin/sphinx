@@ -1,4 +1,4 @@
-<TS language="en_US" verssphx="2.1">
+<TS language="en_US" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1180,8 +1180,8 @@ Address: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
-        <translation>verssphx</translation>
+        <source>version</source>
+        <translation>version</translation>
     </message>
     <message>
         <source>Sphinx Core</source>
@@ -2292,8 +2292,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Debug log file</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
-        <translation>Using OpenSSL verssphx</translation>
+        <source>Using OpenSSL version</source>
+        <translation>Using OpenSSL version</translation>
     </message>
     <message>
         <source>Build date</source>
@@ -2304,12 +2304,12 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Current number of blocks</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
-        <translation>Client verssphx</translation>
+        <source>Client version</source>
+        <translation>Client version</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
-        <translation>Using BerkeleyDB verssphx</translation>
+        <source>Using BerkeleyDB version</source>
+        <translation>Using BerkeleyDB version</translation>
     </message>
     <message>
         <source>Block chain</source>
@@ -3958,8 +3958,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Error: Listening for incoming connections failed (listen returned error %s)</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</source>
-        <translation>Error: Unsupported argument -socks found. Setting SOCKS verssphx isn't possible anymore, only SOCKS5 proxies are supported.</translation>
+        <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
+        <translation>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
@@ -4358,8 +4358,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Error loading wallet.dat: Wallet corrupted</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
-        <translation>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
+        <translation>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</translation>
     </message>
     <message>
         <source>Error opening block database</source>
@@ -4458,8 +4458,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Incompatible mode.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
-        <translation>Incompatible verssphx.</translation>
+        <source>Incompatible version.</source>
+        <translation>Incompatible version.</translation>
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
@@ -4762,8 +4762,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Prepend debug output with timestamp (default: %u)</translation>
     </message>
     <message>
-        <source>Print verssphx and exit</source>
-        <translation>Print verssphx and exit</translation>
+        <source>Print version and exit</source>
+        <translation>Print version and exit</translation>
     </message>
     <message>
         <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
@@ -5106,8 +5106,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Warning</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
-        <translation>Warning: This verssphx is obsolete, upgrade required!</translation>
+        <source>Warning: This version is obsolete, upgrade required!</source>
+        <translation>Warning: This version is obsolete, upgrade required!</translation>
     </message>
     <message>
         <source>Warning: Unsupported argument -benchmark ignored, use -debug=bench.</source>

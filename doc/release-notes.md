@@ -11,7 +11,7 @@ Is now available from:
 
     <https://github.com/sphinx-coin/sphx/releases
 
-This is a new minor-revissphx verssphx release, including various bug fixes and
+This is a new minor-revissphx version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
@@ -28,7 +28,7 @@ xSPHX spending requires this update.
 How to Upgrade
 ==============
 
-If you are running an older verssphx, shut it down. Wait until it has completely shut down (which might take a few minutes for older verssphxs), then run the installer (on Windows) or just copy over /Applications/Sphinx-Qt (on Mac) or sphxd/sphx-qt (on Linux).
+If you are running an older version, shut it down. Wait until it has completely shut down (which might take a few minutes for older versions), then run the installer (on Windows) or just copy over /Applications/Sphinx-Qt (on Mac) or sphxd/sphx-qt (on Linux).
 
 Compatibility
 ==============
@@ -46,7 +46,7 @@ frequently tested on them.
 
 ### :exclamation::exclamation::exclamation: MacOS 10.13 High Sierra :exclamation::exclamation::exclamation:
 
-**Currently there are issues with the 3.0.x gitian releases on MacOS verssphx 10.13 (High Sierra), no reports of issues on older verssphxs of MacOS.**
+**Currently there are issues with the 3.0.x gitian releases on MacOS version 10.13 (High Sierra), no reports of issues on older versions of MacOS.**
 
 
 Notable Changes
@@ -95,7 +95,7 @@ Autominiting with zerocoin. More info will follow.
 
 New look and design
 -------------------
-We have new look and desing, currently it is a dirty verssphx. It includes new GUI layout, new colors.
+We have new look and desing, currently it is a dirty version. It includes new GUI layout, new colors.
 
 Performance
 -----------
@@ -152,12 +152,12 @@ The in-wallet bip38 encryption method was leaving the final 4 bytes of the encry
 =================
 
 This release is a fork to the old chain. Detailed release notes follow.
-We dropped MIDAS and use DGW as well as some other changes. Previous old verssphx
+We dropped MIDAS and use DGW as well as some other changes. Previous old version
 was based on old projects which were not updated. One of our main goals for v3 release
 was to get closer to bitcoin's source and update in general sources to some newer
 and cleaner codebase then it was previously. We forked from PIVX which is better
 maintenanced then previous releases of 🗺️Sphinx Core 👛 which are based on obsolete code.
-In this verssphx everything is new, one big feature iz xSPHX which iz zerocoin for
+In this version everything is new, one big feature iz xSPHX which iz zerocoin for
 sphx. Port and other settings remain same. Please foolow our wiki for more information
 about how to backup your wallet/keys and upgrade to new wallet as well as recovery paths
 and detailed explanations of how to use new code. One big difference is finally restricting
@@ -317,14 +317,14 @@ Now you can create your key with `gpg --gen-key`
 
 Gist gitian build scripts
 ----------------------------
-**Note**: Please change SIGNER to your key and verssphx to desired verssphx, in current release it is verssphx 3.0.2, in future releases gist will be updated.
+**Note**: Please change SIGNER to your key and version to desired version, in current release it is version 3.0.2, in future releases gist will be updated.
 
-If you use scripts, after wget has downloaded the script, run `sed -i 's/49464B32BA6683BA/YOURGPGKEY/g''  and replace `YOURGPGKEY` with your LONG Key ID. The same can be done with verssphx.
+If you use scripts, after wget has downloaded the script, run `sed -i 's/49464B32BA6683BA/YOURGPGKEY/g''  and replace `YOURGPGKEY` with your LONG Key ID. The same can be done with version.
  - Linux only: [build offline](https://gist.github.com/cevap/9d7ef39be185cc07c3d0a9b33da2fba5)
  - Windows only: [build offline](https://gist.github.com/cevap/5d6ac38f6e8530d45ab31499bc3a62ff)
  - MacOS only (without HighSierra)[build offline](https://gist.github.com/cevap/a5a90607da3a9b058b8c0aea20fdd75a)
 
-Setup **signer** and **verssphx**/branch
+Setup **signer** and **version**/branch
 -------------------------------------------------
 
 ```
@@ -345,7 +345,7 @@ cd ./gitian-builder
 git pull
 cd ..
 
-# Fetch and create inputs: (first time, or when dependency verssphxs change)
+# Fetch and create inputs: (first time, or when dependency versions change)
 cd ./gitian-builder
 mkdir -p inputs
 wget -P inputs https://github.com/cevap/osslsigncode/releases/download/v1.7.1/osslsigncode-Backports-to-1.7.1.patch

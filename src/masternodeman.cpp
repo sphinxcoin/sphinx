@@ -358,7 +358,7 @@ int CMasternodeMan::stable_size ()
 
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {
         if (mn.protocolVerssphx < nMinProtocol) {
-            continue; // Skip obsolete verssphxs
+            continue; // Skip obsolete versions
         }
         if (IsSporkActive (SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT)) {
             nMasternode_Age = GetAdjustedTime() - mn.sigTime;
@@ -491,7 +491,7 @@ CMasternode* CMasternodeMan::GetNextMasternodeInQueueForPayment(int nBlockHeight
         mn.Check();
         if (!mn.IsEnabled()) continue;
 
-        // //check protocol verssphx
+        // //check protocol version
         if (mn.protocolVerssphx < masternodePayments.GetMinMasternodePaymentsProto()) continue;
 
         //it's in the list (up to 8 entries ahead of current block to allow propagation) -- so let's skip it
@@ -605,8 +605,8 @@ int CMasternodeMan::GetMasternodeRank(const CTxIn& vin, int64_t nBlockHeight, in
     // scan for winner
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {
         if (mn.protocolVerssphx < minProtocol) {
-            LogPrint("masternode","Skipping Masternode with obsolete verssphx %d\n", mn.protocolVerssphx);
-            continue;                                                       // Skip obsolete verssphxs
+            LogPrint("masternode","Skipping Masternode with obsolete version %d\n", mn.protocolVerssphx);
+            continue;                                                       // Skip obsolete versions
         }
 
         if (IsSporkActive(SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT)) {
@@ -855,7 +855,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
      * AFTER MIGRATION TO V12 IS DONE
      */
 
-    // Light verssphx for OLD MASSTERNODES - fake pings, no self-activation
+    // Light version for OLD MASSTERNODES - fake pings, no self-activation
     else if (strCommand == "dsee") { //ObfuScation Election Entry
 
         if (IsSporkActive(SPORK_7_MASTERNODE_PAY_UPDATED_NODES)) return;
@@ -889,7 +889,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVerssphx) + donationAddress.ToString() + boost::lexical_cast<std::string>(donationPercentage);
 
         if (protocolVerssphx < masternodePayments.GetMinMasternodePaymentsProto()) {
-            LogPrint("masternode","dsee - ignoring outdated Masternode %s protocol verssphx %d < %d\n", vin.prevout.hash.ToString(), protocolVerssphx, masternodePayments.GetMinMasternodePaymentsProto());
+            LogPrint("masternode","dsee - ignoring outdated Masternode %s protocol version %d < %d\n", vin.prevout.hash.ToString(), protocolVerssphx, masternodePayments.GetMinMasternodePaymentsProto());
             Misbehaving(pfrom->GetId(), 1);
             return;
         }

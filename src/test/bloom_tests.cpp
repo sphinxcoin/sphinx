@@ -5,7 +5,7 @@
 #include "bloom.h"
 
 #include "base58.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "key.h"
 #include "merkleblock.h"
 #include "serialize.h"

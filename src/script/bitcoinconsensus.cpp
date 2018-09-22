@@ -7,7 +7,7 @@
 
 #include "primitives/transaction.h"
 #include "script/interpreter.h"
-#include "verssphx.h"
+#include "version.h"
 
 namespace {
 
@@ -17,7 +17,7 @@ class TxInputStream
 public:
     TxInputStream(int nTypeIn, int nVerssphxIn, const unsigned char *txTo, size_t txToLen) :
     m_type(nTypeIn),
-    m_verssphx(nVerssphxIn),
+    m_version(nVerssphxIn),
     m_data(txTo),
     m_remaining(txToLen)
     {}
@@ -42,13 +42,13 @@ public:
     template<typename T>
     TxInputStream& operator>>(T& obj)
     {
-        ::Unserialize(*this, obj, m_type, m_verssphx);
+        ::Unserialize(*this, obj, m_type, m_version);
         return *this;
     }
 
 private:
     const int m_type;
-    const int m_verssphx;
+    const int m_version;
     const unsigned char* m_data;
     size_t m_remaining;
 };
@@ -84,8 +84,8 @@ int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned i
     }
 }
 
-unsigned int bitcoinconsensus_verssphx()
+unsigned int bitcoinconsensus_version()
 {
-    // Just use the API verssphx for now
+    // Just use the API version for now
     return BITCOINCONSENSUS_API_VER;
 }

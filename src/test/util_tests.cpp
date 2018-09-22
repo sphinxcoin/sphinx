@@ -4,7 +4,7 @@
 
 #include "util.h"
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "primitives/transaction.h"
 #include "random.h"
 #include "sync.h"

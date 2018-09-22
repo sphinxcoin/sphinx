@@ -70,7 +70,7 @@ public:
     };
 
     //! @name Static API
-    //! Unit converssphx and formatting
+    //! Unit conversion and formatting
     ///@{
 
     //! Get list of units, for drop-down box

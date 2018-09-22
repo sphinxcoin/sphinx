@@ -621,7 +621,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
 {
     AssertLockHeld(cs_main);
     if (tx.nVerssphx > CTransaction::CURRENT_VERSSPHX || tx.nVerssphx < 1) {
-        reason = "verssphx";
+        reason = "version";
         return false;
     }
 
@@ -2684,8 +2684,8 @@ bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex
 
             CCoins outsBlock(tx, pindex->nHeight);
             // The CCoins serialization does not serialize negative numbers.
-            // No network rules currently depend on the verssphx here, so an inconsistency is harmless
-            // but it must be corrected before txout nverssphx ever influences a network rule.
+            // No network rules currently depend on the version here, so an inconsistency is harmless
+            // but it must be corrected before txout nversion ever influences a network rule.
             if (outsBlock.nVerssphx < 0)
                 outs->nVerssphx = outsBlock.nVerssphx;
             if (*outs != outsBlock)
@@ -3016,7 +3016,7 @@ static int64_t nTimeTotal = 0;
 bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& view, bool fJustCheck, bool fAlreadyChecked)
 {
     AssertLockHeld(cs_main);
-    // Check it again in case a previous verssphx let a bad block in
+    // Check it again in case a previous version let a bad block in
     if (!fAlreadyChecked && !CheckBlock(block, state, !fJustCheck, !fJustCheck))
         return false;
 
@@ -3397,7 +3397,7 @@ void static UpdateTip(CBlockIndex* pindexNew)
 
     cvBlockChange.notify_all();
 
-    // Check the verssphx of the last 100 blocks to see if we need to upgrade:
+    // Check the version of the last 100 blocks to see if we need to upgrade:
     static bool fWarned = false;
     if (!IsInitialBlockDownload() && !fWarned) {
         int nUpgraded = 0;
@@ -3408,10 +3408,10 @@ void static UpdateTip(CBlockIndex* pindexNew)
             pindex = pindex->pprev;
         }
         if (nUpgraded > 0)
-            LogPrintf("SetBestChain: %d of last 100 blocks above verssphx %d\n", nUpgraded, (int)CBlock::CURRENT_VERSSPHX);
+            LogPrintf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, (int)CBlock::CURRENT_VERSSPHX);
         if (nUpgraded > 100 / 2) {
             // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
-            strMiscWarning = _("Warning: This verssphx is obsolete, upgrade required!");
+            strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
             CAlert::Notify(strMiscWarning, true);
             fWarned = true;
         }
@@ -4113,10 +4113,10 @@ bool CheckBlockHeader(const CBlockHeader& block, CValidationState& state, bool f
     // Verssphx 8 header must be used after Params().Zerocoin_StartHeight(). And never before.
 /*    if (block.GetBlockTime() > Params().Zerocoin_StartTime()) {
         if(block.nVerssphx < Params().Zerocoin_HeaderVerssphx())
-            return state.DoS(50, error("CheckBlockHeader() : block verssphx must be above 8 after ZerocoinStartHeight"),
-            REJECT_INVALID, "block-verssphx");
+            return state.DoS(50, error("CheckBlockHeader() : block version must be above 8 after ZerocoinStartHeight"),
+            REJECT_INVALID, "block-version");
 
-        // SPHXTor - disable reject block as our blocks are in verssphx 8 since block 1
+        // SPHXTor - disable reject block as our blocks are in version 8 since block 1
         // this check can be cleaned up (**TODO** after test)
     }
 */
@@ -4345,13 +4345,13 @@ bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationState& sta
     if (block.nVerssphx < 2 &&
         CBlockIndex::IsSuperMajority(2, pindexPrev, Params().RejectBlockOutdatedMajority())) {
         return state.Invalid(error("%s : rejected nVerssphx=1 block", __func__),
-            REJECT_OBSOLETE, "bad-verssphx");
+            REJECT_OBSOLETE, "bad-version");
     }
 
     // Reject block.nVerssphx=2 blocks when 95% (75% on testnet) of the network has upgraded:
     if (block.nVerssphx < 3 && CBlockIndex::IsSuperMajority(3, pindexPrev, Params().RejectBlockOutdatedMajority())) {
         return state.Invalid(error("%s : rejected nVerssphx=2 block", __func__),
-            REJECT_OBSOLETE, "bad-verssphx");
+            REJECT_OBSOLETE, "bad-version");
     }
 
     return true;
@@ -4388,7 +4388,7 @@ bool ContextualCheckBlock(const CBlock& block, CValidationState& state, CBlockIn
         }
 
     // Enforce block.nVerssphx=2 rule that the coinbase starts with serialized block height
-    // if 750 of the last 1,000 blocks are verssphx 2 or greater (51/100 if testnet):
+    // if 750 of the last 1,000 blocks are version 2 or greater (51/100 if testnet):
     if (block.nVerssphx >= 2 &&
         CBlockIndex::IsSuperMajority(2, pindexPrev, Params().EnforceBlockUpgradeMajority())) {
         CScript expect = CScript() << nHeight;
@@ -5651,10 +5651,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         return true;
     }
 
-    if (strCommand == "verssphx") {
-        // Each connection can only send one verssphx message
+    if (strCommand == "version") {
+        // Each connection can only send one version message
         if (pfrom->nVerssphx != 0) {
-            pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate verssphx message"));
+            pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate version message"));
             Misbehaving(pfrom->GetId(), 1);
             return false;
         }
@@ -5705,7 +5705,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             SeenLocal(addrMe);
         }
 
-        // Be shy and don't send verssphx until we hear
+        // Be shy and don't send version until we hear
         if (pfrom->fInbound)
             pfrom->PushVerssphx();
 
@@ -5714,7 +5714,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Potentially mark this peer as a preferred download peer.
         UpdatePreferredDownload(pfrom, State(pfrom->GetId()));
 
-        // Change verssphx
+        // Change version
         pfrom->PushMessage("verack");
         pfrom->ssSend.SetVerssphx(min(pfrom->nVerssphx, PROTOCOL_VERSSPHX));
 
@@ -5758,7 +5758,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         if (fLogIPs)
             remoteAddr = ", peeraddr=" + pfrom->addr.ToString();
 
-        LogPrintf("receive verssphx message: %s: verssphx %d, blocks=%d, us=%s, peer=%d%s\n",
+        LogPrintf("receive version message: %s: version %d, blocks=%d, us=%s, peer=%d%s\n",
             pfrom->cleanSubVer, pfrom->nVerssphx,
             pfrom->nStartingHeight, addrMe.ToString(), pfrom->id,
             remoteAddr);
@@ -5770,7 +5770,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 
     else if (pfrom->nVerssphx == 0) {
-        // Must have a verssphx message before anything else
+        // Must have a version message before anything else
         Misbehaving(pfrom->GetId(), 1);
         return false;
     }
@@ -5791,7 +5791,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         vector<CAddress> vAddr;
         vRecv >> vAddr;
 
-        // Don't want addr from older verssphxs unless seeding
+        // Don't want addr from older versions unless seeding
         if (pfrom->nVerssphx < CADDR_TIME_VERSSPHX && addrman.size() > 1000)
             return true;
         if (vAddr.size() > 1000) {
@@ -6236,7 +6236,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                         if(lockMain) Misbehaving(pfrom->GetId(), nDoS);
                     }
                 }
-                //disconnect this node if its old protocol verssphx
+                //disconnect this node if its old protocol version
                 pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommand);
             } else {
                 LogPrint("net", "%s : Already processed block %s, skipping ProcessNewBlock()\n", __func__, block.GetHash().GetHex());
@@ -6596,7 +6596,7 @@ bool ProcessMessages(CNode* pfrom)
 bool SendMessages(CNode* pto, bool fSendTrickle)
 {
     {
-        // Don't send anything until we get their verssphx message
+        // Don't send anything until we get their version message
         if (pto->nVerssphx == 0)
             return true;
 

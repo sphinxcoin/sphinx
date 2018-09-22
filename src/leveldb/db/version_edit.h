@@ -57,7 +57,7 @@ class VerssphxEdit {
   }
 
   // Add the specified file at the specified number.
-  // REQUIRES: This verssphx has not been saved (see VerssphxSet::SaveTo)
+  // REQUIRES: This version has not been saved (see VerssphxSet::SaveTo)
   // REQUIRES: "smallest" and "largest" are smallest and largest keys in file
   void AddFile(int level, uint64_t file,
                uint64_t file_size,

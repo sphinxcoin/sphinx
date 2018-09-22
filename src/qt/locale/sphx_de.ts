@@ -1,4 +1,4 @@
-<TS language="de" verssphx="2.1">
+<TS language="de" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1179,7 +1179,7 @@ Adresse: %4</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>Verssphx</translation>
     </message>
     <message>
@@ -1715,7 +1715,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Prozentsatz der automatisierten xSPHX</translation>
     </message>
     <message>
-        <source>Wait with automatic converssphx to Zerocoin until enough Sphinx for this denomination is available</source>
+        <source>Wait with automatic conversion to Zerocoin until enough Sphinx for this denomination is available</source>
         <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend Sphinx für diese Stückelung verfügbar ist</translation>
     </message>
     <message>
@@ -2045,7 +2045,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Verssphx</source>
-        <translation>Programmverssphx</translation>
+        <translation>Programmversion</translation>
     </message>
     <message>
         <source>Ping Time</source>
@@ -2642,7 +2642,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Debug-Protokolldatei</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Verwendete OpenSSL Verssphx</translation>
     </message>
     <message>
@@ -2654,11 +2654,11 @@ Bitte haben Sie Geduld...</translation>
         <translation>Aktuelle Blockanzahl</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Client Verssphx</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>Verwendete BerkeleyDB Verssphx</translation>
     </message>
     <message>
@@ -2719,7 +2719,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Verssphx</source>
-        <translation>Programmverssphx</translation>
+        <translation>Programmversion</translation>
     </message>
     <message>
         <source>Services</source>
@@ -4483,7 +4483,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Inkompatibler Modus.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Inkompatible Verssphx.</translation>
     </message>
     <message>
@@ -4803,7 +4803,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Warnung</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Warnung: Diese Verssphx is veraltet, Aktualisierung erforderlich!</translation>
     </message>
     <message>

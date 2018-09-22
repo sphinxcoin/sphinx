@@ -7,7 +7,7 @@ Before every release candidate:
 
 Before every minor and major release:
 
-* Update verssphx in `configure.ac` (don't forget to set `CLIENT_VERSSPHX_IS_RELEASE` to `true`)
+* Update version in `configure.ac` (don't forget to set `CLIENT_VERSSPHX_IS_RELEASE` to `true`)
 * Write release notes (see below)
 
 Before every major release:
@@ -15,7 +15,7 @@ Before every major release:
 * Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/bitcoin/bitcoin/pull/7415) for an example.
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
 * Update `src/chainparams.cpp` with statistics about the transaction count and rate.
-* Update verssphx of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
+* Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
 
 ### First time / New builders
 
@@ -33,16 +33,16 @@ Check out the source code in the following directory hierarchy.
 
 Write release notes. git shortlog helps a lot, for example:
 
-    git shortlog --no-merges v(current verssphx, e.g. 0.7.2)..v(new verssphx, e.g. 0.8.0)
+    git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.8.0)
 
 
 Generate list of authors:
 
     git log --format='%aN' "$*" | sort -ui | sed -e 's/^/- /'
 
-Tag verssphx (or release candidate) in git
+Tag version (or release candidate) in git
 
-    git tag -s v(new verssphx, e.g. 0.8.0)
+    git tag -s v(new version, e.g. 0.8.0)
 
 ### Setup and perform Gitian builds
 
@@ -52,7 +52,7 @@ Setup Gitian descriptors:
 
     pushd ./sphx
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
-    export VERSSPHX=(new verssphx, e.g. 0.8.0)
+    export VERSSPHX=(new version, e.g. 0.8.0)
     git fetch
     git checkout v${VERSSPHX}
     popd
@@ -69,7 +69,7 @@ Ensure gitian-builder is up-to-date:
     git pull
     popd
 
-### Fetch and create inputs: (first time, or when dependency verssphxs change)
+### Fetch and create inputs: (first time, or when dependency versions change)
 
     pushd ./gitian-builder
     mkdir -p inputs
@@ -264,7 +264,7 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - Optionally twitter, reddit /r/sphx, ... but this will usually sort out itself
 
-  - Archive release notes for the new verssphx to `doc/release-notes/` (branch `master` and branch of the release)
+  - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
   - Create a [new GitHub release](https://github.com/cevap/sphx/releases/new) with a link to the archived release notes.
 

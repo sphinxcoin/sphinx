@@ -1,4 +1,4 @@
-<TS language="fi" verssphx="2.1">
+<TS language="fi" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -2591,8 +2591,8 @@ Please check the address and try again.</source>
         <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko korruptoitunut</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat: Wallet requires newer verssphx of Sphinx Core</source>
-        <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko vaatii uudemman verssphx Sphinx Coresta</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Sphinx Core</source>
+        <translation>Virhe ladattaessa wallet.dat tiedostoa: Lompakko vaatii uudemman version Sphinx Coresta</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>
@@ -2623,7 +2623,7 @@ Please check the address and try again.</source>
         <translation>Yhteensopimaton tila.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Yhteensopimaton versio.</translation>
     </message>
     <message>
@@ -2771,7 +2771,7 @@ Please check the address and try again.</source>
         <translation>Varoitus</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Varoitus: Tämä versio on vanha, päivitys vaadittu!</translation>
     </message>
     <message>

@@ -71,7 +71,7 @@ static int secp256k1_eckey_privkey_parse(secp256k1_scalar_t *key, const unsigned
     privkey += lenb;
     if (end < privkey+len)
         return 0;
-    /* sequence element 0: verssphx number (=1) */
+    /* sequence element 0: version number (=1) */
     if (end < privkey+3 || privkey[0] != 0x02 || privkey[1] != 0x01 || privkey[2] != 0x01)
         return 0;
     privkey += 3;

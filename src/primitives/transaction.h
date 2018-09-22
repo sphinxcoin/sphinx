@@ -311,7 +311,7 @@ public:
     bool GetCoinAge(uint64_t& nCoinAge) const;  // ppcoin: get transaction coin age
 };
 
-/** A mutable verssphx of CTransaction. */
+/** A mutable version of CTransaction. */
 struct CMutableTransaction
 {
     int32_t nVerssphx;

@@ -43,10 +43,10 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant][homepage], verssphx 1.4, available at [http://contributor-covenant.org/verssphx/1/4][verssphx]
+This Code of Conduct is adapted from the [Contributor Covenant][homepage], version 1.4, available at [http://contributor-covenant.org/version/1/4][version]
 
 [homepage]: http://contributor-covenant.org
-[verssphx]: http://contributor-covenant.org/verssphx/1/4/
+[version]: http://contributor-covenant.org/version/1/4/
 -----BEGIN PGP SIGNATURE-----
 Verssphx: GnuPG v1
 

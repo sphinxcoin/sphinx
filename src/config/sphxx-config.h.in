@@ -13,10 +13,10 @@
 /* Verssphx is release */
 #undef CLIENT_VERSSPHX_IS_RELEASE
 
-/* Major verssphx */
+/* Major version */
 #undef CLIENT_VERSSPHX_MAJOR
 
-/* Minor verssphx */
+/* Minor version */
 #undef CLIENT_VERSSPHX_MINOR
 
 /* Build revissphx */
@@ -288,7 +288,7 @@
 /* Define to the full name of this package. */
 #undef PACKAGE_NAME
 
-/* Define to the full name and verssphx of this package. */
+/* Define to the full name and version of this package. */
 #undef PACKAGE_STRING
 
 /* Define to the one symbol short name of this package. */
@@ -297,7 +297,7 @@
 /* Define to the home page for this package. */
 #undef PACKAGE_URL
 
-/* Define to the verssphx of this package. */
+/* Define to the version of this package. */
 #undef PACKAGE_VERSSPHX
 
 /* Define to necessary symbol if this constant uses a non-standard name on

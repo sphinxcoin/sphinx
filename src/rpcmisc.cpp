@@ -7,7 +7,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "init.h"
 #include "main.h"
 #include "masternode-sync.h"
@@ -53,9 +53,9 @@ UniValue getinfo(const UniValue& params, bool fHelp)
             "Returns an object containing various state info.\n"
             "\nResult:\n"
             "{\n"
-            "  \"verssphx\": xxxxx,           (numeric) the server verssphx\n"
-            "  \"protocolverssphx\": xxxxx,   (numeric) the protocol verssphx\n"
-            "  \"walletverssphx\": xxxxx,     (numeric) the wallet verssphx\n"
+            "  \"version\": xxxxx,           (numeric) the server version\n"
+            "  \"protocolversion\": xxxxx,   (numeric) the protocol version\n"
+            "  \"walletversion\": xxxxx,     (numeric) the wallet version\n"
             "  \"balance\": xxxxxxx,         (numeric) the total sphx balance of the wallet (excluding zerocoins)\n"
             "  \"zerocoinbalance\": xxxxxxx, (numeric) the total zerocoin balance of the wallet\n"
             "  \"blocks\": xxxxxx,           (numeric) the current number of blocks processed in the server\n"
@@ -98,11 +98,11 @@ UniValue getinfo(const UniValue& params, bool fHelp)
     GetProxy(NET_IPV4, proxy);
 
     UniValue obj(UniValue::VOBJ);
-    obj.push_back(Pair("verssphx", FormatFullVerssphx()));
-    obj.push_back(Pair("protocolverssphx", PROTOCOL_VERSSPHX));
+    obj.push_back(Pair("version", FormatFullVerssphx()));
+    obj.push_back(Pair("protocolversion", PROTOCOL_VERSSPHX));
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
-        obj.push_back(Pair("walletverssphx", pwalletMain->GetVerssphx()));
+        obj.push_back(Pair("walletversion", pwalletMain->GetVerssphx()));
         obj.push_back(Pair("balance", ValueFromAmount(pwalletMain->GetBalance())));
         obj.push_back(Pair("zerocoinbalance", ValueFromAmount(pwalletMain->GetZerocoinBalance(true))));
     }

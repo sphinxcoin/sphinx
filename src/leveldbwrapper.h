@@ -5,11 +5,11 @@
 #ifndef BITCOIN_LEVELDBWRAPPER_H
 #define BITCOIN_LEVELDBWRAPPER_H
 
-#include "clientverssphx.h"
+#include "clientversion.h"
 #include "serialize.h"
 #include "streams.h"
 #include "util.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <boost/filesystem/path.hpp>
 

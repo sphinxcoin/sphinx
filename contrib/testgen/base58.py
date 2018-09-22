@@ -87,16 +87,16 @@ def b58decode_chk(v):
     else:
         return None
 
-def get_bcaddress_verssphx(strAddress):
-    """ Returns None if strAddress is invalid.  Otherwise returns integer verssphx of address. """
+def get_bcaddress_version(strAddress):
+    """ Returns None if strAddress is invalid.  Otherwise returns integer version of address. """
     addr = b58decode_chk(strAddress)
     if addr is None or len(addr)!=21: return None
-    verssphx = addr[0]
-    return ord(verssphx)
+    version = addr[0]
+    return ord(version)
 
 if __name__ == '__main__':
     # Test case (from http://gitorious.org/bitcoin/python-base58.git)
-    assert get_bcaddress_verssphx('15VjRaDX9zpbA8LVnbrCAFzrVzN7ixHNsC') is 0
+    assert get_bcaddress_version('15VjRaDX9zpbA8LVnbrCAFzrVzN7ixHNsC') is 0
     _ohai = 'o hai'.encode('ascii')
     _tmp = b58encode(_ohai)
     assert _tmp == 'DYB3oMS'

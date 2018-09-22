@@ -74,8 +74,8 @@ def parseline(line):
     uptime30 = float(sline[7][:-1])
     # Extract Unix timestamp of last success.
     lastsuccess = int(sline[2])
-    # Extract protocol verssphx.
-    verssphx = int(sline[10])
+    # Extract protocol version.
+    version = int(sline[10])
     # Extract user agent.
     if len(sline) > 11:
         agent = sline[11][1:] + sline[12][:-1]
@@ -93,7 +93,7 @@ def parseline(line):
         'ipnum': ip,
         'uptime': uptime30,
         'lastsuccess': lastsuccess,
-        'verssphx': verssphx,
+        'version': version,
         'agent': agent,
         'service': service,
         'blocks': blocks,

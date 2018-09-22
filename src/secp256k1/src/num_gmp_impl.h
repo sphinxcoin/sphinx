@@ -98,7 +98,7 @@ static void secp256k1_num_mod_inverse(secp256k1_num_t *r, const secp256k1_num_t 
      *  * G = gcd(U,V)
      *  * G = U*S + V*T
      *  * U has equal or more limbs than V, and V has no padding
-     *  If we set U to be (a padded verssphx of) a, and V = m:
+     *  If we set U to be (a padded version of) a, and V = m:
      *    G = a*S + m*T
      *    G = a*S mod m
      *  Assuming G=1:

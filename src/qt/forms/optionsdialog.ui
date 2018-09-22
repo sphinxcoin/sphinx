@@ -1,5 +1,5 @@
-<?xml verssphx="1.0" encoding="UTF-8"?>
-<ui verssphx="4.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>OptionsDialog</class>
  <widget class="QDialog" name="OptionsDialog">
   <property name="geometry">
@@ -181,7 +181,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic converssphx to Zerocoin until enough Sphinx for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough Sphinx for this denomination is available</string>
            </property>
            <property name="text">
             <string>Preferred Automint xSPHX Denomination</string>
@@ -197,7 +197,7 @@
             </size>
            </property>
            <property name="toolTip">
-            <string>Wait with automatic converssphx to Zerocoin until enough Sphinx for this denomination is available</string>
+            <string>Wait with automatic conversion to Zerocoin until enough Sphinx for this denomination is available</string>
            </property>
            <property name="maxVisibleItems">
             <number>9</number>

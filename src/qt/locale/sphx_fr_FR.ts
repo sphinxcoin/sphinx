@@ -1,4 +1,4 @@
-<TS language="fr_FR" verssphx="2.1">
+<TS language="fr_FR" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -880,8 +880,8 @@ Adresse : %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
-        <translation>verssphx</translation>
+        <source>version</source>
+        <translation>version</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
@@ -1225,7 +1225,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Nombre actuel de bloques</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Verssphx client</translation>
     </message>
     <message>

@@ -17,7 +17,7 @@ Specific tools for developers working on this repository.
 Contains the script `github-merge.sh` for merging github pull requests securely and signing them using GPG.
 
 ### [Linearize](/contrib/linearize) ###
-Construct a linear, no-fork, best verssphx of the blockchain.
+Construct a linear, no-fork, best version of the blockchain.
 
 ### [Qos](/contrib/qos) ###
 

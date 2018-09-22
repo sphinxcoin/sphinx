@@ -204,7 +204,7 @@ bool CECKey::Verify(const uint256& hash, const std::vector<unsigned char>& vchSi
     if (vchSig.empty())
         return false;
 
-    // New verssphxs of OpenSSL will reject non-canonical DER signatures. de/re-serialize first.
+    // New versions of OpenSSL will reject non-canonical DER signatures. de/re-serialize first.
     unsigned char* norm_der = NULL;
     ECDSA_SIG* norm_sig = ECDSA_SIG_new();
     const unsigned char* sigptr = &vchSig[0];

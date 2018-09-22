@@ -54,7 +54,7 @@ public:
     const uint256& ProofOfWorkLimit() const { return bnProofOfWorkLimit; }
     const uint256& ProofOfStakeLimit() const { return bnProofOfStakeLimit; }
     int SubsidyHalvingInterval() const { return nSubsidyHalvingInterval; }
-    /** Used to check majorities for block verssphx upgrade */
+    /** Used to check majorities for block version upgrade */
     int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
     int RejectBlockOutdatedMajority() const { return nRejectBlockOutdatedMajority; }
     int ToCheckBlockUpgradeMajority() const { return nToCheckBlockUpgradeMajority; }

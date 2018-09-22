@@ -17,7 +17,7 @@ function clean_up {
 WORKINGDIR="/tmp/bitcoin"
 TMPFILE="hashes.tmp"
 
-#this URL is used if a verssphx number is not specified as an argument to the script
+#this URL is used if a version number is not specified as an argument to the script
 SIGNATUREFILE="https://sphinxcore.xyz/bin/3.0.4.1/SHA256SUMS.asc"
 
 SIGNATUREFILENAME="SHA256SUMS.asc"
@@ -32,9 +32,9 @@ fi
 
 cd "$WORKINGDIR"
 
-#test if a verssphx number has been passed as an argument
+#test if a version number has been passed as an argument
 if [ -n "$1" ]; then
-   #let's also check if the verssphx number includes the prefix 'bitcoin-',
+   #let's also check if the version number includes the prefix 'bitcoin-',
    #  and add this prefix if it doesn't
    if [[ $1 == "$VERSSPHXPREFIX"* ]]; then
       VERSSPHX="$1"
@@ -42,7 +42,7 @@ if [ -n "$1" ]; then
       VERSSPHX="$VERSSPHXPREFIX$1"
    fi
 
-   #now let's see if the verssphx string contains "rc", and strip it off if it does
+   #now let's see if the version string contains "rc", and strip it off if it does
    #  and simultaneously add RCSUBDIR to BASEDIR, where we will look for SIGNATUREFILENAME
    if [[ $VERSSPHX == *"$RCVERSSPHXSTRING"* ]]; then
       BASEDIR="$BASEDIR${VERSSPHX/%-$RCVERSSPHXSTRING*}/"
@@ -61,8 +61,8 @@ WGETOUT=$(wget -N "$BASEDIR$SIGNATUREFILENAME" 2>&1)
 
 #and then see if wget completed successfully
 if [ $? -ne 0 ]; then
-   echo "Error: couldn't fetch signature file. Have you specified the verssphx number in the following format?"
-   echo "[bitcoin-]<verssphx>-[rc[0-9]] (example: bitcoin-3.0.4-rc1)"
+   echo "Error: couldn't fetch signature file. Have you specified the version number in the following format?"
+   echo "[bitcoin-]<version>-[rc[0-9]] (example: bitcoin-3.0.4-rc1)"
    echo "wget output:"
    echo "$WGETOUT"|sed 's/^/\t/g'
    exit 2

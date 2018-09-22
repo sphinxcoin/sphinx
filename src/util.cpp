@@ -94,7 +94,7 @@
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
 // See also: http://stackoverflow.com/questions/10020179/compilation-fail-in-boost-librairies-program-options
-//           http://clang.debian.net/status.php?verssphx=3.0&key=CANNOT_FIND_FUNCTION
+//           http://clang.debian.net/status.php?version=3.0&key=CANNOT_FIND_FUNCTION
 namespace boost
 {
 namespace program_options
@@ -640,7 +640,7 @@ int RaiseFileDescriptorLimit(int nMinFD)
 void AllocateFileRange(FILE* file, unsigned int offset, unsigned int length)
 {
 #if defined(WIN32)
-    // Windows-specific verssphx
+    // Windows-specific version
     HANDLE hFile = (HANDLE)_get_osfhandle(_fileno(file));
     LARGE_INTEGER nFileSize;
     int64_t nEndPos = (int64_t)offset + length;
@@ -649,7 +649,7 @@ void AllocateFileRange(FILE* file, unsigned int offset, unsigned int length)
     SetFilePointerEx(hFile, nFileSize, 0, FILE_BEGIN);
     SetEndOfFile(hFile);
 #elif defined(MAC_OSX)
-    // OSX specific verssphx
+    // OSX specific version
     fstore_t fst;
     fst.fst_flags = F_ALLOCATECONTIG;
     fst.fst_posmode = F_PEOFPOSMODE;
@@ -666,7 +666,7 @@ void AllocateFileRange(FILE* file, unsigned int offset, unsigned int length)
     off_t nEndPos = (off_t)offset + length;
     posix_fallocate(fileno(file), 0, nEndPos);
 #else
-    // Fallback verssphx
+    // Fallback version
     // TODO: just write one byte per block
     static const char buf[65536] = {};
     fseek(file, offset, SEEK_SET);

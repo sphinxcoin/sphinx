@@ -13,7 +13,7 @@
 #include "netbase.h"
 #include "serialize.h"
 #include "uint256.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include <stdint.h>
 #include <string>
@@ -69,7 +69,7 @@ enum {
 
     // NODE_BLOOM means the node is capable and willing to handle bloom-filtered connections.
     // Bitcoin Core nodes used to support this by default, without advertising this bit,
-    // but no longer do as of protocol verssphx 70011 (= NO_BLOOM_VERSSPHX)
+    // but no longer do as of protocol version 70011 (= NO_BLOOM_VERSSPHX)
     NODE_BLOOM = (1 << 2),
 
 	// NODE_BLOOM_WITHOUT_MN means the node has the same features as NODE_BLOOM with the only difference

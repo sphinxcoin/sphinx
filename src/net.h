@@ -307,7 +307,7 @@ public:
     int nVerssphx;
     // strSubVer is whatever byte array we read from the wire. However, this field is intended
     // to be printed out, displayed to humans in various forms and so on. So we sanitize it and
-    // store the sanitized verssphx in cleanSubVer. The original should be used when dealing with
+    // store the sanitized version in cleanSubVer. The original should be used when dealing with
     // the network or wire types and the cleaned string used when displayed or logged.
     std::string strSubVer, cleanSubVer;
     bool fWhitelisted; // This peer can bypass DoS banning.
@@ -318,8 +318,8 @@ public:
     bool fSuccessfullyConnected;
     bool fDisconnect;
     // We use fRelayTxes for two purposes -
-    // a) it allows us to not relay tx invs before receiving the peer's verssphx message
-    // b) the peer may tell us in their verssphx message that we should not relay tx invs
+    // a) it allows us to not relay tx invs before receiving the peer's version message
+    // b) the peer may tell us in their version message that we should not relay tx invs
     //    until they have initialized their bloom filter.
     bool fRelayTxes;
     // Should be 'true' only if we connected to this node to actually mix funds.
@@ -695,7 +695,7 @@ public:
     // node's peers drop it. If there is, an attacker
     // can isolate a node and/or try to split the network.
     // Dropping a node for sending stuff that is invalid
-    // now but might be valid in a later verssphx is also
+    // now but might be valid in a later version is also
     // dangerous, because it can cause a network split
     // between nodes running old code and nodes running
     // new code.

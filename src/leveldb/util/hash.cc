@@ -8,7 +8,7 @@
 
 // The FALLTHROUGH_INTENDED macro can be used to annotate implicit fall-through
 // between switch labels. The real definition should be provided externally.
-// This one is a fallback verssphx for unsupported compilers.
+// This one is a fallback version for unsupported compilers.
 #ifndef FALLTHROUGH_INTENDED
 #define FALLTHROUGH_INTENDED do { } while (0)
 #endif

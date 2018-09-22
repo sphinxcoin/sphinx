@@ -15,7 +15,7 @@
 #include "db/db_impl.h"
 #include "db/filename.h"
 #include "db/log_format.h"
-#include "db/verssphx_set.h"
+#include "db/version_set.h"
 #include "util/logging.h"
 #include "util/testharness.h"
 #include "util/testutil.h"

@@ -245,7 +245,7 @@ protected:
 public:
     /**
      * serialized format:
-     * * verssphx byte (currently 1)
+     * * version byte (currently 1)
      * * 0x20 + nKey (serialized as if it were a vector, for backward compatibility)
      * * nNew
      * * nTried
@@ -257,7 +257,7 @@ public:
      *   * for each element: index
      *
      * 2**30 is xorred with the number of buckets to make addrman deserializer v0 detect it
-     * as incompatible. This is necessary because it did not check the verssphx number on
+     * as incompatible. This is necessary because it did not check the version number on
      * deserialization.
      *
      * Notice that vvTried, mapAddr and vVector are never encoded explicitly;

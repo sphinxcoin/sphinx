@@ -287,10 +287,10 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
     connect(ui->btn_reindex, SIGNAL(clicked()), this, SLOT(walletReindex()));
     connect(ui->btn_resync, SIGNAL(clicked()), this, SLOT(walletResync()));
 
-    // set library verssphx labels
-    ui->openSSLVerssphx->setText(SSLeay_verssphx(SSLEAY_VERSSPHX));
+    // set library version labels
+    ui->openSSLVerssphx->setText(SSLeay_version(SSLEAY_VERSSPHX));
 #ifdef ENABLE_WALLET
-    ui->berkeleyDBVerssphx->setText(DbEnv::verssphx(0, 0, 0));
+    ui->berkeleyDBVerssphx->setText(DbEnv::version(0, 0, 0));
     ui->wallet_path->setText(QString::fromStdString(GetDataDir().string() + QDir::separator().toLatin1() + GetArg("-wallet", "wallet.dat")));
 #else
     ui->label_berkeleyDBVerssphx->hide();
@@ -393,7 +393,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         ui->peerWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->peerWidget->setContextMenuPolicy(Qt::CustomContextMenu);
         ui->peerWidget->setColumnWidth(PeerTableModel::Address, ADDRESS_COLUMN_WIDTH);
-        ui->peerWidget->setColumnWidth(PeerTableModel::Subverssphx, SUBVERSSPHX_COLUMN_WIDTH);
+        ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSSPHX_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
 
@@ -894,7 +894,7 @@ void RPCConsole::updateNodeDetail(const CNodeCombinedStats* stats)
     ui->peerPingWait->setText(GUIUtil::formatPingTime(stats->nodeStats.dPingWait));
     ui->timeoffset->setText(GUIUtil::formatTimeOffset(stats->nodeStats.nTimeOffset));
     ui->peerVerssphx->setText(QString("%1").arg(QString::number(stats->nodeStats.nVerssphx)));
-    ui->peerSubverssphx->setText(QString::fromStdString(stats->nodeStats.cleanSubVer));
+    ui->peerSubversion->setText(QString::fromStdString(stats->nodeStats.cleanSubVer));
     ui->peerDirection->setText(stats->nodeStats.fInbound ? tr("Inbound") : tr("Outbound"));
     ui->peerHeight->setText(QString("%1").arg(QString::number(stats->nodeStats.nStartingHeight)));
     ui->peerWhitelisted->setText(stats->nodeStats.fWhitelisted ? tr("Yes") : tr("No"));

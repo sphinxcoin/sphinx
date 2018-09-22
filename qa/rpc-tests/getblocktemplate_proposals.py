@@ -72,7 +72,7 @@ def genmrklroot(leaflist):
     return cur[0]
 
 def template_to_bytes(tmpl, txlist):
-    blkver = pack('<L', tmpl['verssphx'])
+    blkver = pack('<L', tmpl['version'])
     mrklroot = genmrklroot(list(dblsha(a) for a in txlist))
     timestamp = pack('<L', tmpl['curtime'])
     nonce = b'\0\0\0\0'

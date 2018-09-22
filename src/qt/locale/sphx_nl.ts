@@ -1,4 +1,4 @@
-<TS language="nl" verssphx="2.1">
+<TS language="nl" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -1068,7 +1068,7 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
+        <source>version</source>
         <translation>versie</translation>
     </message>
     <message>
@@ -1721,7 +1721,7 @@ MultiSend: %1</translation>
         <translation>Debug logbestand</translation>
     </message>
     <message>
-        <source>Using OpenSSL verssphx</source>
+        <source>Using OpenSSL version</source>
         <translation>Gebruikt OpenSSL versie</translation>
     </message>
     <message>
@@ -1733,11 +1733,11 @@ MultiSend: %1</translation>
         <translation>Huidige blockaantal</translation>
     </message>
     <message>
-        <source>Client verssphx</source>
+        <source>Client version</source>
         <translation>Client versie</translation>
     </message>
     <message>
-        <source>Using BerkeleyDB verssphx</source>
+        <source>Using BerkeleyDB version</source>
         <translation>Gebruikt BerkeleyDB versie</translation>
     </message>
     <message>
@@ -2870,7 +2870,7 @@ MultiSend: %1</translation>
         <translation>Modus is niet compatibel.</translation>
     </message>
     <message>
-        <source>Incompatible verssphx.</source>
+        <source>Incompatible version.</source>
         <translation>Versie is niet compatibel.</translation>
     </message>
     <message>
@@ -3006,7 +3006,7 @@ MultiSend: %1</translation>
         <translation>Waarschuwing</translation>
     </message>
     <message>
-        <source>Warning: This verssphx is obsolete, upgrade required!</source>
+        <source>Warning: This version is obsolete, upgrade required!</source>
         <translation>Waarschuwing: Deze versie is verouderd, upgrade vereist!</translation>
     </message>
     <message>

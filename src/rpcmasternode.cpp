@@ -293,7 +293,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             "    \"outidx\": n,         (numeric) Collateral transaction output index\n"
             "    \"status\": s,         (string) Status (ENABLED/EXPIRED/REMOVE/etc)\n"
             "    \"addr\": \"addr\",      (string) Masternode Sphinx address\n"
-            "    \"verssphx\": v,        (numeric) Masternode protocol verssphx\n"
+            "    \"version\": v,        (numeric) Masternode protocol version\n"
             "    \"lastseen\": ttt,     (numeric) The time in seconds since epoch (Jan 1 1970 GMT) of the last seen\n"
             "    \"activetime\": ttt,   (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode has been active\n"
             "    \"lastpaid\": ttt,     (numeric) The time in seconds since epoch (Jan 1 1970 GMT) masternode was last paid\n"
@@ -338,7 +338,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             obj.push_back(Pair("outidx", (uint64_t)oIdx));
             obj.push_back(Pair("status", strStatus));
             obj.push_back(Pair("addr", CBitcoinAddress(mn->pubKeyCollateralAddress.GetID()).ToString()));
-            obj.push_back(Pair("verssphx", mn->protocolVerssphx));
+            obj.push_back(Pair("version", mn->protocolVerssphx));
             obj.push_back(Pair("lastseen", (int64_t)mn->lastPing.sigTime));
             obj.push_back(Pair("activetime", (int64_t)(mn->lastPing.sigTime - mn->sigTime)));
             obj.push_back(Pair("lastpaid", (int64_t)mn->GetLastPaid()));
@@ -424,7 +424,7 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
 
             "\nResult:\n"
             "{\n"
-            "  \"protocol\": xxxx,        (numeric) Protocol verssphx\n"
+            "  \"protocol\": xxxx,        (numeric) Protocol version\n"
             "  \"txhash\": \"xxxx\",      (string) Collateral transaction hash\n"
             "  \"pubkey\": \"xxxx\",      (string) MN Public key\n"
             "  \"lastseen\": xxx,       (numeric) Time since epoch of last seen\n"

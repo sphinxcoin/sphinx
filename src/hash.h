@@ -13,7 +13,7 @@
 #include "crypto/sha256.h"
 #include "serialize.h"
 #include "uint256.h"
-#include "verssphx.h"
+#include "version.h"
 
 #include "crypto/sph_blake.h"
 #include "crypto/sph_bmw.h"

@@ -90,7 +90,7 @@ CPubKey CWallet::GenerateNewKey()
     CKey secret;
     secret.MakeNewKey(fCompressed);
 
-    // Compressed public keys were introduced in verssphx 0.6.0
+    // Compressed public keys were introduced in version 0.6.0
     if (fCompressed)
         SetMinVerssphx(FEATURE_COMPRPUBKEY);
 
@@ -335,7 +335,7 @@ bool CWallet::SetMinVerssphx(enum WalletFeature nVerssphx, CWalletDB* pwalletdbI
     if (nWalletVerssphx >= nVerssphx)
         return true;
 
-    // when doing an explicit upgrade, if we pass the max verssphx permitted, upgrade all the way
+    // when doing an explicit upgrade, if we pass the max version permitted, upgrade all the way
     if (fExplicit && nVerssphx > nWalletMaxVerssphx)
         nVerssphx = FEATURE_LATEST;
 
@@ -358,7 +358,7 @@ bool CWallet::SetMinVerssphx(enum WalletFeature nVerssphx, CWalletDB* pwalletdbI
 bool CWallet::SetMaxVerssphx(int nVerssphx)
 {
     LOCK(cs_wallet); // nWalletVerssphx, nWalletMaxVerssphx
-    // cannot downgrade below current verssphx
+    // cannot downgrade below current version
     if (nWalletVerssphx > nVerssphx)
         return false;
 
@@ -584,7 +584,7 @@ bool CWallet::EncryptWallet(const SecureString& strWalletPassphrase)
             assert(false);
         }
 
-        // Encryption was introduced in verssphx 0.4.0
+        // Encryption was introduced in version 0.4.0
         SetMinVerssphx(FEATURE_WALLETCRYPT, pwalletdbEncryption, true);
 
         if (fFileBacked) {

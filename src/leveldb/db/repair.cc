@@ -32,7 +32,7 @@
 #include "db/log_writer.h"
 #include "db/memtable.h"
 #include "db/table_cache.h"
-#include "db/verssphx_edit.h"
+#include "db/version_edit.h"
 #include "db/write_batch_internal.h"
 #include "leveldb/comparator.h"
 #include "leveldb/db.h"
@@ -151,7 +151,7 @@ class Repairer {
       std::string logname = LogFileName(dbname_, logs_[i]);
       Status status = ConvertLogToTable(logs_[i]);
       if (!status.ok()) {
-        Log(options_.info_log, "Log #%llu: ignoring converssphx error: %s",
+        Log(options_.info_log, "Log #%llu: ignoring conversion error: %s",
             (unsigned long long) logs_[i],
             status.ToString().c_str());
       }
@@ -219,7 +219,7 @@ class Repairer {
     }
     delete lfile;
 
-    // Do not record a verssphx edit for this converssphx to a Table
+    // Do not record a version edit for this conversion to a Table
     // since ExtractMetaData() will also generate edits.
     FileMetaData meta;
     meta.number = next_file_number_++;

@@ -8,7 +8,7 @@
 #
 # DESCRIPTION
 #
-#   Test for the Boost C++ libraries of a particular verssphx (or newer)
+#   Test for the Boost C++ libraries of a particular version (or newer)
 #
 #   If no path to the installed boost library is given the macro searchs
 #   under /usr, /usr/local, /opt and /opt/local and evaluates the
@@ -72,16 +72,16 @@ AC_ARG_WITH([boost-libdir],
 )
 
 if test "x$want_boost" = "xyes"; then
-    boost_lib_verssphx_req=ifelse([$1], ,1.20.0,$1)
-    boost_lib_verssphx_req_shorten=`expr $boost_lib_verssphx_req : '\([[0-9]]*\.[[0-9]]*\)'`
-    boost_lib_verssphx_req_major=`expr $boost_lib_verssphx_req : '\([[0-9]]*\)'`
-    boost_lib_verssphx_req_minor=`expr $boost_lib_verssphx_req : '[[0-9]]*\.\([[0-9]]*\)'`
-    boost_lib_verssphx_req_sub_minor=`expr $boost_lib_verssphx_req : '[[0-9]]*\.[[0-9]]*\.\([[0-9]]*\)'`
-    if test "x$boost_lib_verssphx_req_sub_minor" = "x" ; then
-        boost_lib_verssphx_req_sub_minor="0"
+    boost_lib_version_req=ifelse([$1], ,1.20.0,$1)
+    boost_lib_version_req_shorten=`expr $boost_lib_version_req : '\([[0-9]]*\.[[0-9]]*\)'`
+    boost_lib_version_req_major=`expr $boost_lib_version_req : '\([[0-9]]*\)'`
+    boost_lib_version_req_minor=`expr $boost_lib_version_req : '[[0-9]]*\.\([[0-9]]*\)'`
+    boost_lib_version_req_sub_minor=`expr $boost_lib_version_req : '[[0-9]]*\.[[0-9]]*\.\([[0-9]]*\)'`
+    if test "x$boost_lib_version_req_sub_minor" = "x" ; then
+        boost_lib_version_req_sub_minor="0"
         fi
-    WANT_BOOST_VERSSPHX=`expr $boost_lib_verssphx_req_major \* 100000 \+  $boost_lib_verssphx_req_minor \* 100 \+ $boost_lib_verssphx_req_sub_minor`
-    AC_MSG_CHECKING(for boostlib >= $boost_lib_verssphx_req)
+    WANT_BOOST_VERSSPHX=`expr $boost_lib_version_req_major \* 100000 \+  $boost_lib_version_req_minor \* 100 \+ $boost_lib_version_req_sub_minor`
+    AC_MSG_CHECKING(for boostlib >= $boost_lib_version_req)
     succeeded=no
 
     dnl On 64-bit systems check for system libraries in both lib64 and lib.
@@ -159,12 +159,12 @@ if test "x$want_boost" = "xyes"; then
     AC_REQUIRE([AC_PROG_CXX])
     AC_LANG_PUSH(C++)
         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-    @%:@include <boost/verssphx.hpp>
+    @%:@include <boost/version.hpp>
     ]], [[
     #if BOOST_VERSSPHX >= $WANT_BOOST_VERSSPHX
     // Everything is okay
     #else
-    #  error Boost verssphx is too old
+    #  error Boost version is too old
     #endif
     ]])],[
         AC_MSG_RESULT(yes)
@@ -177,22 +177,22 @@ if test "x$want_boost" = "xyes"; then
 
 
     dnl if we found no boost with system layout we search for boost libraries
-    dnl built and installed without the --layout=system option or for a staged(not installed) verssphx
+    dnl built and installed without the --layout=system option or for a staged(not installed) version
     if test "x$succeeded" != "xyes"; then
         CPPFLAGS="$CPPFLAGS_SAVED"
         LDFLAGS="$LDFLAGS_SAVED"
         BOOST_CPPFLAGS=
         BOOST_LDFLAGS=
-        _verssphx=0
+        _version=0
         if test "$ac_boost_path" != ""; then
             if test -d "$ac_boost_path" && test -r "$ac_boost_path"; then
                 for i in `ls -d $ac_boost_path/include/boost-* 2>/dev/null`; do
-                    _verssphx_tmp=`echo $i | sed "s#$ac_boost_path##" | sed 's/\/include\/boost-//' | sed 's/_/./'`
-                    V_CHECK=`expr $_verssphx_tmp \> $_verssphx`
+                    _version_tmp=`echo $i | sed "s#$ac_boost_path##" | sed 's/\/include\/boost-//' | sed 's/_/./'`
+                    V_CHECK=`expr $_version_tmp \> $_version`
                     if test "$V_CHECK" = "1" ; then
-                        _verssphx=$_verssphx_tmp
+                        _version=$_version_tmp
                     fi
-                    VERSSPHX_UNDERSCORE=`echo $_verssphx | sed 's/\./_/'`
+                    VERSSPHX_UNDERSCORE=`echo $_version | sed 's/\./_/'`
                     BOOST_CPPFLAGS="-I$ac_boost_path/include/boost-$VERSSPHX_UNDERSCORE"
                 done
                 dnl if nothing found search for layout used in Windows distributions
@@ -207,17 +207,17 @@ if test "x$want_boost" = "xyes"; then
                 for ac_boost_path in /usr /usr/local /opt /opt/local ; do
                     if test -d "$ac_boost_path" && test -r "$ac_boost_path"; then
                         for i in `ls -d $ac_boost_path/include/boost-* 2>/dev/null`; do
-                            _verssphx_tmp=`echo $i | sed "s#$ac_boost_path##" | sed 's/\/include\/boost-//' | sed 's/_/./'`
-                            V_CHECK=`expr $_verssphx_tmp \> $_verssphx`
+                            _version_tmp=`echo $i | sed "s#$ac_boost_path##" | sed 's/\/include\/boost-//' | sed 's/_/./'`
+                            V_CHECK=`expr $_version_tmp \> $_version`
                             if test "$V_CHECK" = "1" ; then
-                                _verssphx=$_verssphx_tmp
+                                _version=$_version_tmp
                                 best_path=$ac_boost_path
                             fi
                         done
                     fi
                 done
 
-                VERSSPHX_UNDERSCORE=`echo $_verssphx | sed 's/\./_/'`
+                VERSSPHX_UNDERSCORE=`echo $_version | sed 's/\./_/'`
                 BOOST_CPPFLAGS="-I$best_path/include/boost-$VERSSPHX_UNDERSCORE"
                 if test "$ac_boost_lib_path" = ""; then
                     for libsubdir in $libsubdirs ; do
@@ -232,10 +232,10 @@ if test "x$want_boost" = "xyes"; then
                     if ls "$BOOST_ROOT/stage/$libsubdir/libboost_"* >/dev/null 2>&1 ; then break; fi
                 done
                 if test -d "$BOOST_ROOT" && test -r "$BOOST_ROOT" && test -d "$BOOST_ROOT/stage/$libsubdir" && test -r "$BOOST_ROOT/stage/$libsubdir"; then
-                    verssphx_dir=`expr //$BOOST_ROOT : '.*/\(.*\)'`
-                    stage_verssphx=`echo $verssphx_dir | sed 's/boost_//' | sed 's/_/./g'`
-                        stage_verssphx_shorten=`expr $stage_verssphx : '\([[0-9]]*\.[[0-9]]*\)'`
-                    V_CHECK=`expr $stage_verssphx_shorten \>\= $_verssphx`
+                    version_dir=`expr //$BOOST_ROOT : '.*/\(.*\)'`
+                    stage_version=`echo $version_dir | sed 's/boost_//' | sed 's/_/./g'`
+                        stage_version_shorten=`expr $stage_version : '\([[0-9]]*\.[[0-9]]*\)'`
+                    V_CHECK=`expr $stage_version_shorten \>\= $_version`
                     if test "$V_CHECK" = "1" -a "$ac_boost_lib_path" = "" ; then
                         AC_MSG_NOTICE(We will use a staged boost library from $BOOST_ROOT)
                         BOOST_CPPFLAGS="-I$BOOST_ROOT"
@@ -252,12 +252,12 @@ if test "x$want_boost" = "xyes"; then
 
         AC_LANG_PUSH(C++)
             AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
-        @%:@include <boost/verssphx.hpp>
+        @%:@include <boost/version.hpp>
         ]], [[
         #if BOOST_VERSSPHX >= $WANT_BOOST_VERSSPHX
         // Everything is okay
         #else
-        #  error Boost verssphx is too old
+        #  error Boost version is too old
         #endif
         ]])],[
             AC_MSG_RESULT(yes)
@@ -269,10 +269,10 @@ if test "x$want_boost" = "xyes"; then
     fi
 
     if test "$succeeded" != "yes" ; then
-        if test "$_verssphx" = "0" ; then
-            AC_MSG_NOTICE([[We could not detect the boost libraries (verssphx $boost_lib_verssphx_req_shorten or higher). If you have a staged boost library (still not installed) please specify \$BOOST_ROOT in your environment and do not give a PATH to --with-boost option.  If you are sure you have boost installed, then check your verssphx number looking in <boost/verssphx.hpp>. See http://randspringer.de/boost for more documentation.]])
+        if test "$_version" = "0" ; then
+            AC_MSG_NOTICE([[We could not detect the boost libraries (version $boost_lib_version_req_shorten or higher). If you have a staged boost library (still not installed) please specify \$BOOST_ROOT in your environment and do not give a PATH to --with-boost option.  If you are sure you have boost installed, then check your version number looking in <boost/version.hpp>. See http://randspringer.de/boost for more documentation.]])
         else
-            AC_MSG_NOTICE([Your boost libraries seems to old (verssphx $_verssphx).])
+            AC_MSG_NOTICE([Your boost libraries seems to old (version $_version).])
         fi
         # execute ACTION-IF-NOT-FOUND (if present):
         ifelse([$3], , :, [$3])

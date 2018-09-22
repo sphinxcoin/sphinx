@@ -1,4 +1,4 @@
-<TS language="it" verssphx="2.1">
+<TS language="it" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
@@ -884,8 +884,8 @@ MultiSend: %1</translation>
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>verssphx</source>
-        <translation>verssphxe</translation>
+        <source>version</source>
+        <translation>versione</translation>
     </message>
     <message>
         <source>Sphinx Core</source>

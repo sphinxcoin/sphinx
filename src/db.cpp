@@ -19,7 +19,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
-#include <boost/verssphx.hpp>
+#include <boost/version.hpp>
 
 #include <openssl/rand.h>
 
@@ -264,7 +264,7 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
                 throw runtime_error(strprintf("CDB : Error %d, can't open database %s", ret, strFile));
             }
 
-            if (fCreate && !Exists(string("verssphx"))) {
+            if (fCreate && !Exists(string("version"))) {
                 bool fTmp = fReadOnly;
                 fReadOnly = false;
                 WriteVerssphx(CLIENT_VERSSPHX);
@@ -375,8 +375,8 @@ bool CDB::Rewrite(const string& strFile, const char* pszSkip)
                             if (pszSkip &&
                                 strncmp(&ssKey[0], pszSkip, std::min(ssKey.size(), strlen(pszSkip))) == 0)
                                 continue;
-                            if (strncmp(&ssKey[0], "\x07verssphx", 8) == 0) {
-                                // Update verssphx:
+                            if (strncmp(&ssKey[0], "\x07version", 8) == 0) {
+                                // Update version:
                                 ssValue.clear();
                                 ssValue << CLIENT_VERSSPHX;
                             }

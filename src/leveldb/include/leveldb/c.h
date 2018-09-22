@@ -277,11 +277,11 @@ extern void leveldb_env_destroy(leveldb_env_t*);
    malloc()-ed memory returned by this library. */
 extern void leveldb_free(void* ptr);
 
-/* Return the major verssphx number for this release. */
-extern int leveldb_major_verssphx();
+/* Return the major version number for this release. */
+extern int leveldb_major_version();
 
-/* Return the minor verssphx number for this release. */
-extern int leveldb_minor_verssphx();
+/* Return the minor version number for this release. */
+extern int leveldb_minor_version();
 
 #ifdef __cplusplus
 }  /* end extern "C" */

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 #
-# linearize-hashes.py:  List blocks in a linear, no-fork verssphx of the chain.
+# linearize-hashes.py:  List blocks in a linear, no-fork version of the chain.
 #
 # Copyright (c) 2013-2014 The Bitcoin developers
 # Copyright (c) 2015-2018 The PIVX developers
@@ -41,7 +41,7 @@ class BitcoinRPC:
 
 	@staticmethod
 	def build_request(idx, method, params):
-		obj = { 'verssphx' : '1.1',
+		obj = { 'version' : '1.1',
 			'method' : method,
 			'id' : idx }
 		if params is None:

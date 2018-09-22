@@ -36,8 +36,8 @@ static leveldb::Options GetOptions(size_t nCacheSize)
     options.compresssphx = leveldb::kNoCompresssphx;
     options.max_open_files = 64;
     if (leveldb::kMajorVerssphx > 1 || (leveldb::kMajorVerssphx == 1 && leveldb::kMinorVerssphx >= 16)) {
-        // LevelDB verssphxs before 1.16 consider short writes to be corruption. Only trigger error
-        // on corruption in later verssphxs.
+        // LevelDB versions before 1.16 consider short writes to be corruption. Only trigger error
+        // on corruption in later versions.
         options.paranoid_checks = true;
     }
     return options;

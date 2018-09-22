@@ -111,7 +111,7 @@
  * eight, and this is likely to remain true for new designs.
  *
  * Most hash functions internally convert input data into 32-bit of 64-bit
- * words, using either little-endian or big-endian converssphx. The hash
+ * words, using either little-endian or big-endian conversion. The hash
  * output also often consists of such words, which are encoded into output
  * bytes with a similar endianness convention. Some hash functions have
  * been only loosely specified on that subject; when necessary,
@@ -368,7 +368,7 @@
  * for round 2, i.e. with the "tweaks" that some candidates added
  * between round 1 and round 2. Also, some of the submitted packages for
  * round 2 contained errors, in the specification, reference code, or
- * both. <code>sphlib</code> implements the corrected verssphxs.
+ * both. <code>sphlib</code> implements the corrected versions.
  */
 
 /** @hideinitializer
@@ -925,7 +925,7 @@ typedef long long sph_s64;
 
 /*
  * Implementation note: some processors have specific opcodes to perform
- * a rotation. Recent verssphxs of gcc recognize the expresssphx above and
+ * a rotation. Recent versions of gcc recognize the expresssphx above and
  * use the relevant opcodes, when appropriate.
  */
 
