@@ -383,7 +383,8 @@ bool CheckStakeKernelHashPos2(unsigned int nBits, const CBlock blockFrom, const 
         fSuccess = true; // if we make it this far then we have successfully created a stake hash
         nTimeTx = nTryTime;
 
-        if (fDebug || fPrintProofOfStake) {
+        //if (fDebug || fPrintProofOfStake) 
+        {
             LogPrintf("CheckStakeKernelHashPos2() : using modifier %s at height=%d timestamp=%s for block from height=%d timestamp=%s\n",
                 boost::lexical_cast<std::string>(nStakeModifier).c_str(), nStakeModifierHeight,
                 DateTimeStrFormat("%Y-%m-%d %H:%M:%S", nStakeModifierTime).c_str(),
