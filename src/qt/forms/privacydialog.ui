@@ -1594,8 +1594,8 @@ Immature: confirmed, but less than 2 mints of the same denomination after it was
                            <string>Show the current status of automatic xSPHX minting.
 
 To change the status (restart required):
-- enable: add 'enablezeromint=1' to sphinxcoin.conf
-- disable: add 'enablezeromint=0' to sphinxcoin.conf
+- enable: add 'enablezeromint=1' to Sphinxcoin.conf
+- disable: add 'enablezeromint=0' to Sphinxcoin.conf
 
 To change the percentage (no restart required):
 - menu Settings-&gt;Options-&gt;Percentage of autominted xSPHX
