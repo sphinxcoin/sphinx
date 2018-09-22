@@ -1127,7 +1127,7 @@ Address: %4
     </message>
     <message>
         <location filename="../blockexplorer.cpp" line="+476"/>
-        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (sphinxcoin.conf).</source>
+        <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (Sphinxcoin.conf).</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2819,13 +2819,13 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
     </message>
     <message>
         <location line="+1"/>
-        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in sphinxcoin.conf.</source>
+        <source>To disable AutoMint add &apos;enablezeromint=0&apos; in Sphinxcoin.conf.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
         <source>AutoMint is currently disabled.
-To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in sphinxcoin.conf</source>
+To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1&apos; in Sphinxcoin.conf</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
