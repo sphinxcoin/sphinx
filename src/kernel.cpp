@@ -325,7 +325,6 @@ bool CheckStakeKernelHashPos2(unsigned int nBits, const CBlock blockFrom, const 
     int64_t nValueIn = txPrev.vout[prevout.n].nValue;
     unsigned int nTimeBlockFrom = blockFrom.GetBlockTime();
     unsigned int nTimeTxFrom = txPrev.nTime;
-LogPrintf("CheckStakeKernelHashPos2()\n");
     if (nTimeTx < nTimeBlockFrom) // Transaction timestamp violation
         return error("CheckStakeKernelHashPos2() : nTime violation");
 

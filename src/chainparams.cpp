@@ -126,12 +126,12 @@ public:
 
         /** Height or Time Based Activations **/
         nLastPOWBlock = 220;                         // PoW Phase 3 End
-        nMidasStartHeight = 176500;                   // MIDAS startheight, first big attack
-        nMidasStartTime = 1497541280;                 // Time when MIDAS started and old algorithm stopped
-        nDGWStartHeight = 550000;                     // Startheight of DGW
-        nDGWStartTime = 2521851265;                   // GMT: Saturday, March 24, 2018 12:27:45 AM - Exact time when DGW algorithm starts and old MIDAS stops
-        nZerocoinStartHeight = 500000001;                // Zerocoin start height, starts together with DGW
-        nZerocoinStartTime = 2521851265;              // GMT: Saturday, March 24, 2018 12:27:45 AM, 
+        nMidasStartHeight = 55550000;                   // MIDAS startheight, first big attack
+        nMidasStartTime = 1837631395;                 // Time when MIDAS started and old algorithm stopped
+        nDGWStartHeight = 55550000;                     // Startheight of DGW
+        nDGWStartTime = 1837631395;              // GMT: Saturday, March 24, 2018 12:27:45 AM - Exact time when DGW algorithm starts and old MIDAS stops
+        nZerocoinStartHeight = 55550000;                // Zerocoin start height, starts together with DGW
+        nZerocoinStartTime = 1837631395;             // GMT: Saturday, March 24, 2018 12:27:45 AM, 
         nBlockEnforceSerialRange = 550137;            // Enforce serial range starting this block
         nBlockRecalculateAccumulators = 550137;       // Trigger a recalculation of accumulators
         nBlockFirstFraudulent = 99999999;             // 1110; //First block that bad serials emerged (currently we do not have any) *** TODO ***
@@ -185,6 +185,7 @@ public:
 	vSeeds.push_back(CDNSSeedData("s1", "s1.sphinx-coin.com"));
         vSeeds.push_back(CDNSSeedData("s2", "s2.sphinx-coin.com"));
         vSeeds.push_back(CDNSSeedData("s3", "s3.sphinx-coin.com"));
+	vSeeds.push_back(CDNSSeedData("m1", "m1.sphinx-coin.com"));
 
 
         fMiningRequiresPeers = true;
