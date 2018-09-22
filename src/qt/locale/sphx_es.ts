@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copiar la dirección seleccsphxada al portapapeles</translation>
+        <translation>Copiar la dirección seleccionada al portapapeles</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Borrar la dirección seleccsphxada de la lista</translation>
+        <translation>Borrar la dirección seleccionada de la lista</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -55,19 +55,19 @@
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>Direccsphxes de envío</translation>
+        <translation>Direcciones de envío</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>Direccsphxes de recepción</translation>
+        <translation>Direcciones de recepción</translation>
     </message>
     <message>
         <source>These are your Sphinx addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Estas son sus direccsphxes Sphinx para realizar pagos. Verifique siempre la cantidad y la dirección de recepción antes de enviar monedas.</translation>
+        <translation>Estas son sus direcciones Sphinx para realizar pagos. Verifique siempre la cantidad y la dirección de recepción antes de enviar monedas.</translation>
     </message>
     <message>
         <source>These are your Sphinx addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Estas son sus direccsphxes Sphinx para recibir pagos. Es recomendable usar una nueva dirección de recepción para cada transacción.</translation>
+        <translation>Estas son sus direcciones Sphinx para recibir pagos. Es recomendable usar una nueva dirección de recepción para cada transacción.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -83,7 +83,7 @@
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>Exportar lista de direccsphxes</translation>
+        <translation>Exportar lista de direcciones</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -95,7 +95,7 @@
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>Ha habido un error intentando guardar la lista de direccsphxes %1. Por favor inténtelo de nuevo.</translation>
+        <translation>Ha habido un error intentando guardar la lista de direcciones %1. Por favor inténtelo de nuevo.</translation>
     </message>
 </context>
 <context>
@@ -419,11 +419,11 @@
     </message>
     <message>
         <source>&amp;Transactions</source>
-        <translation>&amp;Transaccsphxes</translation>
+        <translation>&amp;Transacciones</translation>
     </message>
     <message>
         <source>Browse transaction history</source>
-        <translation>Navegar por el historial de transaccsphxes</translation>
+        <translation>Navegar por el historial de transacciones</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -443,7 +443,7 @@
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>&amp;Opcsphxes...</translation>
+        <translation>&amp;Opciones...</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -535,7 +535,7 @@
     </message>
     <message>
         <source>Show wallet repair options</source>
-        <translation>Mostrar opcsphxes de reparación de la wallet</translation>
+        <translation>Mostrar opciones de reparación de la wallet</translation>
     </message>
     <message>
         <source>Open configuration file</source>
@@ -551,11 +551,11 @@
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>&amp;Direccsphxes de envío...</translation>
+        <translation>&amp;Direcciones de envío...</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
-        <translation>Mostrar la lista y etiquetas de direccsphxes de envío usadas</translation>
+        <translation>Mostrar la lista y etiquetas de direcciones de envío usadas</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
@@ -563,7 +563,7 @@
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>Mostrar la lista de las direccsphxes y etiquetas usadas</translation>
+        <translation>Mostrar la lista de las direcciones y etiquetas usadas</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
@@ -571,15 +571,15 @@
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>&amp;Opcsphxes de linea de comandos</translation>
+        <translation>&amp;Opciones de linea de comandos</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n blocks of transaction history.</source>
-        <translation><numerusform>Procesado %n bloque del historial de transaccsphxes.</numerusform><numerusform>Procesados %n bloques del historial de transaccsphxes.</numerusform></translation>
+        <translation><numerusform>Procesado %n bloque del historial de transacciones.</numerusform><numerusform>Procesados %n bloques del historial de transacciones.</numerusform></translation>
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
-        <translation>Sincronizando datos adicsphxales: %p%</translation>
+        <translation>Sincronizando datos adicionales: %p%</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -639,11 +639,11 @@
     </message>
     <message>
         <source>Modify configuration options for SPHX</source>
-        <translation>Modificar las opcsphxes de configuración de SPHX</translation>
+        <translation>Modificar las opciones de configuración de SPHX</translation>
     </message>
     <message>
         <source>Sign messages with your Sphinx addresses to prove you own them</source>
-        <translation>Firmar mensajes con sus direccsphxes Sphinx para demostrar que le pertenecen</translation>
+        <translation>Firmar mensajes con sus direcciones Sphinx para demostrar que le pertenecen</translation>
     </message>
     <message>
         <source>Verify messages to ensure they were signed with specified Sphinx addresses</source>
@@ -691,7 +691,7 @@
     </message>
     <message>
         <source>Show the Sphinx Core help message to get a list with possible Sphinx command-line options</source>
-        <translation>Mostrar la ayuda de Sphinx Core para obtener una lista de posibles opcsphxes en línea de comandos</translation>
+        <translation>Mostrar la ayuda de Sphinx Core para obtener una lista de posibles opciones en línea de comandos</translation>
     </message>
     <message>
         <source>Sphinx Core client</source>
@@ -735,7 +735,7 @@
     </message>
     <message>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Las transaccsphxes posteriores todavía no son visibles.</translation>
+        <translation>Las transacciones posteriores todavía no son visibles.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -834,7 +834,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (sphinxcoin.conf).</source>
-        <translation>No se muestran todas las transaccsphxes. Para ver todas las transaccsphxes introduzca la línea "txindex=1" en el archivo de configuración (sphinxcoin.conf).</translation>
+        <translation>No se muestran todas las transacciones. Para ver todas las transacciones introduzca la línea "txindex=1" en el archivo de configuración (sphinxcoin.conf).</translation>
     </message>
 </context>
 <context>
@@ -888,7 +888,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>(un)select all</source>
-        <translation>(de)seleccsphxar todos</translation>
+        <translation>(de)seleccionar todos</translation>
     </message>
     <message>
         <source>toggle lock state</source>
@@ -924,7 +924,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Confirmations</source>
-        <translation>Confirmacsphxes</translation>
+        <translation>Confirmaciones</translation>
     </message>
     <message>
         <source>Confirmed</source>
@@ -1060,7 +1060,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Las transaccsphxes con alta prioridad tienen más probabilidades de ser incluidas en un bloque.</translation>
+        <translation>Las transacciones con alta prioridad tienen más probabilidades de ser incluidas en un bloque.</translation>
     </message>
     <message>
         <source>This label turns red, if the priority is smaller than "medium".</source>
@@ -1095,7 +1095,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>The label associated with this address list entry</source>
-        <translation>La etiqueta asociada con esta entrada de la libreta de direccsphxes</translation>
+        <translation>La etiqueta asociada con esta entrada de la libreta de direcciones</translation>
     </message>
     <message>
         <source>&amp;Address</source>
@@ -1103,7 +1103,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>La dirección asociada con esta entrada de la libreta de direccsphxes. Ésta sólo puede ser modificada en las direccsphxes de envío.</translation>
+        <translation>La dirección asociada con esta entrada de la libreta de direcciones. Ésta sólo puede ser modificada en las direcciones de envío.</translation>
     </message>
     <message>
         <source>New receiving address</source>
@@ -1127,7 +1127,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
-        <translation>La dirección introducida "%1" ya está en la libreta de direccsphxes.</translation>
+        <translation>La dirección introducida "%1" ya está en la libreta de direcciones.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -1181,7 +1181,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Command-line options</source>
-        <translation>Opcsphxes de línea de comandos</translation>
+        <translation>Opciones de línea de comandos</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -1189,11 +1189,11 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>command-line options</source>
-        <translation>opcsphxes de línea de comandos</translation>
+        <translation>opciones de línea de comandos</translation>
     </message>
     <message>
         <source>UI Options:</source>
-        <translation>Opcsphxes de interfaz de usuario:</translation>
+        <translation>Opciones de interfaz de usuario:</translation>
     </message>
     <message>
         <source>Choose data directory on startup (default: %u)</source>
@@ -1205,7 +1205,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
-        <translation>Seleccsphxar el idioma, por ejemplo "es_ES" (por defecto: idioma del sistema)</translation>
+        <translation>Seleccionar el idioma, por ejemplo "es_ES" (por defecto: idioma del sistema)</translation>
     </message>
     <message>
         <source>Start minimized</source>
@@ -1275,7 +1275,7 @@ MultiEnvío: %1</translation>
     </message>
     <message>
         <source>Note: Status of your masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your node should be running but you still see "MISSING" in "Status" field.</source>
-        <translation>Nota: El estado de tus nodos maestros en el monedero local podría ser incorrecto.&lt;br /&gt;Siempre espere a que el monedero sincronice la información adicsphxal y entonces compruébelo desde otro nodo&lt;br /&gt;si su nodo debería estar funcsphxando pero aún vee el mensaje "FALTA" en el campo "Estado".</translation>
+        <translation>Nota: El estado de tus nodos maestros en el monedero local podría ser incorrecto.&lt;br /&gt;Siempre espere a que el monedero sincronice la información adicional y entonces compruébelo desde otro nodo&lt;br /&gt;si su nodo debería estar funcionando pero aún vee el mensaje "FALTA" en el campo "Estado".</translation>
     </message>
     <message>
         <source>Alias</source>
@@ -1389,8 +1389,8 @@ MultiEnvío: %1</translation>
 To Add: enter percentage to give and Sphinx address to add to the MultiSend vector.
 To Delete: Enter address to delete and press delete.
 MultiSend will not be activated unless you have clicked Activate</source>
-        <translation>MultiEnvío le permite enviar automáticamente hasta el 100% de recompensa de participación o de nodo maestro a una lista de otras direccsphxes Sphinx después de su maduración.
-Para Añadir: introduzca porcentaje a enviar y las direccsphxes Sphinx a añadir al vector MultiEnvío.
+        <translation>MultiEnvío le permite enviar automáticamente hasta el 100% de recompensa de participación o de nodo maestro a una lista de otras direcciones Sphinx después de su maduración.
+Para Añadir: introduzca porcentaje a enviar y las direcciones Sphinx a añadir al vector MultiEnvío.
 Para Eliminar: Introduzca la dirección a eliminar y pulse la tecla delete.
 MultiEnvío no se activará a menos que haga usted click en Activar</translation>
     </message>
@@ -1412,7 +1412,7 @@ MultiEnvío no se activará a menos que haga usted click en Activar</translation
     </message>
     <message>
         <source>Choose an address from the address book</source>
-        <translation>Seleccsphxe una dirección de la libreta de direccsphxes</translation>
+        <translation>Seleccione una dirección de la libreta de direcciones</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -1460,7 +1460,7 @@ MultiEnvío no se activará a menos que haga usted click en Activar</translation
     </message>
     <message>
         <source>Send For Stakes</source>
-        <translation>Enviar Para Participacsphxes</translation>
+        <translation>Enviar Para Participaciones</translation>
     </message>
     <message>
         <source>Send For Masternode Rewards</source>
@@ -1525,7 +1525,7 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
     </message>
     <message>
         <source>Please select a privacy level.</source>
-        <translation>Por favor seleccsphxes un nivel de privacidad.</translation>
+        <translation>Por favor selecciones un nivel de privacidad.</translation>
     </message>
     <message>
         <source>Use 2 separate masternodes to mix funds up to 10000 SPHX</source>
@@ -1588,18 +1588,18 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
     </message>
     <message>
         <source>Select payment request file</source>
-        <translation>Seleccsphxe el fichero que contiene la solicitud de pago</translation>
+        <translation>Seleccione el fichero que contiene la solicitud de pago</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>Seleccsphxe el fichero de solicitud de pago que desea abrir</translation>
+        <translation>Seleccione el fichero de solicitud de pago que desea abrir</translation>
     </message>
 </context>
 <context>
     <name>OptionsDialog</name>
     <message>
         <source>Options</source>
-        <translation>Opcsphxes</translation>
+        <translation>Opciones</translation>
     </message>
     <message>
         <source>&amp;Main</source>
@@ -1627,19 +1627,19 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
     </message>
     <message>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
-        <translation>Si deseleccsphxa el gasto de cambio no confirmado, las entradas de una transacción&lt;br/&gt;no podrán ser usadas hasta que esa transacción tenga al menos una confirmación.&lt;br/&gt;Esto también afecta a cómo se calcula su balance actual.</translation>
+        <translation>Si deselecciona el gasto de cambio no confirmado, las entradas de una transacción&lt;br/&gt;no podrán ser usadas hasta que esa transacción tenga al menos una confirmación.&lt;br/&gt;Esto también afecta a cómo se calcula su balance actual.</translation>
     </message>
     <message>
         <source>Automatically open the Sphinx client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente el puerto del cliente Sphinx en el enrutador. Ésto sólo funcsphxa si su enrutador soporta UPnP y esta función está activada.</translation>
+        <translation>Abrir automáticamente el puerto del cliente Sphinx en el enrutador. Ésto sólo funciona si su enrutador soporta UPnP y esta función está activada.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
-        <translation>Aceptar conexsphxes del exterior</translation>
+        <translation>Aceptar conexiones del exterior</translation>
     </message>
     <message>
         <source>Allow incoming connections</source>
-        <translation>Permitir conexsphxes entrantes</translation>
+        <translation>Permitir conexiones entrantes</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1663,11 +1663,11 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>Activar funcsphxes de control de &amp;monedas</translation>
+        <translation>Activar funciones de control de &amp;monedas</translation>
     </message>
     <message>
         <source>Show additional tab listing all your masternodes in first sub-tab&lt;br/&gt;and all masternodes on the network in second sub-tab.</source>
-        <translation>Mostrar pestaña adicsphxal listando todos sus nodos maestros en la primera sub-pestaña&lt;br/&gt;y todos los nodos maestros de la red en la segunda sub-pestaña.</translation>
+        <translation>Mostrar pestaña adicional listando todos sus nodos maestros en la primera sub-pestaña&lt;br/&gt;y todos los nodos maestros de la red en la segunda sub-pestaña.</translation>
     </message>
     <message>
         <source>Show Masternodes Tab</source>
@@ -1683,12 +1683,12 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
     </message>
     <message>
         <source>The user interface language can be set here. This setting will take effect after restarting SPHX.</source>
-        <translation>El idioma de interface de usuario puede seleccsphxarse aquí. Este ajuste tomará efecto después de reiniciar SPHX.</translation>
+        <translation>El idioma de interface de usuario puede seleccionarse aquí. Este ajuste tomará efecto después de reiniciar SPHX.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
 https://www.transifex.com/cevap/cevap-translations</source>
-        <translation>¿Falta su lenguaje o la traducción está incompleta? Contribuya con las traduccsphxes aquí:
+        <translation>¿Falta su lenguaje o la traducción está incompleta? Contribuya con las traducciones aquí:
 https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
@@ -1741,7 +1741,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimizar en lugar de cerrar la aplicación cuando se cierra la ventana. Cuando active esta opción, tendrá que cerrar la aplicación seleccsphxando Salir desde el menú.</translation>
+        <translation>Minimizar en lugar de cerrar la aplicación cuando se cierra la ventana. Cuando active esta opción, tendrá que cerrar la aplicación seleccionando Salir desde el menú.</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
@@ -1764,8 +1764,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;Unidad para mostrar cantidades:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
-        <translation>Seleccsphxar la subdivisión a mostrar por defecto en la interface y al enviar monedas.</translation>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Seleccionar la subdivisión a mostrar por defecto en la interface y al enviar monedas.</translation>
     </message>
     <message>
         <source>Decimal digits</source>
@@ -1773,23 +1773,23 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>Direccsphxes web de terceras partes (p.e. un explorador de bloques) que aparecen en la pestaña de transaccsphxes como objetos contextuales del menú. %s en la dirección web es reemplazada por el identificador de la transacción. Múltiples direccsphxes web están separadas por una barra vertical (|).</translation>
+        <translation>Direcciones web de terceras partes (p.e. un explorador de bloques) que aparecen en la pestaña de transacciones como objetos contextuales del menú. %s en la dirección web es reemplazada por el identificador de la transacción. Múltiples direcciones web están separadas por una barra vertical (|).</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
-        <translation>Direccsphxes web de transaccsphxes de terceras partes</translation>
+        <translation>Direcciones web de transacciones de terceras partes</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>Opcsphxes de línea de comando activas que anulan las opcsphxes anteriores:</translation>
+        <translation>Opciones de línea de comando activas que anulan las opciones anteriores:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>Resetear todas las opcsphxes de cliente a su valor por defecto.</translation>
+        <translation>Resetear todas las opciones de cliente a su valor por defecto.</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>Opcsphxes de &amp;Reset</translation>
+        <translation>Opciones de &amp;Reset</translation>
     </message>
     <message>
         <source>&amp;OK</source>
@@ -1813,7 +1813,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Confirm options reset</source>
-        <translation>Confirmar reinicio de las opcsphxes</translation>
+        <translation>Confirmar reinicio de las opciones</translation>
     </message>
     <message>
         <source>Client restart required to activate changes.</source>
@@ -1856,7 +1856,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>Total de transaccsphxes que aún deben ser confirmadas, y todavía no cuentan en el balance disponible</translation>
+        <translation>Total de transacciones que aún deben ser confirmadas, y todavía no cuentan en el balance disponible</translation>
     </message>
     <message>
         <source>Immature:</source>
@@ -1872,11 +1872,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
-        <translation>Transaccsphxes no confirmadas a direccsphxes sólo de lectura</translation>
+        <translation>Transacciones no confirmadas a direcciones sólo de lectura</translation>
     </message>
     <message>
         <source>Staked or masternode rewards in watch-only addresses that has not yet matured</source>
-        <translation>Recompensa de participación o de nodo maestro en direccsphxes de sólo lectura que todavía no han madurado</translation>
+        <translation>Recompensa de participación o de nodo maestro en direcciones de sólo lectura que todavía no han madurado</translation>
     </message>
     <message>
         <source>Total:</source>
@@ -1888,7 +1888,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Current total balance in watch-only addresses</source>
-        <translation>Balance total actual en direccsphxes de sólo lectura</translation>
+        <translation>Balance total actual en direcciones de sólo lectura</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1896,7 +1896,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
-        <translation>Su balance actual en direccsphxes de sólo lectura</translation>
+        <translation>Su balance actual en direcciones de sólo lectura</translation>
     </message>
     <message>
         <source>Spendable:</source>
@@ -1904,7 +1904,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Recent transactions</source>
-        <translation>Transaccsphxes recientes</translation>
+        <translation>Transacciones recientes</translation>
     </message>
     <message>
         <source>out of sync</source>
@@ -2009,7 +2009,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Dirección/Nombre Host</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versión</translation>
     </message>
     <message>
@@ -2065,7 +2065,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Introduzca una etiqueta para esta dirección para añadirla a la lista de direccsphxes utilizadas</translation>
+        <translation>Introduzca una etiqueta para esta dirección para añadirla a la lista de direcciones utilizadas</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
@@ -2101,7 +2101,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Funcsphxes de Control de Monedas</translation>
+        <translation>Funciones de Control de Monedas</translation>
     </message>
     <message>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
@@ -2226,7 +2226,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Number of connections</source>
-        <translation>Número de conexsphxes</translation>
+        <translation>Número de conexiones</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -2234,7 +2234,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Startup time</source>
-        <translation>Tiempo de funcsphxamiento</translation>
+        <translation>Tiempo de funcionamiento</translation>
     </message>
     <message>
         <source>Network</source>
@@ -2314,7 +2314,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Select a peer to view detailed information.</source>
-        <translation>Seleccsphxe un nodo conectado para ver información detallada.</translation>
+        <translation>Seleccione un nodo conectado para ver información detallada.</translation>
     </message>
     <message>
         <source>Direction</source>
@@ -2325,7 +2325,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Protocolo</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versión</translation>
     </message>
     <message>
@@ -2390,23 +2390,23 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Rescan the block chain for missing wallet transactions.</source>
-        <translation>Reescanear la cadena de bloques buscando transaccsphxes que faltan en el monedero.</translation>
+        <translation>Reescanear la cadena de bloques buscando transacciones que faltan en el monedero.</translation>
     </message>
     <message>
         <source>Recover transactions 1</source>
-        <translation>Recuperar transaccsphxes 1</translation>
+        <translation>Recuperar transacciones 1</translation>
     </message>
     <message>
         <source>Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
-        <translation>Recuperar transaccsphxes desde la cadena de bloques (mantener meta-datos, p.e. propietario de la cuenta,etc).</translation>
+        <translation>Recuperar transacciones desde la cadena de bloques (mantener meta-datos, p.e. propietario de la cuenta,etc).</translation>
     </message>
     <message>
         <source>Recover transactions 2</source>
-        <translation>Recuperar transaccsphxes 2</translation>
+        <translation>Recuperar transacciones 2</translation>
     </message>
     <message>
         <source>Recover transactions from blockchain (drop meta-data).</source>
-        <translation>Recuperar transaccsphxes desde la cadena de bloques (ignorar meta-datos).</translation>
+        <translation>Recuperar transacciones desde la cadena de bloques (ignorar meta-datos).</translation>
     </message>
     <message>
         <source>Upgrade wallet format</source>
@@ -2418,11 +2418,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
-        <translation>Los botones de más abajo reiniciarán el programa con comandos especiales para reparar el monedero, solucsphxar problemas con cadenas de bloques corruptas o buscar transaccsphxes obsoletas o perdidas</translation>
+        <translation>Los botones de más abajo reiniciarán el programa con comandos especiales para reparar el monedero, solucionar problemas con cadenas de bloques corruptas o buscar transacciones obsoletas o perdidas</translation>
     </message>
     <message>
         <source>Wallet repair options.</source>
-        <translation>Opcsphxes de reparación de monedero.</translation>
+        <translation>Opciones de reparación de monedero.</translation>
     </message>
     <message>
         <source>Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
@@ -2497,7 +2497,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     <name>ReceiveCoinsDialog</name>
     <message>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
-        <translation>Reutilizar una de las direccsphxes de recepción anteriores.&lt;br&gt;Reutilizar direccsphxes de recepción tiene implicacsphxes de seguridad y privacidad.&lt;br&gt;No la utilizar al menos que esté re-generando una solicitud de pago anterior.</translation>
+        <translation>Reutilizar una de las direcciones de recepción anteriores.&lt;br&gt;Reutilizar direcciones de recepción tiene implicaciones de seguridad y privacidad.&lt;br&gt;No la utilizar al menos que esté re-generando una solicitud de pago anterior.</translation>
     </message>
     <message>
         <source>R&amp;euse an existing receiving address (not recommended)</source>
@@ -2509,19 +2509,19 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
-        <translation>Una etiqueta opcsphxal a asociar con la nueva dirección de recepción.</translation>
+        <translation>Una etiqueta opcional a asociar con la nueva dirección de recepción.</translation>
     </message>
     <message>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Sphinx network.</source>
-        <translation>Un mensaje opcsphxal a adjuntar a la solicitud de pago, que será mostrado cuando se abra la solicitud. Nota: El mensaje no se envía junto al pago por la red SPHX.</translation>
+        <translation>Un mensaje opcional a adjuntar a la solicitud de pago, que será mostrado cuando se abra la solicitud. Nota: El mensaje no se envía junto al pago por la red SPHX.</translation>
     </message>
     <message>
         <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Sphinx network.</source>
-        <translation>Un mensaje opcsphxal a adjuntar a la solicitud de pago, que será mostrado cuando se abra la solicitud. &lt;br&gt;Nota: El mensaje no se envía junto al pago por la red SPHX.</translation>
+        <translation>Un mensaje opcional a adjuntar a la solicitud de pago, que será mostrado cuando se abra la solicitud. &lt;br&gt;Nota: El mensaje no se envía junto al pago por la red SPHX.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>Use este formulario para solicitar pagos. Todos los campos &lt;b&gt;opcsphxales&lt;/b&gt;.</translation>
+        <translation>Use este formulario para solicitar pagos. Todos los campos &lt;b&gt;opcionales&lt;/b&gt;.</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
@@ -2529,7 +2529,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>Una cantidad opcsphxal a solicitar. Deje esto vacío o en cero para no pedir una cantidad específica.</translation>
+        <translation>Una cantidad opcional a solicitar. Deje esto vacío o en cero para no pedir una cantidad específica.</translation>
     </message>
     <message>
         <source>&amp;Amount:</source>
@@ -2549,11 +2549,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Requested payments history</source>
-        <translation>Historial de peticsphxes de pago</translation>
+        <translation>Historial de peticiones de pago</translation>
     </message>
     <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>Mostrar la solicitud seleccsphxada (lo mismo que hacer doble click en una entrada)</translation>
+        <translation>Mostrar la solicitud seleccionada (lo mismo que hacer doble click en una entrada)</translation>
     </message>
     <message>
         <source>Show</source>
@@ -2561,7 +2561,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>Quitar las entradas seleccsphxadas de la lista</translation>
+        <translation>Quitar las entradas seleccionadas de la lista</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -2674,7 +2674,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>Funcsphxes de Control de Monedas</translation>
+        <translation>Funciones de Control de Monedas</translation>
     </message>
     <message>
         <source>Insufficient funds!</source>
@@ -2786,15 +2786,15 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 uSPHXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uSPHXs in fee,&lt;br /&gt;while "at least" pays 1000 uSPHXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Si la comisión personalizada se fija en 1000 uSPHXs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uSPHXs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uSPHXs. Para transaccsphxes que midan más de un kilobyte ambas pagan por kilobyte.</translation>
+        <translation>Si la comisión personalizada se fija en 1000 uSPHXs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uSPHXs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uSPHXs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 uSPHXs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uSPHXs in fee,&lt;br /&gt;while "total at least" pays 1000 uSPHXs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Si la comisión personalizada se fija en 1000 uSPHXs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uSPHXs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uSPHXs. Para transaccsphxes que midan más de un kilobyte ambas pagan por kilobyte.</translation>
+        <translation>Si la comisión personalizada se fija en 1000 uSPHXs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uSPHXs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uSPHXs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for Sphinx transactions than the network can process.</source>
-        <translation>Pagar sólo la comisión mínima está bien mientras haya menos volumen de transaccsphxes que espacio en los bloques.&lt;br/&gt;Pero tenga en cuenta que esto podría acabar en una transacción que nunca se confirme si hay más demanda de transaccsphxes Sphinx de las que la red puede procesar.</translation>
+        <translation>Pagar sólo la comisión mínima está bien mientras haya menos volumen de transacciones que espacio en los bloques.&lt;br/&gt;Pero tenga en cuenta que esto podría acabar en una transacción que nunca se confirme si hay más demanda de transacciones Sphinx de las que la red puede procesar.</translation>
     </message>
     <message>
         <source>normal</source>
@@ -2810,7 +2810,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Send as zero-fee transaction if possible</source>
-        <translation>Enviar como transacción sin comissphxes si es posible</translation>
+        <translation>Enviar como transacción sin comisiones si es posible</translation>
     </message>
     <message>
         <source>(confirmation may take longer)</source>
@@ -2882,11 +2882,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>The split block tool does not work when sending to outside addresses. Try again.</source>
-        <translation>La herramienta de separación de bloques no funcsphxa cuando se envía a direccsphxes exteriores. Inténtelo otra vez.</translation>
+        <translation>La herramienta de separación de bloques no funciona cuando se envía a direcciones exteriores. Inténtelo otra vez.</translation>
     </message>
     <message>
         <source>The split block tool does not work with multiple addresses. Try again.</source>
-        <translation>La herramienta de división de bloques no funcsphxa con varias direccsphxes. Inténtelo otra vez.</translation>
+        <translation>La herramienta de división de bloques no funciona con varias direcciones. Inténtelo otra vez.</translation>
     </message>
     <message>
         <source>using</source>
@@ -2898,7 +2898,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Warning: Invalid Sphinx address</source>
-        <translation>Advertencia: Direccsphxes Sphinx inválidas</translation>
+        <translation>Advertencia: Direcciones Sphinx inválidas</translation>
     </message>
     <message>
         <source>any available funds (not recommended)</source>
@@ -3025,7 +3025,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Introduzca una etiqueta para esta dirección para añadirla a la lista de direccsphxes utilizadas</translation>
+        <translation>Introduzca una etiqueta para esta dirección para añadirla a la lista de direcciones utilizadas</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
@@ -3057,7 +3057,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Introduzca una etiqueta para esta dirección para añadirla a su libreta de direccsphxes</translation>
+        <translation>Introduzca una etiqueta para esta dirección para añadirla a su libreta de direcciones</translation>
     </message>
 </context>
 <context>
@@ -3217,7 +3217,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Núcleo SPHX</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Versión %1</translation>
     </message>
     <message>
@@ -3264,7 +3264,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>%1 confirmations (verified via swifttx)</source>
-        <translation>%1 confirmacsphxes (verificado via swifttx)</translation>
+        <translation>%1 confirmaciones (verificado via swifttx)</translation>
     </message>
     <message>
         <source>%1/offline</source>
@@ -3276,7 +3276,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>%1 confirmations</source>
-        <translation>%1 confirmacsphxes</translation>
+        <translation>%1 confirmaciones</translation>
     </message>
     <message>
         <source>%1/offline (SwiftTX verification in progress - %2 of %3 signatures)</source>
@@ -3288,7 +3288,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>%1 confirmations (SwiftTX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 confirmacsphxes (verificación SwiftTX en marcha - %2 de %3 firmas)</translation>
+        <translation>%1 confirmaciones (verificación SwiftTX en marcha - %2 de %3 firmas)</translation>
     </message>
     <message>
         <source>%1/offline (SwiftTX verification failed)</source>
@@ -3391,8 +3391,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Comerciante</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Las monedas generadas deben madurarse %1 bloques hasta que puedan ser gastadas de nuevo. Cuando generaste este bloque, se retransmitió a la red para añadirse a la cadena de bloques. Si falla en unirse a la cadena, su estado cambiará a "no aceptado" y no se podrá gastar de nuevo (bloque huérfano). Esto puede ocurrir ocassphxalmente si otro nodo genera un bloque casi al mismo tiempo que el tuyo.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Las monedas generadas deben madurarse %1 bloques hasta que puedan ser gastadas de nuevo. Cuando generaste este bloque, se retransmitió a la red para añadirse a la cadena de bloques. Si falla en unirse a la cadena, su estado cambiará a "no aceptado" y no se podrá gastar de nuevo (bloque huérfano). Esto puede ocurrir ocasionalmente si otro nodo genera un bloque casi al mismo tiempo que el tuyo.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3458,11 +3458,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>Confirmando (%1 de %2 confirmacsphxes recomendadas)</translation>
+        <translation>Confirmando (%1 de %2 confirmaciones recomendadas)</translation>
     </message>
     <message>
         <source>Confirmed (%1 confirmations)</source>
-        <translation>Confirmado (%1 confirmacsphxes)</translation>
+        <translation>Confirmado (%1 confirmaciones)</translation>
     </message>
     <message>
         <source>Conflicted</source>
@@ -3470,7 +3470,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>Prematuro (%1 confirmacsphxes, estará disponible después de %2)</translation>
+        <translation>Prematuro (%1 confirmaciones, estará disponible después de %2)</translation>
     </message>
     <message>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
@@ -3506,7 +3506,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Obfuscation Create Denominations</source>
-        <translation>Ofuscación Crea Denominacsphxes</translation>
+        <translation>Ofuscación Crea Denominaciones</translation>
     </message>
     <message>
         <source>Sent to</source>
@@ -3542,7 +3542,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Estado de la transacción. Pase el ratón sobre este campo para mostrar el número de confirmacsphxes.</translation>
+        <translation>Estado de la transacción. Pase el ratón sobre este campo para mostrar el número de confirmaciones.</translation>
     </message>
     <message>
         <source>Date and time that the transaction was received.</source>
@@ -3554,7 +3554,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Whether or not a watch-only address is involved in this transaction.</source>
-        <translation>Indica si hay o no una dirección de sólo lectura relacsphxada en esta transacción</translation>
+        <translation>Indica si hay o no una dirección de sólo lectura relacionada en esta transacción</translation>
     </message>
     <message>
         <source>Destination address of transaction.</source>
@@ -3617,7 +3617,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Obfuscation Create Denominations</source>
-        <translation>Ofuscación Crea Denominacsphxes</translation>
+        <translation>Ofuscación Crea Denominaciones</translation>
     </message>
     <message>
         <source>Obfuscation Denominate</source>
@@ -3681,7 +3681,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Export Transaction History</source>
-        <translation>Exportar Histórico de Transaccsphxes</translation>
+        <translation>Exportar Histórico de Transacciones</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -3721,7 +3721,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>Hubo un error intentando guardar el historial de transaccsphxes a %1.</translation>
+        <translation>Hubo un error intentando guardar el historial de transacciones a %1.</translation>
     </message>
     <message>
         <source>Exporting Successful</source>
@@ -3744,7 +3744,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
-        <translation>Unidad en la que mostrar cantidades. Click para seleccsphxar otra unidad.</translation>
+        <translation>Unidad en la que mostrar cantidades. Click para seleccionar otra unidad.</translation>
     </message>
 </context>
 <context>
@@ -3762,7 +3762,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 SPHX.</source>
-        <translation>SwiftTX no soporta el envío de importes tan altos todavía. Las transaccsphxes están actualmente limitadas a %1 SPHX.</translation>
+        <translation>SwiftTX no soporta el envío de importes tan altos todavía. Las transacciones están actualmente limitadas a %1 SPHX.</translation>
     </message>
 </context>
 <context>
@@ -3777,7 +3777,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Selected amount:</source>
-        <translation>Cantidad seleccsphxada:</translation>
+        <translation>Cantidad seleccionada:</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3805,7 +3805,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -3819,7 +3819,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
-        <translation>Permitir conexsphxes JSON-RPC  desde la fuente especificada. Valido para &lt;ip&gt; sea una única IP (ej: 1.2.3.4), una red/mascara de red (ej: 1.2.3.4/255.255.255.0) o una red/CIDR (ej: 1.2.3.4/24). Esta opción puede ser especificada múltiples veces.</translation>
+        <translation>Permitir conexiones JSON-RPC  desde la fuente especificada. Valido para &lt;ip&gt; sea una única IP (ej: 1.2.3.4), una red/mascara de red (ej: 1.2.3.4/255.255.255.0) o una red/CIDR (ej: 1.2.3.4/24). Esta opción puede ser especificada múltiples veces.</translation>
     </message>
     <message>
         <source>An error occurred while setting up the RPC address %s port %u for listening: %s</source>
@@ -3827,7 +3827,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>Conectarse a la IP seleccsphxada y siempre escuchar de ella. Usar la forma [host]:puerto para IPv6</translation>
+        <translation>Conectarse a la IP seleccionada y siempre escuchar de ella. Usar la forma [host]:puerto para IPv6</translation>
     </message>
     <message>
         <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
@@ -3835,7 +3835,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Bind to given address to listen for JSON-RPC connections. Use [host]:port notation for IPv6. This option can be specified multiple times (default: bind to all interfaces)</source>
-        <translation>Escuchar únicamente a la tarjeta de red indicada para conexsphxes JSON-RPC. Use la notación [host]:puerto para IPv6. Esta opción puede ser especificada varias veces (por defecto: escuchar en todas las tarjetas de red)</translation>
+        <translation>Escuchar únicamente a la tarjeta de red indicada para conexiones JSON-RPC. Use la notación [host]:puerto para IPv6. Esta opción puede ser especificada varias veces (por defecto: escuchar en todas las tarjetas de red)</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. Sphinx Core is probably already running.</source>
@@ -3847,19 +3847,19 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:%u)</source>
-        <translation>Limite continuo de transaccsphxes gratuitas &lt;n&gt;*1000 bytes por minuto (default:%u)</translation>
+        <translation>Limite continuo de transacciones gratuitas &lt;n&gt;*1000 bytes por minuto (default:%u)</translation>
     </message>
     <message>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation>Crear nuevos archivos con el permiso predeterminado del sistema, en vez de umask 077 (solamente efectivo con la funcsphxalidad del monedero desabilitada)</translation>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Crear nuevos archivos con el permiso predeterminado del sistema, en vez de umask 077 (solamente efectivo con la funcionalidad del monedero desabilitada)</translation>
     </message>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
-        <translation>Borrar todas las transaccsphxes del monedero y solo recuperar partes de la cadena de bloque a traves de -rescan al inicio.</translation>
+        <translation>Borrar todas las transacciones del monedero y solo recuperar partes de la cadena de bloque a traves de -rescan al inicio.</translation>
     </message>
     <message>
         <source>Disable all Sphinx specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar toda la funcsphxalidad especifica Sphinx (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, predeterminado: %u)</translation>
+        <translation>Desabilitar toda la funcionalidad especifica Sphinx (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, predeterminado: %u)</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file COPYING or &lt;http://www.opensource.org/licenses/mit-license.php&gt;.</source>
@@ -3871,15 +3871,15 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enable swifttx, show confirmations for locked transactions (bool, default: %s)</source>
-        <translation>Activar swifttx, mostrar confirmacsphxes para transaccsphxes bloqueadas (bool, predeterminado: %s)</translation>
+        <translation>Activar swifttx, mostrar confirmaciones para transacciones bloqueadas (bool, predeterminado: %s)</translation>
     </message>
     <message>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
         <translation>Entrar en el modo prueba de regresión, el cual usa una cadena especial en el cual los bloques pueden ser resueltos instantaneamente.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>Error: La escucha para conexsphxes entrantes falló (la escucha retorno error %s)</translation>
+        <translation>Error: La escucha para conexiones entrantes falló (la escucha retorno error %s)</translation>
     </message>
     <message>
         <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
@@ -3899,11 +3899,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Fees (in SPHX/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Comissphxes (en SPHX/Kb) menores a esta son consideradas gratuitas para la propagación de la transacción (default: %s)</translation>
+        <translation>Comisiones (en SPHX/Kb) menores a esta son consideradas gratuitas para la propagación de la transacción (default: %s)</translation>
     </message>
     <message>
         <source>Fees (in SPHX/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Comissphxes (en SPHX/Kb) menores a esta son consideradas gratuitas para la creación de la transacción (default: %s)</translation>
+        <translation>Comisiones (en SPHX/Kb) menores a esta son consideradas gratuitas para la creación de la transacción (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -3927,7 +3927,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>Importe inválido para -maxtxfee=&lt;amount&gt;:'%s' (debe ser al menos la comisión minrelay de %s para prevenir transaccsphxes atascadas)</translation>
+        <translation>Importe inválido para -maxtxfee=&lt;amount&gt;:'%s' (debe ser al menos la comisión minrelay de %s para prevenir transacciones atascadas)</translation>
     </message>
     <message>
         <source>Keep the specified amount available for spending at all times (default: 0)</source>
@@ -3935,7 +3935,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Log transaction priority and fee per kB when mining blocks (default: %u)</source>
-        <translation>Prioridad del registro de transaccsphxes por kB cuando se esta minando bloques (predeterminado: %u)</translation>
+        <translation>Prioridad del registro de transacciones por kB cuando se esta minando bloques (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
@@ -3943,11 +3943,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
-        <translation>Tamaño máximo de datos en transaccsphxes de transmissphxes de datos que pasamos y minamos (predeterminado: %u)</translation>
+        <translation>Tamaño máximo de datos en transacciones de transmisiones de datos que pasamos y minamos (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Maximum total fees to use in a single wallet transaction, setting too low may abort large transactions (default: %s)</source>
-        <translation>Comisión máxima total para usar en una única transacción de billetera, definirlo muy bajo puede abortar transaccsphxes largas (predeterminado: %s)</translation>
+        <translation>Comisión máxima total para usar en una única transacción de billetera, definirlo muy bajo puede abortar transacciones largas (predeterminado: %s)</translation>
     </message>
     <message>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
@@ -3955,15 +3955,15 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Obfuscation uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>La ofuscación utiliza importes en denominacsphxes exactas para enviar fondos, puedes simplemente necesitar anonimizar algunas monedas mas. </translation>
+        <translation>La ofuscación utiliza importes en denominaciones exactas para enviar fondos, puedes simplemente necesitar anonimizar algunas monedas mas. </translation>
     </message>
     <message>
         <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
-        <translation>Saluda de información de depuración (predeterminado: %u, proveyendo &lt;category&gt; es opcsphxal)</translation>
+        <translation>Saluda de información de depuración (predeterminado: %u, proveyendo &lt;category&gt; es opcional)</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>Consultar por direccsphxes de pares vía búsqueda en DNS, si cantidad de direccsphxes esta bajo (predeterminado: 1 a menos que se utilice -connect)</translation>
+        <translation>Consultar por direcciones de pares vía búsqueda en DNS, si cantidad de direcciones esta bajo (predeterminado: 1 a menos que se utilice -connect)</translation>
     </message>
     <message>
         <source>Require high priority for relaying free or low-fee transactions (default:%u)</source>
@@ -3987,15 +3987,15 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Show N confirmations for a successfully locked transaction (0-9999, default: %u)</source>
-        <translation>Mostrar N confirmacsphxes para una transacción cerrada exitosamente (0-9999, predefinido: %u)</translation>
+        <translation>Mostrar N confirmaciones para una transacción cerrada exitosamente (0-9999, predefinido: %u)</translation>
     </message>
     <message>
         <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
-        <translation>Soportar filtrado de bloques y transaccsphxes con filtros bloom (por defecto: %u)</translation>
+        <translation>Soportar filtrado de bloques y transacciones con filtros bloom (por defecto: %u)</translation>
     </message>
     <message>
         <source>SwiftTX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>SwiftTX requiere entradas con hasta 6 confirmacsphxes, es posible que debas esperar unos minutos e intentar nuevamente.</translation>
+        <translation>SwiftTX requiere entradas con hasta 6 confirmaciones, es posible que debas esperar unos minutos e intentar nuevamente.</translation>
     </message>
     <message>
         <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit &lt;https://www.openssl.org/&gt; and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
@@ -4009,7 +4009,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
 </source>
@@ -4047,7 +4047,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Warning: -maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
-        <translation>Advertencia: -maxtxfee esta muy alto! Comissphxes así de altas pueden ser pagadas en una única transacción.</translation>
+        <translation>Advertencia: -maxtxfee esta muy alto! Comisiones así de altas pueden ser pagadas en una única transacción.</translation>
     </message>
     <message>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
@@ -4055,7 +4055,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Sphinx Core will not work properly.</source>
-        <translation>Advertencia: Por favor verifique que la fecha y hora de su computadora sean correctas! Si su reloj esta fuera de hora Sphinx Core no funcsphxará adecuadamente.</translation>
+        <translation>Advertencia: Por favor verifique que la fecha y hora de su computadora sean correctas! Si su reloj esta fuera de hora Sphinx Core no funcionará adecuadamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -4067,19 +4067,19 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Advertencia: error leyendo wallet.dat! Todas las claves leídas correctamente, pero datos de transacción or entradas en el libro de direccsphxes podrían estar faltando o ser incorrectas.</translation>
+        <translation>Advertencia: error leyendo wallet.dat! Todas las claves leídas correctamente, pero datos de transacción or entradas en el libro de direcciones podrían estar faltando o ser incorrectas.</translation>
     </message>
     <message>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Advertencia: wallet.dat esta dañado, datos salvados! El wallet.dat original esta grabado como wallet.{timestamp}.bak en %s; si tu saldo o transaccsphxes son incorrectas deberías restaurar de un backup.</translation>
+        <translation>Advertencia: wallet.dat esta dañado, datos salvados! El wallet.dat original esta grabado como wallet.{timestamp}.bak en %s; si tu saldo o transacciones son incorrectas deberías restaurar de un backup.</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.</source>
-        <translation>Pares de la whitelist conectados desde la mascara de red o direccsphxes IP dada. Puede ser especificado múltiples veces.</translation>
+        <translation>Pares de la whitelist conectados desde la mascara de red o direcciones IP dada. Puede ser especificado múltiples veces.</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
-        <translation>Pares de la Whitelist no pueden ser banneados por DoS y sus transaccsphxes son siempre transmitidas, aún si ellas están ya en la mempool, util por ejemplo para un gateway.</translation>
+        <translation>Pares de la Whitelist no pueden ser banneados por DoS y sus transacciones son siempre transmitidas, aún si ellas están ya en la mempool, util por ejemplo para un gateway.</translation>
     </message>
     <message>
         <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
@@ -4107,11 +4107,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Aceptar conexsphxes desde afuera (predeterminado: 1 sin opción -proxy o -connect)</translation>
+        <translation>Aceptar conexiones desde afuera (predeterminado: 1 sin opción -proxy o -connect)</translation>
     </message>
     <message>
         <source>Accept public REST requests (default: %u)</source>
-        <translation>Aceptar peticsphxes públicas REST (predeterminado: %u)</translation>
+        <translation>Aceptar peticiones públicas REST (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Acceptable ciphers (default: %s)</source>
@@ -4131,7 +4131,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
-        <translation>Siempre consultar por direccsphxes de pares vía búsqueda DNS (predeterminado: %u)</translation>
+        <translation>Siempre consultar por direcciones de pares vía búsqueda DNS (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
@@ -4139,7 +4139,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Block creation options:</source>
-        <translation>Opcsphxes de creación de bloque:</translation>
+        <translation>Opciones de creación de bloque:</translation>
     </message>
     <message>
         <source>Can't denominate: no compatible inputs left.</source>
@@ -4187,11 +4187,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>Conectar a un nodo para obtener direccsphxes de pares, y desconectar</translation>
+        <translation>Conectar a un nodo para obtener direcciones de pares, y desconectar</translation>
     </message>
     <message>
         <source>Connection options:</source>
-        <translation>Opcsphxes de conexión:</translation>
+        <translation>Opciones de conexión:</translation>
     </message>
     <message>
         <source>Copyright (C) 2009-%i The Bitcoin Core Developers</source>
@@ -4223,7 +4223,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Debugging/Testing options:</source>
-        <translation>Opcsphxes de Depuración/Pruebas:</translation>
+        <translation>Opciones de Depuración/Pruebas:</translation>
     </message>
     <message>
         <source>Disable safemode, override a real safe mode event (default: %u)</source>
@@ -4231,7 +4231,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Descubrir direccsphxes IP propia (predeterminado: 1 cuando se esta a la escucha y sin opción -externalip)</translation>
+        <translation>Descubrir direcciones IP propia (predeterminado: 1 cuando se esta a la escucha y sin opción -externalip)</translation>
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
@@ -4303,15 +4303,15 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Error: Can't select current denominated inputs</source>
-        <translation>Error: No se pudo seleccsphxar las entradas denominadas actuales</translation>
+        <translation>Error: No se pudo seleccionar las entradas denominadas actuales</translation>
     </message>
     <message>
         <source>Error: Disk space is low!</source>
         <translation>Error: El espacio en disco esta bajo!</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -tor found, use -onsphx.</source>
-        <translation>Error: Se encontró argumento no soportado -tor, utilizar -onsphx.</translation>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation>Error: Se encontró argumento no soportado -tor, utilizar -onion.</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
@@ -4371,7 +4371,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Include IP addresses in debug output (default: %u)</source>
-        <translation>Incluir direccsphxes IP en salida de depuración (predeterminado: %u)</translation>
+        <translation>Incluir direcciones IP en salida de depuración (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Incompatible mode.</source>
@@ -4402,8 +4402,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Fondos insuficientes.</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>Dirección -onsphx inválida: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>Dirección -onion inválida: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -4455,7 +4455,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for staking or merchant applications!</source>
-        <translation>Esto es una versión pre-release de prueba - use bajo su propia responsabilidad - ¡No lo utilice para recompensa de participación ni aplicacsphxes de comercio!</translation>
+        <translation>Esto es una versión pre-release de prueba - use bajo su propia responsabilidad - ¡No lo utilice para recompensa de participación ni aplicaciones de comercio!</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>
@@ -4499,11 +4499,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Enable staking functionality (0-1, default: %u)</source>
-        <translation>Activar funcsphxalidad de recompensa por participación (0-1, por defecto: %u)</translation>
+        <translation>Activar funcionalidad de recompensa por participación (0-1, por defecto: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Mantener como máximo &lt;n&gt; transaccsphxes no conectables en memoria (predeterminado: %u)</translation>
+        <translation>Mantener como máximo &lt;n&gt; transacciones no conectables en memoria (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Last Obfuscation was too recent.</source>
@@ -4523,15 +4523,15 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>Escuchar por conexsphxes JSON-RPC en &lt;port&gt; (predeterminado: %u o testnet: %u)</translation>
+        <translation>Escuchar por conexiones JSON-RPC en &lt;port&gt; (predeterminado: %u o testnet: %u)</translation>
     </message>
     <message>
         <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>Escuchar por conexsphxes en &lt;port&gt; (predeterminado: %u o testnet: %u)</translation>
+        <translation>Escuchar por conexiones en &lt;port&gt; (predeterminado: %u o testnet: %u)</translation>
     </message>
     <message>
         <source>Loading addresses...</source>
-        <translation>Cargando direccsphxes...</translation>
+        <translation>Cargando direcciones...</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -4567,11 +4567,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (default: %u)</source>
-        <translation>Mantener como máximo &lt;n&gt; conexsphxes a pares (predeterminado: %u)</translation>
+        <translation>Mantener como máximo &lt;n&gt; conexiones a pares (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Masternode options:</source>
-        <translation>Opcsphxes de Masternode:</translation>
+        <translation>Opciones de Masternode:</translation>
     </message>
     <message>
         <source>Masternode queue is full.</source>
@@ -4591,7 +4591,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Missing input transaction information.</source>
-        <translation>Información de transaccsphxes de entrada perdidas.</translation>
+        <translation>Información de transacciones de entrada perdidas.</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
@@ -4615,11 +4615,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>No matching denominations found for mixing.</source>
-        <translation>No hay denominacsphxes emparejadas encontradas para mezclado.</translation>
+        <translation>No hay denominaciones emparejadas encontradas para mezclado.</translation>
     </message>
     <message>
         <source>Node relay options:</source>
-        <translation>Opcsphxes de transmisión del nodo:</translation>
+        <translation>Opciones de transmisión del nodo:</translation>
     </message>
     <message>
         <source>Non-standard public key detected.</source>
@@ -4627,7 +4627,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Not compatible with existing transactions.</source>
-        <translation>No es compatible con las transaccsphxes salientes.</translation>
+        <translation>No es compatible con las transacciones salientes.</translation>
     </message>
     <message>
         <source>Not enough file descriptors available.</source>
@@ -4647,7 +4647,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Obfuscation request complete:</source>
-        <translation>Pedido de Ofuscacsphx completado:</translation>
+        <translation>Pedido de Ofuscacion completado:</translation>
     </message>
     <message>
         <source>Obfuscation request incomplete:</source>
@@ -4658,16 +4658,16 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Solo aceptar cadena de bloque emparejada con puntos de verificación construidos (predeterminado: %u)</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>Solo conectar a nodos en la red &lt;net&gt; (ipv4, ipv6 o onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Solo conectar a nodos en la red &lt;net&gt; (ipv4, ipv6 o onion)</translation>
     </message>
     <message>
         <source>Options:</source>
-        <translation>Opcsphxes:</translation>
+        <translation>Opciones:</translation>
     </message>
     <message>
         <source>Password for JSON-RPC connections</source>
-        <translation>Contraseña para conexsphxes JSON-RPC</translation>
+        <translation>Contraseña para conexiones JSON-RPC</translation>
     </message>
     <message>
         <source>Prepend debug output with timestamp (default: %u)</source>
@@ -4679,15 +4679,15 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>Opcsphxes RPC SSL: (ver el Bitcoin Wiki para instruccsphxes de instalación SSL)</translation>
+        <translation>Opciones RPC SSL: (ver el Bitcoin Wiki para instrucciones de instalación SSL)</translation>
     </message>
     <message>
         <source>RPC server options:</source>
-        <translation>Opcsphxes del servidor RPC:</translation>
+        <translation>Opciones del servidor RPC:</translation>
     </message>
     <message>
         <source>RPC support for HTTP persistent connections (default: %d)</source>
-        <translation>Soporte RPC para conexsphxes persistentes HTTP (predeterminado %d)</translation>
+        <translation>Soporte RPC para conexiones persistentes HTTP (predeterminado %d)</translation>
     </message>
     <message>
         <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
@@ -4707,7 +4707,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
-        <translation>Transmitir y minar datos de transaccsphxes enviadas (predeterminado: %u)</translation>
+        <translation>Transmitir y minar datos de transacciones enviadas (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
@@ -4715,7 +4715,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Reescanear la cadena de bloques en busca de transaccsphxes perdidas del monedero</translation>
+        <translation>Reescanear la cadena de bloques en busca de transacciones perdidas del monedero</translation>
     </message>
     <message>
         <source>Rescanning...</source>
@@ -4731,7 +4731,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
-        <translation>Enviar transaccsphxes como transaccsphxes cero-comisión si es posible (predeterminado: %u)</translation>
+        <translation>Enviar transacciones como transacciones cero-comisión si es posible (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Server certificate file (default: %s)</source>
@@ -4742,11 +4742,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Clave privada del servidor (predeterminado: %s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Sesión no completa!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>La sesión expiró.</translation>
     </message>
     <message>
@@ -4783,7 +4783,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>Mostrar todas las opcsphxes de depuración (uso: --help-debug)</translation>
+        <translation>Mostrar todas las opciones de depuración (uso: --help-debug)</translation>
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
@@ -4831,11 +4831,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Spend unconfirmed change when sending transactions (default: %u)</source>
-        <translation>Gastar cambio no confirmado cuando se envían transaccsphxes (predeterminado: %u)</translation>
+        <translation>Gastar cambio no confirmado cuando se envían transacciones (predeterminado: %u)</translation>
     </message>
     <message>
         <source>Staking options:</source>
-        <translation>Opcsphxes de recompensa por participación:</translation>
+        <translation>Opciones de recompensa por participación:</translation>
     </message>
     <message>
         <source>Stop running after importing blocks from disk (default: %u)</source>
@@ -4855,7 +4855,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>SwiftTX options:</source>
-        <translation>Opcsphxes SwiftTX:</translation>
+        <translation>Opciones SwiftTX:</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
@@ -4894,8 +4894,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Esto es software experimental.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
-        <translation>Esto esta destinado para herramientas de prueba de regresión y desarrollo de aplicacsphxes.</translation>
+        <source>This is intended for regression testing tools and app development.</source>
+        <translation>Esto esta destinado para herramientas de prueba de regresión y desarrollo de aplicaciones.</translation>
     </message>
     <message>
         <source>This is not a Masternode.</source>
@@ -4919,7 +4919,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Transaction fees are too high.</source>
-        <translation>La comissphx de transacción es demasiado alta.</translation>
+        <translation>La comision de transacción es demasiado alta.</translation>
     </message>
     <message>
         <source>Transaction not valid.</source>
@@ -4959,7 +4959,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Usar OpenSSL (https) para conexsphxes JSON-RPC</translation>
+        <translation>Usar OpenSSL (https) para conexiones JSON-RPC</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
@@ -4975,7 +4975,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
-        <translation>Nombre de usuario para conexsphxes JSON-RPC</translation>
+        <translation>Nombre de usuario para conexiones JSON-RPC</translation>
     </message>
     <message>
         <source>Value more than Obfuscation pool maximum allows.</source>
@@ -5003,7 +5003,7 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Wallet options:</source>
-        <translation>Opcsphxes del Monedero:</translation>
+        <translation>Opciones del Monedero:</translation>
     </message>
     <message>
         <source>Wallet window title</source>
@@ -5043,11 +5043,11 @@ por ejemplo: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
     </message>
     <message>
         <source>Zapping all transactions from wallet...</source>
-        <translation>Saltando todas las transaccsphxes del monedero...</translation>
+        <translation>Saltando todas las transacciones del monedero...</translation>
     </message>
     <message>
         <source>ZeroMQ notification options:</source>
-        <translation>Opcsphxes de notificación ZeroMQ:</translation>
+        <translation>Opciones de notificación ZeroMQ:</translation>
     </message>
     <message>
         <source>on startup</source>

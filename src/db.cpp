@@ -267,7 +267,7 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) : pdb(NULL), activ
             if (fCreate && !Exists(string("version"))) {
                 bool fTmp = fReadOnly;
                 fReadOnly = false;
-                WriteVerssphx(CLIENT_VERSSPHX);
+                WriteVersion(CLIENT_VERSION);
                 fReadOnly = fTmp;
             }
 
@@ -361,8 +361,8 @@ bool CDB::Rewrite(const string& strFile, const char* pszSkip)
                     Dbc* pcursor = db.GetCursor();
                     if (pcursor)
                         while (fSuccess) {
-                            CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
-                            CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+                            CDataStream ssKey(SER_DISK, CLIENT_VERSION);
+                            CDataStream ssValue(SER_DISK, CLIENT_VERSION);
                             int ret = db.ReadAtCursor(pcursor, ssKey, ssValue, DB_NEXT);
                             if (ret == DB_NOTFOUND) {
                                 pcursor->close();
@@ -378,7 +378,7 @@ bool CDB::Rewrite(const string& strFile, const char* pszSkip)
                             if (strncmp(&ssKey[0], "\x07version", 8) == 0) {
                                 // Update version:
                                 ssValue.clear();
-                                ssValue << CLIENT_VERSSPHX;
+                                ssValue << CLIENT_VERSION;
                             }
                             Dbt datKey(&ssKey[0], ssKey.size());
                             Dbt datValue(&ssValue[0], ssValue.size());

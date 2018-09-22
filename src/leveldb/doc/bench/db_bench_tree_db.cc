@@ -47,8 +47,8 @@ static int FLAGS_reads = -1;
 static int FLAGS_value_size = 100;
 
 // Arrange to generate values that shrink to this fraction of
-// their original size after compresssphx
-static double FLAGS_compresssphx_ratio = 0.5;
+// their original size after compression
+static double FLAGS_compression_ratio = 0.5;
 
 // Print histogram of operation timings
 static bool FLAGS_histogram = false;
@@ -64,9 +64,9 @@ static int FLAGS_page_size = 1024;
 // benchmark will fail.
 static bool FLAGS_use_existing_db = false;
 
-// Compresssphx flag. If true, compresssphx is on. If false, compresssphx
+// Compression flag. If true, compression is on. If false, compression
 // is off.
-static bool FLAGS_compresssphx = true;
+static bool FLAGS_compression = true;
 
 // Use the db with the following name.
 static const char* FLAGS_db = NULL;
@@ -92,14 +92,14 @@ class RandomGenerator {
  public:
   RandomGenerator() {
     // We use a limited amount of data over and over again and ensure
-    // that it is larger than the compresssphx window (32KB), and also
+    // that it is larger than the compression window (32KB), and also
     // large enough to serve all typical value sizes we want to write.
     Random rnd(301);
     std::string piece;
     while (data_.size() < 1048576) {
       // Add a short fragment that is as compressible as specified
-      // by FLAGS_compresssphx_ratio.
-      test::CompressibleString(&rnd, FLAGS_compresssphx_ratio, 100, &piece);
+      // by FLAGS_compression_ratio.
+      test::CompressibleString(&rnd, FLAGS_compression_ratio, 100, &piece);
       data_.append(piece);
     }
     pos_ = 0;
@@ -152,15 +152,15 @@ class Benchmark {
     const int kKeySize = 16;
     PrintEnvironment();
     fprintf(stdout, "Keys:       %d bytes each\n", kKeySize);
-    fprintf(stdout, "Values:     %d bytes each (%d bytes after compresssphx)\n",
+    fprintf(stdout, "Values:     %d bytes each (%d bytes after compression)\n",
             FLAGS_value_size,
-            static_cast<int>(FLAGS_value_size * FLAGS_compresssphx_ratio + 0.5));
+            static_cast<int>(FLAGS_value_size * FLAGS_compression_ratio + 0.5));
     fprintf(stdout, "Entries:    %d\n", num_);
     fprintf(stdout, "RawSize:    %.1f MB (estimated)\n",
             ((static_cast<int64_t>(kKeySize + FLAGS_value_size) * num_)
              / 1048576.0));
     fprintf(stdout, "FileSize:   %.1f MB (estimated)\n",
-            (((kKeySize + FLAGS_value_size * FLAGS_compresssphx_ratio) * num_)
+            (((kKeySize + FLAGS_value_size * FLAGS_compression_ratio) * num_)
              / 1048576.0));
     PrintWarnings();
     fprintf(stdout, "------------------------------------------------\n");
@@ -180,7 +180,7 @@ class Benchmark {
 
   void PrintEnvironment() {
     fprintf(stderr, "Kyoto Cabinet:    version %s, lib ver %d, lib rev %d\n",
-            kyotocabinet::VERSSPHX, kyotocabinet::LIBVER, kyotocabinet::LIBREV);
+            kyotocabinet::VERSION, kyotocabinet::LIBVER, kyotocabinet::LIBREV);
 
 #if defined(__linux)
     time_t now = time(NULL);
@@ -405,7 +405,7 @@ class Benchmark {
                        kyotocabinet::PolyDB::OCREATE;
     int tune_options = kyotocabinet::TreeDB::TSMALL |
         kyotocabinet::TreeDB::TLINEAR;
-    if (FLAGS_compresssphx) {
+    if (FLAGS_compression) {
       tune_options |= kyotocabinet::TreeDB::TCOMPRESS;
       db_->tune_compressor(&comp_);
     }
@@ -489,8 +489,8 @@ int main(int argc, char** argv) {
     char junk;
     if (leveldb::Slice(argv[i]).starts_with("--benchmarks=")) {
       FLAGS_benchmarks = argv[i] + strlen("--benchmarks=");
-    } else if (sscanf(argv[i], "--compresssphx_ratio=%lf%c", &d, &junk) == 1) {
-      FLAGS_compresssphx_ratio = d;
+    } else if (sscanf(argv[i], "--compression_ratio=%lf%c", &d, &junk) == 1) {
+      FLAGS_compression_ratio = d;
     } else if (sscanf(argv[i], "--histogram=%d%c", &n, &junk) == 1 &&
                (n == 0 || n == 1)) {
       FLAGS_histogram = n;
@@ -504,9 +504,9 @@ int main(int argc, char** argv) {
       FLAGS_cache_size = n;
     } else if (sscanf(argv[i], "--page_size=%d%c", &n, &junk) == 1) {
       FLAGS_page_size = n;
-    } else if (sscanf(argv[i], "--compresssphx=%d%c", &n, &junk) == 1 &&
+    } else if (sscanf(argv[i], "--compression=%d%c", &n, &junk) == 1 &&
                (n == 0 || n == 1)) {
-      FLAGS_compresssphx = (n == 1) ? true : false;
+      FLAGS_compression = (n == 1) ? true : false;
     } else if (strncmp(argv[i], "--db=", 5) == 0) {
       FLAGS_db = argv[i] + 5;
     } else {

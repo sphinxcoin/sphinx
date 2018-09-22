@@ -149,7 +149,7 @@ enum opcodetype
     OP_CHECKMULTISIG = 0xae,
     OP_CHECKMULTISIGVERIFY = 0xaf,
 
-    // expanssphx
+    // expansion
     OP_NOP1 = 0xb0,
     OP_NOP2 = 0xb1,
     OP_NOP3 = 0xb2,

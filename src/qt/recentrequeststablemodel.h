@@ -16,10 +16,10 @@ class CWallet;
 class RecentRequestEntry
 {
 public:
-    RecentRequestEntry() : nVerssphx(RecentRequestEntry::CURRENT_VERSSPHX), id(0) {}
+    RecentRequestEntry() : nVersion(RecentRequestEntry::CURRENT_VERSION), id(0) {}
 
-    static const int CURRENT_VERSSPHX = 1;
-    int nVerssphx;
+    static const int CURRENT_VERSION = 1;
+    int nVersion;
     int64_t id;
     QDateTime date;
     SendCoinsRecipient recipient;
@@ -27,12 +27,12 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         unsigned int nDate = date.toTime_t();
 
-        READWRITE(this->nVerssphx);
-        nVerssphx = this->nVerssphx;
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
         READWRITE(id);
         READWRITE(nDate);
         READWRITE(recipient);

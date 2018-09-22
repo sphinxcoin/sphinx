@@ -390,7 +390,7 @@ bool InitHTTPServer()
 
     // Redirect libevent's logging to our own log
     event_set_log_callback(&libevent_log_cb);
-#if LIBEVENT_VERSSPHX_NUMBER >= 0x02010100
+#if LIBEVENT_VERSION_NUMBER >= 0x02010100
     // If -debug=libevent, set full libevent debugging.
     // Otherwise, disable all libevent debugging.
     if (LogAcceptCategory("libevent"))
@@ -483,8 +483,8 @@ void StopHTTPServer()
         // at least libevent 2.0.21 and always introduced a delay. In libevent
         // master that appears to be solved, so in the future that solution
         // could be used again (if desirable).
-        // (see discusssphx in https://github.com/bitcoin/bitcoin/pull/6990)
-#if BOOST_VERSSPHX >= 105000
+        // (see disscusion in https://github.com/bitcoin/bitcoin/pull/6990)
+#if BOOST_VERSION >= 105000
         if (!threadHTTP.try_join_for(boost::chrono::milliseconds(2000))) {
 #else
         if (!threadHTTP.timed_join(boost::posix_time::milliseconds(2000))) {

@@ -326,21 +326,21 @@ database may wish to increase this size.  Applications that do a lot
 of point reads of small values may wish to switch to a smaller block
 size if performance measurements indicate an improvement.  There isn't
 much benefit in using blocks smaller than one kilobyte, or larger than
-a few megabytes.  Also note that compresssphx will be more effective
+a few megabytes.  Also note that compression will be more effective
 with larger block sizes.
 <p>
-<h2>Compresssphx</h2>
+<h2>Compression</h2>
 <p>
 Each block is individually compressed before being written to
-persistent storage.  Compresssphx is on by default since the default
-compresssphx method is very fast, and is automatically disabled for
+persistent storage.  Compression is on by default since the default
+compression method is very fast, and is automatically disabled for
 uncompressible data.  In rare cases, applications may want to disable
-compresssphx entirely, but should only do so if benchmarks show a
+compression entirely, but should only do so if benchmarks show a
 performance improvement:
 <p>
 <pre>
   leveldb::Options options;
-  options.compresssphx = leveldb::kNoCompresssphx;
+  options.compression = leveldb::kNoCompression;
   ... leveldb::DB::Open(options, name, ...) ....
 </pre>
 <h2>Cache</h2>
@@ -363,7 +363,7 @@ uncompressed block contents.
 </pre>
 Note that the cache holds uncompressed data, and therefore it should
 be sized according to application level data sizes, without any
-reduction from compresssphx.  (Caching of compressed blocks is left to
+reduction from compression.  (Caching of compressed blocks is left to
 the operating system buffer cache, or any custom <code>Env</code>
 implementation provided by the client.)
 <p>
@@ -386,13 +386,13 @@ Note that the unit of disk transfer and caching is a block.  Adjacent
 keys (according to the database sort order) will usually be placed in
 the same block.  Therefore the application can improve its performance
 by placing keys that are accessed together near each other and placing
-infrequently used keys in a separate regsphx of the key space.
+infrequently used keys in a separate region of the key space.
 <p>
 For example, suppose we are implementing a simple file system on top
 of <code>leveldb</code>.  The types of entries we might wish to store are:
 <p>
 <pre>
-   filename -&gt; permisssphx-bits, length, list of file_block_ids
+   filename -&gt; permission-bits, length, list of file_block_ids
    file_block_id -&gt; data
 </pre>
 We might want to prefix <code>filename</code> keys with one letter (say '/') and the

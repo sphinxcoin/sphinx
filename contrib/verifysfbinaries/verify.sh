@@ -23,8 +23,8 @@ SIGNATUREFILE="https://sphinxcore.xyz/bin/3.0.4.1/SHA256SUMS.asc"
 SIGNATUREFILENAME="SHA256SUMS.asc"
 RCSUBDIR="test/"
 BASEDIR="https://sphinxcore.xyz/bin/"
-VERSSPHXPREFIX="bitcoin-"
-RCVERSSPHXSTRING="rc"
+VERSIONPREFIX="bitcoin-"
+RCVERSIONSTRING="rc"
 
 if [ ! -d "$WORKINGDIR" ]; then
    mkdir "$WORKINGDIR"
@@ -36,19 +36,19 @@ cd "$WORKINGDIR"
 if [ -n "$1" ]; then
    #let's also check if the version number includes the prefix 'bitcoin-',
    #  and add this prefix if it doesn't
-   if [[ $1 == "$VERSSPHXPREFIX"* ]]; then
-      VERSSPHX="$1"
+   if [[ $1 == "$VERSIONPREFIX"* ]]; then
+      VERSION="$1"
    else
-      VERSSPHX="$VERSSPHXPREFIX$1"
+      VERSION="$VERSIONPREFIX$1"
    fi
 
    #now let's see if the version string contains "rc", and strip it off if it does
    #  and simultaneously add RCSUBDIR to BASEDIR, where we will look for SIGNATUREFILENAME
-   if [[ $VERSSPHX == *"$RCVERSSPHXSTRING"* ]]; then
-      BASEDIR="$BASEDIR${VERSSPHX/%-$RCVERSSPHXSTRING*}/"
+   if [[ $VERSION == *"$RCVERSIONSTRING"* ]]; then
+      BASEDIR="$BASEDIR${VERSION/%-$RCVERSIONSTRING*}/"
       BASEDIR="$BASEDIR$RCSUBDIR"
    else
-      BASEDIR="$BASEDIR$VERSSPHX/"
+      BASEDIR="$BASEDIR$VERSION/"
    fi
 
    SIGNATUREFILE="$BASEDIR$SIGNATUREFILENAME"

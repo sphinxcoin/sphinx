@@ -10,7 +10,7 @@ Authors: Sanjay Ghemawat (sanjay@google.com) and Jeff Dean (jeff@google.com)
   * Multiple changes can be made in one atomic batch.
   * Users can create a transient snapshot to get a consistent view of data.
   * Forward and backward iteration is supported over the data.
-  * Data is automatically compressed using the [Snappy compresssphx library](http://code.google.com/p/snappy).
+  * Data is automatically compressed using the [Snappy compression library](http://code.google.com/p/snappy).
   * External activity (file system operations etc.) is relayed through a virtual interface so users can customize the operating system interactions.
   * [Detailed documentation](http://htmlpreview.github.io/?https://github.com/google/leveldb/blob/master/doc/index.html) about how to use the library is included with the source code.
 
@@ -28,7 +28,7 @@ be enough to get a ballpark performance estimate.
 
 ## Setup
 
-We use a database with a millsphx entries.  Each entry has a 16 byte
+We use a database with a million entries.  Each entry has a 16 byte
 key, and a 100 byte value.  Values used by the benchmark compress to
 about half their original size.
 
@@ -37,7 +37,7 @@ about half their original size.
     CPU:        4 x Intel(R) Core(TM)2 Quad CPU    Q6600  @ 2.40GHz
     CPUCache:   4096 KB
     Keys:       16 bytes each
-    Values:     100 bytes each (50 bytes after compresssphx)
+    Values:     100 bytes each (50 bytes after compression)
     Entries:    1000000
     Raw Size:   110.6 MB (estimated)
     File Size:  62.9 MB (estimated)
@@ -91,7 +91,7 @@ compactions (which are usually triggered automatically) are better.
     readseq      :       0.423 micros/op;  261.8 MB/s
     readreverse  :       0.663 micros/op;  166.9 MB/s
 
-Some of the high cost of reads comes from repeated decompresssphx of blocks
+Some of the high cost of reads comes from repeated decompression of blocks
 read from disk.  If we supply enough cache to the leveldb so it can hold the
 uncompressed blocks in memory, the read performance improves again:
 

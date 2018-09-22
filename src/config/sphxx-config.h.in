@@ -7,22 +7,22 @@
 /* Define if building universal (internal helper macro) */
 #undef AC_APPLE_UNIVERSAL_BUILD
 
-/* Verssphx Build */
-#undef CLIENT_VERSSPHX_BUILD
+/* Version Build */
+#undef CLIENT_VERSION_BUILD
 
-/* Verssphx is release */
-#undef CLIENT_VERSSPHX_IS_RELEASE
+/* Version is release */
+#undef CLIENT_VERSION_IS_RELEASE
 
 /* Major version */
-#undef CLIENT_VERSSPHX_MAJOR
+#undef CLIENT_VERSION_MAJOR
 
 /* Minor version */
-#undef CLIENT_VERSSPHX_MINOR
+#undef CLIENT_VERSION_MINOR
 
-/* Build revissphx */
-#undef CLIENT_VERSSPHX_REVISSPHX
+/* Build revision */
+#undef CLIENT_VERSION_REVISION
 
-/* Verssphx is release */
+/* Version is release */
 #undef COPYRIGHT_YEAR
 
 /* Define to 1 to enable wallet functions */
@@ -298,7 +298,7 @@
 #undef PACKAGE_URL
 
 /* Define to the version of this package. */
-#undef PACKAGE_VERSSPHX
+#undef PACKAGE_VERSION
 
 /* Define to necessary symbol if this constant uses a non-standard name on
    your system. */

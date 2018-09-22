@@ -15,9 +15,9 @@ namespace {
 class TxInputStream
 {
 public:
-    TxInputStream(int nTypeIn, int nVerssphxIn, const unsigned char *txTo, size_t txToLen) :
+    TxInputStream(int nTypeIn, int nVersionIn, const unsigned char *txTo, size_t txToLen) :
     m_type(nTypeIn),
-    m_version(nVerssphxIn),
+    m_version(nVersionIn),
     m_data(txTo),
     m_remaining(txToLen)
     {}
@@ -67,12 +67,12 @@ int bitcoinconsensus_verify_script(const unsigned char *scriptPubKey, unsigned i
                                     unsigned int nIn, unsigned int flags, bitcoinconsensus_error* err)
 {
     try {
-        TxInputStream stream(SER_NETWORK, PROTOCOL_VERSSPHX, txTo, txToLen);
+        TxInputStream stream(SER_NETWORK, PROTOCOL_VERSION, txTo, txToLen);
         CTransaction tx;
         stream >> tx;
         if (nIn >= tx.vin.size())
             return set_error(err, bitcoinconsensus_ERR_TX_INDEX);
-        if (tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSSPHX) != txToLen)
+        if (tx.GetSerializeSize(SER_NETWORK, PROTOCOL_VERSION) != txToLen)
             return set_error(err, bitcoinconsensus_ERR_TX_SIZE_MISMATCH);
 
          // Regardless of the verification result, the tx did not error.

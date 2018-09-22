@@ -125,7 +125,7 @@ base_uint<BITS>& base_uint<BITS>::operator/=(const base_uint& b)
     int num_bits = num.bits();
     int div_bits = div.bits();
     if (div_bits == 0)
-        throw uint_error("Divissphx by zero");
+        throw uint_error("Division by zero");
     if (div_bits > num_bits) // the result is certainly 0.
         return *this;
     int shift = num_bits - div_bits;
@@ -138,7 +138,7 @@ base_uint<BITS>& base_uint<BITS>::operator/=(const base_uint& b)
         div >>= 1; // shift back.
         shift--;
     }
-    // num now contains the remainder of the divissphx.
+    // num now contains the remainder of the division.
     return *this;
 }
 

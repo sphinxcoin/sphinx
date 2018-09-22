@@ -39,7 +39,7 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY* eckey, ECDSA_SIG* ecsig, const unsigned ch
     int n = 0;
     int i = recid / 2;
 
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
     const BIGNUM *sig_r, *sig_s;
     ECDSA_SIG_get0(ecsig, &sig_r, &sig_s);
 #endif
@@ -64,7 +64,7 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY* eckey, ECDSA_SIG* ecsig, const unsigned ch
         ret = -1;
         goto err;
     }
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
     if (!BN_add(x, x, sig_r)) {
 #else
     if (!BN_add(x, x, ecsig->r)) {
@@ -124,7 +124,7 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY* eckey, ECDSA_SIG* ecsig, const unsigned ch
         goto err;
     }
     rr = BN_CTX_get(ctx);
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
     if (!BN_mod_inverse(rr, sig_r, order, ctx)) {
 #else
     if (!BN_mod_inverse(rr, ecsig->r, order, ctx)) {
@@ -133,7 +133,7 @@ int ECDSA_SIG_recover_key_GFp(EC_KEY* eckey, ECDSA_SIG* ecsig, const unsigned ch
         goto err;
     }
     sor = BN_CTX_get(ctx);
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
     if (!BN_mod_mul(sor, sig_s, rr, order, ctx)) {
 #else
     if (!BN_mod_mul(sor, ecsig->s, rr, order, ctx)) {
@@ -183,7 +183,7 @@ CECKey::~CECKey()
 
 void CECKey::GetPubKey(std::vector<unsigned char>& pubkey, bool fCompressed)
 {
-    EC_KEY_set_conv_form(pkey, fCompressed ? POINT_CONVERSSPHX_COMPRESSED : POINT_CONVERSSPHX_UNCOMPRESSED);
+    EC_KEY_set_conv_form(pkey, fCompressed ? POINT_CONVERSION_COMPRESSED : POINT_CONVERSION_UNCOMPRESSED);
     int nSize = i2o_ECPublicKey(pkey, NULL);
     assert(nSize);
     assert(nSize <= 65);
@@ -235,7 +235,7 @@ bool CECKey::Recover(const uint256& hash, const unsigned char* p64, int rec)
     if (rec < 0 || rec >= 3)
         return false;
     ECDSA_SIG* sig = ECDSA_SIG_new();
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
     BIGNUM *sig_r = NULL;
     BIGNUM *sig_s = NULL;
     if (!(sig_r = BN_bin2bn(&p64[0],  32, nullptr)) ||

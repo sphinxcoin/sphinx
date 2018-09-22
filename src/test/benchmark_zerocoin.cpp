@@ -343,7 +343,7 @@ Testb_MintAndSpend()
 		cout << "\tSPEND ELAPSED TIME: " << timer.duration() << " ms\t" << timer.duration()*0.001 << " s" << endl;
 
 		// Serialize the proof and deserialize into newSpend
-		CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 
 		timer.start();
 		ss << spend;
@@ -406,7 +406,7 @@ BOOST_AUTO_TEST_SUITE(benchmark_zerocoin)
 
 BOOST_AUTO_TEST_CASE(benchmark_test)
 {
-	cout << "libzerocoin v" << ZEROCOIN_VERSSPHX_STRING << " benchmark utility." << endl << endl;
+	cout << "libzerocoin v" << ZEROCOIN_VERSION_STRING << " benchmark utility." << endl << endl;
 
 	Testb_RunAllTests();
 }

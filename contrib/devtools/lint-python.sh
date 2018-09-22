@@ -34,8 +34,8 @@
 # F407 an undefined __future__ feature name was imported
 # F601 dictionary key name repeated with different values
 # F602 dictionary key variable name repeated with different values
-# F621 too many expresssphxs in an assignment with star-unpacking
-# F622 two or more starred expresssphxs in an assignment (a, *b, *c = d)
+# F621 too many expressions in an assignment with star-unpacking
+# F622 two or more starred expressions in an assignment (a, *b, *c = d)
 # F631 assertion test is a tuple, which are always True
 # F701 a break statement outside of a while or for loop
 # F702 a continue statement outside of a while or for loop
@@ -45,7 +45,7 @@
 # F706 a return statement outside of a function/method
 # F707 an except: block as not the last exception handler
 # F811 redefinition of unused name from line N
-# F812 list comprehenssphx redefines 'foo' from line N
+# F812 list comprehension redefines 'foo' from line N
 # F822 undefined name name in __all__
 # F823 local variable name … referenced before assignment
 # F831 duplicate argument name in function definition

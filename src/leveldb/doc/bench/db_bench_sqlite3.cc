@@ -54,8 +54,8 @@ static int FLAGS_value_size = 100;
 static bool FLAGS_histogram = false;
 
 // Arrange to generate values that shrink to this fraction of
-// their original size after compresssphx
-static double FLAGS_compresssphx_ratio = 0.5;
+// their original size after compression
+static double FLAGS_compression_ratio = 0.5;
 
 // Page size. Default 1 KB.
 static int FLAGS_page_size = 1024;
@@ -123,14 +123,14 @@ class RandomGenerator {
  public:
   RandomGenerator() {
     // We use a limited amount of data over and over again and ensure
-    // that it is larger than the compresssphx window (32KB), and also
+    // that it is larger than the compression window (32KB), and also
     // large enough to serve all typical value sizes we want to write.
     Random rnd(301);
     std::string piece;
     while (data_.size() < 1048576) {
       // Add a short fragment that is as compressible as specified
-      // by FLAGS_compresssphx_ratio.
-      test::CompressibleString(&rnd, FLAGS_compresssphx_ratio, 100, &piece);
+      // by FLAGS_compression_ratio.
+      test::CompressibleString(&rnd, FLAGS_compression_ratio, 100, &piece);
       data_.append(piece);
     }
     pos_ = 0;
@@ -204,7 +204,7 @@ class Benchmark {
   }
 
   void PrintEnvironment() {
-    fprintf(stderr, "SQLite:     version %s\n", SQLITE_VERSSPHX);
+    fprintf(stderr, "SQLite:     version %s\n", SQLITE_VERSION);
 
 #if defined(__linux)
     time_t now = time(NULL);
@@ -677,8 +677,8 @@ int main(int argc, char** argv) {
     } else if (sscanf(argv[i], "--histogram=%d%c", &n, &junk) == 1 &&
                (n == 0 || n == 1)) {
       FLAGS_histogram = n;
-    } else if (sscanf(argv[i], "--compresssphx_ratio=%lf%c", &d, &junk) == 1) {
-      FLAGS_compresssphx_ratio = d;
+    } else if (sscanf(argv[i], "--compression_ratio=%lf%c", &d, &junk) == 1) {
+      FLAGS_compression_ratio = d;
     } else if (sscanf(argv[i], "--use_existing_db=%d%c", &n, &junk) == 1 &&
                (n == 0 || n == 1)) {
       FLAGS_use_existing_db = n;

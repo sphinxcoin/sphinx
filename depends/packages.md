@@ -10,7 +10,7 @@ General tips:
 Each package is required to define at least these variables:
 
     $(package)_version:
-    Verssphx of the upstream library or program. If there is no version, a
+    Version of the upstream library or program. If there is no version, a
     placeholder such as 1.0 can be used.
 
     $(package)_download_path:

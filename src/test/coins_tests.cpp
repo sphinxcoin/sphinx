@@ -68,7 +68,7 @@ static const unsigned int NUM_SIMULATION_ITERATIONS = 40000;
 // stack of caches on top of CCoinsViewTest.
 //
 // It will randomly create/update/delete CCoins entries to a tip of caches, with
-// txids picked from a limited list of random 256-bit hashes. Occassphxally, a
+// txids picked from a limited list of random 256-bit hashes. Occasionally, a
 // new tip is added to the stack of caches, or the tip is flushed and removed.
 //
 // During the process, booleans are kept to make sure that the randomized
@@ -112,7 +112,7 @@ BOOST_AUTO_TEST_CASE(coins_cache_simulation_test)
                 } else {
                     updated_an_entry = true;
                 }
-                coins.nVerssphx = insecure_rand();
+                coins.nVersion = insecure_rand();
                 coins.vout.resize(1);
                 coins.vout[0].nValue = insecure_rand();
                 *entry = coins;

@@ -21,7 +21,7 @@
 // Include ApplicationServices.h after QtDbus to avoid redefinition of check().
 // This affects at least OSX 10.6. See /usr/include/AssertMacros.h for details.
 // Note: This could also be worked around using:
-// #define __ASSERT_MACROS_DEFINE_VERSSPHXS_WITHOUT_UNDERSCORES 0
+// #define __ASSERT_MACROS_DEFINE_VERSIONS_WITHOUT_UNDERSCORES 0
 #ifdef Q_OS_MAC
 #include "macnotificationhandler.h"
 #include <ApplicationServices/ApplicationServices.h>
@@ -256,7 +256,7 @@ void Notificator::notify(Class cls, const QString& title, const QString& text, c
 #endif
     default:
         if (cls == Critical) {
-            // Fall back to old fashsphxed pop-up dialog if critical and no other notification available
+            // Fall back to old fashioned pop-up dialog if critical and no other notification available
             QMessageBox::critical(parent, title, text, QMessageBox::Ok, QMessageBox::Ok);
         }
         break;

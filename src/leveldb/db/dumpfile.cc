@@ -121,11 +121,11 @@ Status DumpLog(Env* env, const std::string& fname, WritableFile* dst) {
 
 // Called on every log record (each one of which is a WriteBatch)
 // found in a kDescriptorFile.
-static void VerssphxEditPrinter(uint64_t pos, Slice record, WritableFile* dst) {
+static void VersionEditPrinter(uint64_t pos, Slice record, WritableFile* dst) {
   std::string r = "--- offset ";
   AppendNumberTo(&r, pos);
   r += "; ";
-  VerssphxEdit edit;
+  VersionEdit edit;
   Status s = edit.DecodeFrom(record);
   if (!s.ok()) {
     r += s.ToString();
@@ -137,7 +137,7 @@ static void VerssphxEditPrinter(uint64_t pos, Slice record, WritableFile* dst) {
 }
 
 Status DumpDescriptor(Env* env, const std::string& fname, WritableFile* dst) {
-  return PrintLogContents(env, fname, VerssphxEditPrinter, dst);
+  return PrintLogContents(env, fname, VersionEditPrinter, dst);
 }
 
 Status DumpTable(Env* env, const std::string& fname, WritableFile* dst) {

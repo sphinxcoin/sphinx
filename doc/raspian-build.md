@@ -52,7 +52,7 @@ add a comment to the debian/changelog file and change zesty to the version of ra
 
 cd debian
 
-echo "\`fgrep VERSSPHX\= /etc/os-release | awk '{print $2}' | tr -cd '[[:alnum:]]._-'\`" > release  
+echo "\`fgrep VERSION\= /etc/os-release | awk '{print $2}' | tr -cd '[[:alnum:]]._-'\`" > release  
 echo "db4.8 (4.8.30-\`cat release\`1) \`cat release\`; urgency=medium">head  
 echo "">>head  
 echo "-- \`whoami\` <\`whoami\`@\`uname -n\`>   \`date +%a\,\ %d\ %b\ %Y\ %H:%M:%S\ %z\`">>head  

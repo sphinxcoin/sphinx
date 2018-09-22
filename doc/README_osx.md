@@ -74,7 +74,7 @@ tool and its maintainer has seemingly abandoned the project. It has been forked
 and is available (with fixes) here: [theuni/libdmg-hfsplus](https://github.com/theuni/libdmg-hfsplus).
 
 The 'dmg' tool has the ability to create DMGs from scratch as well, but this
-functionality is broken. Only the compresssphx feature is currently used.
+functionality is broken. Only the compression feature is currently used.
 Ideally, the creation could be fixed and genisoimage would no longer be necessary.
 
 Background images and other features can be added to DMG files by inserting a

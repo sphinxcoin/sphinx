@@ -202,7 +202,7 @@ Hardening enables the following features:
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
     vulnerable buffers are found. By default, sphx should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
-    and uses a compiler extenssphx which requires an executable stack, it will silently build an
+    and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:

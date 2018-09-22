@@ -80,7 +80,7 @@ public:
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << vin;
         ss << nProposalHash;
         ss << nVote;
@@ -91,7 +91,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(vin);
         READWRITE(nProposalHash);
@@ -124,7 +124,7 @@ public:
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << vin;
         ss << nBudgetHash;
         ss << nTime;
@@ -134,7 +134,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(vin);
         READWRITE(nBudgetHash);
@@ -260,7 +260,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(mapSeenMasternodeBudgetProposals);
         READWRITE(mapSeenMasternodeBudgetVotes);
@@ -293,7 +293,7 @@ public:
 
     //for saving to the serialized db
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(payee);
         READWRITE(nAmount);
@@ -371,7 +371,7 @@ public:
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << strBudgetName;
         ss << nBlockStart;
         ss << vecBudgetPayments;
@@ -384,7 +384,7 @@ public:
 
     //for saving to the serialized db
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(LIMITED_STRING(strBudgetName, 20));
         READWRITE(nFeeTXHash);
@@ -435,7 +435,7 @@ public:
 
     //for propagating messages
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         //for syncing with other clients
         READWRITE(LIMITED_STRING(strBudgetName, 20));
@@ -518,7 +518,7 @@ public:
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << strProposalName;
         ss << strURL;
         ss << nBlockStart;
@@ -533,7 +533,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         //for syncing with other clients
         READWRITE(LIMITED_STRING(strProposalName, 20));
@@ -589,7 +589,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         //for syncing with other clients
 

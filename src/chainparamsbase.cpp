@@ -43,7 +43,7 @@ public:
 static CBaseTestNetParams testNetParams;
 
 /*
- * Regresssphx test
+ * Regression test
  */
 class CBaseRegTestParams : public CBaseTestNetParams
 {

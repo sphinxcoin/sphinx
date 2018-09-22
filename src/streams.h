@@ -35,7 +35,7 @@ protected:
 
 public:
     int nType;
-    int nVerssphx;
+    int nVersion;
 
     typedef vector_type::allocator_type allocator_type;
     typedef vector_type::size_type size_type;
@@ -47,43 +47,43 @@ public:
     typedef vector_type::const_iterator const_iterator;
     typedef vector_type::reverse_iterator reverse_iterator;
 
-    explicit CDataStream(int nTypeIn, int nVerssphxIn)
+    explicit CDataStream(int nTypeIn, int nVersionIn)
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 
-    CDataStream(const_iterator pbegin, const_iterator pend, int nTypeIn, int nVerssphxIn) : vch(pbegin, pend)
+    CDataStream(const_iterator pbegin, const_iterator pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1300
-    CDataStream(const char* pbegin, const char* pend, int nTypeIn, int nVerssphxIn) : vch(pbegin, pend)
+    CDataStream(const char* pbegin, const char* pend, int nTypeIn, int nVersionIn) : vch(pbegin, pend)
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 #endif
 
-    CDataStream(const vector_type& vchIn, int nTypeIn, int nVerssphxIn) : vch(vchIn.begin(), vchIn.end())
+    CDataStream(const vector_type& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 
-    CDataStream(const std::vector<char>& vchIn, int nTypeIn, int nVerssphxIn) : vch(vchIn.begin(), vchIn.end())
+    CDataStream(const std::vector<char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 
-    CDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVerssphxIn) : vch(vchIn.begin(), vchIn.end())
+    CDataStream(const std::vector<unsigned char>& vchIn, int nTypeIn, int nVersionIn) : vch(vchIn.begin(), vchIn.end())
     {
-        Init(nTypeIn, nVerssphxIn);
+        Init(nTypeIn, nVersionIn);
     }
 
-    void Init(int nTypeIn, int nVerssphxIn)
+    void Init(int nTypeIn, int nVersionIn)
     {
         nReadPos = 0;
         nType = nTypeIn;
-        nVerssphx = nVerssphxIn;
+        nVersion = nVersionIn;
     }
 
     CDataStream& operator+=(const CDataStream& b)
@@ -204,10 +204,10 @@ public:
 
     void SetType(int n) { nType = n; }
     int GetType() { return nType; }
-    void SetVerssphx(int n) { nVerssphx = n; }
-    int GetVerssphx() { return nVerssphx; }
-    void ReadVerssphx() { *this >> nVerssphx; }
-    void WriteVerssphx() { *this << nVerssphx; }
+    void SetVersion(int n) { nVersion = n; }
+    int GetVersion() { return nVersion; }
+    void ReadVersion() { *this >> nVersion; }
+    void WriteVersion() { *this << nVersion; }
 
     CDataStream& read(char* pch, size_t nSize)
     {
@@ -251,7 +251,7 @@ public:
     }
 
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVerssphx) const
+    void Serialize(Stream& s, int nType, int nVersion) const
     {
         // Special case: stream << stream concatenates like stream += stream
         if (!vch.empty())
@@ -262,14 +262,14 @@ public:
     unsigned int GetSerializeSize(const T& obj)
     {
         // Tells the size of the object if serialized to this stream
-        return ::GetSerializeSize(obj, nType, nVerssphx);
+        return ::GetSerializeSize(obj, nType, nVersion);
     }
 
     template <typename T>
     CDataStream& operator<<(const T& obj)
     {
         // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVerssphx);
+        ::Serialize(*this, obj, nType, nVersion);
         return (*this);
     }
 
@@ -277,7 +277,7 @@ public:
     CDataStream& operator>>(T& obj)
     {
         // Unserialize from this stream
-        ::Unserialize(*this, obj, nType, nVerssphx);
+        ::Unserialize(*this, obj, nType, nVersion);
         return (*this);
     }
 
@@ -303,16 +303,16 @@ private:
     CAutoFile& operator=(const CAutoFile&);
 
     int nType;
-    int nVerssphx;
+    int nVersion;
 
     FILE* file;
 
 public:
-    CAutoFile(FILE* filenew, int nTypeIn, int nVerssphxIn)
+    CAutoFile(FILE* filenew, int nTypeIn, int nVersionIn)
     {
         file = filenew;
         nType = nTypeIn;
-        nVerssphx = nVerssphxIn;
+        nVersion = nVersionIn;
     }
 
     ~CAutoFile()
@@ -354,10 +354,10 @@ public:
     //
     void SetType(int n) { nType = n; }
     int GetType() { return nType; }
-    void SetVerssphx(int n) { nVerssphx = n; }
-    int GetVerssphx() { return nVerssphx; }
-    void ReadVerssphx() { *this >> nVerssphx; }
-    void WriteVerssphx() { *this << nVerssphx; }
+    void SetVersion(int n) { nVersion = n; }
+    int GetVersion() { return nVersion; }
+    void ReadVersion() { *this >> nVersion; }
+    void WriteVersion() { *this << nVersion; }
 
     CAutoFile& read(char* pch, size_t nSize)
     {
@@ -381,7 +381,7 @@ public:
     unsigned int GetSerializeSize(const T& obj)
     {
         // Tells the size of the object if serialized to this stream
-        return ::GetSerializeSize(obj, nType, nVerssphx);
+        return ::GetSerializeSize(obj, nType, nVersion);
     }
 
     template <typename T>
@@ -390,7 +390,7 @@ public:
         // Serialize to this stream
         if (!file)
             throw std::ios_base::failure("CAutoFile::operator<< : file handle is NULL");
-        ::Serialize(*this, obj, nType, nVerssphx);
+        ::Serialize(*this, obj, nType, nVersion);
         return (*this);
     }
 
@@ -400,7 +400,7 @@ public:
         // Unserialize from this stream
         if (!file)
             throw std::ios_base::failure("CAutoFile::operator>> : file handle is NULL");
-        ::Unserialize(*this, obj, nType, nVerssphx);
+        ::Unserialize(*this, obj, nType, nVersion);
         return (*this);
     }
 };
@@ -419,7 +419,7 @@ private:
     CBufferedFile& operator=(const CBufferedFile&);
 
     int nType;
-    int nVerssphx;
+    int nVersion;
 
     FILE* src;                // source file
     uint64_t nSrcPos;         // how many bytes have been read from source
@@ -449,11 +449,11 @@ protected:
     }
 
 public:
-    CBufferedFile(FILE* fileIn, uint64_t nBufSize, uint64_t nRewindIn, int nTypeIn, int nVerssphxIn) : nSrcPos(0), nReadPos(0), nReadLimit((uint64_t)(-1)), nRewind(nRewindIn), vchBuf(nBufSize, 0)
+    CBufferedFile(FILE* fileIn, uint64_t nBufSize, uint64_t nRewindIn, int nTypeIn, int nVersionIn) : nSrcPos(0), nReadPos(0), nReadLimit((uint64_t)(-1)), nRewind(nRewindIn), vchBuf(nBufSize, 0)
     {
         src = fileIn;
         nType = nTypeIn;
-        nVerssphx = nVerssphxIn;
+        nVersion = nVersionIn;
     }
 
     ~CBufferedFile()
@@ -547,7 +547,7 @@ public:
     CBufferedFile& operator>>(T& obj)
     {
         // Unserialize from this stream
-        ::Unserialize(*this, obj, nType, nVerssphx);
+        ::Unserialize(*this, obj, nType, nVersion);
         return (*this);
     }
 

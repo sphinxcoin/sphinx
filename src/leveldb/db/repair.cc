@@ -105,7 +105,7 @@ class Repairer {
   bool owns_info_log_;
   bool owns_cache_;
   TableCache* table_cache_;
-  VerssphxEdit edit_;
+  VersionEdit edit_;
 
   std::vector<std::string> manifests_;
   std::vector<uint64_t> table_numbers_;

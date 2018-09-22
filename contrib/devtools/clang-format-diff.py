@@ -23,7 +23,7 @@
 #
 #     http://llvm.org
 #
-# Permisssphx is hereby granted, free of charge, to any person obtaining a copy of
+# Permission is hereby granted, free of charge, to any person obtaining a copy of
 # this software and associated documentation files (the "Software"), to deal with
 # the Software without restriction, including without limitation the rights to
 # use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
@@ -40,7 +40,7 @@
 #     * Neither the names of the LLVM Team, University of Illinois at
 #       Urbana-Champaign, nor the names of its contributors may be used to
 #       endorse or promote products derived from this Software without specific
-#       prior written permisssphx.
+#       prior written permission.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS

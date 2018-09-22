@@ -18,7 +18,7 @@ const std::string CLIENT_NAME("Sphinxcoin Core");
 /**
  * Client version number
  */
-#define CLIENT_VERSSPHX_SUFFIX "-BRIDGE"
+#define CLIENT_VERSION_SUFFIX "-BRIDGE"
 
 
 /**
@@ -34,7 +34,7 @@ const std::string CLIENT_NAME("Sphinxcoin Core");
  *   * if BUILD_DESC is defined, use that literally (output of git-describe)
  *   * if not, but GIT_COMMIT is defined, use v[maj].[min].[rev].[build]-g[commit]
  *   * otherwise, use v[maj].[min].[rev].[build]-unk
- * finally CLIENT_VERSSPHX_SUFFIX is added
+ * finally CLIENT_VERSION_SUFFIX is added
  */
 
 //! First, include build.h if requested
@@ -59,11 +59,11 @@ const std::string CLIENT_NAME("Sphinxcoin Core");
 
 #ifndef BUILD_DESC
 #ifdef BUILD_SUFFIX
-#define BUILD_DESC BUILD_DESC_WITH_SUFFIX(CLIENT_VERSSPHX_MAJOR, CLIENT_VERSSPHX_MINOR, CLIENT_VERSSPHX_REVISSPHX, CLIENT_VERSSPHX_BUILD, BUILD_SUFFIX)
+#define BUILD_DESC BUILD_DESC_WITH_SUFFIX(CLIENT_VERSION_MAJOR, CLIENT_VERSION_MINOR, CLIENT_VERSION_REVISION, CLIENT_VERSION_BUILD, BUILD_SUFFIX)
 #elif defined(GIT_COMMIT_ID)
-#define BUILD_DESC BUILD_DESC_FROM_COMMIT(CLIENT_VERSSPHX_MAJOR, CLIENT_VERSSPHX_MINOR, CLIENT_VERSSPHX_REVISSPHX, CLIENT_VERSSPHX_BUILD, GIT_COMMIT_ID)
+#define BUILD_DESC BUILD_DESC_FROM_COMMIT(CLIENT_VERSION_MAJOR, CLIENT_VERSION_MINOR, CLIENT_VERSION_REVISION, CLIENT_VERSION_BUILD, GIT_COMMIT_ID)
 #else
-#define BUILD_DESC BUILD_DESC_FROM_UNKNOWN(CLIENT_VERSSPHX_MAJOR, CLIENT_VERSSPHX_MINOR, CLIENT_VERSSPHX_REVISSPHX, CLIENT_VERSSPHX_BUILD)
+#define BUILD_DESC BUILD_DESC_FROM_UNKNOWN(CLIENT_VERSION_MAJOR, CLIENT_VERSION_MINOR, CLIENT_VERSION_REVISION, CLIENT_VERSION_BUILD)
 #endif
 #endif
 
@@ -75,18 +75,18 @@ const std::string CLIENT_NAME("Sphinxcoin Core");
 #endif
 #endif
 
-const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSSPHX_SUFFIX);
+const std::string CLIENT_BUILD(BUILD_DESC CLIENT_VERSION_SUFFIX);
 const std::string CLIENT_DATE(BUILD_DATE);
 
-static std::string FormatVerssphx(int nVerssphx)
+static std::string FormatVersion(int nVersion)
 {
-    if (nVerssphx % 100 == 0)
-        return strprintf("%d.%d.%d", nVerssphx / 1000000, (nVerssphx / 10000) % 100, (nVerssphx / 100) % 100);
+    if (nVersion % 100 == 0)
+        return strprintf("%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100);
     else
-        return strprintf("%d.%d.%d.%d", nVerssphx / 1000000, (nVerssphx / 10000) % 100, (nVerssphx / 100) % 100, nVerssphx % 100);
+        return strprintf("%d.%d.%d.%d", nVersion / 1000000, (nVersion / 10000) % 100, (nVersion / 100) % 100, nVersion % 100);
 }
 
-std::string FormatFullVerssphx()
+std::string FormatFullVersion()
 {
     return CLIENT_BUILD;
 }
@@ -94,11 +94,11 @@ std::string FormatFullVerssphx()
 /** 
  * Format the subversion field according to BIP 14 spec (https://github.com/bitcoin/bips/blob/master/bip-0014.mediawiki) 
  */
-std::string FormatSubVerssphx(const std::string& name, int nClientVerssphx, const std::vector<std::string>& comments)
+std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments)
 {
     std::ostringstream ss;
     ss << "/";
-    ss << name << ":" << FormatVerssphx(nClientVerssphx);
+    ss << name << ":" << FormatVersion(nClientVersion);
     if (!comments.empty()) {
         std::vector<std::string>::const_iterator it(comments.begin());
         ss << "(" << *it;

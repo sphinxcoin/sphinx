@@ -1293,7 +1293,7 @@ Please check the address and try again.</source>
         <translation>&amp;Yksikkö jossa määrä näytetään:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Käytä oletus vähennysyksikköä käyttöliittymässä ja kolikoita lähettäessä.</translation>
     </message>
     <message>
@@ -1390,7 +1390,7 @@ Please check the address and try again.</source>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versio</translation>
     </message>
     <message>
@@ -1586,7 +1586,7 @@ Please check the address and try again.</source>
         <translation>Protokolla</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versio</translation>
     </message>
     <message>
@@ -2218,7 +2218,7 @@ Please check the address and try again.</source>
         <translation>SPHX Ydin</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Versio %1</translation>
     </message>
     <message>
@@ -2534,7 +2534,7 @@ Please check the address and try again.</source>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -2671,11 +2671,11 @@ Please check the address and try again.</source>
         <translation>Skannaa uudelleen...</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Sessio ei valmis!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>Istunto päättyi.</translation>
     </message>
     <message>

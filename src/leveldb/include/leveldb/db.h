@@ -13,8 +13,8 @@
 namespace leveldb {
 
 // Update Makefile if you change these
-static const int kMajorVerssphx = 1;
-static const int kMinorVerssphx = 18;
+static const int kMajorVersion = 1;
+static const int kMinorVersion = 18;
 
 struct Options;
 struct ReadOptions;

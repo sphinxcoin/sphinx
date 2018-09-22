@@ -810,7 +810,7 @@ TEST(TableTest, ApproximateOffsetOfPlain) {
   KVMap kvmap;
   Options options;
   options.block_size = 1024;
-  options.compresssphx = kNoCompresssphx;
+  options.compression = kNoCompression;
   c.Finish(options, &keys, &kvmap);
 
   ASSERT_TRUE(Between(c.ApproximateOffsetOf("abc"),       0,      0));
@@ -827,15 +827,15 @@ TEST(TableTest, ApproximateOffsetOfPlain) {
 
 }
 
-static bool SnappyCompresssphxSupported() {
+static bool SnappyCompressionSupported() {
   std::string out;
   Slice in = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
   return port::Snappy_Compress(in.data(), in.size(), &out);
 }
 
 TEST(TableTest, ApproximateOffsetOfCompressed) {
-  if (!SnappyCompresssphxSupported()) {
-    fprintf(stderr, "skipping compresssphx tests\n");
+  if (!SnappyCompressionSupported()) {
+    fprintf(stderr, "skipping compression tests\n");
     return;
   }
 
@@ -850,7 +850,7 @@ TEST(TableTest, ApproximateOffsetOfCompressed) {
   KVMap kvmap;
   Options options;
   options.block_size = 1024;
-  options.compresssphx = kSnappyCompresssphx;
+  options.compression = kSnappyCompression;
   c.Finish(options, &keys, &kvmap);
 
   ASSERT_TRUE(Between(c.ApproximateOffsetOf("abc"),       0,      0));

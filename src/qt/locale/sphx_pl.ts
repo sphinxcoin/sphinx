@@ -181,7 +181,7 @@
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>Hasło do portfela zostało zmiensphxe</translation>
+        <translation>Hasło do portfela zostało zmienione</translation>
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
@@ -1262,7 +1262,7 @@ https://www.transifex.com/cevap/cevap-translations </translation>
         <translation>&amp;Pokaż wartości w:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Nagrody ze stakingu lub masternode, które nie są jeszcze dojrzałe</translation>
     </message>
     <message>
@@ -1383,7 +1383,7 @@ https://www.transifex.com/cevap/cevap-translations </translation>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Wersja</translation>
     </message>
     <message>
@@ -1639,7 +1639,7 @@ https://www.transifex.com/cevap/cevap-translations </translation>
         <translation>Protokół</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Wersja</translation>
     </message>
     <message>
@@ -2027,7 +2027,7 @@ https://www.transifex.com/cevap/cevap-translations </translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

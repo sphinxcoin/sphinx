@@ -83,7 +83,7 @@ div.bsql {
 <p>Google, July 2011</p>
 <hr>
 
-<p>In order to test LevelDB's performance, we benchmark it against other well-established database implementations. We compare LevelDB (revissphx 39) against <a href="http://www.sqlite.org/">SQLite3</a> (version 3.7.6.3) and <a href="http://fallabs.com/kyotocabinet/spex.html">Kyoto Cabinet's</a> (version 1.2.67) TreeDB (a B+Tree based key-value store). We would like to acknowledge Scott Hess and Mikio Hirabayashi for their suggestions and contributions to the SQLite3 and Kyoto Cabinet benchmarks, respectively.</p>
+<p>In order to test LevelDB's performance, we benchmark it against other well-established database implementations. We compare LevelDB (revision 39) against <a href="http://www.sqlite.org/">SQLite3</a> (version 3.7.6.3) and <a href="http://fallabs.com/kyotocabinet/spex.html">Kyoto Cabinet's</a> (version 1.2.67) TreeDB (a B+Tree based key-value store). We would like to acknowledge Scott Hess and Mikio Hirabayashi for their suggestions and contributions to the SQLite3 and Kyoto Cabinet benchmarks, respectively.</p>
 
 <p>Benchmarks were all performed on a six-core Intel(R) Xeon(R) CPU X5650 @ 2.67GHz, with 12288 KB of total L3 cache and 12 GB of DDR3 RAM at 1333 MHz. (Note that LevelDB uses at most two CPUs since the benchmarks are single threaded: one to run the benchmark, and one for background compactions.) We ran the benchmarks on two machines (with identical processors), one with an Ext3 file system and one with an Ext4 file system. The machine with the Ext3 file system has a SATA Hitachi HDS721050CLA362 hard drive. The machine with the Ext4 file system has a SATA Samsung HD502HJ hard drive. Both hard drives spin at 7200 RPM and have hard drive write-caching enabled (using `hdparm -W 1 [device]`). The numbers reported below are the median of three measurements.</p>
 
@@ -97,8 +97,8 @@ div.bsql {
 
 <h4>Custom Build Specifications</h4>
 <ul>
-<li>LevelDB: LevelDB was compiled with the <a href="http://code.google.com/p/google-perftools">tcmalloc</a> library and the <a href="http://code.google.com/p/snappy/">Snappy</a> compresssphx library (revissphx 33).  Assertions were disabled.</li>
-<li>TreeDB: TreeDB was compiled using the <a href="http://www.oberhumer.com/opensource/lzo/">LZO</a> compresssphx library (version 2.03). Furthermore, we enabled the TSMALL and TLINEAR options when opening the database in order to reduce the footprint of each record.</li>
+<li>LevelDB: LevelDB was compiled with the <a href="http://code.google.com/p/google-perftools">tcmalloc</a> library and the <a href="http://code.google.com/p/snappy/">Snappy</a> compression library (revision 33).  Assertions were disabled.</li>
+<li>TreeDB: TreeDB was compiled using the <a href="http://www.oberhumer.com/opensource/lzo/">LZO</a> compression library (version 2.03). Furthermore, we enabled the TSMALL and TLINEAR options when opening the database in order to reduce the footprint of each record.</li>
 <li>SQLite: We tuned SQLite's performance, by setting its locking mode to exclusive.  We also enabled SQLite's <a href="http://www.sqlite.org/draft/wal.html">write-ahead logging</a>.</li>
 </ul>
 
@@ -276,14 +276,14 @@ disabled hard drive write-caching (using `hdparm -W 0 [device]`).</p>
 since synchronous writes behave significantly differently
 on <code>ext3</code> and <code>ext4</code>.</p>
 
-<h3>D. Turning Compresssphx Off</h3>
+<h3>D. Turning Compression Off</h3>
 
 <p>In the baseline measurements, LevelDB and TreeDB were using
-light-weight compresssphx
+light-weight compression
 (<a href="http://code.google.com/p/snappy/">Snappy</a> for LevelDB,
 and <a href="http://www.oberhumer.com/opensource/lzo/">LZO</a> for
-TreeDB). SQLite3, by default does not use compresssphx.  The
-experiments below show what happens when compresssphx is disabled in
+TreeDB). SQLite3, by default does not use compression.  The
+experiments below show what happens when compression is disabled in
 all of the databases (the SQLite3 numbers are just a copy of
 its baseline measurements):</p>
 
@@ -318,14 +318,14 @@ its baseline measurements):</p>
     <td class="c4">(1.00x baseline)</td></tr>
 </table>
 
-<p>LevelDB's write performance is better with compresssphx than without
-since compresssphx decreases the amount of data that has to be written
-to disk.  Therefore LevelDB users can leave compresssphx enabled in
+<p>LevelDB's write performance is better with compression than without
+since compression decreases the amount of data that has to be written
+to disk.  Therefore LevelDB users can leave compression enabled in
 most scenarios without having worry about a tradeoff between space
 usage and performance.  TreeDB's performance on the other hand is
-better without compresssphx than with compresssphx.  Presumably this is
-because TreeDB's compresssphx library (LZO) is more expensive than
-LevelDB's compresssphx library (Snappy).<p>
+better without compression than with compression.  Presumably this is
+because TreeDB's compression library (LZO) is more expensive than
+LevelDB's compression library (Snappy).<p>
 
 <h3>E. Using More Memory</h3>
 <p>We increased the overall cache size for each database to 128 MB. For LevelDB, we partitioned 128 MB into a 120 MB write buffer and 8 MB of cache (up from 2 MB of write buffer and 2 MB of cache). For SQLite3, we kept the page size at 1024 bytes, but increased the number of pages to 131,072 (up from 4096). For TreeDB, we also kept the page size at 1024 bytes, but increased the cache size to 128 MB (up from 4 MB).</p>
@@ -412,8 +412,8 @@ when the caches are enlarged.  In particular, TreeDB seems to make
 very effective use of a cache that is large enough to hold the entire
 database.</p>
 
-<h3>B. No Compresssphx Reads </h3>
-<p>For this benchmark, we populated a database with 1 millsphx entries consisting of 16 byte keys and 100 byte values. We compiled LevelDB and Kyoto Cabinet without compresssphx support, so results that are read out from the database are already uncompressed. We've listed the SQLite3 baseline read performance as a point of comparison.</p>
+<h3>B. No Compression Reads </h3>
+<p>For this benchmark, we populated a database with 1 million entries consisting of 16 byte keys and 100 byte values. We compiled LevelDB and Kyoto Cabinet without compression support, so results that are read out from the database are already uncompressed. We've listed the SQLite3 baseline read performance as a point of comparison.</p>
 <h4>Sequential Reads</h4>
 <table class="bn">
 <tr><td class="c1">LevelDB</td>
@@ -446,8 +446,8 @@ database.</p>
 </table>
 
 <p>Performance of both LevelDB and TreeDB improves a small amount when
-compresssphx is disabled.  Note however that under different workloads,
-performance may very well be better with compresssphx if it allows more
+compression is disabled.  Note however that under different workloads,
+performance may very well be better with compression if it allows more
 of the working set to fit in memory.</p>
 
 <h2>Note about Ext4 Filesystems</h2>

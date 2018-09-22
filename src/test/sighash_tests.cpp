@@ -90,7 +90,7 @@ void static RandomScript(CScript &script) {
 }
 
 void static RandomTransaction(CMutableTransaction &tx, bool fSingle) {
-    tx.nVerssphx = insecure_rand();
+    tx.nVersion = insecure_rand();
     tx.vin.clear();
     tx.vout.clear();
     tx.nLockTime = (insecure_rand() % 2) ? insecure_rand() : 0;
@@ -139,7 +139,7 @@ BOOST_AUTO_TEST_CASE(sighash_test)
         sho = SignatureHashOld(scriptCode, txTo, nIn, nHashType);
         sh = SignatureHash(scriptCode, txTo, nIn, nHashType);
         #if defined(PRINT_SIGHASH_JSON)
-        CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
         ss << txTo;
 
         std::cout << "\t[\"" ;
@@ -190,7 +190,7 @@ BOOST_AUTO_TEST_CASE(sighash_from_data)
           sigHashHex = test[4].get_str();
 
           uint256 sh;
-          CDataStream stream(ParseHex(raw_tx), SER_NETWORK, PROTOCOL_VERSSPHX);
+          CDataStream stream(ParseHex(raw_tx), SER_NETWORK, PROTOCOL_VERSION);
           stream >> tx;
 
           CValidationState state;

@@ -17,28 +17,28 @@ The first step is running Sphinx behind a Tor proxy. This will already make all
 outgoing connections be anonymized, but more is possible.
 ```
 -proxy=ip:port  Set the proxy server. If SOCKS5 is selected (default), this proxy
-                server will be used to try to reach .onsphx addresses as well.
+                server will be used to try to reach .onion addresses as well.
 
--onsphx=ip:port  Set the proxy server to use for tor hidden services. You do not
-                need to set this if it's the same as -proxy. You can use -noonsphx
+-onion=ip:port  Set the proxy server to use for tor hidden services. You do not
+                need to set this if it's the same as -proxy. You can use -noonion
                 to explicitly disable access to hidden service.
 
 -listen         When using -proxy, listening is disabled by default. If you want
                 to run a hidden service (see next section), you'll need to enable
                 it explicitly.
 
--connect=X      When behind a Tor proxy, you can specify .onsphx addresses instead
+-connect=X      When behind a Tor proxy, you can specify .onion addresses instead
 -addnode=X      of IP addresses or hostnames in these parameters. It requires
 -seednode=X     SOCKS5. In Tor mode, such addresses can also be exchanged with
                 other P2P nodes.
 
--onlynet=tor    Only connect to .onsphx nodes and drop IPv4/6 connections.
+-onlynet=tor    Only connect to .onion nodes and drop IPv4/6 connections.
 ```
 
 An example how to start the client if the Tor proxy is running on local host on
-port 9050 and only allows .onsphx nodes to connect:
+port 9050 and only allows .onion nodes to connect:
 ```
-./sphxd -onsphx=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=dnetzj6l4cvo2fxy.onsphx:989
+./sphxd -onion=127.0.0.1:9050 -onlynet=tor -listen=0 -addnode=dnetzj6l4cvo2fxy.onion:989
 ```
 
 In a typical situation, this suffices to run behind a Tor proxy:
@@ -72,9 +72,9 @@ The directory can be different of course, but (both) port numbers should be equa
 your sphxd's P2P listen port (12700 by default).
 ```
 -externalip=X   You can tell sphx about its publicly reachable address using
-                this option, and this can be a .onsphx address. Given the above
-                configuration, you can find your onsphx address in
-                /var/lib/tor/sphx-service/hostname. Onsphx addresses are given
+                this option, and this can be a .onion address. Given the above
+                configuration, you can find your onion address in
+                /var/lib/tor/sphx-service/hostname. Onion addresses are given
                 preference for your node to advertize itself with, for connections
                 coming from unroutable addresses (such as 127.0.0.1, where the
                 Tor proxy typically runs).
@@ -92,10 +92,10 @@ your sphxd's P2P listen port (12700 by default).
 
 In a typical situation, where you're only reachable via Tor, this should suffice:
 ```
-./sphxd -proxy=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onsphx:989 -listen
+./sphxd -proxy=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -listen
 ```
 
-(obviously, replace the Onsphx address with your own). If you don't care too much
+(obviously, replace the Onion address with your own). If you don't care too much
 about hiding your node, and want to be reachable on IPv4 as well, additionally
 specify:
 ```
@@ -104,23 +104,23 @@ specify:
 
 and open port 12700 on your firewall (or use -upnp).
 
-If you only want to use Tor to reach onsphx addresses, but not use it as a proxy
+If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
 ```
-./sphxd -onsphx=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onsphx:989 -discover
+./sphxd -onion=127.0.0.1:9050 -externalip=dnetzj6l4cvo2fxy.onion:989 -discover
 ```
 
 List of known Sphinx Tor relays
 ------------------------------------
 ```
-y5kcscnhpygvvnjn.onsphx:989
-5bmhtjvn2jvwpiej.onsphx:989
-pyfdxkazur3iib7y.onsphx:989
-ok3ym5zy6m5klimk.onsphx:989
-i6vpvzk2jxuqqs5f.onsphx:989
-bgdhpb76fkbw5fmg.onsphx:989
-gtlqzb5zbws5di7g.onsphx:989
-f7j2m26rptm5f7af.onsphx:989
-dnetzj6l4cvo2fxy.onsphx:989
-s3v3n7xhqafg6sb7.onsphx:989
+y5kcscnhpygvvnjn.onion:989
+5bmhtjvn2jvwpiej.onion:989
+pyfdxkazur3iib7y.onion:989
+ok3ym5zy6m5klimk.onion:989
+i6vpvzk2jxuqqs5f.onion:989
+bgdhpb76fkbw5fmg.onion:989
+gtlqzb5zbws5di7g.onion:989
+f7j2m26rptm5f7af.onion:989
+dnetzj6l4cvo2fxy.onion:989
+s3v3n7xhqafg6sb7.onion:989
 ```

@@ -52,7 +52,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(vin);
         READWRITE(blockHash);
@@ -66,7 +66,7 @@ public:
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << vin;
         ss << sigTime;
         return ss.GetHash();
@@ -137,7 +137,7 @@ public:
     int cacheInputAgeBlock;
     bool unitTest;
     bool allowFreeTx;
-    int protocolVerssphx;
+    int protocolVersion;
     int nActiveState;
     int64_t nLastDsq; //the dsq count from the last dsq broadcast of this node
     int nScanningErrorCount;
@@ -171,7 +171,7 @@ public:
         swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
         swap(first.unitTest, second.unitTest);
         swap(first.allowFreeTx, second.allowFreeTx);
-        swap(first.protocolVerssphx, second.protocolVerssphx);
+        swap(first.protocolVersion, second.protocolVersion);
         swap(first.nLastDsq, second.nLastDsq);
         swap(first.nScanningErrorCount, second.nScanningErrorCount);
         swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
@@ -196,7 +196,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         LOCK(cs);
 
@@ -206,7 +206,7 @@ public:
         READWRITE(pubKeyMasternode);
         READWRITE(sig);
         READWRITE(sigTime);
-        READWRITE(protocolVerssphx);
+        READWRITE(protocolVersion);
         READWRITE(activeState);
         READWRITE(lastPing);
         READWRITE(cacheInputAge);
@@ -294,7 +294,7 @@ class CMasternodeBroadcast : public CMasternode
 {
 public:
     CMasternodeBroadcast();
-    CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVerssphxIn);
+    CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVersionIn);
     CMasternodeBroadcast(const CMasternode& mn);
 
     bool CheckAndUpdate(int& nDoS);
@@ -305,7 +305,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(vin);
         READWRITE(addr);
@@ -313,14 +313,14 @@ public:
         READWRITE(pubKeyMasternode);
         READWRITE(sig);
         READWRITE(sigTime);
-        READWRITE(protocolVerssphx);
+        READWRITE(protocolVersion);
         READWRITE(lastPing);
         READWRITE(nLastDsq);
     }
 
     uint256 GetHash()
     {
-        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << sigTime;
         ss << pubKeyCollateralAddress;
         return ss.GetHash();

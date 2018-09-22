@@ -1728,7 +1728,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>В каких единицах показывать сумму:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Выберите стандарную дробную величину, которая будет показываться в графическом интерфейсе и при отправке монет.</translation>
     </message>
     <message>
@@ -1961,7 +1961,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Адрес / имя хоста</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -2241,7 +2241,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Протокол</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -2798,7 +2798,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Версия %1</translation>
     </message>
     <message>
@@ -3062,7 +3062,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -3323,11 +3323,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Запускать в фоновом режиме в качестве демона и принимать команды</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Сессия не завершена!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>Время сеанса истекло.</translation>
     </message>
     <message>
@@ -3387,7 +3387,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Это экспериментальное программное обеспечение.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
+        <source>This is intended for regression testing tools and app development.</source>
         <translation>Это предназначено для инструментов тестирования регрессии и разработки приложений.</translation>
     </message>
     <message>

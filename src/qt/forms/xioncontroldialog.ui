@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>XSPHXControlDialog</class>
- <widget class="QDialog" name="XSPHXControlDialog">
+ <class>XIONControlDialog</class>
+ <widget class="QDialog" name="XIONControlDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -57,14 +57,14 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="labelXSPHX">
+        <widget class="QLabel" name="labelXION">
          <property name="text">
           <string>xSPHX</string>
          </property>
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLabel" name="labelXSPHX_int">
+        <widget class="QLabel" name="labelXION_int">
          <property name="text">
           <string>0</string>
          </property>
@@ -193,7 +193,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>accepted()</signal>
-   <receiver>XSPHXControlDialog</receiver>
+   <receiver>XIONControlDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -209,7 +209,7 @@
   <connection>
    <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>XSPHXControlDialog</receiver>
+   <receiver>XIONControlDialog</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">

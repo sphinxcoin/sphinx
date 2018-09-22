@@ -64,14 +64,14 @@
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="clientVerssphxLabel">
+        <widget class="QLabel" name="clientVersionLabel">
          <property name="text">
           <string>Client version</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLabel" name="clientVerssphx">
+        <widget class="QLabel" name="clientVersion">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -87,7 +87,7 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="openSSLVerssphxLabel">
+        <widget class="QLabel" name="openSSLVersionLabel">
          <property name="text">
           <string>Using OpenSSL version</string>
          </property>
@@ -97,7 +97,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLabel" name="openSSLVerssphx">
+        <widget class="QLabel" name="openSSLVersion">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -113,7 +113,7 @@
         </widget>
        </item>
        <item row="4" column="0">
-        <widget class="QLabel" name="berkeleyDBVerssphxLabel">
+        <widget class="QLabel" name="berkeleyDBVersionLabel">
          <property name="text">
           <string>Using BerkeleyDB version</string>
          </property>
@@ -123,7 +123,7 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLabel" name="berkeleyDBVerssphx">
+        <widget class="QLabel" name="berkeleyDBVersion">
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -878,7 +878,7 @@
            </widget>
           </item>
           <item row="2" column="2">
-           <widget class="QLabel" name="peerVerssphx">
+           <widget class="QLabel" name="peerVersion">
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -896,7 +896,7 @@
           <item row="3" column="0">
            <widget class="QLabel" name="label_28">
             <property name="text">
-             <string>Verssphx</string>
+             <string>Version</string>
             </property>
            </widget>
           </item>

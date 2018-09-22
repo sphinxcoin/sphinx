@@ -44,7 +44,7 @@ enum RPCErrorCode {
     RPC_INVALID_PARAMETER               = -8, //! Invalid, missing or duplicate parameter
     RPC_DATABASE_ERROR                  = -20, //! Database error
     RPC_DESERIALIZATION_ERROR           = -22, //! Error parsing or validating structure in raw format
-    RPC_VERIFY_ERROR                    = -25, //! General error during transaction or block submisssphx
+    RPC_VERIFY_ERROR                    = -25, //! General error during transaction or block submission
     RPC_VERIFY_REJECTED                 = -26, //! Transaction or block was rejected by network rules
     RPC_VERIFY_ALREADY_IN_CHAIN         = -27, //! Transaction already in chain
     RPC_IN_WARMUP                       = -28, //! Client still warming up

@@ -6,6 +6,6 @@ includedir=@includedir@
 Name: zerocoin
 Description: Zerocoin cryptographic routines library
 Requires:
-Verssphx: @LIBVER@
+Version: @LIBVER@
 Libs: -L${libdir} -lzerocoin -lcrypto
 Cflags: -I${includedir}

@@ -7,10 +7,10 @@
 // When we store a key, we drop the prefix shared with the previous
 // string.  This helps reduce the space requirement significantly.
 // Furthermore, once every K keys, we do not apply the prefix
-// compresssphx and store the entire key.  We call this a "restart
+// compression and store the entire key.  We call this a "restart
 // point".  The tail end of the block stores the offsets of all of the
 // restart points, and can be used to do a binary search when looking
-// for a particular key.  Values are stored as-is (without compresssphx)
+// for a particular key.  Values are stored as-is (without compression)
 // immediately following the corresponding key.
 //
 // An entry for a particular key-value pair has the form:
@@ -84,7 +84,7 @@ void BlockBuilder::Add(const Slice& key, const Slice& value) {
       shared++;
     }
   } else {
-    // Restart compresssphx
+    // Restart compression
     restarts_.push_back(buffer_.size());
     counter_ = 0;
   }

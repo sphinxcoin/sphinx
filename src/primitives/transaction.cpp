@@ -91,8 +91,8 @@ std::string CTxOut::ToString() const
     return strprintf("CTxOut(nValue=%d.%08d, scriptPubKey=%s)", nValue / COIN, nValue % COIN, scriptPubKey.ToString().substr(0,30));
 }
 
-CMutableTransaction::CMutableTransaction() : nVerssphx(CTransaction::CURRENT_VERSSPHX), nTime(0), nLockTime(0) {}
-CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVerssphx(tx.nVerssphx), nTime(tx.nTime), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {}
+CMutableTransaction::CMutableTransaction() : nVersion(CTransaction::CURRENT_VERSION), nTime(0), nLockTime(0) {}
+CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.nVersion), nTime(tx.nTime), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {}
 
 uint256 CMutableTransaction::GetHash() const
 {
@@ -103,8 +103,8 @@ std::string CMutableTransaction::ToString() const
 {
     std::string str;
     str += strprintf("CMutableTransaction(ver=%d, ",
-        nVerssphx);
-    if (nVerssphx == 1)
+        nVersion);
+    if (nVersion == 1)
         str += strprintf("nTime=%d, ", nTime);
     str += strprintf("vin.size=%u, vout.size=%u, nLockTime=%u)\n",
         vin.size(),
@@ -122,14 +122,14 @@ void CTransaction::UpdateHash() const
     *const_cast<uint256*>(&hash) = SerializeHash(*this);
 }
 
-CTransaction::CTransaction() : hash(), nVerssphx(CTransaction::CURRENT_VERSSPHX), nTime(0), vin(), vout(), nLockTime(0) { }
+CTransaction::CTransaction() : hash(), nVersion(CTransaction::CURRENT_VERSION), nTime(0), vin(), vout(), nLockTime(0) { }
 
-CTransaction::CTransaction(const CMutableTransaction &tx) : nVerssphx(tx.nVerssphx), nTime(tx.nTime), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {
+CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), nTime(tx.nTime), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {
     UpdateHash();
 }
 
 CTransaction& CTransaction::operator=(const CTransaction &tx) {
-    *const_cast<int*>(&nVerssphx) = tx.nVerssphx;
+    *const_cast<int*>(&nVersion) = tx.nVersion;
     *const_cast<unsigned int*>(&nTime) = tx.nTime;
     *const_cast<std::vector<CTxIn>*>(&vin) = tx.vin;
     *const_cast<std::vector<CTxOut>*>(&vout) = tx.vout;
@@ -199,7 +199,7 @@ CAmount CTransaction::GetZerocoinSpent() const
         std::vector<char, zero_after_free_allocator<char> > dataTxIn;
         dataTxIn.insert(dataTxIn.end(), txin.scriptSig.begin() + 4, txin.scriptSig.end());
 
-        CDataStream serializedCoinSpend(dataTxIn, SER_NETWORK, PROTOCOL_VERSSPHX);
+        CDataStream serializedCoinSpend(dataTxIn, SER_NETWORK, PROTOCOL_VERSION);
         libzerocoin::CoinSpend spend(Params().Zerocoin_Params(), serializedCoinSpend);
         nValueOut += libzerocoin::ZerocoinDenominationToAmount(spend.getDenomination());
     }
@@ -233,7 +233,7 @@ unsigned int CTransaction::CalculateModifiedSize(unsigned int nTxSize) const
     // Providing any more cleanup incentive than making additional inputs free would
     // risk encouraging people to create junk outputs to redeem later.
     if (nTxSize == 0)
-        nTxSize = ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSSPHX);
+        nTxSize = ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION);
     for (std::vector<CTxIn>::const_iterator it(vin.begin()); it != vin.end(); ++it)
     {
         unsigned int offset = 41U + std::min(110U, (unsigned int)it->scriptSig.size());
@@ -248,8 +248,8 @@ std::string CTransaction::ToString() const
     std::string str;
     str += strprintf("CTransaction(hash=%s, ver=%d, ",
         GetHash().ToString().substr(0,10),
-        nVerssphx);
-    if (nVerssphx == 1)
+        nVersion);
+    if (nVersion == 1)
         str += strprintf("nTime=%d, ", nTime);
     str += strprintf("vin.size=%u, vout.size=%u, nLockTime=%u)\n",
         vin.size(),

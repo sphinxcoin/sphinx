@@ -13,7 +13,7 @@
 static const unsigned int MODIFIER_INTERVAL = 60;
 static const unsigned int MODIFIER_INTERVAL_TESTNET = 60;
 extern unsigned int nModifierInterval;
-extern unsigned int getIntervalVerssphx(bool fTestNet);
+extern unsigned int getIntervalVersion(bool fTestNet);
 
 // MODIFIER_INTERVAL_RATIO:
 // ratio of group interval length between the last group and the first group

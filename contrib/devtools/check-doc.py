@@ -22,14 +22,14 @@ CMD_GREP_DOCS = r"egrep -r -I 'HelpMessageOpt\(\"\-[^\"=]+?(=|\")' %s" % (CMD_RO
 REGEX_ARG = re.compile(r'(?:map(?:Multi)?Args(?:\.count\(|\[)|Get(?:Bool)?Arg\()\"(\-[^\"]+?)\"')
 REGEX_DOC = re.compile(r'HelpMessageOpt\(\"(\-[^\"=]+?)(?:=|\")')
 # list unsupported, deprecated and duplicate args as they need no documentation
-SET_DOC_OPTIONAL = set(['-rpcssl', '-benchmark', '-h', '-help', '-socks', '-tor', '-debugnet', '-whitelistalwaysrelay', '-prematurewitness', '-walletprematurewitness', '-promiscuousmempoolflags', '-blockminsize', '-sendfreetransactions', '-checklevel', '-liquidityprovider', '-anonymizesphxamount'])
+SET_DOC_OPTIONAL = set(['-rpcssl', '-benchmark', '-h', '-help', '-socks', '-tor', '-debugnet', '-whitelistalwaysrelay', '-prematurewitness', '-walletprematurewitness', '-promiscuousmempoolflags', '-blockminsize', '-sendfreetransactions', '-checklevel', '-liquidityprovider', '-anonymizeionamount'])
 
 def main():
   used = check_output(CMD_GREP_ARGS, shell=True)
   docd = check_output(CMD_GREP_DOCS, shell=True)
 
   args_used = set(re.findall(REGEX_ARG,used))
-  args_docd = set(re.findall(REGEX_DOC,docd)).unsphx(SET_DOC_OPTIONAL)
+  args_docd = set(re.findall(REGEX_DOC,docd)).union(SET_DOC_OPTIONAL)
   args_need_doc = args_used.difference(args_docd)
   args_unknown = args_docd.difference(args_used)
 

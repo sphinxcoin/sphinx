@@ -13,7 +13,7 @@ Example usage:
 
     find ../gitian-builder/build -type f -executable | xargs python contrib/devtools/symbol-check.py
 '''
-from __future__ import divissphx, print_function, unicode_literals
+from __future__ import division, print_function, unicode_literals
 import subprocess
 import re
 import sys
@@ -38,7 +38,7 @@ import os
 #   GCC 4.4.2: GLIBCXX_3.4.13, CXXABI_1.3.3
 #   (glibc)    GLIBC_2_11
 #
-MAX_VERSSPHXS = {
+MAX_VERSIONS = {
 'GCC':     (4,4,0),
 'CXXABI':  (1,3,3),
 'GLIBCXX': (3,4,13),
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     for filename in sys.argv[1:]:
         # Check imported symbols
         for sym,version in read_symbols(filename, True):
-            if version and not check_version(MAX_VERSSPHXS, version):
+            if version and not check_version(MAX_VERSIONS, version):
                 print('%s: symbol %s from unsupported version %s' % (filename, cppfilt(sym).decode('utf-8'), version.decode('utf-8')))
                 retval = 1
         # Check exported symbols

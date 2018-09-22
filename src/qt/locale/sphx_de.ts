@@ -1180,7 +1180,7 @@ Adresse: %4</translation>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
-        <translation>Verssphx</translation>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Sphinx Core</source>
@@ -1779,7 +1779,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;Einheit des Betrags anzeigen in:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Wähle die Standardunterteilungseinheit, um sie auf der Oberfläche anzuzeigen und wenn Coins gesendet werden.</translation>
     </message>
     <message>
@@ -2044,7 +2044,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Adresse/Rechnername</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Programmversion</translation>
     </message>
     <message>
@@ -2643,7 +2643,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Using OpenSSL version</source>
-        <translation>Verwendete OpenSSL Verssphx</translation>
+        <translation>Verwendete OpenSSL Version</translation>
     </message>
     <message>
         <source>Build date</source>
@@ -2655,11 +2655,11 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Client version</source>
-        <translation>Client Verssphx</translation>
+        <translation>Client Version</translation>
     </message>
     <message>
         <source>Using BerkeleyDB version</source>
-        <translation>Verwendete BerkeleyDB Verssphx</translation>
+        <translation>Verwendete BerkeleyDB Version</translation>
     </message>
     <message>
         <source>Block chain</source>
@@ -2718,7 +2718,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Protokoll</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Programmversion</translation>
     </message>
     <message>
@@ -3630,8 +3630,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
-        <translation>Verssphx %1</translation>
+        <source>Version %1</source>
+        <translation>Version %1</translation>
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
@@ -3816,7 +3816,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Händler</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Erzeugte SPHXs müssen %1 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block erzeugten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in "nicht angenommen" geändert und Sie werden keine SPHXs gutgeschrieben bekommen. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich erzeugt.</translation>
     </message>
     <message>
@@ -4278,7 +4278,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>Select xSPHX to Spend</source>
         <translation>Auswahl xSPHX als Ausgabe</translation>
@@ -4327,7 +4327,7 @@ Bitte haben Sie Geduld...</translation>
         <translation>Kann keine Sperre für das Datenverzeichnis %s erhalten. Sphinx Core läuft wahrscheinlich bereits.</translation>
     </message>
     <message>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Erstelle neue Dateien mit Systemstandardberechtigungen anstelle von umask 077 (nur wirksam mit deaktivierter Wallet-Funktionalität)</translation>
     </message>
     <message>
@@ -4351,8 +4351,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Swifttx aktivieren, Bestätigungen für gesperrte Transaktionen anzeigen (bool, default: %s)</translation>
     </message>
     <message>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Gebe den Regresssphxs-Testmodus ein, der eine spezielle Kette verwendet, in der Blöcke sofort gelöst werden können.</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <translation>Gebe den Regressions-Testmodus ein, der eine spezielle Kette verwendet, in der Blöcke sofort gelöst werden können.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
@@ -4484,7 +4484,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Incompatible version.</source>
-        <translation>Inkompatible Verssphx.</translation>
+        <translation>Inkompatible Version.</translation>
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
@@ -4511,8 +4511,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Unzureichende Mittel.</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>Ungültige -onsphx Adresse: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>Ungültige -onion Adresse: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -4571,8 +4571,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Masternode:</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>Nur Verbindung zu Knoten im Netzwerk &lt;net&gt; (ipv4, ipv6 oder onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Nur Verbindung zu Knoten im Netzwerk &lt;net&gt; (ipv4, ipv6 oder onion)</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -4683,8 +4683,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Dies ist experimentelle Software.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
-        <translation>Dies ist für Regresssphxstest-Tools und Anwendungsentwicklung gedacht.</translation>
+        <source>This is intended for regression testing tools and app development.</source>
+        <translation>Dies ist für Regressionstest-Tools und Anwendungsentwicklung gedacht.</translation>
     </message>
     <message>
         <source>This is not a Masternode.</source>
@@ -4804,7 +4804,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Warnung: Diese Verssphx is veraltet, Aktualisierung erforderlich!</translation>
+        <translation>Warnung: Diese Version is veraltet, Aktualisierung erforderlich!</translation>
     </message>
     <message>
         <source>Will retry...</source>

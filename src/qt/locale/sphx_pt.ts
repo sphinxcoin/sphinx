@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copiar o endereço selecsphxado para a área de transferência</translation>
+        <translation>Copiar o endereço selecionado para a área de transferência</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Deletar da lista o endereço selecsphxado</translation>
+        <translation>Deletar da lista o endereço selecionado</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -240,7 +240,7 @@
     </message>
     <message>
         <source>Enter a Sphinx Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Digite um endereço Sphinx que você gostaria de criptografar usando BIP 38. Digite uma frase secreta na caixa do meio. Presssphxe criptografar para calcular a chave privada criptografada.</translation>
+        <translation>Digite um endereço Sphinx que você gostaria de criptografar usando BIP 38. Digite uma frase secreta na caixa do meio. Pressione criptografar para calcular a chave privada criptografada.</translation>
     </message>
     <message>
         <source>Address:</source>
@@ -515,7 +515,7 @@
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>Remover as entradas selecsphxadas da lista</translation>
+        <translation>Remover as entradas selecionadas da lista</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -899,11 +899,11 @@
     </message>
     <message>
         <source>Selected amount:</source>
-        <translation>Quantia selecsphxada:</translation>
+        <translation>Quantia selecionada:</translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>
@@ -913,7 +913,7 @@
     </message>
     <message>
         <source>Disable all Sphinx specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar todas as funcsphxacilidades específicas da Sphinx (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, default %u)</translation>
+        <translation>Desabilitar todas as funcionacilidades específicas da Sphinx (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, default %u)</translation>
     </message>
     <message>
         <source>Connect through SOCKS5 proxy</source>
@@ -1020,11 +1020,11 @@
         <translation>Chave privada do servidor (padrão:%s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Sessão não concluída!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>A sessão expirou.</translation>
     </message>
     <message>
@@ -1168,7 +1168,7 @@
         <translation>Este é um software experimental.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
+        <source>This is intended for regression testing tools and app development.</source>
         <translation>Isso é destinado a ferramentas de teste de regressão e desenvolvimento de aplicativos.</translation>
     </message>
     <message>

@@ -1784,8 +1784,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;Unit to show amounts in:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
-        <translation>Choose the default subdivissphx unit to show in the interface and when sending coins.</translation>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Choose the default subdivision unit to show in the interface and when sending coins.</translation>
     </message>
     <message>
         <source>Decimal digits</source>
@@ -2167,8 +2167,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Address/Hostname</translation>
     </message>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Ping Time</source>
@@ -2368,8 +2368,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Protocol</translation>
     </message>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Services</source>
@@ -3280,8 +3280,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
-        <translation>Verssphx %1</translation>
+        <source>Version %1</source>
+        <translation>Version %1</translation>
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
@@ -3466,8 +3466,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Merchant</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3922,8 +3922,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Continuously rate-limit free transactions to &lt;n&gt;*1000 bytes per minute (default:%u)</translation>
     </message>
     <message>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</translation>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</translation>
     </message>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
@@ -3950,8 +3950,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Enable use of automated obfuscation for funds stored in this wallet (0-1, default: %u)</translation>
     </message>
     <message>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <translation>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
@@ -4089,7 +4089,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
 </source>
@@ -4100,7 +4100,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
 </translation>
@@ -4390,8 +4390,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Error: Disk space is low!</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -tor found, use -onsphx.</source>
-        <translation>Error: Unsupported argument -tor found, use -onsphx.</translation>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation>Error: Unsupported argument -tor found, use -onion.</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
@@ -4482,8 +4482,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Insufficient funds.</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>Invalid -onsphx address: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>Invalid -onion address: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -4746,8 +4746,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Only accept block chain matching built-in checkpoints (default: %u)</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -4830,12 +4830,12 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>Server private key (default: %s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
-        <translation>Sesssphx not complete!</translation>
+        <source>Session not complete!</source>
+        <translation>Session not complete!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
-        <translation>Sesssphx timed out.</translation>
+        <source>Session timed out.</source>
+        <translation>Session timed out.</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -4982,8 +4982,8 @@ for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
         <translation>This is experimental software.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
-        <translation>This is intended for regresssphx testing tools and app development.</translation>
+        <source>This is intended for regression testing tools and app development.</source>
+        <translation>This is intended for regression testing tools and app development.</translation>
     </message>
     <message>
         <source>This is not a Masternode.</source>

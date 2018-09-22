@@ -8,7 +8,7 @@
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
  * 
- * Permisssphx is hereby granted, free of charge, to any person obtaining
+ * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
  * without limitation the rights to use, copy, modify, merge, publish,
@@ -16,7 +16,7 @@
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  * 
- * The above copyright notice and this permisssphx notice shall be
+ * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -78,7 +78,7 @@ typedef struct {
 #ifndef DOXYGEN_IGNORE
 	unsigned char buf[192];    /* first field, for alignment */
 	size_t ptr;
-	unsphx {
+	union {
 		sph_u32 Vs[4][4];
 #if SPH_64
 		sph_u64 Vb[4][2];
@@ -103,7 +103,7 @@ typedef struct {
 #ifndef DOXYGEN_IGNORE
 	unsigned char buf[128];    /* first field, for alignment */
 	size_t ptr;
-	unsphx {
+	union {
 		sph_u32 Vs[8][4];
 #if SPH_64
 		sph_u64 Vb[8][2];

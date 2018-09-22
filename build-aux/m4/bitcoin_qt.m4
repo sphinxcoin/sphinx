@@ -122,12 +122,12 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
       AC_CACHE_CHECK(for Qt < 5.4, bitcoin_cv_need_acc_widget,[
         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
             #include <QtCore/qconfig.h>
-            #ifndef QT_VERSSPHX
+            #ifndef QT_VERSION
             #  include <QtCore/qglobal.h>
             #endif
           ]],
           [[
-            #if QT_VERSSPHX >= 0x050400
+            #if QT_VERSION >= 0x050400
             choke
             #endif
           ]])],
@@ -182,7 +182,7 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
     CXXFLAGS="$PIE_FLAGS $CXXFLAGS"
     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         #include <QtCore/qconfig.h>
-        #ifndef QT_VERSSPHX
+        #ifndef QT_VERSION
         #  include <QtCore/qglobal.h>
         #endif
       ]],
@@ -204,7 +204,7 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
     CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
     AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         #include <QtCore/qconfig.h>
-        #ifndef QT_VERSSPHX
+        #ifndef QT_VERSION
         #  include <QtCore/qglobal.h>
         #endif
       ]],
@@ -288,12 +288,12 @@ AC_DEFUN([_BITCOIN_QT_CHECK_QT5],[
   AC_CACHE_CHECK(for Qt 5, bitcoin_cv_qt5,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
       #include <QtCore/qconfig.h>
-      #ifndef QT_VERSSPHX
+      #ifndef QT_VERSION
       #  include <QtCore/qglobal.h>
       #endif
     ]],
     [[
-      #if QT_VERSSPHX < 0x050000
+      #if QT_VERSION < 0x050000
       choke
       #endif
     ]])],
@@ -310,7 +310,7 @@ AC_DEFUN([_BITCOIN_QT_IS_STATIC],[
   AC_CACHE_CHECK(for static Qt, bitcoin_cv_static_qt,[
   AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
       #include <QtCore/qconfig.h>
-      #ifndef QT_VERSSPHX
+      #ifndef QT_VERSION
       #  include <QtCore/qglobal.h>
       #endif
     ]],
@@ -376,12 +376,12 @@ AC_DEFUN([_BITCOIN_QT_FIND_STATIC_PLUGINS],[
          AC_CACHE_CHECK(for Qt >= 5.6, bitcoin_cv_need_platformsupport,[
            AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
                #include <QtCore/qconfig.h>
-               #ifndef QT_VERSSPHX
+               #ifndef QT_VERSION
                #  include <QtCore/qglobal.h>
                #endif
              ]],
              [[
-               #if QT_VERSSPHX < 0x050600
+               #if QT_VERSION < 0x050600
                choke
                #endif
              ]])],
@@ -454,7 +454,7 @@ AC_DEFUN([_BITCOIN_QT_FIND_LIBS_WITH_PKGCONFIG],[
   true; dnl
 ])
 
-dnl Internal. Find Qt libraries without using pkg-config. Verssphx is deduced
+dnl Internal. Find Qt libraries without using pkg-config. Version is deduced
 dnl from the discovered headers.
 dnl Inputs: bitcoin_qt_want_version (from --with-gui=). The version to use.
 dnl         If "auto", the version will be discovered by _BITCOIN_QT_CHECK_QT5.

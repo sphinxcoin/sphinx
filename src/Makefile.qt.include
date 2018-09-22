@@ -59,7 +59,7 @@ QT_FORMS_UI = \
   qt/forms/sendcoinsentry.ui \
   qt/forms/signverifymessagedialog.ui \
   qt/forms/transactiondescdialog.ui \
-  qt/forms/xsphxcontroldialog.ui
+  qt/forms/xioncontroldialog.ui
 
 QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
@@ -113,7 +113,7 @@ QT_MOC_CPP = \
   qt/moc_walletframe.cpp \
   qt/moc_walletmodel.cpp \
   qt/moc_walletview.cpp \
-  qt/moc_xsphxcontroldialog.cpp
+  qt/moc_xioncontroldialog.cpp
 
 BITCOIN_MM = \
   qt/macdockiconhandler.mm \
@@ -194,7 +194,7 @@ BITCOIN_QT_H = \
   qt/walletmodeltransaction.h \
   qt/walletview.h \
   qt/winshutdownmonitor.h \
-  qt/xsphxcontroldialog.h
+  qt/xioncontroldialog.h
 
 RES_ICONS = \
   qt/res/icons/add.png \
@@ -257,11 +257,11 @@ RES_ICONS = \
   qt/res/icons/tx_output.png \
   qt/res/icons/tx_mined.png \
   qt/res/icons/unit_sphx.png \
-  qt/res/icons/unit_msphx.png \
-  qt/res/icons/unit_usphx.png \
+  qt/res/icons/unit_mion.png \
+  qt/res/icons/unit_uion.png \
   qt/res/icons/unit_tion.png \
-  qt/res/icons/unit_tmsphx.png \
-  qt/res/icons/unit_tusphx.png
+  qt/res/icons/unit_tmion.png \
+  qt/res/icons/unit_tuion.png
 
 BITCOIN_QT_CPP = \
   qt/bantablemodel.cpp \
@@ -327,7 +327,7 @@ BITCOIN_QT_CPP += \
   qt/walletmodel.cpp \
   qt/walletmodeltransaction.cpp \
   qt/walletview.cpp \
-  qt/xsphxcontroldialog.cpp
+  qt/xioncontroldialog.cpp
 
 endif
 

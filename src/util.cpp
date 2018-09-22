@@ -662,7 +662,7 @@ void AllocateFileRange(FILE* file, unsigned int offset, unsigned int length)
     }
     ftruncate(fileno(file), fst.fst_length);
 #elif defined(__linux__)
-    // Verssphx using posix_fallocate
+    // Version using posix_fallocate
     off_t nEndPos = (off_t)offset + length;
     posix_fallocate(fileno(file), 0, nEndPos);
 #else
@@ -719,7 +719,7 @@ boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate)
 
 boost::filesystem::path GetTempPath()
 {
-#if BOOST_FILESYSTEM_VERSSPHX == 3
+#if BOOST_FILESYSTEM_VERSION == 3
     return boost::filesystem::temp_directory_path();
 #else
     // TODO: remove when we don't support filesystem v2 anymore
@@ -778,10 +778,10 @@ void RenameThread(const char* name)
     //       removed.
     pthread_set_name_np(pthread_self(), name);
 
-#elif defined(MAC_OSX) && defined(__MAC_OS_X_VERSSPHX_MAX_ALLOWED)
+#elif defined(MAC_OSX) && defined(__MAC_OS_X_VERSION_MAX_ALLOWED)
 
 // pthread_setname_np is XCode 10.6-and-later
-#if __MAC_OS_X_VERSSPHX_MAX_ALLOWED >= 1060
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 1060
     pthread_setname_np(name);
 #endif
 
@@ -816,7 +816,7 @@ bool SetupNetworking()
     // Initialize Windows Sockets
     WSADATA wsadata;
     int ret = WSAStartup(MAKEWORD(2,2), &wsadata);
-    if (ret != NO_ERROR || LOBYTE(wsadata.wVerssphx ) != 2 || HIBYTE(wsadata.wVerssphx) != 2)
+    if (ret != NO_ERROR || LOBYTE(wsadata.wVersion ) != 2 || HIBYTE(wsadata.wVersion) != 2)
         return false;
 #endif
     return true;

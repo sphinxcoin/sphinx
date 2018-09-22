@@ -6,7 +6,7 @@
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
  * 
- * Permisssphx is hereby granted, free of charge, to any person obtaining
+ * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
  * without limitation the rights to use, copy, modify, merge, publish,
@@ -14,7 +14,7 @@
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  * 
- * The above copyright notice and this permisssphx notice shall be
+ * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -251,7 +251,7 @@ fft32(unsigned char *x, size_t xs, s32 *q)
 #endif
 
 /*
- * For SIMD-384 / SIMD-512, the fully unrolled FFT yields a compresssphx
+ * For SIMD-384 / SIMD-512, the fully unrolled FFT yields a compression
  * function which does not fit in the 32 kB L1 cache of a typical x86
  * Intel. We therefore add a function call layer at the FFT64 level.
  */

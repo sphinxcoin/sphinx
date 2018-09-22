@@ -509,7 +509,7 @@ QScrollBar::add-page, QScrollBar::sub-page { /* Scroll Bar Background */
 background:#F8F6F6;
 }
 
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { /* Define Arrow Button Dimenssphxs */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { /* Define Arrow Button Dimensions */
 background-color:#F8F6F6;
 border: 1px solid #f2f0f0;
 width:16px;
@@ -1556,7 +1556,7 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin
 
 }
 
-QDialog#XSPHXControlDialog .QTreeWidget#treeWidget { /* xSPHX Control Widget Container */
+QDialog#XIONControlDialog .QTreeWidget#treeWidget { /* xSPHX Control Widget Container */
 outline:0;
 background-color:#ffffff;
 border:1px solid #333;

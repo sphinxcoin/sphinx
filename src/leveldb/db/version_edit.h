@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 
-#ifndef STORAGE_LEVELDB_DB_VERSSPHX_EDIT_H_
-#define STORAGE_LEVELDB_DB_VERSSPHX_EDIT_H_
+#ifndef STORAGE_LEVELDB_DB_VERSION_EDIT_H_
+#define STORAGE_LEVELDB_DB_VERSION_EDIT_H_
 
 #include <set>
 #include <utility>
@@ -12,7 +12,7 @@
 
 namespace leveldb {
 
-class VerssphxSet;
+class VersionSet;
 
 struct FileMetaData {
   int refs;
@@ -25,10 +25,10 @@ struct FileMetaData {
   FileMetaData() : refs(0), allowed_seeks(1 << 30), file_size(0) { }
 };
 
-class VerssphxEdit {
+class VersionEdit {
  public:
-  VerssphxEdit() { Clear(); }
-  ~VerssphxEdit() { }
+  VersionEdit() { Clear(); }
+  ~VersionEdit() { }
 
   void Clear();
 
@@ -57,7 +57,7 @@ class VerssphxEdit {
   }
 
   // Add the specified file at the specified number.
-  // REQUIRES: This version has not been saved (see VerssphxSet::SaveTo)
+  // REQUIRES: This version has not been saved (see VersionSet::SaveTo)
   // REQUIRES: "smallest" and "largest" are smallest and largest keys in file
   void AddFile(int level, uint64_t file,
                uint64_t file_size,
@@ -82,7 +82,7 @@ class VerssphxEdit {
   std::string DebugString() const;
 
  private:
-  friend class VerssphxSet;
+  friend class VersionSet;
 
   typedef std::set< std::pair<int, uint64_t> > DeletedFileSet;
 
@@ -104,4 +104,4 @@ class VerssphxEdit {
 
 }  // namespace leveldb
 
-#endif  // STORAGE_LEVELDB_DB_VERSSPHX_EDIT_H_
+#endif  // STORAGE_LEVELDB_DB_VERSION_EDIT_H_

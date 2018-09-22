@@ -14,7 +14,7 @@ extern "C" {
 #  endif
 # endif
 
-# if (!defined(__STDC_VERSSPHX__) || (__STDC_VERSSPHX__ < 199901L) )
+# if (!defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L) )
 #  if SECP256K1_GNUC_PREREQ(2,7)
 #   define SECP256K1_INLINE __inline__
 #  elif (defined(_MSC_VER))

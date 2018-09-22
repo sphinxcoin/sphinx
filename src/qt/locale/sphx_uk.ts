@@ -367,7 +367,7 @@
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>

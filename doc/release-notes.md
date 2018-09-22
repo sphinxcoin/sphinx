@@ -11,7 +11,7 @@ Is now available from:
 
     <https://github.com/sphinx-coin/sphx/releases
 
-This is a new minor-revissphx version release, including various bug fixes and
+This is a new minor-revision version release, including various bug fixes and
 performance improvements, as well as updated translations.
 
 Please report bugs using the issue tracker at github:
@@ -116,9 +116,9 @@ There are some new features which improve usability as well as user experience i
 
 Auto Wallet Backup
 ---------------------
-In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each xSPHX mint operation (xSPHX spends which re-mint their change are also included in this). This functionality is controlled by the `-backupxsphx` command-line option, which defaults to `1` (enabled, auto-backup).
+In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each xSPHX mint operation (xSPHX spends which re-mint their change are also included in this). This functionality is controlled by the `-backupxion` command-line option, which defaults to `1` (enabled, auto-backup).
 
-Users that wish to prevent this behavior (not recommended) can pass `-backupxsphx=0` at the command-line when starting the client, or add `backupxsphx=0` to their `sphinxcoin.conf` file.
+Users that wish to prevent this behavior (not recommended) can pass `-backupxion=0` at the command-line when starting the client, or add `backupxion=0` to their `sphinxcoin.conf` file.
 
 xSPHX Automint Calculations
 ---------------------
@@ -330,9 +330,9 @@ Setup **signer** and **version**/branch
 ```
 cd ./sphx
 export SIGNER="49464B32BA6683BA" # Replace with your Key
-export VERSSPHX=3.0.2 # github branch
+export VERSION=3.0.2 # github branch
 git fetch
-git checkout v${VERSSPHX}
+git checkout v${VERSION}
 cd ..
 
 # update signature
@@ -366,25 +366,25 @@ Building offline
 cd ./gitian-builder
 
 # Build offline for linux
-./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
 
 # Sign for linux
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
 mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../
 
 # Build offline for windows
-./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-win.yml
 
 # Sign for windows
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
 mv build/out/sphx-*-win-unsigned.tar.gz inputs/sphx-win-unsigned.tar.gz
 mv build/out/sphx-*.zip build/out/sphx-*.exe ../
 
 # Build offline for mac os
-./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --url sphx=/home/gitianuser/sphx,signature=/home/gitianuser/gitian.sigs --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 
 # Sign for macos
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 mv build/out/sphx-*-osx-unsigned.tar.gz inputs/sphx-osx-unsigned.tar.gz
 mv build/out/sphx-*.tar.gz build/out/sphx-*.dmg ../
 cd ..
@@ -396,25 +396,25 @@ Building online
 
 ```
 # Build online for linux
-./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
 
 # Sign for linux
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
 mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../
 
 # Build online for windows
-./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-win.yml
+./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-win.yml
 
 # Sign for windows
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
 mv build/out/sphx-*-win-unsigned.tar.gz inputs/sphx-win-unsigned.tar.gz
 mv build/out/sphx-*.zip build/out/sphx-*.exe ../
 
 # Build online for mac os
-./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gbuild --num-make 2 --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 
 # Sign for macos
-./bin/gsign --signer "$SIGNER" --release ${VERSSPHX}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 mv build/out/sphx-*-osx-unsigned.tar.gz inputs/sphx-osx-unsigned.tar.gz
 mv build/out/sphx-*.tar.gz build/out/sphx-*.dmg ../
 cd ..

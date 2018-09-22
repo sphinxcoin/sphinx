@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef XSPHXCONTROLDIALOG_H
-#define XSPHXCONTROLDIALOG_H
+#ifndef XIONCONTROLDIALOG_H
+#define XIONCONTROLDIALOG_H
 
 #include <QDialog>
 #include <QTreeWidgetItem>
@@ -15,16 +15,16 @@ class CZerocoinMint;
 class WalletModel;
 
 namespace Ui {
-class XSPHXControlDialog;
+class XIONControlDialog;
 }
 
-class XSPHXControlDialog : public QDialog
+class XIONControlDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit XSPHXControlDialog(QWidget *parent);
-    ~XSPHXControlDialog();
+    explicit XIONControlDialog(QWidget *parent);
+    ~XIONControlDialog();
 
     void setModel(WalletModel* model);
 
@@ -33,7 +33,7 @@ public:
     static std::vector<CZerocoinMint> GetSelectedMints();
 
 private:
-    Ui::XSPHXControlDialog *ui;
+    Ui::XIONControlDialog *ui;
     WalletModel* model;
     PrivacyDialog* privacyDialog;
 
@@ -53,4 +53,4 @@ private slots:
     void ButtonAllClicked();
 };
 
-#endif // XSPHXCONTROLDIALOG_H
+#endif // XIONCONTROLDIALOG_H

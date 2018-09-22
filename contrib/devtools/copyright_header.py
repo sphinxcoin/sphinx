@@ -556,7 +556,7 @@ def exec_insert_header(filename, style):
 
 INSERT_USAGE = """
 Inserts a copyright header for "The Bitcoin Core developers" at the top of the
-file in either Python or C++ style as determined by the file extenssphx. If the
+file in either Python or C++ style as determined by the file extension. If the
 file is a Python file and it has a '#!' starting the first line, the header is
 inserted in the line below it.
 
@@ -586,11 +586,11 @@ def insert_cmd(argv):
     filename = argv[2]
     if not os.path.isfile(filename):
         sys.exit("*** bad filename: %s" % filename)
-    _, extenssphx = os.path.splitext(filename)
-    if extenssphx not in ['.h', '.cpp', '.cc', '.c', '.py']:
-        sys.exit("*** cannot insert for file extenssphx %s" % extenssphx)
+    _, extension = os.path.splitext(filename)
+    if extension not in ['.h', '.cpp', '.cc', '.c', '.py']:
+        sys.exit("*** cannot insert for file extension %s" % extension)
    
-    if extenssphx == '.py': 
+    if extension == '.py': 
         style = 'python'
     else:
         style = 'cpp'

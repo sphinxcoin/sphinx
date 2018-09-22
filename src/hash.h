@@ -226,9 +226,9 @@ private:
 
 public:
     int nType;
-    int nVerssphx;
+    int nVersion;
 
-    CHashWriter(int nTypeIn, int nVerssphxIn) : nType(nTypeIn), nVerssphx(nVerssphxIn) {}
+    CHashWriter(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {}
 
     CHashWriter& write(const char* pch, size_t size)
     {
@@ -248,16 +248,16 @@ public:
     CHashWriter& operator<<(const T& obj)
     {
         // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVerssphx);
+        ::Serialize(*this, obj, nType, nVersion);
         return (*this);
     }
 };
 
 /** Compute the 256-bit hash of an object's serialization. */
 template <typename T>
-uint256 SerializeHash(const T& obj, int nType = SER_GETHASH, int nVerssphx = PROTOCOL_VERSSPHX)
+uint256 SerializeHash(const T& obj, int nType = SER_GETHASH, int nVersion = PROTOCOL_VERSION)
 {
-    CHashWriter ss(nType, nVerssphx);
+    CHashWriter ss(nType, nVersion);
     ss << obj;
     return ss.GetHash();
 }

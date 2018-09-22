@@ -40,7 +40,7 @@ Commit messages should be verbose by default consisting of a short subject line
 paragraph(s), unless the title alone is self-explanatory (like "Corrected typo
 in init.cpp") in which case a single title line is sufficient. Commit messages should be
 helpful to people reading your code in the future, so explain the reasoning for
-your decissphxs. Further explanation [here](http://chris.beams.io/posts/git-commit/).
+your decisions. Further explanation [here](http://chris.beams.io/posts/git-commit/).
 
 If a particular commit references another issue, please add the reference, for
 example `refs #1234`, or `fixes #4321`. Using the `fixes` or `closes` keywords
@@ -87,8 +87,8 @@ in the body of the pull request to indicate tasks are pending.
 
 The body of the pull request should contain enough description about what the
 patch does together with any justification/reasoning. You should include
-references to any discusssphxs (for example other tickets or mailing list
-discusssphxs).
+references to any disscusions (for example other tickets or mailing list
+disscusions).
 
 At this stage one should expect comments and review from other contributors. You
 can add more commits to your pull request by committing them locally and pushing
@@ -114,7 +114,7 @@ sidebar and ask for help in the pull request.
 
 Please refrain from creating several pull requests for the same change.
 Use the pull request that is already open (or was created earlier) to amend
-changes. This preserves the discusssphx and review that happened earlier for
+changes. This preserves the disscusion and review that happened earlier for
 the respective change set.
 
 The length of time required for peer review is unpredictable and will vary from
@@ -133,7 +133,7 @@ as this makes review difficult.
 ### Features
 
 When adding a new feature, thought must be given to the long term technical debt
-and maintenance that feature may require after inclussphx. Before proposing a new
+and maintenance that feature may require after inclusion. Before proposing a new
 feature that will require maintenance, please consider if you are willing to
 maintain it (including bug fixing). If features get orphaned with no maintainer
 in the future, they may be removed by the Repository Maintainer.
@@ -154,7 +154,7 @@ Project maintainers aim for a quick turnaround on refactoring pull requests, so
 where possible keep them short, un-complex and easy to verify.
 
 
-"Decissphx Making" Process
+"Decision Making" Process
 -------------------------
 
 The following applies to code changes to the Sphinx Core project, and is not to be
@@ -164,7 +164,7 @@ Whether a pull request is merged into Sphinx Core rests with the project merge
 maintainers and ultimately the project lead.
 
 Maintainers will take into consideration if a patch is in line with the general
-principles of the project; meets the minimum standards for inclussphx; and will
+principles of the project; meets the minimum standards for inclusion; and will
 judge the general consensus of contributors.
 
 In general, all pull requests must:
@@ -176,7 +176,7 @@ In general, all pull requests must:
 
 Patches that change Sphinx consensus rules are considerably more involved than
 normal because they affect the entire ecosystem and so must be preceded by
-extensive discusssphxs and clear detailing. While each case will be different,
+extensive disscusions and clear detailing. While each case will be different,
 one should be prepared to expend more time and effort than for other kinds of
 patches because of increased peer review and consensus building requirements.
 
@@ -187,8 +187,8 @@ Anyone may participate in peer review which is expressed by comments in the pull
 request. Typically reviewers will review the code for obvious errors, as well as
 test out the patch set and opine on the technical merits of the patch. Project
 maintainers take into account the peer review when determining if there is
-consensus to merge a pull request (remember that discusssphxs may have been
-spread out over GitHub, forums, email, and Slack discusssphxs). The following
+consensus to merge a pull request (remember that disscusions may have been
+spread out over GitHub, forums, email, and Slack disscusions). The following
 language is used within pull-request comments:
 
   - ACK means "I have tested the code and I agree it should be merged";
@@ -203,14 +203,14 @@ language is used within pull-request comments:
 
 Reviewers should include the commit hash which they reviewed in their comments.
 
-Project maintainers reserve the right to weigh the opinsphxs of peer reviewers
+Project maintainers reserve the right to weigh the opinions of peer reviewers
 using common sense judgement and also may weight based on meritocracy: Those
 that have demonstrated a deeper commitment and understanding towards the project
 (over time) or have clear domain expertise may naturally have more weight, as
 one would expect in all walks of life.
 
 Where a patch set affects consensus critical code, the bar will be set much
-higher in terms of discusssphx and peer review requirements, keeping in mind that
+higher in terms of disscusion and peer review requirements, keeping in mind that
 mistakes could be very costly to the wider community. This includes refactoring
 of consensus critical code.
 
@@ -238,7 +238,7 @@ about:
     and see if it: changes too much, is too broad, doesn't adhere to the
     [developer notes](doc/developer-notes.md), is dangerous or insecure, is messily written, etc.
     Identify and address any of the issues you find. Then ask e.g. on Slack if someone could give
-    their opinsphx on the concept itself.
+    their opinion on the concept itself.
   - It may be because your code is too complex for all but a few people. And those people
     may not have realized your pull request even exists. A great way to find people who
     are qualified and care about the code you are touching is the

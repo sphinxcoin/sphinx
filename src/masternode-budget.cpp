@@ -259,7 +259,7 @@ bool CBudgetDB::Write(const CBudgetManager& objToSave)
     int64_t nStart = GetTimeMillis();
 
     // serialize, checksum data up to that point, then append checksum
-    CDataStream ssObj(SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssObj(SER_DISK, CLIENT_VERSION);
     ssObj << strMagicMessage;                   // masternode cache file specific magic message
     ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
     ssObj << objToSave;
@@ -268,7 +268,7 @@ bool CBudgetDB::Write(const CBudgetManager& objToSave)
 
     // open output file, and associate with CAutoFile
     FILE* file = fopen(pathDB.string().c_str(), "wb");
-    CAutoFile fileout(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
     if (fileout.IsNull())
         return error("%s : Failed to open file %s", __func__, pathDB.string());
 
@@ -292,7 +292,7 @@ CBudgetDB::ReadResult CBudgetDB::Read(CBudgetManager& objToLoad, bool fDryRun)
     int64_t nStart = GetTimeMillis();
     // open input file, and associate with CAutoFile
     FILE* file = fopen(pathDB.string().c_str(), "rb");
-    CAutoFile filein(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
     if (filein.IsNull()) {
         error("%s : Failed to open file %s", __func__, pathDB.string());
         return FileError;
@@ -318,7 +318,7 @@ CBudgetDB::ReadResult CBudgetDB::Read(CBudgetManager& objToLoad, bool fDryRun)
     }
     filein.fclose();
 
-    CDataStream ssObj(vchData, SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssObj(vchData, SER_DISK, CLIENT_VERSION);
 
     // verify stored checksum matches input data
     uint256 hashTmp = Hash(ssObj.begin(), ssObj.end());
@@ -899,7 +899,7 @@ void CBudgetManager::NewBlock()
 
         LOCK(cs_vNodes);
         BOOST_FOREACH (CNode* pnode, vNodes)
-            if (pnode->nVerssphx >= ActiveProtocol())
+            if (pnode->nVersion >= ActiveProtocol())
                 Sync(pnode, 0, true);
 
         MarkSynced();

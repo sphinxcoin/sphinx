@@ -72,4 +72,4 @@ Some downsides compared to recordio format:
 record type, so it is a shortcoming of the current implementation,
 not necessarily the format.
 
-(2) No compresssphx.  Again, this could be fixed by adding new record types.
+(2) No compression.  Again, this could be fixed by adding new record types.

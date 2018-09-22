@@ -1,14 +1,14 @@
-#include <windows.h>             // needed for VERSSPHXINFO
+#include <windows.h>             // needed for VERSIONINFO
 #include "clientversion.h"       // holds the needed client version information
 
-#define VER_PRODUCTVERSSPHX     CLIENT_VERSSPHX_MAJOR,CLIENT_VERSSPHX_MINOR,CLIENT_VERSSPHX_REVISSPHX,CLIENT_VERSSPHX_BUILD
-#define VER_PRODUCTVERSSPHX_STR STRINGIZE(CLIENT_VERSSPHX_MAJOR) "." STRINGIZE(CLIENT_VERSSPHX_MINOR) "." STRINGIZE(CLIENT_VERSSPHX_REVISSPHX) "." STRINGIZE(CLIENT_VERSSPHX_BUILD)
-#define VER_FILEVERSSPHX        VER_PRODUCTVERSSPHX
-#define VER_FILEVERSSPHX_STR    VER_PRODUCTVERSSPHX_STR
+#define VER_PRODUCTVERSION     CLIENT_VERSION_MAJOR,CLIENT_VERSION_MINOR,CLIENT_VERSION_REVISION,CLIENT_VERSION_BUILD
+#define VER_PRODUCTVERSION_STR STRINGIZE(CLIENT_VERSION_MAJOR) "." STRINGIZE(CLIENT_VERSION_MINOR) "." STRINGIZE(CLIENT_VERSION_REVISION) "." STRINGIZE(CLIENT_VERSION_BUILD)
+#define VER_FILEVERSION        VER_PRODUCTVERSION
+#define VER_FILEVERSION_STR    VER_PRODUCTVERSION_STR
 
-VS_VERSSPHX_INFO VERSSPHXINFO
-FILEVERSSPHX     VER_FILEVERSSPHX
-PRODUCTVERSSPHX  VER_PRODUCTVERSSPHX
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     VER_FILEVERSION
+PRODUCTVERSION  VER_PRODUCTVERSION
 FILEOS          VOS_NT_WINDOWS32
 FILETYPE        VFT_APP
 BEGIN
@@ -18,13 +18,13 @@ BEGIN
         BEGIN
             VALUE "CompanyName",        "Sphinx-coin"
             VALUE "FileDescription",    "sphx-cli (OSS RPC client for sphx)"
-            VALUE "FileVerssphx",        VER_FILEVERSSPHX_STR
+            VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "sphx-cli"
             VALUE "LegalCopyright",     COPYRIGHT_STR
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "sphx-cli.exe"
             VALUE "ProductName",        "sphx-cli"
-            VALUE "ProductVerssphx",     VER_PRODUCTVERSSPHX_STR
+            VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END
 

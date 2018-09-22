@@ -143,7 +143,7 @@ class MmapLimiter {
 class PosixMmapReadableFile: public RandomAccessFile {
  private:
   std::string filename_;
-  void* mmapped_regsphx_;
+  void* mmapped_region_;
   size_t length_;
   MmapLimiter* limiter_;
 
@@ -151,12 +151,12 @@ class PosixMmapReadableFile: public RandomAccessFile {
   // base[0,length-1] contains the mmapped contents of the file.
   PosixMmapReadableFile(const std::string& fname, void* base, size_t length,
                         MmapLimiter* limiter)
-      : filename_(fname), mmapped_regsphx_(base), length_(length),
+      : filename_(fname), mmapped_region_(base), length_(length),
         limiter_(limiter) {
   }
 
   virtual ~PosixMmapReadableFile() {
-    munmap(mmapped_regsphx_, length_);
+    munmap(mmapped_region_, length_);
     limiter_->Release();
   }
 
@@ -167,7 +167,7 @@ class PosixMmapReadableFile: public RandomAccessFile {
       *result = Slice();
       s = IOError(filename_, EINVAL);
     } else {
-      *result = Slice(reinterpret_cast<char*>(mmapped_regsphx_) + offset, n);
+      *result = Slice(reinterpret_cast<char*>(mmapped_region_) + offset, n);
     }
     return s;
   }

@@ -4,13 +4,13 @@
 #
 # SYNOPSIS
 #
-#   AX_CXX_COMPILE_STDCXX(VERSSPHX, [ext|noext], [mandatory|optional])
+#   AX_CXX_COMPILE_STDCXX(VERSION, [ext|noext], [mandatory|optional])
 #
 # DESCRIPTION
 #
 #   Check for baseline language coverage in the compiler for the specified
 #   version of the C++ standard.  If necessary, add switches to CXX and
-#   CXXCPP to enable support.  VERSSPHX may be '11' (for the C++11 standard)
+#   CXXCPP to enable support.  VERSION may be '11' (for the C++11 standard)
 #   or '14' (for the C++14 standard).
 #
 #   The second argument, if specified, indicates whether you insist on an
@@ -22,7 +22,7 @@
 #   indicates that baseline support for the specified C++ standard is
 #   required and that the macro should error out if no mode with that
 #   support is found.  If specified 'optional', then configuration proceeds
-#   regardless, after defining HAVE_CXX${VERSSPHX} if and only if a
+#   regardless, after defining HAVE_CXX${VERSION} if and only if a
 #   supporting mode is found.
 #
 # LICENSE
@@ -526,8 +526,8 @@ namespace cxx14
   namespace test_digit_seperators
   {
 
-    constexpr auto ten_millsphx = 100'000'000;
-    static_assert(ten_millsphx == 100000000, "");
+    constexpr auto ten_million = 100'000'000;
+    static_assert(ten_million == 100000000, "");
 
   }
 

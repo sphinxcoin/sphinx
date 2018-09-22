@@ -4,7 +4,7 @@
 
 #include "winshutdownmonitor.h"
 
-#if defined(Q_OS_WIN) && QT_VERSSPHX >= 0x050000
+#if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
 #include "init.h"
 #include "util.h"
 
@@ -33,15 +33,15 @@ bool WinShutdownMonitor::nativeEventFilter(const QByteArray& eventType, void* pM
     }
 
     switch (pMsg->message) {
-    case WM_QUERYENDSESSSPHX: {
-        // Initiate a client shutdown after receiving a WM_QUERYENDSESSSPHX and block
-        // Windows sesssphx end until we have finished client shutdown.
+    case WM_QUERYENDSESSION: {
+        // Initiate a client shutdown after receiving a WM_QUERYENDSESSION and block
+        // Windows session end until we have finished client shutdown.
         StartShutdown();
         *pnResult = FALSE;
         return true;
     }
 
-    case WM_ENDSESSSPHX: {
+    case WM_ENDSESSION: {
         *pnResult = FALSE;
         return true;
     }

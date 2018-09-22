@@ -36,7 +36,7 @@ Each package is configured and patched so that it will yield the same
 build-results with each consequent build, within a reasonable set of
 constraints. Some things like timestamp insertion are unavoidable, and are
 beyond the scope of this system. Additionally, the toolchain itself must be
-capable of deterministic results. When revissphxs are properly bumped, a cached
+capable of deterministic results. When revisions are properly bumped, a cached
 build should represent an exact single payload.
 
 ### Sources are fetched and verified automatically
@@ -49,5 +49,5 @@ as desired.
 
 Build and staging dirs are wiped after use, and any previous version of a
 cached result is removed following a successful build. Automated builders
-should be able to build each revissphx and store the results with no further
+should be able to build each revision and store the results with no further
 intervention.

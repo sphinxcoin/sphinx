@@ -88,22 +88,22 @@ enum AvailableCoinsType {
 
 // Possible states for xSPHX send
 enum ZerocoinSpendStatus {
-    XSPHX_SPEND_OKAY = 0,                            // No error
-    XSPHX_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
-    XSPHX_WALLET_LOCKED = 2,                         // Wallet was locked
-    XSPHX_COMMIT_FAILED = 3,                         // Commit failed, reset status
-    XSPHX_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
-    XSPHX_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
-    XSPHX_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
-    XSPHX_TRX_CREATE = 7,                            // Everything related to create the transaction
-    XSPHX_TRX_CHANGE = 8,                            // Everything related to transaction change
-    XSPHX_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
-    XSPHX_INVALID_COIN = 10,                         // Selected mint coin is not valid
-    XSPHX_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
-    XSPHX_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
-    XSPHX_BAD_SERIALIZATION = 13,                    // Transaction verification failed
-    XSPHX_SPENT_USED_XSPHX = 14,                      // Coin has already been spend
-    XSPHX_TX_TOO_LARGE = 15                          // The transaction is larger than the max tx size
+    XION_SPEND_OKAY = 0,                            // No error
+    XION_SPEND_ERROR = 1,                           // Unspecified class of errors, more details are (hopefully) in the returning text
+    XION_WALLET_LOCKED = 2,                         // Wallet was locked
+    XION_COMMIT_FAILED = 3,                         // Commit failed, reset status
+    XION_ERASE_SPENDS_FAILED = 4,                   // Erasing spends during reset failed
+    XION_ERASE_NEW_MINTS_FAILED = 5,                // Erasing new mints during reset failed
+    XION_TRX_FUNDS_PROBLEMS = 6,                    // Everything related to available funds
+    XION_TRX_CREATE = 7,                            // Everything related to create the transaction
+    XION_TRX_CHANGE = 8,                            // Everything related to transaction change
+    XION_TXMINT_GENERAL = 9,                        // General errors in MintToTxIn
+    XION_INVALID_COIN = 10,                         // Selected mint coin is not valid
+    XION_FAILED_ACCUMULATOR_INITIALIZATION = 11,    // Failed to initialize witness
+    XION_INVALID_WITNESS = 12,                      // Spend coin transaction did not verify
+    XION_BAD_SERIALIZATION = 13,                    // Transaction verification failed
+    XION_SPENT_USED_XION = 14,                      // Coin has already been spend
+    XION_TX_TOO_LARGE = 15                          // The transaction is larger than the max tx size
 };
 
 struct CompactTallyItem {
@@ -129,10 +129,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVerssphx);
+            READWRITE(nVersion);
         READWRITE(nTime);
         READWRITE(vchPubKey);
     }
@@ -155,7 +155,7 @@ public:
 };
 
 /**
- * A CWallet is an extenssphx of a keystore, which also maintains a set of transactions and balances,
+ * A CWallet is an extension of a keystore, which also maintains a set of transactions and balances,
  * and provides the ability to create new transactions.
  */
 class CWallet : public CCryptoKeyStore, public CValidationInterface
@@ -167,10 +167,10 @@ private:
     CWalletDB* pwalletdbEncryption;
 
     //! the current wallet version: clients below this version are not able to load the wallet
-    int nWalletVerssphx;
+    int nWalletVersion;
 
     //! the maximum wallet format version: memory-only variable that specifies to what version this wallet may be upgraded
-    int nWalletMaxVerssphx;
+    int nWalletMaxVersion;
 
     int64_t nNextResend;
     int64_t nLastResend;
@@ -209,7 +209,7 @@ public:
     std::string ResetMintZerocoin(bool fExtendedSearch);
     std::string ResetSpentZerocoin();
     void ReconsiderZerocoins(std::list<CZerocoinMint>& listMintsRestored);
-    void XSPHXBackupWallet();
+    void XIONBackupWallet();
 
     /** Zerocin entry changed.
     * @note called with lock cs_wallet held.
@@ -275,8 +275,8 @@ public:
 
     void SetNull()
     {
-        nWalletVerssphx = FEATURE_BASE;
-        nWalletMaxVerssphx = FEATURE_BASE;
+        nWalletVersion = FEATURE_BASE;
+        nWalletMaxVersion = FEATURE_BASE;
         fFileBacked = false;
         nMasterKeyMaxID = 0;
         pwalletdbEncryption = NULL;
@@ -317,7 +317,7 @@ public:
         return fEnableZeromint;
     }
 
-    void setXSPHXAutoBackups(bool fEnabled)
+    void setXIONAutoBackups(bool fEnabled)
     {
         fBackupMints = fEnabled;
     }
@@ -357,7 +357,7 @@ public:
     bool CanSupportFeature(enum WalletFeature wf)
     {
         AssertLockHeld(cs_wallet);
-        return nWalletMaxVerssphx >= wf;
+        return nWalletMaxVersion >= wf;
     }
 
     void AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed = true, const CCoinControl* coinControl = NULL, bool fIncludeZeroValue = false, AvailableCoinsType nCoinType = ALL_COINS, bool fUseIX = false, int nWatchonlyConfig = 1) const;
@@ -389,11 +389,11 @@ public:
     //! Load metadata (used by LoadWallet)
     bool LoadKeyMetadata(const CPubKey& pubkey, const CKeyMetadata& metadata);
 
-    bool LoadMinVerssphx(int nVerssphx)
+    bool LoadMinVersion(int nVersion)
     {
         AssertLockHeld(cs_wallet);
-        nWalletVerssphx = nVerssphx;
-        nWalletMaxVerssphx = std::max(nWalletMaxVerssphx, nVerssphx);
+        nWalletVersion = nVersion;
+        nWalletMaxVersion = std::max(nWalletMaxVersion, nVersion);
         return true;
     }
 
@@ -607,17 +607,17 @@ public:
 
     bool SetDefaultKey(const CPubKey& vchPubKey);
 
-    //! signify that a particular wallet feature is now used. this may change nWalletVerssphx and nWalletMaxVerssphx if those are lower
-    bool SetMinVerssphx(enum WalletFeature, CWalletDB* pwalletdbIn = NULL, bool fExplicit = false);
+    //! signify that a particular wallet feature is now used. this may change nWalletVersion and nWalletMaxVersion if those are lower
+    bool SetMinVersion(enum WalletFeature, CWalletDB* pwalletdbIn = NULL, bool fExplicit = false);
 
     //! change which version we're allowed to upgrade to (note that this does not immediately imply upgrading to that format)
-    bool SetMaxVerssphx(int nVerssphx);
+    bool SetMaxVersion(int nVersion);
 
     //! get the current wallet format (the oldest client version guaranteed to understand this wallet)
-    int GetVerssphx()
+    int GetVersion()
     {
         LOCK(cs_wallet);
-        return nWalletVerssphx;
+        return nWalletVersion;
     }
 
     //! Get wallet transactions that conflict with given transaction (spend same outputs)
@@ -736,10 +736,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(*(CTransaction*)this);
-        nVerssphx = this->nVerssphx;
+        nVersion = this->nVersion;
         READWRITE(hashBlock);
         READWRITE(vMerkleBranch);
         READWRITE(nIndex);
@@ -880,7 +880,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (ser_action.ForRead())
             Init(NULL);
@@ -1072,10 +1072,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVerssphx);
+            READWRITE(nVersion);
         READWRITE(vchPrivKey);
         READWRITE(nTimeCreated);
         READWRITE(nTimeExpires);
@@ -1106,10 +1106,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVerssphx);
+            READWRITE(nVersion);
         READWRITE(vchPubKey);
     }
 };
@@ -1150,10 +1150,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVerssphx);
+            READWRITE(nVersion);
         //! Note: strAccount is serialized as part of the key, not here.
         READWRITE(nCreditDebit);
         READWRITE(nTime);
@@ -1163,7 +1163,7 @@ public:
             WriteOrderPos(nOrderPos, mapValue);
 
             if (!(mapValue.empty() && _ssExtra.empty())) {
-                CDataStream ss(nType, nVerssphx);
+                CDataStream ss(nType, nVersion);
                 ss.insert(ss.begin(), '\0');
                 ss << mapValue;
                 ss.insert(ss.end(), _ssExtra.begin(), _ssExtra.end());
@@ -1177,7 +1177,7 @@ public:
         if (ser_action.ForRead()) {
             mapValue.clear();
             if (std::string::npos != nSepPos) {
-                CDataStream ss(std::vector<char>(strComment.begin() + nSepPos + 1, strComment.end()), nType, nVerssphx);
+                CDataStream ss(std::vector<char>(strComment.begin() + nSepPos + 1, strComment.end()), nType, nVersion);
                 ss >> mapValue;
                 _ssExtra = std::vector<char>(ss.begin(), ss.end());
             }

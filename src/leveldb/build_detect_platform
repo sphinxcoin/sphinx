@@ -8,14 +8,14 @@
 #   CXX                         C++ Compiler path
 #   PLATFORM_LDFLAGS            Linker flags
 #   PLATFORM_LIBS               Libraries flags
-#   PLATFORM_SHARED_EXT         Extenssphx for shared libraries
+#   PLATFORM_SHARED_EXT         Extension for shared libraries
 #   PLATFORM_SHARED_LDFLAGS     Flags for building shared library
 #                               This flag is embedded just before the name
 #                               of the shared library without intervening spaces
 #   PLATFORM_SHARED_CFLAGS      Flags for compiling objects for shared library
 #   PLATFORM_CCFLAGS            C compiler flags
 #   PLATFORM_CXXFLAGS           C++ compiler flags.  Will contain:
-#   PLATFORM_SHARED_VERSSPHXED   Set to 'true' if platform supports versioned
+#   PLATFORM_SHARED_VERSIONED   Set to 'true' if platform supports versioned
 #                               shared libraries, empty otherwise.
 #
 # The PLATFORM_CCFLAGS and PLATFORM_CXXFLAGS might include the following:
@@ -62,7 +62,7 @@ PLATFORM_LIBS=
 PLATFORM_SHARED_EXT="so"
 PLATFORM_SHARED_LDFLAGS="-shared -Wl,-soname -Wl,"
 PLATFORM_SHARED_CFLAGS="-fPIC"
-PLATFORM_SHARED_VERSSPHXED=true
+PLATFORM_SHARED_VERSIONED=true
 
 MEMCMP_FLAG=
 if [ "$CXX" = "g++" ]; then
@@ -151,7 +151,7 @@ case "$TARGET_OS" in
         PLATFORM_SHARED_EXT=
         PLATFORM_SHARED_LDFLAGS=
         PLATFORM_SHARED_CFLAGS=
-        PLATFORM_SHARED_VERSSPHXED=
+        PLATFORM_SHARED_VERSIONED=
         ;;
     OS_WINDOWS_CROSSCOMPILE | NATIVE_WINDOWS)
         PLATFORM=OS_WINDOWS
@@ -228,4 +228,4 @@ echo "PLATFORM_CXXFLAGS=$PLATFORM_CXXFLAGS" >> $OUTPUT
 echo "PLATFORM_SHARED_CFLAGS=$PLATFORM_SHARED_CFLAGS" >> $OUTPUT
 echo "PLATFORM_SHARED_EXT=$PLATFORM_SHARED_EXT" >> $OUTPUT
 echo "PLATFORM_SHARED_LDFLAGS=$PLATFORM_SHARED_LDFLAGS" >> $OUTPUT
-echo "PLATFORM_SHARED_VERSSPHXED=$PLATFORM_SHARED_VERSSPHXED" >> $OUTPUT
+echo "PLATFORM_SHARED_VERSIONED=$PLATFORM_SHARED_VERSIONED" >> $OUTPUT

@@ -20,7 +20,7 @@ CScheduler::~CScheduler()
 }
 
 
-#if BOOST_VERSSPHX < 105000
+#if BOOST_VERSION < 105000
 static boost::system_time toPosixTime(const boost::chrono::system_clock::time_point& t)
 {
     return boost::posix_time::from_time_t(boost::chrono::system_clock::to_time_t(t));
@@ -46,7 +46,7 @@ void CScheduler::serviceQueue()
             // the time of the first item on the queue:
 
 // wait_until needs boost 1.50 or later; older versions have timed_wait:
-#if BOOST_VERSSPHX < 105000
+#if BOOST_VERSION < 105000
             while (!shouldStop() && !taskQueue.empty() &&
                    newTaskScheduled.timed_wait(lock, toPosixTime(taskQueue.begin()->first))) {
                 // Keep waiting until timeout

@@ -1416,7 +1416,7 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>
@@ -1477,12 +1477,12 @@ Ange en lösenfras i den mellersta boxen. Tryck kryptera för att beräkna den k
         <translation>Val:</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
-        <translation>Sesssphxen är inte klar</translation>
+        <source>Session not complete!</source>
+        <translation>Sessionen är inte klar</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
-        <translation>Sesssphxens tidsgräns överskriden</translation>
+        <source>Session timed out.</source>
+        <translation>Sessionens tidsgräns överskriden</translation>
     </message>
     <message>
         <source>Signing timed out.</source>

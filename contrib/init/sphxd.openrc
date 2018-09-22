@@ -39,7 +39,7 @@ depend() {
 # verify
 # 1) that the datadir exists and is writable (or create it)
 # 2) that a directory for the pid exists and is writable
-# 3) ownership and permisssphxs on the config file
+# 3) ownership and permissions on the config file
 start_pre() {
 	checkpath \
 	-d \

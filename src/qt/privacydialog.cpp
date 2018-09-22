@@ -14,7 +14,7 @@
 #include "sendcoinsentry.h"
 #include "walletmodel.h"
 #include "coincontrol.h"
-#include "xsphxcontroldialog.h"
+#include "xioncontroldialog.h"
 #include "spork.h"
 #include "askpassphrasedialog.h"
 
@@ -296,17 +296,17 @@ void PrivacyDialog::on_pushButtonSpendxSPHX_clicked()
     sendxSPHX();
 }
 
-void PrivacyDialog::on_pushButtonXSPHXControl_clicked()
+void PrivacyDialog::on_pushButtonXIONControl_clicked()
 {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
 
-    XSPHXControlDialog* xSPHXControl = new XSPHXControlDialog(this);
+    XIONControlDialog* xSPHXControl = new XIONControlDialog(this);
     xSPHXControl->setModel(walletModel);
     xSPHXControl->exec();
 }
 
-void PrivacyDialog::setXSPHXControlLabels(int64_t nAmount, int nQuantity)
+void PrivacyDialog::setXIONControlLabels(int64_t nAmount, int nQuantity)
 {
     ui->labelxSPHXSelected_int->setText(QString::number(nAmount));
     ui->labelQuantitySelected_int->setText(QString::number(nQuantity));
@@ -416,8 +416,8 @@ void PrivacyDialog::sendxSPHX()
 
     // use mints from xSPHX selector if applicable
     vector<CZerocoinMint> vMintsSelected;
-    if (!XSPHXControlDialog::listSelectedMints.empty()) {
-        vMintsSelected = XSPHXControlDialog::GetSelectedMints();
+    if (!XIONControlDialog::listSelectedMints.empty()) {
+        vMintsSelected = XIONControlDialog::GetSelectedMints();
     }
 
     // Spend xSPHX
@@ -462,8 +462,8 @@ void PrivacyDialog::sendxSPHX()
             walletModel->updateAddressBookLabels(address.Get(), "(no label)", "send");
     }
 
-    // Clear xsphx selector in case it was used
-    XSPHXControlDialog::listSelectedMints.clear();
+    // Clear xion selector in case it was used
+    XIONControlDialog::listSelectedMints.clear();
     ui->labelxSPHXSelected_int->setText(QString("0"));
     ui->labelQuantitySelected_int->setText(QString("0"));
 

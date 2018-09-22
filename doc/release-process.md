@@ -7,7 +7,7 @@ Before every release candidate:
 
 Before every minor and major release:
 
-* Update version in `configure.ac` (don't forget to set `CLIENT_VERSSPHX_IS_RELEASE` to `true`)
+* Update version in `configure.ac` (don't forget to set `CLIENT_VERSION_IS_RELEASE` to `true`)
 * Write release notes (see below)
 
 Before every major release:
@@ -52,9 +52,9 @@ Setup Gitian descriptors:
 
     pushd ./sphx
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
-    export VERSSPHX=(new version, e.g. 0.8.0)
+    export VERSION=(new version, e.g. 0.8.0)
     git fetch
-    git checkout v${VERSSPHX}
+    git checkout v${VERSION}
     popd
 
 Ensure your gitian.sigs are up-to-date if you wish to gverify your builds against other Gitian signatures.
@@ -100,32 +100,32 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 ### Build and sign Sphinx Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
-    ./bin/gbuild --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gbuild --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
     mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../
 
-    ./bin/gbuild --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gbuild --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
     mv build/out/sphx-*-win-unsigned.tar.gz inputs/sphx-win-unsigned.tar.gz
     mv build/out/sphx-*.zip build/out/sphx-*.exe ../
 
-    ./bin/gbuild --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gbuild --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
     mv build/out/sphx-*-osx-unsigned.tar.gz inputs/sphx-osx-unsigned.tar.gz
     mv build/out/sphx-*.tar.gz build/out/sphx-*.dmg ../
 
-    ./bin/gbuild --memory 3000 --commit sphx=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gbuild --memory 3000 --commit sphx=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
     mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../
     popd
 
 Build output expected:
 
-  1. source tarball (`sphx-${VERSSPHX}.tar.gz`)
-  2. linux 32-bit and 64-bit dist tarballs (`sphx-${VERSSPHX}-linux[32|64].tar.gz`)
-  3. windows 32-bit and 64-bit unsigned installers and dist zips (`sphx-${VERSSPHX}-win[32|64]-setup-unsigned.exe`, `sphx-${VERSSPHX}-win[32|64].zip`)
-  4. OS X unsigned installer and dist tarball (`sphx-${VERSSPHX}-osx-unsigned.dmg`, `sphx-${VERSSPHX}-osx64.tar.gz`)
-  5. Gitian signatures (in `gitian.sigs/${VERSSPHX}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
+  1. source tarball (`sphx-${VERSION}.tar.gz`)
+  2. linux 32-bit and 64-bit dist tarballs (`sphx-${VERSION}-linux[32|64].tar.gz`)
+  3. windows 32-bit and 64-bit unsigned installers and dist zips (`sphx-${VERSION}-win[32|64]-setup-unsigned.exe`, `sphx-${VERSION}-win[32|64].zip`)
+  4. OS X unsigned installer and dist tarball (`sphx-${VERSION}-osx-unsigned.dmg`, `sphx-${VERSION}-osx64.tar.gz`)
+  5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
 
@@ -137,10 +137,10 @@ Add other gitian builders keys to your gpg keyring, and/or refresh keys.
 Verify the signatures
 
     pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-linux ../sphx/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-win-unsigned ../sphx/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-osx-unsigned ../sphx/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-aarch64 ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../sphx/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
     popd
 
 ### Next steps:
@@ -148,10 +148,10 @@ Verify the signatures
 Commit your signature to gitian.sigs:
 
     pushd gitian.sigs
-    git add ${VERSSPHX}-linux/${SIGNER}
-    git add ${VERSSPHX}-win-unsigned/${SIGNER}
-    git add ${VERSSPHX}-osx-unsigned/${SIGNER}
-    git add ${VERSSPHX}-aarch64/${SIGNER}
+    git add ${VERSION}-linux/${SIGNER}
+    git add ${VERSION}-win-unsigned/${SIGNER}
+    git add ${VERSION}-osx-unsigned/${SIGNER}
+    git add ${VERSION}-aarch64/${SIGNER}
     git commit -a
     git push  # Assuming you can push to the gitian.sigs tree
     popd
@@ -183,8 +183,8 @@ Codesigner only: Commit the detached codesign payloads:
     tar xf signature-osx.tar.gz
     tar xf signature-win.tar.gz
     git add -a
-    git commit -m "point to ${VERSSPHX}"
-    git tag -s v${VERSSPHX} HEAD
+    git commit -m "point to ${VERSION}"
+    git tag -s v${VERSION} HEAD
     git push the current branch and new tag
 
 Non-codesigners: wait for Windows/OS X detached signatures:
@@ -195,27 +195,27 @@ Non-codesigners: wait for Windows/OS X detached signatures:
 Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-osx-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
-    mv build/out/sphx-osx-signed.dmg ../sphx-${VERSSPHX}-osx.dmg
+    ./bin/gbuild -i --commit signature=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+    mv build/out/sphx-osx-signed.dmg ../sphx-${VERSION}-osx.dmg
     popd
 
 Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
-    ./bin/gbuild -i --commit signature=v${VERSSPHX} ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer $SIGNER --release ${VERSSPHX}-win-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-win-signed ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
-    mv build/out/sphx-*win64-setup.exe ../sphx-${VERSSPHX}-win64-setup.exe
-    mv build/out/sphx-*win32-setup.exe ../sphx-${VERSSPHX}-win32-setup.exe
+    ./bin/gbuild -i --commit signature=v${VERSION} ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
+    mv build/out/sphx-*win64-setup.exe ../sphx-${VERSION}-win64-setup.exe
+    mv build/out/sphx-*win32-setup.exe ../sphx-${VERSION}-win32-setup.exe
     popd
 
 Commit your signature for the signed OS X/Windows binaries:
 
     pushd gitian.sigs
-    git add ${VERSSPHX}-osx-signed/${SIGNER}
-    git add ${VERSSPHX}-win-signed/${SIGNER}
+    git add ${VERSION}-osx-signed/${SIGNER}
+    git add ${VERSION}-win-signed/${SIGNER}
     git commit -a
     git push  # Assuming you can push to the gitian.sigs tree
     popd
@@ -230,22 +230,22 @@ sha256sum * > SHA256SUMS
 
 The list of files should be:
 ```
-sphx-${VERSSPHX}-aarch64-linux-gnu.tar.gz
-sphx-${VERSSPHX}-arm-linux-gnueabihf.tar.gz
-sphx-${VERSSPHX}-i686-pc-linux-gnu.tar.gz
-sphx-${VERSSPHX}-x86_64-linux-gnu.tar.gz
-sphx-${VERSSPHX}-osx64.tar.gz
-sphx-${VERSSPHX}-osx.dmg
-sphx-${VERSSPHX}.tar.gz
-sphx-${VERSSPHX}-win32-setup.exe
-sphx-${VERSSPHX}-win32.zip
-sphx-${VERSSPHX}-win64-setup.exe
-sphx-${VERSSPHX}-win64.zip
+sphx-${VERSION}-aarch64-linux-gnu.tar.gz
+sphx-${VERSION}-arm-linux-gnueabihf.tar.gz
+sphx-${VERSION}-i686-pc-linux-gnu.tar.gz
+sphx-${VERSION}-x86_64-linux-gnu.tar.gz
+sphx-${VERSION}-osx64.tar.gz
+sphx-${VERSION}-osx.dmg
+sphx-${VERSION}.tar.gz
+sphx-${VERSION}-win32-setup.exe
+sphx-${VERSION}-win32.zip
+sphx-${VERSION}-win64-setup.exe
+sphx-${VERSION}-win64.zip
 ```
 The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
-end-user confussphx about which file to pick, as well as save storage
+end-user confusion about which file to pick, as well as save storage
 space *do not upload these to the sphinx-coin.com server*.
 
 - GPG-sign it, delete the unsigned file:
@@ -253,7 +253,7 @@ space *do not upload these to the sphinx-coin.com server*.
 gpg --digest-algo sha256 --clearsign SHA256SUMS # outputs SHA256SUMS.asc
 rm SHA256SUMS
 ```
-(the digest algorithm is forced to sha256 to avoid confussphx of the `Hash:` header that GPG adds with the SHA256 used for the files)
+(the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
 - Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the GitHub release (see below)

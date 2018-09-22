@@ -5,7 +5,7 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
-# Helpful routines for regresssphx testing
+# Helpful routines for regression testing
 #
 
 # Add python-bitcoinrpc to module search path:
@@ -29,12 +29,12 @@ def p2p_port(n):
 def rpc_port(n):
     return 12000 + n + os.getpid()%999
 
-def check_json_precissphx():
-    """Make sure json library being used does not lose precissphx converting BTC values"""
+def check_json_precision():
+    """Make sure json library being used does not lose precision converting BTC values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:
-        raise RuntimeError("JSON encode/decode loses precissphx")
+        raise RuntimeError("JSON encode/decode loses precision")
 
 def sync_blocks(rpc_connections):
     """

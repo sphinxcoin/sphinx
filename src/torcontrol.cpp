@@ -271,7 +271,7 @@ static std::pair<std::string,std::string> SplitTorReplyLine(const std::string &s
  * Returns a map of keys to values, or an empty map if there was an error.
  * Grammar is implicitly defined in https://spec.torproject.org/control-spec by
  * the server reply formats for PROTOCOLINFO (S3.21), AUTHCHALLENGE (S3.24),
- * and ADD_ONSPHX (S3.27). See also sections 2.1 and 2.3.
+ * and ADD_ONION (S3.27). See also sections 2.1 and 2.3.
  */
 static std::map<std::string,std::string> ParseTorReplyMapping(const std::string &s)
 {
@@ -435,8 +435,8 @@ private:
     /** ClientNonce for SAFECOOKIE auth */
     std::vector<uint8_t> clientNonce;
 
-    /** Callback for ADD_ONSPHX result */
-    void add_onsphx_cb(TorControlConnection& conn, const TorControlReply& reply);
+    /** Callback for ADD_ONION result */
+    void add_onion_cb(TorControlConnection& conn, const TorControlReply& reply);
     /** Callback for AUTHENTICATE result */
     void auth_cb(TorControlConnection& conn, const TorControlReply& reply);
     /** Callback for AUTHCHALLENGE result */
@@ -484,10 +484,10 @@ TorController::~TorController()
     }
 }
 
-void TorController::add_onsphx_cb(TorControlConnection& _conn, const TorControlReply& reply)
+void TorController::add_onion_cb(TorControlConnection& _conn, const TorControlReply& reply)
 {
     if (reply.code == 250) {
-        LogPrint("tor", "tor: ADD_ONSPHX successful\n");
+        LogPrint("tor", "tor: ADD_ONION successful\n");
         BOOST_FOREACH(const std::string &s, reply.lines) {
             std::map<std::string,std::string> m = ParseTorReplyMapping(s);
             std::map<std::string,std::string>::iterator i;
@@ -497,13 +497,13 @@ void TorController::add_onsphx_cb(TorControlConnection& _conn, const TorControlR
                 private_key = i->second;
         }
         if (service_id.empty()) {
-            LogPrintf("tor: Error parsing ADD_ONSPHX parameters:\n");
+            LogPrintf("tor: Error parsing ADD_ONION parameters:\n");
             for (const std::string &s : reply.lines) {
                 LogPrintf("    %s\n", SanitizeString(s));
             }
             return;
         }
-        LookupNumeric(std::string(service_id+".onsphx").c_str(), service, GetListenPort());
+        LookupNumeric(std::string(service_id+".onion").c_str(), service, GetListenPort());
         LogPrintf("tor: Got service ID %s, advertising service %s\n", service_id, service.ToString());
         if (WriteBinaryFile(GetPrivateKeyFile(), private_key)) {
             LogPrint("tor", "tor: Cached service private key to %s\n", GetPrivateKeyFile());
@@ -511,11 +511,11 @@ void TorController::add_onsphx_cb(TorControlConnection& _conn, const TorControlR
             LogPrintf("tor: Error writing service private key to %s\n", GetPrivateKeyFile());
         }
         AddLocal(service, LOCAL_MANUAL);
-        // ... onsphx requested - keep connection open
+        // ... onion requested - keep connection open
     } else if (reply.code == 510) { // 510 Unrecognized command
-        LogPrintf("tor: Add onsphx failed with unrecognized command (You probably need to upgrade Tor)\n");
+        LogPrintf("tor: Add onion failed with unrecognized command (You probably need to upgrade Tor)\n");
     } else {
-        LogPrintf("tor: Add onsphx failed; error code %d\n", reply.code);
+        LogPrintf("tor: Add onion failed; error code %d\n", reply.code);
     }
 }
 
@@ -524,13 +524,13 @@ void TorController::auth_cb(TorControlConnection& _conn, const TorControlReply& 
     if (reply.code == 250) {
         LogPrint("tor", "tor: Authentication successful\n");
 
-        // Now that we know Tor is running setup the proxy for onsphx addresses
-        // if -onsphx isn't set to something else.
-        if (GetArg("-onsphx", "") == "") {
+        // Now that we know Tor is running setup the proxy for onion addresses
+        // if -onion isn't set to something else.
+        if (GetArg("-onion", "") == "") {
             CService resolved;
             assert(LookupNumeric("127.0.0.1", resolved, 9050));
-            CService addrOnsphx = CService(resolved, 9050);
-            SetProxy(NET_TOR, addrOnsphx);
+            CService addrOnion = CService(resolved, 9050);
+            SetProxy(NET_TOR, addrOnion);
             SetLimited(NET_TOR, false);
         }
 
@@ -540,8 +540,8 @@ void TorController::auth_cb(TorControlConnection& _conn, const TorControlReply& 
         // Request hidden service, redirect port.
         // Note that the 'virtual' port doesn't have to be the same as our internal port, but this is just a convenient
         // choice.  TODO; refactor the shutdown sequence some day.
-        _conn.Command(strprintf("ADD_ONSPHX %s Port=%i,127.0.0.1:%i", private_key, GetListenPort(), GetListenPort()),
-            boost::bind(&TorController::add_onsphx_cb, this, _1, _2));
+        _conn.Command(strprintf("ADD_ONION %s Port=%i,127.0.0.1:%i", private_key, GetListenPort(), GetListenPort()),
+            boost::bind(&TorController::add_onion_cb, this, _1, _2));
     } else {
         LogPrintf("tor: Authentication failed\n");
     }
@@ -628,7 +628,7 @@ void TorController::protocolinfo_cb(TorControlConnection& _conn, const TorContro
                     boost::split(methods, i->second, boost::is_any_of(","));
                 if ((i = m.find("COOKIEFILE")) != m.end())
                     cookiefile = i->second;
-            } else if (l.first == "VERSSPHX") {
+            } else if (l.first == "VERSION") {
                 std::map<std::string,std::string> m = ParseTorReplyMapping(l.second);
                 std::map<std::string,std::string>::iterator i;
                 if ((i = m.find("Tor")) != m.end()) {
@@ -670,7 +670,7 @@ void TorController::protocolinfo_cb(TorControlConnection& _conn, const TorContro
                 if (status_cookie.first) {
                     LogPrintf("tor: Authentication cookie %s is not exactly %i bytes, as is required by the spec\n", cookiefile, TOR_COOKIE_SIZE);
                 } else {
-                    LogPrintf("tor: Authentication cookie %s could not be opened (check permisssphxs)\n", cookiefile);
+                    LogPrintf("tor: Authentication cookie %s could not be opened (check permissions)\n", cookiefile);
                 }
             }
         } else if (methods.count("HASHEDPASSWORD")) {
@@ -722,7 +722,7 @@ void TorController::Reconnect()
 
 std::string TorController::GetPrivateKeyFile()
 {
-    return (GetDataDir() / "onsphx_private_key").string();
+    return (GetDataDir() / "onion_private_key").string();
 }
 
 void TorController::reconnect_cb(evutil_socket_t fd, short what, void *arg)
@@ -772,7 +772,7 @@ void StopTorControl()
     // timed_join() avoids the wallet not closing during a repair-restart. For a 'normal' wallet exit
     // it behaves for our cases exactly like the normal join()
     if (gBase) {
-#if BOOST_VERSSPHX >= 105000
+#if BOOST_VERSION >= 105000
         torControlThread.try_join_for(boost::chrono::seconds(1));
 #else
         torControlThread.timed_join(boost::posix_time::seconds(1));

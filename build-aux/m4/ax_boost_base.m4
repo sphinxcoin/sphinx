@@ -4,7 +4,7 @@
 #
 # SYNOPSIS
 #
-#   AX_BOOST_BASE([MINIMUM-VERSSPHX], [ACTION-IF-FOUND], [ACTION-IF-NOT-FOUND])
+#   AX_BOOST_BASE([MINIMUM-VERSION], [ACTION-IF-FOUND], [ACTION-IF-NOT-FOUND])
 #
 # DESCRIPTION
 #
@@ -80,7 +80,7 @@ if test "x$want_boost" = "xyes"; then
     if test "x$boost_lib_version_req_sub_minor" = "x" ; then
         boost_lib_version_req_sub_minor="0"
         fi
-    WANT_BOOST_VERSSPHX=`expr $boost_lib_version_req_major \* 100000 \+  $boost_lib_version_req_minor \* 100 \+ $boost_lib_version_req_sub_minor`
+    WANT_BOOST_VERSION=`expr $boost_lib_version_req_major \* 100000 \+  $boost_lib_version_req_minor \* 100 \+ $boost_lib_version_req_sub_minor`
     AC_MSG_CHECKING(for boostlib >= $boost_lib_version_req)
     succeeded=no
 
@@ -161,7 +161,7 @@ if test "x$want_boost" = "xyes"; then
         AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
     @%:@include <boost/version.hpp>
     ]], [[
-    #if BOOST_VERSSPHX >= $WANT_BOOST_VERSSPHX
+    #if BOOST_VERSION >= $WANT_BOOST_VERSION
     // Everything is okay
     #else
     #  error Boost version is too old
@@ -192,8 +192,8 @@ if test "x$want_boost" = "xyes"; then
                     if test "$V_CHECK" = "1" ; then
                         _version=$_version_tmp
                     fi
-                    VERSSPHX_UNDERSCORE=`echo $_version | sed 's/\./_/'`
-                    BOOST_CPPFLAGS="-I$ac_boost_path/include/boost-$VERSSPHX_UNDERSCORE"
+                    VERSION_UNDERSCORE=`echo $_version | sed 's/\./_/'`
+                    BOOST_CPPFLAGS="-I$ac_boost_path/include/boost-$VERSION_UNDERSCORE"
                 done
                 dnl if nothing found search for layout used in Windows distributions
                 if test -z "$BOOST_CPPFLAGS"; then
@@ -217,8 +217,8 @@ if test "x$want_boost" = "xyes"; then
                     fi
                 done
 
-                VERSSPHX_UNDERSCORE=`echo $_version | sed 's/\./_/'`
-                BOOST_CPPFLAGS="-I$best_path/include/boost-$VERSSPHX_UNDERSCORE"
+                VERSION_UNDERSCORE=`echo $_version | sed 's/\./_/'`
+                BOOST_CPPFLAGS="-I$best_path/include/boost-$VERSION_UNDERSCORE"
                 if test "$ac_boost_lib_path" = ""; then
                     for libsubdir in $libsubdirs ; do
                         if ls "$best_path/$libsubdir/libboost_"* >/dev/null 2>&1 ; then break; fi
@@ -254,7 +254,7 @@ if test "x$want_boost" = "xyes"; then
             AC_COMPILE_IFELSE([AC_LANG_PROGRAM([[
         @%:@include <boost/version.hpp>
         ]], [[
-        #if BOOST_VERSSPHX >= $WANT_BOOST_VERSSPHX
+        #if BOOST_VERSION >= $WANT_BOOST_VERSION
         // Everything is okay
         #else
         #  error Boost version is too old

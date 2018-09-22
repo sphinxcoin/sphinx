@@ -72,7 +72,7 @@ To test, run "systemctl start sphxd" and to enable for system startup run
 4b) OpenRC
 
 Rename sphxd.openrc to sphxd and drop it in /etc/init.d.  Double
-check ownership and permisssphxs and make it executable.  Test it with
+check ownership and permissions and make it executable.  Test it with
 "/etc/init.d/sphxd start" and configure it to run on startup with
 "rc-update add sphxd"
 

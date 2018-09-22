@@ -73,8 +73,8 @@ static int FLAGS_threads = 1;
 static int FLAGS_value_size = 100;
 
 // Arrange to generate values that shrink to this fraction of
-// their original size after compresssphx
-static double FLAGS_compresssphx_ratio = 0.5;
+// their original size after compression
+static double FLAGS_compression_ratio = 0.5;
 
 // Print histogram of operation timings
 static bool FLAGS_histogram = false;
@@ -115,14 +115,14 @@ class RandomGenerator {
  public:
   RandomGenerator() {
     // We use a limited amount of data over and over again and ensure
-    // that it is larger than the compresssphx window (32KB), and also
+    // that it is larger than the compression window (32KB), and also
     // large enough to serve all typical value sizes we want to write.
     Random rnd(301);
     std::string piece;
     while (data_.size() < 1048576) {
       // Add a short fragment that is as compressible as specified
-      // by FLAGS_compresssphx_ratio.
-      test::CompressibleString(&rnd, FLAGS_compresssphx_ratio, 100, &piece);
+      // by FLAGS_compression_ratio.
+      test::CompressibleString(&rnd, FLAGS_compression_ratio, 100, &piece);
       data_.append(piece);
     }
     pos_ = 0;
@@ -315,15 +315,15 @@ class Benchmark {
     const int kKeySize = 16;
     PrintEnvironment();
     fprintf(stdout, "Keys:       %d bytes each\n", kKeySize);
-    fprintf(stdout, "Values:     %d bytes each (%d bytes after compresssphx)\n",
+    fprintf(stdout, "Values:     %d bytes each (%d bytes after compression)\n",
             FLAGS_value_size,
-            static_cast<int>(FLAGS_value_size * FLAGS_compresssphx_ratio + 0.5));
+            static_cast<int>(FLAGS_value_size * FLAGS_compression_ratio + 0.5));
     fprintf(stdout, "Entries:    %d\n", num_);
     fprintf(stdout, "RawSize:    %.1f MB (estimated)\n",
             ((static_cast<int64_t>(kKeySize + FLAGS_value_size) * num_)
              / 1048576.0));
     fprintf(stdout, "FileSize:   %.1f MB (estimated)\n",
-            (((kKeySize + FLAGS_value_size * FLAGS_compresssphx_ratio) * num_)
+            (((kKeySize + FLAGS_value_size * FLAGS_compression_ratio) * num_)
              / 1048576.0));
     PrintWarnings();
     fprintf(stdout, "------------------------------------------------\n");
@@ -344,15 +344,15 @@ class Benchmark {
     const char text[] = "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy";
     std::string compressed;
     if (!port::Snappy_Compress(text, sizeof(text), &compressed)) {
-      fprintf(stdout, "WARNING: Snappy compresssphx is not enabled\n");
+      fprintf(stdout, "WARNING: Snappy compression is not enabled\n");
     } else if (compressed.size() >= sizeof(text)) {
-      fprintf(stdout, "WARNING: Snappy compresssphx is not effective\n");
+      fprintf(stdout, "WARNING: Snappy compression is not effective\n");
     }
   }
 
   void PrintEnvironment() {
     fprintf(stderr, "LevelDB:    version %d.%d\n",
-            kMajorVerssphx, kMinorVerssphx);
+            kMajorVersion, kMinorVersion);
 
 #if defined(__linux)
     time_t now = time(NULL);
@@ -933,8 +933,8 @@ int main(int argc, char** argv) {
     char junk;
     if (leveldb::Slice(argv[i]).starts_with("--benchmarks=")) {
       FLAGS_benchmarks = argv[i] + strlen("--benchmarks=");
-    } else if (sscanf(argv[i], "--compresssphx_ratio=%lf%c", &d, &junk) == 1) {
-      FLAGS_compresssphx_ratio = d;
+    } else if (sscanf(argv[i], "--compression_ratio=%lf%c", &d, &junk) == 1) {
+      FLAGS_compression_ratio = d;
     } else if (sscanf(argv[i], "--histogram=%d%c", &n, &junk) == 1 &&
                (n == 0 || n == 1)) {
       FLAGS_histogram = n;

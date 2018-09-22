@@ -2,7 +2,7 @@
 
 [Desktop Entry]
 Type=Application
-Verssphx=3.0.0
+Version=3.0.0
 Encoding=UTF-8
 Name=Sphinx Daemon Testnet (reindex)
 Icon=${SNAP}/sphxd128testnet.png

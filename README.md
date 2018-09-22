@@ -5,7 +5,7 @@ Sphinx Core integration/staging repository
 
 ### Important information
 
-Majority of sphx contributors decided to move on from CEVAP's branch to a new one which is believed to fit better to marketing and maybe some other purposes. There will be no further CEVAP releases for sphx, project is moved to new community runned repository: https://github.com/sphinxcoincore/ . Verssphx [v3.0.5](https://github.com/cevap/sphx/releases/tag/3.0.5) is the last one which is hosted/published on CEVAP. New repository will be updated in following days and next version will be published only there: 
+Majority of sphx contributors decided to move on from CEVAP's branch to a new one which is believed to fit better to marketing and maybe some other purposes. There will be no further CEVAP releases for sphx, project is moved to new community runned repository: https://github.com/sphinxcoincore/ . Version [v3.0.5](https://github.com/cevap/sphx/releases/tag/3.0.5) is the last one which is hosted/published on CEVAP. New repository will be updated in following days and next version will be published only there: 
 
   https://github.com/sphinxcoincore/sphx/releases
   

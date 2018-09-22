@@ -3,20 +3,20 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "xsphxcontroldialog.h"
-#include "ui_xsphxcontroldialog.h"
+#include "xioncontroldialog.h"
+#include "ui_xioncontroldialog.h"
 
 #include "main.h"
 #include "walletmodel.h"
 
 using namespace std;
 
-std::list<std::string> XSPHXControlDialog::listSelectedMints;
-std::list<CZerocoinMint> XSPHXControlDialog::listMints;
+std::list<std::string> XIONControlDialog::listSelectedMints;
+std::list<CZerocoinMint> XIONControlDialog::listMints;
 
-XSPHXControlDialog::XSPHXControlDialog(QWidget *parent) :
+XIONControlDialog::XIONControlDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::XSPHXControlDialog),
+    ui(new Ui::XIONControlDialog),
     model(0)
 {
     ui->setupUi(this);
@@ -30,19 +30,19 @@ XSPHXControlDialog::XSPHXControlDialog(QWidget *parent) :
     connect(ui->pushButtonAll, SIGNAL(clicked()), this, SLOT(ButtonAllClicked()));
 }
 
-XSPHXControlDialog::~XSPHXControlDialog()
+XIONControlDialog::~XIONControlDialog()
 {
     delete ui;
 }
 
-void XSPHXControlDialog::setModel(WalletModel *model)
+void XIONControlDialog::setModel(WalletModel *model)
 {
     this->model = model;
     updateList();
 }
 
 //Update the tree widget
-void XSPHXControlDialog::updateList()
+void XIONControlDialog::updateList()
 {
     // need to prevent the slot from being called each time something is changed
     ui->treeWidget->blockSignals(true);
@@ -134,7 +134,7 @@ void XSPHXControlDialog::updateList()
 }
 
 // Update the list when a checkbox is clicked
-void XSPHXControlDialog::updateSelection(QTreeWidgetItem* item, int column)
+void XIONControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 {
     // only want updates from non top level items that are available to spend
     if (item->parent() && column == COLUMN_CHECKBOX && !item->isDisabled()){
@@ -157,7 +157,7 @@ void XSPHXControlDialog::updateSelection(QTreeWidgetItem* item, int column)
 }
 
 // Update the Quantity and Amount display
-void XSPHXControlDialog::updateLabels()
+void XIONControlDialog::updateLabels()
 {
     int64_t nAmount = 0;
     for (const CZerocoinMint mint : listMints) {
@@ -167,14 +167,14 @@ void XSPHXControlDialog::updateLabels()
     }
 
     //update this dialog's labels
-    ui->labelXSPHX_int->setText(QString::number(nAmount));
+    ui->labelXION_int->setText(QString::number(nAmount));
     ui->labelQuantity_int->setText(QString::number(listSelectedMints.size()));
 
     //update PrivacyDialog labels
-    privacyDialog->setXSPHXControlLabels(nAmount, listSelectedMints.size());
+    privacyDialog->setXIONControlLabels(nAmount, listSelectedMints.size());
 }
 
-std::vector<CZerocoinMint> XSPHXControlDialog::GetSelectedMints()
+std::vector<CZerocoinMint> XIONControlDialog::GetSelectedMints()
 {
     std::vector<CZerocoinMint> listReturn;
     for (const CZerocoinMint mint : listMints) {
@@ -187,7 +187,7 @@ std::vector<CZerocoinMint> XSPHXControlDialog::GetSelectedMints()
 }
 
 // select or deselect all of the mints
-void XSPHXControlDialog::ButtonAllClicked()
+void XIONControlDialog::ButtonAllClicked()
 {
     ui->treeWidget->blockSignals(true);
     Qt::CheckState state = Qt::Checked;

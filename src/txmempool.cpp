@@ -25,7 +25,7 @@ CTxMemPoolEntry::CTxMemPoolEntry() : nFee(0), nTxSize(0), nModSize(0), nTime(0),
 
 CTxMemPoolEntry::CTxMemPoolEntry(const CTransaction& _tx, const CAmount& _nFee, int64_t _nTime, double _dPriority, unsigned int _nHeight) : tx(_tx), nFee(_nFee), nTime(_nTime), dPriority(_dPriority), nHeight(_nHeight)
 {
-    nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSSPHX);
+    nTxSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
 
     nModSize = tx.CalculateModifiedSize(nTxSize);
 }
@@ -648,7 +648,7 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
     try {
         LOCK(cs);
         fileout << 120000;         // version required to read: 0.12.00 or later
-        fileout << CLIENT_VERSSPHX; // version that wrote the file
+        fileout << CLIENT_VERSION; // version that wrote the file
         minerPolicyEstimator->Write(fileout);
     } catch (const std::exception&) {
         LogPrintf("CTxMemPool::WriteFeeEstimates() : unable to write policy estimator data (non-fatal)");
@@ -660,10 +660,10 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
 bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
 {
     try {
-        int nVerssphxRequired, nVerssphxThatWrote;
-        filein >> nVerssphxRequired >> nVerssphxThatWrote;
-        if (nVerssphxRequired > CLIENT_VERSSPHX)
-            return error("CTxMemPool::ReadFeeEstimates() : up-version (%d) fee estimate file", nVerssphxRequired);
+        int nVersionRequired, nVersionThatWrote;
+        filein >> nVersionRequired >> nVersionThatWrote;
+        if (nVersionRequired > CLIENT_VERSION)
+            return error("CTxMemPool::ReadFeeEstimates() : up-version (%d) fee estimate file", nVersionRequired);
 
         LOCK(cs);
         minerPolicyEstimator->Read(filein, minRelayFee);

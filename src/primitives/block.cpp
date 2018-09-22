@@ -16,10 +16,10 @@
 
 uint256 CBlockHeader::GetHash() const
 {
-    if(nVerssphx < 8)
-        return Hash(BEGIN(nVerssphx), END(nNonce));
+    if(nVersion < 8)
+        return Hash(BEGIN(nVersion), END(nNonce));
 
-    return Hash(BEGIN(nVerssphx), END(nAccumulatorCheckpoint));
+    return Hash(BEGIN(nVersion), END(nAccumulatorCheckpoint));
 }
 
 uint256 CBlock::BuildMerkleTree(bool* fMutated) const
@@ -55,7 +55,7 @@ uint256 CBlock::BuildMerkleTree(bool* fMutated) const
        valid) versions of the same block. We defend against this by detecting
        the case where we would hash two identical hashes at the end of the list
        together, and treating that identically to the block having an invalid
-       merkle root. Assuming no double-SHA256 collissphxs, this will detect all
+       merkle root. Assuming no double-SHA256 collision, this will detect all
        known ways of changing the transactions without affecting the merkle
        root.
     */
@@ -121,7 +121,7 @@ std::string CBlock::ToString() const
     std::stringstream s;
     s << strprintf("CBlock(hash=%s, ver=%d, hashPrevBlock=%s, hashMerkleRoot=%s, nTime=%u, nBits=%08x, nNonce=%u, vtx=%u)\n",
         GetHash().ToString(),
-        nVerssphx,
+        nVersion,
         hashPrevBlock.ToString(),
         hashMerkleRoot.ToString(),
         nTime, nBits, nNonce,

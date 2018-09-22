@@ -43,7 +43,7 @@
 #include <QStringList>
 #include <QTextDocument>
 
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
 #include <QUrl>
 #else
 #include <QUrlQuery>
@@ -147,7 +147,7 @@ void PaymentServer::LoadRootCAs(X509_STORE* _store)
             ReportInvalidCertificate(cert);
             continue;
         }
-#if QT_VERSSPHX >= 0x050000
+#if QT_VERSION >= 0x050000
         if (cert.isBlacklisted()) {
             ReportInvalidCertificate(cert);
             continue;
@@ -252,7 +252,7 @@ bool PaymentServer::ipcSendCommandLine()
 
         QByteArray block;
         QDataStream out(&block, QIODevice::WriteOnly);
-        out.setVerssphx(QDataStream::Qt_4_0);
+        out.setVersion(QDataStream::Qt_4_0);
         out << r;
         out.device()->seek(0);
 
@@ -277,7 +277,7 @@ PaymentServer::PaymentServer(QObject* parent, bool startLocalServer) : QObject(p
 {
     // Verify that the version of the library that we linked against is
     // compatible with the version of the headers we compiled against.
-    GOOGLE_PROTOBUF_VERIFY_VERSSPHX;
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
 
     // Install global event filter to catch QFileOpenEvents
     // on Mac: sent when you click sphx: links
@@ -375,7 +375,7 @@ void PaymentServer::handleURIOrFile(const QString& s)
 
     if (s.startsWith(BITCOIN_IPC_PREFIX, Qt::CaseInsensitive)) // sphx: URI
     {
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
         QUrl uri(s);
 #else
         QUrlQuery uri((QUrl(s)));
@@ -443,7 +443,7 @@ void PaymentServer::handleURIConnection()
         clientConnection, SLOT(deleteLater()));
 
     QDataStream in(clientConnection);
-    in.setVerssphx(QDataStream::Qt_4_0);
+    in.setVersion(QDataStream::Qt_4_0);
     if (clientConnection->bytesAvailable() < (int)sizeof(quint16)) {
         return;
     }

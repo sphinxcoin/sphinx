@@ -10,7 +10,7 @@
 #import <objc/runtime.h>
 #include <Cocoa/Cocoa.h>
 
-// Add an obj-c category (extenssphx) to return the expected bundle identifier
+// Add an obj-c category (extension) to return the expected bundle identifier
 @implementation NSBundle(returnCorrectIdentifier)
 - (NSString *)__bundleIdentifier
 {

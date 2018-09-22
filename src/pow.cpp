@@ -100,7 +100,7 @@ void avgRecentTimestamps(const CBlockIndex* pindexLast, int64_t *avgOf5, int64_t
     if (blockoffset < 9) *avgOf9 += (oldblocktime - blocktime);
     *avgOf17 += (oldblocktime - blocktime);    
   }
-  // now we have the sums of the block intervals. Divissphx gets us the averages. 
+  // now we have the sums of the block intervals. Division gets us the averages. 
   *avgOf5 /= 5;
   *avgOf7 /= 7;
   *avgOf9 /= 9;

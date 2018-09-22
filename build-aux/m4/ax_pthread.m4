@@ -70,7 +70,7 @@
 #   with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 #   As a special exception, the respective Autoconf Macro's copyright owner
-#   gives unlimited permisssphx to copy, distribute and modify the configure
+#   gives unlimited permission to copy, distribute and modify the configure
 #   scripts that are the output of Autoconf when processing the Macro. You
 #   need not follow the terms of the GNU General Public License when using
 #   or distributing such scripts, even though portions of the text of the

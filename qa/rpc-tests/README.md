@@ -1,4 +1,4 @@
-Regresssphx tests of RPC interface
+Regression tests of RPC interface
 =================================
 
 ### [python-bitcoinrpc](https://github.com/jgarzik/python-bitcoinrpc)
@@ -7,7 +7,7 @@ Changes to python-bitcoinrpc should be made upstream, and then
 pulled here using git subtree.
 
 ### [test_framework.py](test_framework.py)
-Base class for new regresssphx tests.
+Base class for new regression tests.
 
 ### [listtransactions.py](listtransactions.py)
 Tests for the listtransactions RPC call.
@@ -26,7 +26,7 @@ Notes
 =====
 
 A 200-block -regtest blockchain and wallets for four nodes
-is created the first time a regresssphx test is run and
+is created the first time a regression test is run and
 is stored in the cache/ directory. Each node has 25 mature
 blocks (25*50=1250 BTC) in their wallet.
 

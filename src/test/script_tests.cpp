@@ -63,7 +63,7 @@ BOOST_AUTO_TEST_SUITE(script_tests)
 CMutableTransaction BuildCreditingTransaction(const CScript& scriptPubKey)
 {
     CMutableTransaction txCredit;
-    txCredit.nVerssphx = 1;
+    txCredit.nVersion = 1;
     txCredit.nLockTime = 0;
     txCredit.vin.resize(1);
     txCredit.vout.resize(1);
@@ -79,7 +79,7 @@ CMutableTransaction BuildCreditingTransaction(const CScript& scriptPubKey)
 CMutableTransaction BuildSpendingTransaction(const CScript& scriptSig, const CMutableTransaction& txCredit)
 {
     CMutableTransaction txSpend;
-    txSpend.nVerssphx = 1;
+    txSpend.nVersion = 1;
     txSpend.nLockTime = 0;
     txSpend.vin.resize(1);
     txSpend.vout.resize(1);
@@ -101,7 +101,7 @@ void DoTest(const CScript& scriptPubKey, const CScript& scriptSig, int flags, bo
     BOOST_CHECK_MESSAGE(VerifyScript(scriptSig, scriptPubKey, flags, MutableTransactionSignatureChecker(&tx, 0), &err) == expect, message);
     BOOST_CHECK_MESSAGE(expect == (err == SCRIPT_ERR_OK), std::string(ScriptErrorString(err)) + ": " + message);
 #if defined(HAVE_CONSENSUS_LIB)
-    CDataStream stream(SER_NETWORK, PROTOCOL_VERSSPHX);
+    CDataStream stream(SER_NETWORK, PROTOCOL_VERSION);
     stream << tx2;
     BOOST_CHECK_MESSAGE(bitcoinconsensus_verify_script(begin_ptr(scriptPubKey), scriptPubKey.size(), (const unsigned char*)&stream[0], stream.size(), 0, flags, NULL) == expect,message);
 #endif

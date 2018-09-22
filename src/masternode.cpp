@@ -74,7 +74,7 @@ CMasternode::CMasternode()
     unitTest = false;
     allowFreeTx = true;
     nActiveState = MASTERNODE_ENABLED,
-    protocolVerssphx = PROTOCOL_VERSSPHX;
+    protocolVersion = PROTOCOL_VERSION;
     nLastDsq = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
@@ -99,7 +99,7 @@ CMasternode::CMasternode(const CMasternode& other)
     unitTest = other.unitTest;
     allowFreeTx = other.allowFreeTx;
     nActiveState = MASTERNODE_ENABLED,
-    protocolVerssphx = other.protocolVerssphx;
+    protocolVersion = other.protocolVersion;
     nLastDsq = other.nLastDsq;
     nScanningErrorCount = other.nScanningErrorCount;
     nLastScanningErrorBlockHeight = other.nLastScanningErrorBlockHeight;
@@ -124,7 +124,7 @@ CMasternode::CMasternode(const CMasternodeBroadcast& mnb)
     unitTest = false;
     allowFreeTx = true;
     nActiveState = MASTERNODE_ENABLED,
-    protocolVerssphx = mnb.protocolVerssphx;
+    protocolVersion = mnb.protocolVersion;
     nLastDsq = mnb.nLastDsq;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
@@ -143,7 +143,7 @@ bool CMasternode::UpdateFromNewBroadcast(CMasternodeBroadcast& mnb)
         pubKeyCollateralAddress = mnb.pubKeyCollateralAddress;
         sigTime = mnb.sigTime;
         sig = mnb.sig;
-        protocolVerssphx = mnb.protocolVerssphx;
+        protocolVersion = mnb.protocolVersion;
         addr = mnb.addr;
         lastTimeChecked = 0;
         int nDoS = 0;
@@ -173,11 +173,11 @@ uint256 CMasternode::CalculateScore(int mod, int64_t nBlockHeight)
         return 0;
     }
 
-    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << hash;
     uint256 hash2 = ss.GetHash();
 
-    CHashWriter ss2(SER_GETHASH, PROTOCOL_VERSSPHX);
+    CHashWriter ss2(SER_GETHASH, PROTOCOL_VERSION);
     ss2 << hash;
     ss2 << aux;
     uint256 hash3 = ss2.GetHash();
@@ -239,7 +239,7 @@ int64_t CMasternode::SecondsSincePayment()
     int64_t month = 60 * 60 * 24 * 30;
     if (sec < month) return sec; //if it's less than 30 days, give seconds
 
-    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << vin;
     ss << sigTime;
     uint256 hash = ss.GetHash();
@@ -256,7 +256,7 @@ int64_t CMasternode::GetLastPaid()
     CScript mnpayee;
     mnpayee = GetScriptForDestination(pubKeyCollateralAddress.GetID());
 
-    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSSPHX);
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
     ss << vin;
     ss << sigTime;
     uint256 hash = ss.GetHash();
@@ -340,13 +340,13 @@ CMasternodeBroadcast::CMasternodeBroadcast()
     cacheInputAgeBlock = 0;
     unitTest = false;
     allowFreeTx = true;
-    protocolVerssphx = PROTOCOL_VERSSPHX;
+    protocolVersion = PROTOCOL_VERSION;
     nLastDsq = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
 }
 
-CMasternodeBroadcast::CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyMasternodeNew, int protocolVerssphxIn)
+CMasternodeBroadcast::CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubKey pubKeyCollateralAddressNew, CPubKey pubKeyMasternodeNew, int protocolVersionIn)
 {
     vin = newVin;
     addr = newAddr;
@@ -360,7 +360,7 @@ CMasternodeBroadcast::CMasternodeBroadcast(CService newAddr, CTxIn newVin, CPubK
     cacheInputAgeBlock = 0;
     unitTest = false;
     allowFreeTx = true;
-    protocolVerssphx = protocolVerssphxIn;
+    protocolVersion = protocolVersionIn;
     nLastDsq = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
@@ -380,7 +380,7 @@ CMasternodeBroadcast::CMasternodeBroadcast(const CMasternode& mn)
     cacheInputAgeBlock = mn.cacheInputAgeBlock;
     unitTest = mn.unitTest;
     allowFreeTx = mn.allowFreeTx;
-    protocolVerssphx = mn.protocolVerssphx;
+    protocolVersion = mn.protocolVersion;
     nLastDsq = mn.nLastDsq;
     nScanningErrorCount = mn.nScanningErrorCount;
     nLastScanningErrorBlockHeight = mn.nLastScanningErrorBlockHeight;
@@ -437,7 +437,7 @@ bool CMasternodeBroadcast::Create(CTxIn txin, CService service, CKey keyCollater
         return false;
     }
 
-    mnbRet = CMasternodeBroadcast(service, txin, pubKeyCollateralAddressNew, pubKeyMasternodeNew, PROTOCOL_VERSSPHX);
+    mnbRet = CMasternodeBroadcast(service, txin, pubKeyCollateralAddressNew, pubKeyMasternodeNew, PROTOCOL_VERSION);
 
     if (!mnbRet.IsValidNetAddr()) {
         strErrorRet = strprintf("Invalid IP address %s, masternode=%s", mnbRet.addr.ToStringIP (), txin.prevout.hash.ToString());
@@ -483,10 +483,10 @@ bool CMasternodeBroadcast::CheckAndUpdate(int& nDos)
 
     std::string vchPubKey(pubKeyCollateralAddress.begin(), pubKeyCollateralAddress.end());
     std::string vchPubKey2(pubKeyMasternode.begin(), pubKeyMasternode.end());
-    std::string strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVerssphx);
+    std::string strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVersion);
 
-    if (protocolVerssphx < masternodePayments.GetMinMasternodePaymentsProto()) {
-        LogPrint("masternode","mnb - ignoring outdated Masternode %s protocol version %d\n", vin.prevout.hash.ToString(), protocolVerssphx);
+    if (protocolVersion < masternodePayments.GetMinMasternodePaymentsProto()) {
+        LogPrint("masternode","mnb - ignoring outdated Masternode %s protocol version %d\n", vin.prevout.hash.ToString(), protocolVersion);
         return false;
     }
 
@@ -628,7 +628,7 @@ bool CMasternodeBroadcast::CheckInputsAndAdd(int& nDoS)
     mnodeman.Add(mn);
 
     // if it matches our Masternode privkey, then we've been remotely activated
-    if (pubKeyMasternode == activeMasternode.pubKeyMasternode && protocolVerssphx == PROTOCOL_VERSSPHX) {
+    if (pubKeyMasternode == activeMasternode.pubKeyMasternode && protocolVersion == PROTOCOL_VERSION) {
         activeMasternode.EnableHotColdMasterNode(vin, addr);
     }
 
@@ -655,7 +655,7 @@ bool CMasternodeBroadcast::Sign(CKey& keyCollateralAddress)
 
     sigTime = GetAdjustedTime();
 
-    std::string strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVerssphx);
+    std::string strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVersion);
 
     if (!obfuScationSigner.SignMessage(strMessage, errorMessage, sig, keyCollateralAddress)) {
         LogPrint("masternode","CMasternodeBroadcast::Sign() - Error: %s\n", errorMessage);
@@ -726,7 +726,7 @@ bool CMasternodePing::CheckAndUpdate(int& nDos, bool fRequireEnabled)
 
     // see if we have this Masternode
     CMasternode* pmn = mnodeman.Find(vin);
-    if (pmn != NULL && pmn->protocolVerssphx >= masternodePayments.GetMinMasternodePaymentsProto()) {
+    if (pmn != NULL && pmn->protocolVersion >= masternodePayments.GetMinMasternodePaymentsProto()) {
         if (fRequireEnabled && !pmn->IsEnabled()) return false;
 
         // LogPrint("masternode","mnping - Found corresponding mn for vin: %s\n", vin.ToString());

@@ -28,7 +28,7 @@ last_year = year - 1
 command = "perl -pi -e 's/%s The Sphinx/%s The Sphinx/' %s"
 listFilesCommand = "find . | grep %s"
 
-extenssphxs = [".cpp",".h"]
+extensions = [".cpp",".h"]
 
 def getLastGitModifiedDate(filePath):
   gitGetLastCommitDateCommand = "git log " + filePath +" | grep Date | head -n 1"
@@ -41,11 +41,11 @@ def getLastGitModifiedDate(filePath):
   return result
 
 n=1
-for extenssphx in extenssphxs:
-  foundFiles = os.popen(listFilesCommand % extenssphx)
+for extension in extensions:
+  foundFiles = os.popen(listFilesCommand % extension)
   for filePath in foundFiles:
     filePath = filePath[1:-1]
-    if filePath.endswith(extenssphx):
+    if filePath.endswith(extension):
       filePath = os.getcwd() + filePath
       modifiedTime = getLastGitModifiedDate(filePath)
       if len(modifiedTime) > 0 and str(year) in modifiedTime:

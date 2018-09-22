@@ -19,7 +19,7 @@
  *
  * Copyright (c) 2007-2010  Projet RNRT SAPHIR
  * 
- * Permisssphx is hereby granted, free of charge, to any person obtaining
+ * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
  * "Software"), to deal in the Software without restriction, including
  * without limitation the rights to use, copy, modify, merge, publish,
@@ -27,7 +27,7 @@
  * permit persons to whom the Software is furnished to do so, subject to
  * the following conditions:
  * 
- * The above copyright notice and this permisssphx notice shall be
+ * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
  * 
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
@@ -409,11 +409,11 @@ typedef __arch_dependant__ sph_s64;
 
 /**
  * This macro expands the token <code>x</code> into a suitable
- * constant expresssphx of type <code>sph_u32</code>. Depending on
+ * constant expression of type <code>sph_u32</code>. Depending on
  * how this type is defined, a suffix such as <code>UL</code> may
  * be appended to the argument.
  *
- * @param x   the token to expand into a suitable constant expresssphx
+ * @param x   the token to expand into a suitable constant expression
  */
 #define SPH_C32(x)
 
@@ -463,12 +463,12 @@ typedef __arch_dependant__ sph_s64;
 
 /**
  * This macro expands the token <code>x</code> into a suitable
- * constant expresssphx of type <code>sph_u64</code>. Depending on
+ * constant expression of type <code>sph_u64</code>. Depending on
  * how this type is defined, a suffix such as <code>ULL</code> may
  * be appended to the argument. This macro is defined only if a
  * 64-bit type was detected and used for <code>sph_u64</code>.
  *
- * @param x   the token to expand into a suitable constant expresssphx
+ * @param x   the token to expand into a suitable constant expression
  */
 #define SPH_C64(x)
 
@@ -816,7 +816,7 @@ static inline void sph_enc64be_aligned(void *dst, sph_u64 val);
 #undef SPH_64
 #undef SPH_64_TRUE
 
-#if defined __STDC__ && __STDC_VERSSPHX__ >= 199901L
+#if defined __STDC__ && __STDC_VERSION__ >= 199901L
 
 /*
  * On C99 implementations, we can use <stdint.h> to get an exact 64-bit
@@ -855,7 +855,7 @@ typedef int_fast64_t sph_s64;
  * On non-C99 systems, we use "unsigned int" if it is wide enough,
  * "unsigned long" otherwise. This supports all "reasonable" architectures.
  * We have to be cautious: pre-C99 preprocessors handle constants
- * differently in '#if' expresssphxs. Hence the shifts to test UINT_MAX.
+ * differently in '#if' expressions. Hence the shifts to test UINT_MAX.
  */
 
 #if ((UINT_MAX >> 11) >> 11) >= 0x3FF
@@ -925,7 +925,7 @@ typedef long long sph_s64;
 
 /*
  * Implementation note: some processors have specific opcodes to perform
- * a rotation. Recent versions of gcc recognize the expresssphx above and
+ * a rotation. Recent versions of gcc recognize the expression above and
  * use the relevant opcodes, when appropriate.
  */
 
@@ -946,7 +946,7 @@ typedef long long sph_s64;
  * Define SPH_INLINE to be an "inline" qualifier, if available. We define
  * some small macro-like functions which benefit greatly from being inlined.
  */
-#if (defined __STDC__ && __STDC_VERSSPHX__ >= 199901L) || defined __GNUC__
+#if (defined __STDC__ && __STDC_VERSION__ >= 199901L) || defined __GNUC__
 #define SPH_INLINE inline
 #elif defined _MSC_VER
 #define SPH_INLINE __inline
@@ -1306,7 +1306,7 @@ sph_bswap64(sph_u64 x)
  * to get the address space name. The latter format is better since it
  * combines an addition and the actual access in a single opcode; but
  * it requires the setting (and subsequent resetting) of %asi, which is
- * slow. Some operations (i.e. MD5 compresssphx function) combine many
+ * slow. Some operations (i.e. MD5 compression function) combine many
  * successive little-endian read accesses, which may share the same
  * %asi setting. The macros below contain the appropriate inline
  * assembly.

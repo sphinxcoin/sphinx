@@ -181,7 +181,7 @@ private slots:
 };
 
 /**
-     * Extenssphx to QTableWidgetItem that facilitates proper ordering for "DHMS"
+     * Extension to QTableWidgetItem that facilitates proper ordering for "DHMS"
      * strings (primarily used in the masternode's "active" listing).
      */
 class DHMSTableWidgetItem : public QTableWidgetItem
@@ -227,7 +227,7 @@ QString formatPingTime(double dPingTime);
 /* Format a CNodeCombinedStats.nTimeOffset into a user-readable string. */
 QString formatTimeOffset(int64_t nTimeOffset);
 
-#if defined(Q_OS_MAC) && QT_VERSSPHX >= 0x050000
+#if defined(Q_OS_MAC) && QT_VERSION >= 0x050000
 // workaround for Qt OSX Bug:
 // https://bugreports.qt-project.org/browse/QTBUG-15631
 // QProgressBar uses around 10% CPU even when app is in background

@@ -18,14 +18,14 @@
 
 using leveldb::Cache;
 using leveldb::Comparator;
-using leveldb::CompresssphxType;
+using leveldb::CompressionType;
 using leveldb::DB;
 using leveldb::Env;
 using leveldb::FileLock;
 using leveldb::FilterPolicy;
 using leveldb::Iterator;
-using leveldb::kMajorVerssphx;
-using leveldb::kMinorVerssphx;
+using leveldb::kMajorVersion;
+using leveldb::kMinorVersion;
 using leveldb::Logger;
 using leveldb::NewBloomFilterPolicy;
 using leveldb::NewLRUCache;
@@ -446,8 +446,8 @@ void leveldb_options_set_block_restart_interval(leveldb_options_t* opt, int n) {
   opt->rep.block_restart_interval = n;
 }
 
-void leveldb_options_set_compresssphx(leveldb_options_t* opt, int t) {
-  opt->rep.compresssphx = static_cast<CompresssphxType>(t);
+void leveldb_options_set_compression(leveldb_options_t* opt, int t) {
+  opt->rep.compression = static_cast<CompressionType>(t);
 }
 
 leveldb_comparator_t* leveldb_comparator_create(
@@ -585,11 +585,11 @@ void leveldb_free(void* ptr) {
 }
 
 int leveldb_major_version() {
-  return kMajorVerssphx;
+  return kMajorVersion;
 }
 
 int leveldb_minor_version() {
-  return kMinorVerssphx;
+  return kMinorVersion;
 }
 
 }  // end extern "C"

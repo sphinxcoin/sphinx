@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CLIENTVERSSPHX_H
-#define BITCOIN_CLIENTVERSSPHX_H
+#ifndef BITCOIN_CLIENTVERSION_H
+#define BITCOIN_CLIENTVERSION_H
 
 #if defined(HAVE_CONFIG_H)
 #include "config/sphx-config.h"
 #endif //HAVE_CONFIG_H
 
 // Check that required client information is defined
-#if !defined(CLIENT_VERSSPHX_MAJOR) || !defined(CLIENT_VERSSPHX_MINOR) || !defined(CLIENT_VERSSPHX_REVISSPHX) || !defined(CLIENT_VERSSPHX_BUILD) || !defined(CLIENT_VERSSPHX_IS_RELEASE) || !defined(COPYRIGHT_YEAR)
+#if !defined(CLIENT_VERSION_MAJOR) || !defined(CLIENT_VERSION_MINOR) || !defined(CLIENT_VERSION_REVISION) || !defined(CLIENT_VERSION_BUILD) || !defined(CLIENT_VERSION_IS_RELEASE) || !defined(COPYRIGHT_YEAR)
 #error Client version information missing: version is not defined by sphx-config.h or in any other way
 #endif
 
@@ -35,20 +35,20 @@
 #include <string>
 #include <vector>
 
-static const int CLIENT_VERSSPHX =
-    1000000 * CLIENT_VERSSPHX_MAJOR  ///
-    + 10000 * CLIENT_VERSSPHX_MINOR  ///
-    + 100 * CLIENT_VERSSPHX_REVISSPHX ///
-    + 1 * CLIENT_VERSSPHX_BUILD;
+static const int CLIENT_VERSION =
+    1000000 * CLIENT_VERSION_MAJOR  ///
+    + 10000 * CLIENT_VERSION_MINOR  ///
+    + 100 * CLIENT_VERSION_REVISION ///
+    + 1 * CLIENT_VERSION_BUILD;
 
 extern const std::string CLIENT_NAME;
 extern const std::string CLIENT_BUILD;
 extern const std::string CLIENT_DATE;
 
 
-std::string FormatFullVerssphx();
-std::string FormatSubVerssphx(const std::string& name, int nClientVerssphx, const std::vector<std::string>& comments);
+std::string FormatFullVersion();
+std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
 
 #endif // WINDRES_PREPROC
 
-#endif // BITCOIN_CLIENTVERSSPHX_H
+#endif // BITCOIN_CLIENTVERSION_H

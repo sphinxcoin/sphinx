@@ -54,7 +54,7 @@ enum Network ParseNetwork(std::string net)
     boost::to_lower(net);
     if (net == "ipv4") return NET_IPV4;
     if (net == "ipv6") return NET_IPV6;
-    if (net == "tor" || net == "onsphx") return NET_TOR;
+    if (net == "tor" || net == "onion") return NET_TOR;
     return NET_UNROUTABLE;
 }
 
@@ -66,7 +66,7 @@ std::string GetNetworkName(enum Network net)
     case NET_IPV6:
         return "ipv6";
     case NET_TOR:
-        return "onsphx";
+        return "onion";
     default:
         return "";
     }
@@ -661,17 +661,17 @@ void CNetAddr::SetRaw(Network network, const uint8_t* ip_in)
     }
 }
 
-static const unsigned char pchOnsphxCat[] = {0xFD, 0x87, 0xD8, 0x7E, 0xEB, 0x43};
+static const unsigned char pchOnionCat[] = {0xFD, 0x87, 0xD8, 0x7E, 0xEB, 0x43};
 
 bool CNetAddr::SetSpecial(const std::string& strName)
 {
-    if (strName.size() > 6 && strName.substr(strName.size() - 6, 6) == ".onsphx") {
+    if (strName.size() > 6 && strName.substr(strName.size() - 6, 6) == ".onion") {
         std::vector<unsigned char> vchAddr = DecodeBase32(strName.substr(0, strName.size() - 6).c_str());
-        if (vchAddr.size() != 16 - sizeof(pchOnsphxCat))
+        if (vchAddr.size() != 16 - sizeof(pchOnionCat))
             return false;
-        memcpy(ip, pchOnsphxCat, sizeof(pchOnsphxCat));
-        for (unsigned int i = 0; i < 16 - sizeof(pchOnsphxCat); i++)
-            ip[i + sizeof(pchOnsphxCat)] = vchAddr[i];
+        memcpy(ip, pchOnionCat, sizeof(pchOnionCat));
+        for (unsigned int i = 0; i < 16 - sizeof(pchOnionCat); i++)
+            ip[i + sizeof(pchOnionCat)] = vchAddr[i];
         return true;
     }
     return false;
@@ -797,7 +797,7 @@ bool CNetAddr::IsRFC4843() const
 
 bool CNetAddr::IsTor() const
 {
-    return (memcmp(ip, pchOnsphxCat, sizeof(pchOnsphxCat)) == 0);
+    return (memcmp(ip, pchOnionCat, sizeof(pchOnionCat)) == 0);
 }
 
 bool CNetAddr::IsLocal() const
@@ -876,7 +876,7 @@ enum Network CNetAddr::GetNetwork() const
 std::string CNetAddr::ToStringIP() const
 {
     if (IsTor())
-        return EncodeBase32(&ip[6], 10) + ".onsphx";
+        return EncodeBase32(&ip[6], 10) + ".onion";
     CService serv(*this, 0);
     struct sockaddr_storage sockaddr;
     socklen_t socklen = sizeof(sockaddr);
@@ -998,7 +998,7 @@ uint64_t CNetAddr::GetHash() const
     return nRet;
 }
 
-// private extenssphxs to enum Network, only returned by GetExtNetwork,
+// private extensions to enum Network, only returned by GetExtNetwork,
 // and only used in GetReachabilityFrom
 static const int NET_UNKNOWN = NET_MAX + 0;
 static const int NET_TEREDO = NET_MAX + 1;
@@ -1444,7 +1444,7 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)
     if (fNonBlocking) {
 #ifdef WIN32
         u_long nOne = 1;
-        if (ioctlsocket(hSocket, FSPHXBIO, &nOne) == SOCKET_ERROR) {
+        if (ioctlsocket(hSocket, FIONBIO, &nOne) == SOCKET_ERROR) {
 #else
         int fFlags = fcntl(hSocket, F_GETFL, 0);
         if (fcntl(hSocket, F_SETFL, fFlags | O_NONBLOCK) == SOCKET_ERROR) {
@@ -1455,7 +1455,7 @@ bool SetSocketNonBlocking(SOCKET& hSocket, bool fNonBlocking)
     } else {
 #ifdef WIN32
         u_long nZero = 0;
-        if (ioctlsocket(hSocket, FSPHXBIO, &nZero) == SOCKET_ERROR) {
+        if (ioctlsocket(hSocket, FIONBIO, &nZero) == SOCKET_ERROR) {
 #else
         int fFlags = fcntl(hSocket, F_GETFL, 0);
         if (fcntl(hSocket, F_SETFL, fFlags & ~O_NONBLOCK) == SOCKET_ERROR) {

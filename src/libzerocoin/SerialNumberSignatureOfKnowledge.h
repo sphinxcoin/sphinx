@@ -52,7 +52,7 @@ public:
 	 */
 	bool Verify(const CBigNum& coinSerialNumber, const CBigNum& valueOfCommitmentToCoin,const uint256 msghash) const;
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx) {
+  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
 	    READWRITE(s_notprime);
 	    READWRITE(sprime);
 	    READWRITE(hash);

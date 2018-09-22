@@ -17,7 +17,7 @@ osx=true
 
 # Other Basic variables
 SIGNER=
-VERSSPHX=
+VERSION=
 commit=false
 url=https://github.com/cevap/sphx
 proc=2
@@ -37,7 +37,7 @@ Run this script from the directory containing the sphx, gitian-builder, gitian.s
 
 Arguments:
 signer          GPG signer to sign each build assert file
-version		Verssphx number, commit, or branch to build. If building a commit or branch, the -c option must be specified
+version		Version number, commit, or branch to build. If building a commit or branch, the -c option must be specified
 
 Options:
 -c|--commit	Indicate that the version argument is for a commit or branch
@@ -207,8 +207,8 @@ fi
 # Get version
 if [[ -n "$1" ]]
 then
-    VERSSPHX=$1
-    COMMIT=$VERSSPHX
+    VERSION=$1
+    COMMIT=$VERSION
     shift
 fi
 
@@ -221,7 +221,7 @@ then
 fi
 
 # Check that a version is specified
-if [[ $VERSSPHX == "" ]]
+if [[ $VERSION == "" ]]
 then
     echo "$scriptName: Missing version."
     echo "Try $scriptName --help for more information"
@@ -231,7 +231,7 @@ fi
 # Add a "v" if no -c
 if [[ $commit = false ]]
 then
-	COMMIT="v${VERSSPHX}"
+	COMMIT="v${VERSION}"
 fi
 echo ${COMMIT}
 
@@ -263,7 +263,7 @@ popd
 if [[ $build = true ]]
 then
 	# Make output folder
-	mkdir -p ./sphx-binaries/${VERSSPHX}
+	mkdir -p ./sphx-binaries/${VERSION}
 
 	# Build Dependencies
 	echo ""
@@ -279,57 +279,57 @@ then
 	if [[ $linux = true ]]
 	then
             echo ""
-	    echo "Compiling ${VERSSPHX} Linux"
+	    echo "Compiling ${VERSION} Linux"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit sphx=${COMMIT} --url sphx=${url} ../sphx/contrib/gitian-descriptors/gitian-linux.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
-	    mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../sphx-binaries/${VERSSPHX}
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+	    mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../sphx-binaries/${VERSION}
 	fi
 	# Windows
 	if [[ $windows = true ]]
 	then
 	    echo ""
-	    echo "Compiling ${VERSSPHX} Windows"
+	    echo "Compiling ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit sphx=${COMMIT} --url sphx=${url} ../sphx/contrib/gitian-descriptors/gitian-win.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win.yml
 	    mv build/out/sphx-*-win-unsigned.tar.gz inputs/sphx-win-unsigned.tar.gz
-	    mv build/out/sphx-*.zip build/out/sphx-*.exe ../sphx-binaries/${VERSSPHX}
+	    mv build/out/sphx-*.zip build/out/sphx-*.exe ../sphx-binaries/${VERSION}
 	fi
 	# Mac OSX
 	if [[ $osx = true ]]
 	then
 	    echo ""
-	    echo "Compiling ${VERSSPHX} Mac OSX"
+	    echo "Compiling ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit sphx=${COMMIT} --url sphx=${url} ../sphx/contrib/gitian-descriptors/gitian-osx.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 	    mv build/out/sphx-*-osx-unsigned.tar.gz inputs/sphx-osx-unsigned.tar.gz
-	    mv build/out/sphx-*.tar.gz build/out/sphx-*.dmg ../sphx-binaries/${VERSSPHX}
+	    mv build/out/sphx-*.tar.gz build/out/sphx-*.dmg ../sphx-binaries/${VERSION}
 	fi
 	# AArch64
 	if [[ $aarch64 = true ]]
 	then
 	    echo ""
-	    echo "Compiling ${VERSSPHX} AArch64"
+	    echo "Compiling ${VERSION} AArch64"
 	    echo ""
 	    ./bin/gbuild -j ${proc} -m ${mem} --commit sphx=${COMMIT} --url sphx=${url} ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-aarch64 --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
-	    mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../sphx-binaries/${VERSSPHX}
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-aarch64 --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
+	    mv build/out/sphx-*.tar.gz build/out/src/sphx-*.tar.gz ../sphx-binaries/${VERSION}
 	popd
 
         if [[ $commitFiles = true ]]
         then
 	    # Commit to gitian.sigs repo
             echo ""
-            echo "Committing ${VERSSPHX} Unsigned Sigs"
+            echo "Committing ${VERSION} Unsigned Sigs"
             echo ""
             pushd gitian.sigs
-            git add ${VERSSPHX}-linux/${SIGNER}
-            git add ${VERSSPHX}-aarch64/${SIGNER}
-            git add ${VERSSPHX}-win-unsigned/${SIGNER}
-            git add ${VERSSPHX}-osx-unsigned/${SIGNER}
-            git commit -a -m "Add ${VERSSPHX} unsigned sigs for ${SIGNER}"
+            git add ${VERSION}-linux/${SIGNER}
+            git add ${VERSION}-aarch64/${SIGNER}
+            git add ${VERSION}-win-unsigned/${SIGNER}
+            git add ${VERSION}-osx-unsigned/${SIGNER}
+            git commit -a -m "Add ${VERSION} unsigned sigs for ${SIGNER}"
             popd
         fi
 fi
@@ -340,34 +340,34 @@ then
 	# Linux
 	pushd ./gitian-builder
 	echo ""
-	echo "Verifying v${VERSSPHX} Linux"
+	echo "Verifying v${VERSION} Linux"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-linux ../sphx/contrib/gitian-descriptors/gitian-linux.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../sphx/contrib/gitian-descriptors/gitian-linux.yml
 	# Windows
 	echo ""
-	echo "Verifying v${VERSSPHX} Windows"
+	echo "Verifying v${VERSION} Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-win-unsigned ../sphx/contrib/gitian-descriptors/gitian-win.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../sphx/contrib/gitian-descriptors/gitian-win.yml
 	# Mac OSX
 	echo ""
-	echo "Verifying v${VERSSPHX} Mac OSX"
+	echo "Verifying v${VERSION} Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-osx-unsigned ../sphx/contrib/gitian-descriptors/gitian-osx.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../sphx/contrib/gitian-descriptors/gitian-osx.yml
 	# AArch64
 	echo ""
-	echo "Verifying v${VERSSPHX} AArch64"
+	echo "Verifying v${VERSION} AArch64"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-aarch64 ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-aarch64 ../sphx/contrib/gitian-descriptors/gitian-aarch64.yml
 	# Signed Windows
 	echo ""
-	echo "Verifying v${VERSSPHX} Signed Windows"
+	echo "Verifying v${VERSION} Signed Windows"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
 	# Signed Mac OSX
 	echo ""
-	echo "Verifying v${VERSSPHX} Signed Mac OSX"
+	echo "Verifying v${VERSION} Signed Mac OSX"
 	echo ""
-	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSSPHX}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+	./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
 	popd
 fi
 
@@ -380,22 +380,22 @@ then
 	if [[ $windows = true ]]
 	then
 	    echo ""
-	    echo "Signing ${VERSSPHX} Windows"
+	    echo "Signing ${VERSION} Windows"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-win-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
-	    mv build/out/sphx-*win64-setup.exe ../sphx-binaries/${VERSSPHX}
-	    mv build/out/sphx-*win32-setup.exe ../sphx-binaries/${VERSSPHX}
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-win-signer.yml
+	    mv build/out/sphx-*win64-setup.exe ../sphx-binaries/${VERSION}
+	    mv build/out/sphx-*win32-setup.exe ../sphx-binaries/${VERSION}
 	fi
 	# Sign Mac OSX
 	if [[ $osx = true ]]
 	then
 	    echo ""
-	    echo "Signing ${VERSSPHX} Mac OSX"
+	    echo "Signing ${VERSION} Mac OSX"
 	    echo ""
 	    ./bin/gbuild -i --commit signature=${COMMIT} ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSSPHX}-osx-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
-	    mv build/out/sphx-osx-signed.dmg ../sphx-binaries/${VERSSPHX}/sphx-${VERSSPHX}-osx.dmg
+	    ./bin/gsign -p $signProg --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../sphx/contrib/gitian-descriptors/gitian-osx-signer.yml
+	    mv build/out/sphx-osx-signed.dmg ../sphx-binaries/${VERSION}/sphx-${VERSION}-osx.dmg
 	fi
 	popd
 
@@ -404,11 +404,11 @@ then
             # Commit Sigs
             pushd gitian.sigs
             echo ""
-            echo "Committing ${VERSSPHX} Signed Sigs"
+            echo "Committing ${VERSION} Signed Sigs"
             echo ""
-            git add ${VERSSPHX}-win-signed/${SIGNER}
-            git add ${VERSSPHX}-osx-signed/${SIGNER}
-            git commit -a -m "Add ${VERSSPHX} signed binary sigs for ${SIGNER}"
+            git add ${VERSION}-win-signed/${SIGNER}
+            git add ${VERSION}-osx-signed/${SIGNER}
+            git commit -a -m "Add ${VERSION} signed binary sigs for ${SIGNER}"
             popd
         fi
 fi

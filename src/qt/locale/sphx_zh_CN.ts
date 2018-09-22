@@ -966,7 +966,7 @@ Address: %4
         <translation>&amp;单位显示金额</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>选择显示发送SPHX的默认单位。</translation>
     </message>
     <message>
@@ -1515,7 +1515,7 @@ Address: %4
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>

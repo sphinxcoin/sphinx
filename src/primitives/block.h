@@ -28,8 +28,8 @@ class CBlockHeader
 {
 public:
     // header
-    static const int32_t CURRENT_VERSSPHX=8;
-    int32_t nVerssphx;
+    static const int32_t CURRENT_VERSION=8;
+    int32_t nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
     uint32_t nTime;
@@ -45,9 +45,9 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx) {
-        READWRITE(this->nVerssphx);
-        nVerssphx = this->nVerssphx;
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
         READWRITE(hashPrevBlock);
         READWRITE(hashMerkleRoot);
         READWRITE(nTime);
@@ -55,13 +55,13 @@ public:
         READWRITE(nNonce);
 
         //zerocoin active, header changes to include accumulator checksum
-        if(nVerssphx > 7)
+        if(nVersion > 7)
             READWRITE(nAccumulatorCheckpoint);
     }
 
     void SetNull()
     {
-        nVerssphx = CBlockHeader::CURRENT_VERSSPHX;
+        nVersion = CBlockHeader::CURRENT_VERSION;
         hashPrevBlock.SetNull();
         hashMerkleRoot.SetNull();
         nTime = 0;
@@ -111,7 +111,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx) {
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(*(CBlockHeader*)this);
         READWRITE(vtx);
 	if(vtx.size() > 1 && vtx[1].IsCoinStake())
@@ -130,7 +130,7 @@ public:
     CBlockHeader GetBlockHeader() const
     {
         CBlockHeader block;
-        block.nVerssphx       = nVerssphx;
+        block.nVersion       = nVersion;
         block.hashPrevBlock  = hashPrevBlock;
         block.hashMerkleRoot = hashMerkleRoot;
         block.nTime          = nTime;
@@ -190,9 +190,9 @@ struct CBlockLocator
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx) {
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVerssphx);
+            READWRITE(nVersion);
         READWRITE(vHave);
     }
 

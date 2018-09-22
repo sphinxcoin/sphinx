@@ -79,7 +79,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         LOCK(cs);
         READWRITE(vMasternodes);
@@ -110,9 +110,9 @@ public:
     /// Clear Masternode vector
     void Clear();
 
-    int CountEnabled(int protocolVerssphx = -1);
+    int CountEnabled(int protocolVersion = -1);
 
-    void CountNetworks(int protocolVerssphx, int& ipv4, int& ipv6, int& onsphx);
+    void CountNetworks(int protocolVersion, int& ipv4, int& ipv6, int& onion);
 
     void DsegUpdate(CNode* pnode);
 
@@ -125,7 +125,7 @@ public:
     CMasternode* GetNextMasternodeInQueueForPayment(int nBlockHeight, bool fFilterSigTime, int& nCount);
 
     /// Find a random entry
-    CMasternode* FindRandomNotInVec(std::vector<CTxIn>& vecToExclude, int protocolVerssphx = -1);
+    CMasternode* FindRandomNotInVec(std::vector<CTxIn>& vecToExclude, int protocolVersion = -1);
 
     /// Get the current winner for this block
     CMasternode* GetCurrentMasterNode(int mod = 1, int64_t nBlockHeight = 0, int minProtocol = 0);

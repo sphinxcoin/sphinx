@@ -227,7 +227,7 @@ unsigned int Reader::ReadPhysicalRecord(Slice* result) {
     if (type == kZeroType && length == 0) {
       // Skip zero length record without reporting any drops since
       // such records are produced by the mmap based writing code in
-      // env_posix.cc that preallocates file regsphxs.
+      // env_posix.cc that preallocates file regions.
       buffer_.clear();
       return kBadRecord;
     }

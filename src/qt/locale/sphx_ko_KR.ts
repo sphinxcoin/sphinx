@@ -1732,7 +1732,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;금액을 표시 할 단위:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>코인 전송시 인터페이스에 표시할 기본 세분화 단위를 선택해주세요.</translation>
     </message>
     <message>
@@ -1969,7 +1969,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>주소/사용자 이름</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>버전</translation>
     </message>
     <message>
@@ -2289,7 +2289,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>프로토콜</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>버전</translation>
     </message>
     <message>
@@ -3186,7 +3186,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>버전 %1</translation>
     </message>
     <message>
@@ -3361,7 +3361,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>상인</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>생성된 코인은 사용되기 전 %1 블록이 완료되야 합니다. 이 블록을 생성하면 네트워크에 브로드캐스팅되어 블록체인에 추가 됩니다. 체인이 실패한 경우 "승인되지 않음"으로 바뀌어 사용할 수 없습니다. 다른 노드가 당신과 겹쳐서 몇 초 이내 블록을 생성하면 때때로 이런 일이 발생할 수 있습니다.</translation>
     </message>
     <message>
@@ -3775,7 +3775,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -3820,7 +3820,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>연속적인 무료 트랜잭션을 분당 &lt;n&gt;*1000 bytes로 제한합니다. (기본값:%u)</translation>
     </message>
     <message>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>umask 077대신 시스템 기본 권한으로 새로운 파일들을 만듭니다. (지갑 기능이 비활성화일 때만 효과가 발휘됩니다)</translation>
     </message>
     <message>
@@ -3844,7 +3844,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>swiftTX 활성화, 잠긴 트랜잭션들에 대한 확인 표시 (bool, 기본값: %s)</translation>
     </message>
     <message>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
         <translation>리그레션 테스트에 들어갑니다. 특수 체인을 사용하며 블록들을 바로 푸는 것이 가능합니다.</translation>
     </message>
     <message>
@@ -3979,7 +3979,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
 </source>
@@ -4280,8 +4280,8 @@ rpcpassword=%s
         <translation>오류 : 디스크 공간이 부족합니다!</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -tor found, use -onsphx.</source>
-        <translation>오류 : 지원하지 않는 인수 -tor가 발견되었습니다. -onsphx을 사용하십시오.</translation>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation>오류 : 지원하지 않는 인수 -tor가 발견되었습니다. -onion을 사용하십시오.</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
@@ -4372,8 +4372,8 @@ rpcpassword=%s
         <translation>충분하지 않은 금액.</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>유효하지 않은 -onsphx 주소: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>유효하지 않은 -onion 주소: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -4628,8 +4628,8 @@ rpcpassword=%s
         <translation>내장된 체크 포인트와 일치하는 블록체인만 허용 (기본값: %u)</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>네트워크에 연결된 노드에만 연결 &lt;net&gt; (ipv4, ipv6 또는 onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>네트워크에 연결된 노드에만 연결 &lt;net&gt; (ipv4, ipv6 또는 onion)</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -4712,11 +4712,11 @@ rpcpassword=%s
         <translation>서버 개인 키 (기본값: %s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>세션이 완료되지 않았습니다!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>세션이 만료되었습니다.</translation>
     </message>
     <message>
@@ -4864,7 +4864,7 @@ rpcpassword=%s
         <translation>이것은 실험용 소프트웨어입니다.</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
+        <source>This is intended for regression testing tools and app development.</source>
         <translation>이것은 리그레션 테스팅 및 앱 개발을 위해 만들어졌습니다.</translation>
     </message>
     <message>

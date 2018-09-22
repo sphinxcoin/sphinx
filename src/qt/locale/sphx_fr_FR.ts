@@ -680,11 +680,11 @@ Adresse : %4
     </message>
     <message>
         <source>Fee:</source>
-        <translation>Commisssphx :</translation>
+        <translation>Commission :</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>Après commisssphx</translation>
+        <translation>Après commission</translation>
     </message>
     <message>
         <source>(un)select all</source>
@@ -744,11 +744,11 @@ Adresse : %4
     </message>
     <message>
         <source>Copy fee</source>
-        <translation>Copier la commisssphx</translation>
+        <translation>Copier la commission</translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>Copier après la commisssphx</translation>
+        <translation>Copier après la commission</translation>
     </message>
     <message>
         <source>Copy priority</source>
@@ -812,7 +812,7 @@ Adresse : %4
     </message>
     <message>
         <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Cela signifie qu'une commisssphx d'au moins %1 par kb est obligatoire.</translation>
+        <translation>Cela signifie qu'une commission d'au moins %1 par kb est obligatoire.</translation>
     </message>
     <message>
         <source>Transactions with higher priority are more likely to get included into a block.</source>
@@ -1101,8 +1101,8 @@ Veuillez vérifier l'adresse et réessayer.</translation>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     </context>
 <context>
@@ -1145,7 +1145,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>Fee:</source>
-        <translation>Commisssphx :</translation>
+        <translation>Commission :</translation>
     </message>
     <message>
         <source>no</source>
@@ -1226,7 +1226,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>Client version</source>
-        <translation>Verssphx client</translation>
+        <translation>Version client</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
@@ -1261,8 +1261,8 @@ Veuillez vérifier l'adresse et réessayer.</translation>
         <translation>Protocole</translation>
     </message>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Services</source>
@@ -1422,7 +1422,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>Fee:</source>
-        <translation>Commisssphx :</translation>
+        <translation>Commission :</translation>
     </message>
     <message>
         <source>no</source>
@@ -1430,7 +1430,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>Après commisssphx</translation>
+        <translation>Après commission</translation>
     </message>
     <message>
         <source>0 SPHX</source>
@@ -1438,7 +1438,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
-        <translation>Commisssphx de transaction</translation>
+        <translation>Commission de transaction</translation>
     </message>
     <message>
         <source>Choose...</source>
@@ -1482,11 +1482,11 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     <message>
         <source>Copy fee</source>
-        <translation>Copier la commisssphx</translation>
+        <translation>Copier la commission</translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>Copier après la commisssphx</translation>
+        <translation>Copier après la commission</translation>
     </message>
     <message>
         <source>Copy priority</source>
@@ -1801,7 +1801,7 @@ Veuillez vérifier l'adresse et réessayer.</translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

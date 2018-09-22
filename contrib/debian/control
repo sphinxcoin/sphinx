@@ -21,7 +21,7 @@ Build-Depends: debhelper,
  libqt4-dev,
  libqrencode-dev,
  libprotobuf-dev, protobuf-compiler
-Standards-Verssphx: 3.9.2
+Standards-Version: 3.9.2
 Homepage: https://www.sphinx-coin.com
 Vcs-Git: git://github.com/cevap/sphx.git
 Vcs-Browser: http://github.com/cevap/sphx

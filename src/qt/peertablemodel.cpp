@@ -58,7 +58,7 @@ public:
                 return;
             }
             cachedNodeStats.clear();
-#if QT_VERSSPHX >= 0x040700
+#if QT_VERSION >= 0x040700
             cachedNodeStats.reserve(vNodes.size());
 #endif
             foreach (CNode* pnode, vNodes) {
@@ -111,7 +111,7 @@ PeerTableModel::PeerTableModel(ClientModel* parent) : QAbstractTableModel(parent
                                                       clientModel(parent),
                                                       timer(0)
 {
-    columns << tr("Address/Hostname") << tr("Verssphx") << tr("Ping Time");
+    columns << tr("Address/Hostname") << tr("Version") << tr("Ping Time");
     priv = new PeerTablePriv();
     // default to unsorted
     priv->sortColumn = -1;

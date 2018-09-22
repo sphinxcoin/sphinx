@@ -7,22 +7,22 @@
 
 namespace leveldb {
 
-static void TestEncodeDecode(const VerssphxEdit& edit) {
+static void TestEncodeDecode(const VersionEdit& edit) {
   std::string encoded, encoded2;
   edit.EncodeTo(&encoded);
-  VerssphxEdit parsed;
+  VersionEdit parsed;
   Status s = parsed.DecodeFrom(encoded);
   ASSERT_TRUE(s.ok()) << s.ToString();
   parsed.EncodeTo(&encoded2);
   ASSERT_EQ(encoded, encoded2);
 }
 
-class VerssphxEditTest { };
+class VersionEditTest { };
 
-TEST(VerssphxEditTest, EncodeDecode) {
+TEST(VersionEditTest, EncodeDecode) {
   static const uint64_t kBig = 1ull << 50;
 
-  VerssphxEdit edit;
+  VersionEdit edit;
   for (int i = 0; i < 4; i++) {
     TestEncodeDecode(edit);
     edit.AddFile(3, kBig + 300 + i, kBig + 400 + i,

@@ -57,7 +57,7 @@
 #include <QToolBar>
 #include <QVBoxLayout>
 
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
 #include <QTextDocument>
 #include <QUrl>
 #else
@@ -140,7 +140,7 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
 #endif
     setWindowTitle(windowTitle);
 
-#if defined(Q_OS_MAC) && QT_VERSSPHX < 0x050000
+#if defined(Q_OS_MAC) && QT_VERSION < 0x050000
     // This property is not implemented in Qt 5. Setting it has no effect.
     // A replacement API (QtMacUnifiedToolBar) is available in QtMacExtras.
     setUnifiedTitleAndToolBarOnMac(true);
@@ -399,7 +399,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Sphinx Core"), this);
     aboutAction->setStatusTip(tr("Show information about Sphinx Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
 #else
     aboutQtAction = new QAction(QIcon(":/qt-project.org/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);

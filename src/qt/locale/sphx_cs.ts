@@ -1629,7 +1629,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Verze</translation>
     </message>
     <message>
@@ -1849,7 +1849,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
         <translation>Protokol</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Verze</translation>
     </message>
     <message>
@@ -2369,7 +2369,7 @@ Prosím zkontrolujte adresu a zkuste to znovu.</translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>

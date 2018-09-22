@@ -121,7 +121,7 @@ protected:
             return false;
 
         // Key
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(1000);
         ssKey << key;
         Dbt datKey(&ssKey[0], ssKey.size());
@@ -136,7 +136,7 @@ protected:
 
         // Unserialize value
         try {
-            CDataStream ssValue((char*)datValue.get_data(), (char*)datValue.get_data() + datValue.get_size(), SER_DISK, CLIENT_VERSSPHX);
+            CDataStream ssValue((char*)datValue.get_data(), (char*)datValue.get_data() + datValue.get_size(), SER_DISK, CLIENT_VERSION);
             ssValue >> value;
         } catch (const std::exception&) {
             return false;
@@ -157,13 +157,13 @@ protected:
             assert(!"Write called on database in read-only mode");
 
         // Key
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(1000);
         ssKey << key;
         Dbt datKey(&ssKey[0], ssKey.size());
 
         // Value
-        CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         ssValue.reserve(10000);
         ssValue << value;
         Dbt datValue(&ssValue[0], ssValue.size());
@@ -186,7 +186,7 @@ protected:
             assert(!"Erase called on database in read-only mode");
 
         // Key
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(1000);
         ssKey << key;
         Dbt datKey(&ssKey[0], ssKey.size());
@@ -206,7 +206,7 @@ protected:
             return false;
 
         // Key
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         ssKey.reserve(1000);
         ssKey << key;
         Dbt datKey(&ssKey[0], ssKey.size());
@@ -297,15 +297,15 @@ public:
         return (ret == 0);
     }
 
-    bool ReadVerssphx(int& nVerssphx)
+    bool ReadVersion(int& nVersion)
     {
-        nVerssphx = 0;
-        return Read(std::string("version"), nVerssphx);
+        nVersion = 0;
+        return Read(std::string("version"), nVersion);
     }
 
-    bool WriteVerssphx(int nVerssphx)
+    bool WriteVersion(int nVersion)
     {
-        return Write(std::string("version"), nVerssphx);
+        return Write(std::string("version"), nVersion);
     }
 
     bool static Rewrite(const std::string& strFile, const char* pszSkip = NULL);

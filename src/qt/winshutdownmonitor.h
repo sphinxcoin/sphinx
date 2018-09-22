@@ -9,7 +9,7 @@
 #include <QByteArray>
 #include <QString>
 
-#if QT_VERSSPHX >= 0x050000
+#if QT_VERSION >= 0x050000
 #include <windef.h> // for HWND
 
 #include <QAbstractNativeEventFilter>

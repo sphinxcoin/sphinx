@@ -1,9 +1,9 @@
 // tinyformat.h
 // Copyright (C) 2011, Chris Foster [chris42f (at) gmail (d0t) com]
 //
-// Boost Software License - Verssphx 1.0
+// Boost Software License - Version 1.0
 //
-// Permisssphx is hereby granted, free of charge, to any person or organization
+// Permission is hereby granted, free of charge, to any person or organization
 // obtaining a copy of the software and accompanying documentation covered by
 // this license (the "Software") to use, reproduce, display, distribute,
 // execute, and transmit the Software, and to prepare derivative works of the
@@ -172,7 +172,7 @@ private:
 
 public:
 #ifdef _MSC_VER
-// Disable spurious loss of precissphx warnings in tryConvert(makeT1())
+// Disable spurious loss of precision warnings in tryConvert(makeT1())
 #pragma warning(push)
 #pragma warning(disable : 4244)
 #pragma warning(disable : 4267)
@@ -249,7 +249,7 @@ struct convertToInt {
     static int invoke(const T& /*value*/)
     {
         TINYFORMAT_ERROR("tinyformat: Cannot convert from argument type to "
-                         "integer for use as variable width or precissphx");
+                         "integer for use as variable width or precision");
         return 0;
     }
 };
@@ -460,10 +460,10 @@ public:
     // Flags for features not representable with standard stream state
     enum ExtraFormatFlags {
         Flag_None = 0,
-        Flag_TruncateToPrecissphx = 1 << 0, // truncate length to stream precissphx()
+        Flag_TruncateToPrecision = 1 << 0, // truncate length to stream precision()
         Flag_SpacePadPositive = 1 << 1,    // pad positive values with spaces
         Flag_VariableWidth = 1 << 2,       // variable field width in arg list
-        Flag_VariablePrecissphx = 1 << 3    // variable field precissphx in arg list
+        Flag_VariablePrecision = 1 << 3    // variable field precision in arg list
     };
 
     // out is the output stream, fmt is the full format string
@@ -472,11 +472,11 @@ public:
           m_fmt(fmt),
           m_extraFlags(Flag_None),
           m_wantWidth(false),
-          m_wantPrecissphx(false),
+          m_wantPrecision(false),
           m_variableWidth(0),
-          m_variablePrecissphx(0),
+          m_variablePrecision(0),
           m_origWidth(out.width()),
-          m_origPrecissphx(out.precissphx()),
+          m_origPrecision(out.precision()),
           m_origFlags(out.flags()),
           m_origFill(out.fill())
     {
@@ -496,7 +496,7 @@ public:
     {
         // Restore stream state
         m_out.width(m_origWidth);
-        m_out.precissphx(m_origPrecissphx);
+        m_out.precision(m_origPrecision);
         m_out.flags(m_origFlags);
         m_out.fill(m_origFill);
     }
@@ -570,7 +570,7 @@ private:
         unsigned int& extraFlags,
         const char* fmtStart,
         int variableWidth,
-        int variablePrecissphx);
+        int variablePrecision);
 
     // Private copy & assign: Kill gcc warnings with -Weffc++
     FormatIterator(const FormatIterator&);
@@ -580,14 +580,14 @@ private:
     std::ostream& m_out;
     const char* m_fmt;
     unsigned int m_extraFlags;
-    // State machine info for handling of variable width & precissphx
+    // State machine info for handling of variable width & precision
     bool m_wantWidth;
-    bool m_wantPrecissphx;
+    bool m_wantPrecision;
     int m_variableWidth;
-    int m_variablePrecissphx;
+    int m_variablePrecision;
     // Saved stream state
     std::streamsize m_origWidth;
-    std::streamsize m_origPrecissphx;
+    std::streamsize m_origPrecision;
     std::ios::fmtflags m_origFlags;
     char m_origFill;
 };
@@ -601,33 +601,33 @@ TINYFORMAT_NOINLINE // < greatly reduces bloat in optimized builds
 {
     // Parse the format string
     const char* fmtEnd = 0;
-    if (m_extraFlags == Flag_None && !m_wantWidth && !m_wantPrecissphx) {
+    if (m_extraFlags == Flag_None && !m_wantWidth && !m_wantPrecision) {
         m_fmt = printFormatStringLiteral(m_out, m_fmt);
         fmtEnd = streamStateFromFormat(m_out, m_extraFlags, m_fmt, 0, 0);
         m_wantWidth = (m_extraFlags & Flag_VariableWidth) != 0;
-        m_wantPrecissphx = (m_extraFlags & Flag_VariablePrecissphx) != 0;
+        m_wantPrecision = (m_extraFlags & Flag_VariablePrecision) != 0;
     }
-    // Consume value as variable width and precissphx specifier if necessary
-    if (m_extraFlags & (Flag_VariableWidth | Flag_VariablePrecissphx)) {
-        if (m_wantWidth || m_wantPrecissphx) {
+    // Consume value as variable width and precision specifier if necessary
+    if (m_extraFlags & (Flag_VariableWidth | Flag_VariablePrecision)) {
+        if (m_wantWidth || m_wantPrecision) {
             int v = convertToInt<T>::invoke(value);
             if (m_wantWidth) {
                 m_variableWidth = v;
                 m_wantWidth = false;
-            } else if (m_wantPrecissphx) {
-                m_variablePrecissphx = v;
-                m_wantPrecissphx = false;
+            } else if (m_wantPrecision) {
+                m_variablePrecision = v;
+                m_wantPrecision = false;
             }
             return;
         }
-        // If we get here, we've set both the variable precissphx and width as
+        // If we get here, we've set both the variable precision and width as
         // required and we need to rerun the stream state setup to insert these.
         fmtEnd = streamStateFromFormat(m_out, m_extraFlags, m_fmt,
-            m_variableWidth, m_variablePrecissphx);
+            m_variableWidth, m_variablePrecision);
     }
 
     // Format the value into the stream.
-    if (!(m_extraFlags & (Flag_SpacePadPositive | Flag_TruncateToPrecissphx)))
+    if (!(m_extraFlags & (Flag_SpacePadPositive | Flag_TruncateToPrecision)))
         formatValue(m_out, m_fmt, fmtEnd, value);
     else {
         // The following are special cases where there's no direct
@@ -641,8 +641,8 @@ TINYFORMAT_NOINLINE // < greatly reduces bloat in optimized builds
         // formatCStringTruncate is required for truncating conversions like
         // "%.4s" where at most 4 characters of the c-string should be read.
         // If we didn't include this special case, we might read off the end.
-        if (!((m_extraFlags & Flag_TruncateToPrecissphx) &&
-                formatCStringTruncate(tmpStream, value, m_out.precissphx()))) {
+        if (!((m_extraFlags & Flag_TruncateToPrecision) &&
+                formatCStringTruncate(tmpStream, value, m_out.precision()))) {
             // Not a truncated c-string; just format normally.
             formatValue(tmpStream, m_fmt, fmtEnd, value);
         }
@@ -652,9 +652,9 @@ TINYFORMAT_NOINLINE // < greatly reduces bloat in optimized builds
                 if (result[i] == '+')
                     result[i] = ' ';
         }
-        if ((m_extraFlags & Flag_TruncateToPrecissphx) &&
-            (int)result.size() > (int)m_out.precissphx())
-            m_out.write(result.c_str(), m_out.precissphx());
+        if ((m_extraFlags & Flag_TruncateToPrecision) &&
+            (int)result.size() > (int)m_out.precision())
+            m_out.write(result.c_str(), m_out.precision());
         else
             m_out << result;
     }
@@ -666,7 +666,7 @@ TINYFORMAT_NOINLINE // < greatly reduces bloat in optimized builds
 // Parse a format string and set the stream state accordingly.
 //
 // The format mini-language recognized here is meant to be the one from C99,
-// with the form "%[flags][width][.precissphx][length]type".
+// with the form "%[flags][width][.precision][length]type".
 //
 // Formatting options which can't be natively represented using the ostream
 // state are returned in the extraFlags parameter which is a bitwise
@@ -675,7 +675,7 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
     unsigned int& extraFlags,
     const char* fmtStart,
     int variableWidth,
-    int variablePrecissphx)
+    int variablePrecision)
 {
     if (*fmtStart != '%') {
         TINYFORMAT_ERROR("tinyformat: Not enough conversion specifiers in format string");
@@ -683,14 +683,14 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
     }
     // Reset stream state to defaults.
     out.width(0);
-    out.precissphx(6);
+    out.precision(6);
     out.fill(' ');
     // Reset most flags; ignore irrelevant unitbuf & skipws.
     out.unsetf(std::ios::adjustfield | std::ios::basefield |
                std::ios::floatfield | std::ios::showbase | std::ios::boolalpha |
                std::ios::showpoint | std::ios::showpos | std::ios::uppercase);
     extraFlags = Flag_None;
-    bool precissphxSet = false;
+    bool precisionSet = false;
     bool widthSet = false;
     const char* c = fmtStart + 1;
     // 1) Parse flags
@@ -741,22 +741,22 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
         extraFlags |= Flag_VariableWidth;
         ++c;
     }
-    // 3) Parse precissphx
+    // 3) Parse precision
     if (*c == '.') {
         ++c;
-        int precissphx = 0;
+        int precision = 0;
         if (*c == '*') {
             ++c;
-            extraFlags |= Flag_VariablePrecissphx;
-            precissphx = variablePrecissphx;
+            extraFlags |= Flag_VariablePrecision;
+            precision = variablePrecision;
         } else {
             if (*c >= '0' && *c <= '9')
-                precissphx = parseIntAndAdvance(c);
-            else if (*c == '-') // negative precissphxs ignored, treated as zero.
+                precision = parseIntAndAdvance(c);
+            else if (*c == '-') // negative precisions ignored, treated as zero.
                 parseIntAndAdvance(++c);
         }
-        out.precissphx(precissphx);
-        precissphxSet = true;
+        out.precision(precision);
+        precisionSet = true;
     }
     // 4) Ignore any C99 length modifier
     while (*c == 'l' || *c == 'h' || *c == 'L' ||
@@ -811,8 +811,8 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
         // Handled as special case inside formatValue()
         break;
     case 's':
-        if (precissphxSet)
-            extraFlags |= Flag_TruncateToPrecissphx;
+        if (precisionSet)
+            extraFlags |= Flag_TruncateToPrecision;
         // Make %s print booleans as "true" and "false"
         out.setf(std::ios::boolalpha);
         break;
@@ -825,12 +825,12 @@ inline const char* FormatIterator::streamStateFromFormat(std::ostream& out,
                          "terminated by end of string");
         return c;
     }
-    if (intConversion && precissphxSet && !widthSet) {
-        // "precissphx" for integers gives the minimum number of digits (to be
+    if (intConversion && precisionSet && !widthSet) {
+        // "precision" for integers gives the minimum number of digits (to be
         // padded with zeros on the left).  This isn't really supported by the
         // iostreams, but we can approximately simulate it with the width if
         // the width isn't otherwise used.
-        out.width(out.precissphx());
+        out.width(out.precision());
         out.setf(std::ios::internal, std::ios::adjustfield);
         out.fill('0');
     }

@@ -16,7 +16,7 @@ index 99e889d..e69038e 100644
  #include <windows.h>
  #include <mswsock.h>
 +
-+#if defined __MINGW64_VERSSPHX_MAJOR && __MINGW64_VERSSPHX_MAJOR < 4
++#if defined __MINGW64_VERSION_MAJOR && __MINGW64_VERSION_MAJOR < 4
 +// Workaround for mingw-w64 < v4.0 which did not include ws2ipdef.h in iphlpapi.h.
 +// Fixed in mingw-w64 by 9bd8fe9148924840d315b4c915dd099955ea89d1.
 +#include <ws2def.h>

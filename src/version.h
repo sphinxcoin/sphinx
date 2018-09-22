@@ -5,37 +5,37 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_VERSSPHX_H
-#define BITCOIN_VERSSPHX_H
+#ifndef BITCOIN_VERSION_H
+#define BITCOIN_VERSION_H
 
 /**
  * network protocol versioning
  */
 
-static const int PROTOCOL_VERSSPHX = 61403;
+static const int PROTOCOL_VERSION = 61403;
 
 //! initial proto version, to be increased after version/verack negotiation
-static const int INIT_PROTO_VERSSPHX = 614;
+static const int INIT_PROTO_VERSION = 614;
 
 //! In this version, 'getheaders' was introduced.
-static const int GETHEADERS_VERSSPHX = 61403;
+static const int GETHEADERS_VERSION = 61403;
 
 //! disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSSPHX_BEFORE_ENFORCEMENT = 61402;
-static const int MIN_PEER_PROTO_VERSSPHX_AFTER_ENFORCEMENT = 61403;
+static const int MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT = 61402;
+static const int MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT = 61403;
 
 //! nTime field added to CAddress, starting with this version;
 //! if possible, avoid requesting addresses nodes older than this
-static const int CADDR_TIME_VERSSPHX = 61403;
+static const int CADDR_TIME_VERSION = 61403;
 
 //! BIP 0031, pong message, is enabled for all versions AFTER this one
-static const int BIP0031_VERSSPHX = 61403;
+static const int BIP0031_VERSION = 61403;
 
 //! "mempool" command, enhanced "getdata" behavior starts with this version
-static const int MEMPOOL_GD_VERSSPHX = 61403;
+static const int MEMPOOL_GD_VERSION = 61403;
 
 //! "filter*" commands are disabled without NODE_BLOOM after and including this version
-static const int NO_BLOOM_VERSSPHX = 61403;
+static const int NO_BLOOM_VERSION = 61403;
 
 
-#endif // BITCOIN_VERSSPHX_H
+#endif // BITCOIN_VERSION_H

@@ -255,9 +255,9 @@ bool CWalletDB::ErasePool(int64_t nPool)
     return Erase(std::make_pair(std::string("pool"), nPool));
 }
 
-bool CWalletDB::WriteMinVerssphx(int nVerssphx)
+bool CWalletDB::WriteMinVersion(int nVersion)
 {
-    return Write(std::string("minversion"), nVerssphx);
+    return Write(std::string("minversion"), nVersion);
 }
 
 bool CWalletDB::ReadAccount(const string& strAccount, CAccount& account)
@@ -303,10 +303,10 @@ void CWalletDB::ListAccountCreditDebit(const string& strAccount, list<CAccountin
     unsigned int fFlags = DB_SET_RANGE;
     while (true) {
         // Read next record
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         if (fFlags == DB_SET_RANGE)
             ssKey << std::make_pair(std::string("acentry"), std::make_pair((fAllAccounts ? string("") : strAccount), uint64_t(0)));
-        CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
         fFlags = DB_NEXT;
         if (ret == DB_NOTFOUND)
@@ -405,7 +405,7 @@ public:
     unsigned int nKeyMeta;
     bool fIsEncrypted;
     bool fAnyUnordered;
-    int nFileVerssphx;
+    int nFileVersion;
     vector<uint256> vWalletUpgrade;
 
     CWalletScanState()
@@ -413,7 +413,7 @@ public:
         nKeys = nCKeys = nKeyMeta = 0;
         fIsEncrypted = false;
         fAnyUnordered = false;
-        nFileVerssphx = 0;
+        nFileVersion = 0;
     }
 };
 
@@ -606,9 +606,9 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue, CW
             if (pwallet->mapKeyMetadata.count(keyid) == 0)
                 pwallet->mapKeyMetadata[keyid] = CKeyMetadata(keypool.nTime);
         } else if (strType == "version") {
-            ssValue >> wss.nFileVerssphx;
-            if (wss.nFileVerssphx == 10300)
-                wss.nFileVerssphx = 300;
+            ssValue >> wss.nFileVersion;
+            if (wss.nFileVersion == 10300)
+                wss.nFileVersion = 300;
         } else if (strType == "cscript") {
             uint160 hash;
             ssKey >> hash;
@@ -680,11 +680,11 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
 
     try {
         LOCK(pwallet->cs_wallet);
-        int nMinVerssphx = 0;
-        if (Read((string) "minversion", nMinVerssphx)) {
-            if (nMinVerssphx > CLIENT_VERSSPHX)
+        int nMinVersion = 0;
+        if (Read((string) "minversion", nMinVersion)) {
+            if (nMinVersion > CLIENT_VERSION)
                 return DB_TOO_NEW;
-            pwallet->LoadMinVerssphx(nMinVerssphx);
+            pwallet->LoadMinVersion(nMinVersion);
         }
 
         // Get cursor
@@ -696,8 +696,8 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
 
         while (true) {
             // Read next record
-            CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
-            CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+            CDataStream ssKey(SER_DISK, CLIENT_VERSION);
+            CDataStream ssValue(SER_DISK, CLIENT_VERSION);
             int ret = ReadAtCursor(pcursor, ssKey, ssValue);
             if (ret == DB_NOTFOUND)
                 break;
@@ -739,7 +739,7 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
     if (result != DB_LOAD_OK)
         return result;
 
-    LogPrintf("nFileVerssphx = %d\n", wss.nFileVerssphx);
+    LogPrintf("nFileVersion = %d\n", wss.nFileVersion);
 
     LogPrintf("Keys: %u plaintext, %u encrypted, %u w/ metadata, %u total\n",
         wss.nKeys, wss.nCKeys, wss.nKeyMeta, wss.nKeys + wss.nCKeys);
@@ -752,11 +752,11 @@ DBErrors CWalletDB::LoadWallet(CWallet* pwallet)
         WriteTx(hash, pwallet->mapWallet[hash]);
 
     // Rewrite encrypted wallets of versions 0.4.0 and 0.5.0rc:
-    if (wss.fIsEncrypted && (wss.nFileVerssphx == 40000 || wss.nFileVerssphx == 50000))
+    if (wss.fIsEncrypted && (wss.nFileVersion == 40000 || wss.nFileVersion == 50000))
         return DB_NEED_REWRITE;
 
-    if (wss.nFileVerssphx < CLIENT_VERSSPHX) // Update
-        WriteVerssphx(CLIENT_VERSSPHX);
+    if (wss.nFileVersion < CLIENT_VERSION) // Update
+        WriteVersion(CLIENT_VERSION);
 
     if (wss.fAnyUnordered)
         result = ReorderTransactions(pwallet);
@@ -778,11 +778,11 @@ DBErrors CWalletDB::FindWalletTx(CWallet* pwallet, vector<uint256>& vTxHash, vec
 
     try {
         LOCK(pwallet->cs_wallet);
-        int nMinVerssphx = 0;
-        if (Read((string) "minversion", nMinVerssphx)) {
-            if (nMinVerssphx > CLIENT_VERSSPHX)
+        int nMinVersion = 0;
+        if (Read((string) "minversion", nMinVersion)) {
+            if (nMinVersion > CLIENT_VERSION)
                 return DB_TOO_NEW;
-            pwallet->LoadMinVerssphx(nMinVerssphx);
+            pwallet->LoadMinVersion(nMinVersion);
         }
 
         // Get cursor
@@ -794,8 +794,8 @@ DBErrors CWalletDB::FindWalletTx(CWallet* pwallet, vector<uint256>& vTxHash, vec
 
         while (true) {
             // Read next record
-            CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
-            CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+            CDataStream ssKey(SER_DISK, CLIENT_VERSION);
+            CDataStream ssValue(SER_DISK, CLIENT_VERSION);
             int ret = ReadAtCursor(pcursor, ssKey, ssValue);
             if (ret == DB_NOTFOUND)
                 break;
@@ -922,7 +922,7 @@ bool BackupWallet(const CWallet& wallet, const string& strDest)
                     pathDest /= wallet.strWalletFile;
 
                 try {
-#if BOOST_VERSSPHX >= 158000
+#if BOOST_VERSION >= 158000
                     filesystem::copy_file(pathSrc, pathDest, filesystem::copy_option::overwrite_if_exists);
 #else
                     std::ifstream src(pathSrc.string(), std::ios::binary);
@@ -992,8 +992,8 @@ bool CWalletDB::Recover(CDBEnv& dbenv, std::string filename, bool fOnlyKeys)
     DbTxn* ptxn = dbenv.TxnBegin();
     BOOST_FOREACH (CDBEnv::KeyValPair& row, salvagedData) {
         if (fOnlyKeys) {
-            CDataStream ssKey(row.first, SER_DISK, CLIENT_VERSSPHX);
-            CDataStream ssValue(row.second, SER_DISK, CLIENT_VERSSPHX);
+            CDataStream ssKey(row.first, SER_DISK, CLIENT_VERSION);
+            CDataStream ssValue(row.second, SER_DISK, CLIENT_VERSION);
             string strType, strErr;
             bool fReadOK = ReadKeyValue(&dummyWallet, ssKey, ssValue,
                 wss, strType, strErr);
@@ -1121,10 +1121,10 @@ std::list<CZerocoinMint> CWalletDB::ListMintedCoins(bool fUnusedOnly, bool fMatu
     for (;;)
     {
         // Read next record
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         if (fFlags == DB_SET_RANGE)
             ssKey << make_pair(string("zerocoin"), uint256(0));
-        CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
         fFlags = DB_NEXT;
         if (ret == DB_NOTFOUND)
@@ -1247,10 +1247,10 @@ std::list<CZerocoinSpend> CWalletDB::ListSpentCoins()
     for (;;)
     {
         // Read next record
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         if (fFlags == DB_SET_RANGE)
             ssKey << make_pair(string("zcserial"), CBigNum(0));
-        CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
         fFlags = DB_NEXT;
         if (ret == DB_NOTFOUND)
@@ -1302,10 +1302,10 @@ std::list<CZerocoinMint> CWalletDB::ListArchivedZerocoins()
     for (;;)
     {
         // Read next record
-        CDataStream ssKey(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssKey(SER_DISK, CLIENT_VERSION);
         if (fFlags == DB_SET_RANGE)
             ssKey << make_pair(string("zco"), CBigNum(0));
-        CDataStream ssValue(SER_DISK, CLIENT_VERSSPHX);
+        CDataStream ssValue(SER_DISK, CLIENT_VERSION);
         int ret = ReadAtCursor(pcursor, ssKey, ssValue, fFlags);
         fFlags = DB_NEXT;
         if (ret == DB_NOTFOUND)

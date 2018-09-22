@@ -458,19 +458,19 @@ void CNode::CloseSocketDisconnect()
         vRecvMsg.clear();
 }
 
-bool CNode::DisconnectOldProtocol(int nVerssphxRequired, string strLastCommand)
+bool CNode::DisconnectOldProtocol(int nVersionRequired, string strLastCommand)
 {
     fDisconnect = false;
-    if (nVerssphx < nVerssphxRequired) {
-        LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVerssphx);
-        PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Verssphx must be %d or greater", ActiveProtocol()));
+    if (nVersion < nVersionRequired) {
+        LogPrintf("%s : peer=%d using obsolete version %i; disconnecting\n", __func__, id, nVersion);
+        PushMessage("reject", strLastCommand, REJECT_OBSOLETE, strprintf("Version must be %d or greater", ActiveProtocol()));
         fDisconnect = true;
     }
 
     return fDisconnect;
 }
 
-void CNode::PushVerssphx()
+void CNode::PushVersion()
 {
     int nBestHeight = g_signals.GetHeight().get_value_or(0);
 
@@ -480,11 +480,11 @@ void CNode::PushVerssphx()
     CAddress addrMe = GetLocalAddress(&addr);
     GetRandBytes((unsigned char*)&nLocalHostNonce, sizeof(nLocalHostNonce));
     if (fLogIPs)
-        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), addrYou.ToString(), id);
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%d\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString(), addrYou.ToString(), id);
     else
-        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, peer=%d\n", PROTOCOL_VERSSPHX, nBestHeight, addrMe.ToString(), id);
-    PushMessage("version", PROTOCOL_VERSSPHX, nLocalServices, nTime, addrYou, addrMe,
-        nLocalHostNonce, FormatSubVerssphx(CLIENT_NAME, CLIENT_VERSSPHX, std::vector<string>()), nBestHeight, true);
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, peer=%d\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString(), id);
+    PushMessage("version", PROTOCOL_VERSION, nLocalServices, nTime, addrYou, addrMe,
+        nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight, true);
 }
 
 
@@ -677,7 +677,7 @@ void CNode::copyStats(CNodeStats& stats)
     X(nTimeConnected);
     X(nTimeOffset);
     X(addrName);
-    X(nVerssphx);
+    X(nVersion);
     X(cleanSubVer);
     X(fInbound);
     X(nStartingHeight);
@@ -712,7 +712,7 @@ bool CNode::ReceiveMsgBytes(const char* pch, unsigned int nBytes)
         // get current incomplete message, or create a new one
         if (vRecvMsg.empty() ||
             vRecvMsg.back().complete())
-            vRecvMsg.push_back(CNetMessage(SER_NETWORK, nRecvVerssphx));
+            vRecvMsg.push_back(CNetMessage(SER_NETWORK, nRecvVersion));
 
         CNetMessage& msg = vRecvMsg.back();
 
@@ -1098,7 +1098,7 @@ void ThreadSocketHandler()
                 } else if (nTime - pnode->nLastSend > TIMEOUT_INTERVAL) {
                     LogPrintf("socket sending timeout: %is\n", nTime - pnode->nLastSend);
                     pnode->fDisconnect = true;
-                } else if (nTime - pnode->nLastRecv > (pnode->nVerssphx > BIP0031_VERSSPHX ? TIMEOUT_INTERVAL : 90 * 60)) {
+                } else if (nTime - pnode->nLastRecv > (pnode->nVersion > BIP0031_VERSION ? TIMEOUT_INTERVAL : 90 * 60)) {
                     LogPrintf("socket receive timeout: %is\n", nTime - pnode->nLastRecv);
                     pnode->fDisconnect = true;
                 } else if (pnode->nPingNonceSent && pnode->nPingUsecStart + TIMEOUT_INTERVAL * 1000000 < GetTimeMicros()) {
@@ -1128,7 +1128,7 @@ void ThreadMapPort()
 #ifndef UPNPDISCOVER_SUCCESS
     /* miniupnpc 1.5 */
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
-#elif MINIUPNPC_API_VERSSPHX < 14
+#elif MINIUPNPC_API_VERSION < 14
     /* miniupnpc 1.6 */
     int error = 0;
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
@@ -1158,7 +1158,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "SPHX " + FormatFullVerssphx();
+        string strDesc = "SPHX " + FormatFullVersion();
 
         try {
             while (true) {
@@ -1834,7 +1834,7 @@ void CExplicitNetCleanup::callCleanup()
 
 void RelayTransaction(const CTransaction& tx)
 {
-    CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+    CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
     ss.reserve(10000);
     ss << tx;
     RelayTransaction(tx, ss);
@@ -1887,7 +1887,7 @@ void RelayInv(CInv& inv)
     LOCK(cs_vNodes);
     BOOST_FOREACH (CNode* pnode, vNodes){
     		if((pnode->nServices==NODE_BLOOM_WITHOUT_MN) && inv.IsMasterNodeType())continue;
-        if (pnode->nVerssphx >= ActiveProtocol())
+        if (pnode->nVersion >= ActiveProtocol())
             pnode->PushInventory(inv);
     }
 }
@@ -1967,7 +1967,7 @@ bool CAddrDB::Write(const CAddrMan& addr)
     std::string tmpfn = strprintf("peers.dat.%04x", randv);
 
     // serialize addresses, checksum data up to that point, then append csum
-    CDataStream ssPeers(SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssPeers(SER_DISK, CLIENT_VERSION);
     ssPeers << FLATDATA(Params().MessageStart());
     ssPeers << addr;
     uint256 hash = Hash(ssPeers.begin(), ssPeers.end());
@@ -1976,7 +1976,7 @@ bool CAddrDB::Write(const CAddrMan& addr)
     // open output file, and associate with CAutoFile
     boost::filesystem::path pathAddr = GetDataDir() / "peers.dat";
     FILE* file = fopen(pathAddr.string().c_str(), "wb");
-    CAutoFile fileout(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
     if (fileout.IsNull())
         return error("%s : Failed to open file %s", __func__, pathAddr.string());
 
@@ -1996,7 +1996,7 @@ bool CAddrDB::Read(CAddrMan& addr)
 {
     // open input file, and associate with CAutoFile
     FILE* file = fopen(pathAddr.string().c_str(), "rb");
-    CAutoFile filein(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
     if (filein.IsNull())
         return error("%s : Failed to open file %s", __func__, pathAddr.string());
 
@@ -2019,7 +2019,7 @@ bool CAddrDB::Read(CAddrMan& addr)
     }
     filein.fclose();
 
-    CDataStream ssPeers(vchData, SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssPeers(vchData, SER_DISK, CLIENT_VERSION);
 
     // verify stored checksum matches input data
     uint256 hashTmp = Hash(ssPeers.begin(), ssPeers.end());
@@ -2047,11 +2047,11 @@ bool CAddrDB::Read(CAddrMan& addr)
 unsigned int ReceiveFloodSize() { return 1000 * GetArg("-maxreceivebuffer", 5 * 1000); }
 unsigned int SendBufferSize() { return 1000 * GetArg("-maxsendbuffer", 1 * 1000); }
 
-CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn) : ssSend(SER_NETWORK, INIT_PROTO_VERSSPHX), setAddrKnown(5000)
+CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn) : ssSend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
 {
     nServices = 0;
     hSocket = hSocketIn;
-    nRecvVerssphx = INIT_PROTO_VERSSPHX;
+    nRecvVersion = INIT_PROTO_VERSION;
     nLastSend = 0;
     nLastRecv = 0;
     nSendBytes = 0;
@@ -2060,7 +2060,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
     nTimeOffset = 0;
     addr = addrIn;
     addrName = addrNameIn == "" ? addr.ToStringIPPort() : addrNameIn;
-    nVerssphx = 0;
+    nVersion = 0;
     strSubVer = "";
     fWhitelisted = false;
     fOneShot = false;
@@ -2096,7 +2096,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
 
     // Be shy and don't send version until we hear
     if (hSocket != INVALID_SOCKET && !fInbound)
-        PushVerssphx();
+        PushVersion();
 
     GetNodeSignals().InitializeNode(GetId(), this);
 }
@@ -2215,7 +2215,7 @@ bool CBanDB::Write(const banmap_t& banSet)
     std::string tmpfn = strprintf("banlist.dat.%04x", randv);
 
     // serialize banlist, checksum data up to that point, then append csum
-    CDataStream ssBanlist(SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssBanlist(SER_DISK, CLIENT_VERSION);
     ssBanlist << FLATDATA(Params().MessageStart());
     ssBanlist << banSet;
     uint256 hash = Hash(ssBanlist.begin(), ssBanlist.end());
@@ -2224,7 +2224,7 @@ bool CBanDB::Write(const banmap_t& banSet)
     // open temp output file, and associate with CAutoFile
     boost::filesystem::path pathTmp = GetDataDir() / tmpfn;
     FILE *file = fopen(pathTmp.string().c_str(), "wb");
-    CAutoFile fileout(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
     if (fileout.IsNull())
         return error("%s: Failed to open file %s", __func__, pathTmp.string());
 
@@ -2249,7 +2249,7 @@ bool CBanDB::Read(banmap_t& banSet)
 {
     // open input file, and associate with CAutoFile
     FILE *file = fopen(pathBanlist.string().c_str(), "rb");
-    CAutoFile filein(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
     if (filein.IsNull())
         return error("%s: Failed to open file %s", __func__, pathBanlist.string());
 
@@ -2273,7 +2273,7 @@ bool CBanDB::Read(banmap_t& banSet)
     }
     filein.fclose();
 
-    CDataStream ssBanlist(vchData, SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssBanlist(vchData, SER_DISK, CLIENT_VERSION);
 
     // verify stored checksum matches input data
     uint256 hashTmp = Hash(ssBanlist.begin(), ssBanlist.end());

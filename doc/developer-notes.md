@@ -226,7 +226,7 @@ General Sphinx Core
 
   - *Rationale*: Makes sure that they pass thorough testing, and that the tester will keep passing
      on the master branch. Otherwise all new pull requests will start failing the tests, resulting in
-     confussphx and mayhem
+     confusion and mayhem
 
   - *Explanation*: If the test suite is to be updated for a change, this has to
     be done first
@@ -309,7 +309,7 @@ Strings and formatting
 
 - Be careful of `LogPrint` versus `LogPrintf`. `LogPrint` takes a `category` argument, `LogPrintf` does not.
 
-  - *Rationale*: Confussphx of these can result in runtime exceptions due to
+  - *Rationale*: Confusion of these can result in runtime exceptions due to
     formatting mismatch, and it is easy to get wrong because of subtly similar naming
 
 - Use `std::string`, avoid C string manipulation functions
@@ -324,7 +324,7 @@ Strings and formatting
 
 - For `strprintf`, `LogPrint`, `LogPrintf` formatting characters don't need size specifiers
 
-  - *Rationale*: Sphinx Core uses tinyformat, which is type safe. Leave them out to avoid confussphx
+  - *Rationale*: Sphinx Core uses tinyformat, which is type safe. Leave them out to avoid confusion
 
 Threads and synchronization
 ----------------------------

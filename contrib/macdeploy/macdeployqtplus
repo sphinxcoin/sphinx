@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import divissphx, print_function, unicode_literals
+from __future__ import division, print_function, unicode_literals
 #
 # Copyright (C) 2011  Patrick "p2k" Schneider <me@p2k-network.org>
 #
@@ -39,10 +39,10 @@ class FrameworkInfo(object):
         self.sourceFilePath = ""
         self.destinationDirectory = ""
         self.sourceResourcesDirectory = ""
-        self.sourceVerssphxContentsDirectory = ""
+        self.sourceVersionContentsDirectory = ""
         self.sourceContentsDirectory = ""
         self.destinationResourcesDirectory = ""
-        self.destinationVerssphxContentsDirectory = ""
+        self.destinationVersionContentsDirectory = ""
 
     def __eq__(self, other):
         if self.__class__ == other.__class__:
@@ -57,7 +57,7 @@ class FrameworkInfo(object):
  Binary name: %s
  Binary directory: %s
  Binary path: %s
- Verssphx: %s
+ Version: %s
  Install name: %s
  Deployed install name: %s
  Source file Path: %s
@@ -147,10 +147,10 @@ class FrameworkInfo(object):
 
             info.sourceResourcesDirectory = os.path.join(info.frameworkPath, "Resources")
             info.sourceContentsDirectory = os.path.join(info.frameworkPath, "Contents")
-            info.sourceVerssphxContentsDirectory = os.path.join(info.frameworkPath, "Verssphxs", info.version, "Contents")
+            info.sourceVersionContentsDirectory = os.path.join(info.frameworkPath, "Versions", info.version, "Contents")
             info.destinationResourcesDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Resources")
             info.destinationContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Contents")
-            info.destinationVerssphxContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Verssphxs", info.version, "Contents")
+            info.destinationVersionContentsDirectory = os.path.join(cls.bundleFrameworkDirectory, info.frameworkName, "Versions", info.version, "Contents")
 
         return info
 
@@ -279,13 +279,13 @@ def copyFramework(framework, path, verbose):
         print("Copied:", fromPath)
         print(" to:", toPath)
 
-    permisssphxs = os.stat(toPath)
-    if not permisssphxs.st_mode & stat.S_IWRITE:
-      os.chmod(toPath, permisssphxs.st_mode | stat.S_IWRITE)
+    permissions = os.stat(toPath)
+    if not permissions.st_mode & stat.S_IWRITE:
+      os.chmod(toPath, permissions.st_mode | stat.S_IWRITE)
 
     if not framework.isDylib(): # Copy resources for real frameworks
 
-        linkfrom = os.path.join(path, "Contents","Frameworks", framework.frameworkName, "Verssphxs", "Current")
+        linkfrom = os.path.join(path, "Contents","Frameworks", framework.frameworkName, "Versions", "Current")
         linkto = framework.version
         if not os.path.exists(linkfrom):
             os.symlink(linkto, linkfrom)
@@ -298,11 +298,11 @@ def copyFramework(framework, path, verbose):
             if verbose >= 3:
                 print("Copied resources:", fromResourcesDir)
                 print(" to:", toResourcesDir)
-        fromContentsDir = framework.sourceVerssphxContentsDirectory
+        fromContentsDir = framework.sourceVersionContentsDirectory
         if not os.path.exists(fromContentsDir):
             fromContentsDir = framework.sourceContentsDirectory
         if os.path.exists(fromContentsDir):
-            toContentsDir = os.path.join(path, framework.destinationVerssphxContentsDirectory)
+            toContentsDir = os.path.join(path, framework.destinationVersionContentsDirectory)
             shutil.copytree(fromContentsDir, toContentsDir, symlinks=True)
             if verbose >= 3:
                 print("Copied Contents:", fromContentsDir)

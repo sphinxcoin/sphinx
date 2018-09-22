@@ -2,7 +2,7 @@
 # W.J. van der Laan, 2011
 # Make spinning animation from a .png
 # Requires imagemagick 6.7+
-from __future__ import divissphx
+from __future__ import division
 from os import path
 from PIL import Image
 from subprocess import Popen

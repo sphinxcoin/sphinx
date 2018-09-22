@@ -9,7 +9,7 @@
 
 namespace leveldb {
 
-// Tag numbers for serialized VerssphxEdit.  These numbers are written to
+// Tag numbers for serialized VersionEdit.  These numbers are written to
 // disk and should not be changed.
 enum Tag {
   kComparator           = 1,
@@ -23,7 +23,7 @@ enum Tag {
   kPrevLogNumber        = 9
 };
 
-void VerssphxEdit::Clear() {
+void VersionEdit::Clear() {
   comparator_.clear();
   log_number_ = 0;
   prev_log_number_ = 0;
@@ -38,7 +38,7 @@ void VerssphxEdit::Clear() {
   new_files_.clear();
 }
 
-void VerssphxEdit::EncodeTo(std::string* dst) const {
+void VersionEdit::EncodeTo(std::string* dst) const {
   if (has_comparator_) {
     PutVarint32(dst, kComparator);
     PutLengthPrefixedSlice(dst, comparator_);
@@ -106,7 +106,7 @@ static bool GetLevel(Slice* input, int* level) {
   }
 }
 
-Status VerssphxEdit::DecodeFrom(const Slice& src) {
+Status VersionEdit::DecodeFrom(const Slice& src) {
   Clear();
   Slice input = src;
   const char* msg = NULL;
@@ -204,14 +204,14 @@ Status VerssphxEdit::DecodeFrom(const Slice& src) {
 
   Status result;
   if (msg != NULL) {
-    result = Status::Corruption("VerssphxEdit", msg);
+    result = Status::Corruption("VersionEdit", msg);
   }
   return result;
 }
 
-std::string VerssphxEdit::DebugString() const {
+std::string VersionEdit::DebugString() const {
   std::string r;
-  r.append("VerssphxEdit {");
+  r.append("VersionEdit {");
   if (has_comparator_) {
     r.append("\n  Comparator: ");
     r.append(comparator_);

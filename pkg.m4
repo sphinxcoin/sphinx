@@ -24,7 +24,7 @@
 # Copyright (c) 2015-2018 The PIVX developers
 # Copyright (c) 2018 The Sphinx developers
 
-# PKG_PROG_PKG_CONFIG([MIN-VERSSPHX])
+# PKG_PROG_PKG_CONFIG([MIN-VERSION])
 # ----------------------------------
 AC_DEFUN([PKG_PROG_PKG_CONFIG],
 [m4_pattern_forbid([^_?PKG_[A-Z_]+$])

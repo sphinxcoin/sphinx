@@ -32,13 +32,13 @@ TEST(Issue178, Test) {
   std::string dbpath = leveldb::test::TmpDir() + "/leveldb_cbug_test";
   DestroyDB(dbpath, leveldb::Options());
 
-  // Open database.  Disable compresssphx since it affects the creation
+  // Open database.  Disable compression since it affects the creation
   // of layers and the code below is trying to test against a very
   // specific scenario.
   leveldb::DB* db;
   leveldb::Options db_options;
   db_options.create_if_missing = true;
-  db_options.compresssphx = leveldb::kNoCompresssphx;
+  db_options.compression = leveldb::kNoCompression;
   ASSERT_OK(leveldb::DB::Open(db_options, dbpath, &db));
 
   // create first key range

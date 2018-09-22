@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copiar o endereço selecsphxado para a área de transferência</translation>
+        <translation>Copiar o endereço selecionado para a área de transferência</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Deletar da lista o endereço selecsphxado </translation>
+        <translation>Deletar da lista o endereço selecionado </translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -51,7 +51,7 @@
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>&amp;Selecsphxar</translation>
+        <translation>&amp;Selecionar</translation>
     </message>
     <message>
         <source>Sending addresses</source>
@@ -236,7 +236,7 @@
     </message>
     <message>
         <source>Enter a Sphinx Address that you would like to encrypt using BIP 38. Enter a passphrase in the middle box. Press encrypt to compute the encrypted private key.</source>
-        <translation>Insira um endereço que você deseja criptografar usando a BIP 38. Insira a palavra-chave na caixa do meio. Presssphxe criptografar para computar a chave privada criptografada.</translation>
+        <translation>Insira um endereço que você deseja criptografar usando a BIP 38. Insira a palavra-chave na caixa do meio. Pressione criptografar para computar a chave privada criptografada.</translation>
     </message>
     <message>
         <source>Address:</source>
@@ -372,11 +372,11 @@
     </message>
     <message>
         <source>Error Adding Key To Wallet</source>
-        <translation>Erro ao adicsphxar chave à Carteira</translation>
+        <translation>Erro ao adicionar chave à Carteira</translation>
     </message>
     <message>
         <source>Successfully Added Private Key To Wallet</source>
-        <translation>Chave privada adicsphxada com sucesso à carteira</translation>
+        <translation>Chave privada adicionada com sucesso à carteira</translation>
     </message>
 </context>
 <context>
@@ -563,7 +563,7 @@
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
-        <translation>Sincronizando informação adicsphxal: %p%</translation>
+        <translation>Sincronizando informação adicional: %p%</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -857,7 +857,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>(un)select all</source>
-        <translation>(de)selecsphxar todos</translation>
+        <translation>(de)selecionar todos</translation>
     </message>
     <message>
         <source>toggle lock state</source>
@@ -1088,7 +1088,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>The entered address "%1" is not a valid Sphinx address.</source>
-        <translation>O endereço que você selecsphxou, "%1" , não é um endereço válido de SPHX</translation>
+        <translation>O endereço que você selecionou, "%1" , não é um endereço válido de SPHX</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -1115,7 +1115,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
-        <translation>O diretório já existe. Adicsphxe %1 se você pretende criar um novo diretório aqui.</translation>
+        <translation>O diretório já existe. Adicione %1 se você pretende criar um novo diretório aqui.</translation>
     </message>
     <message>
         <source>Path already exists, and is not a directory.</source>
@@ -1323,11 +1323,11 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Add to MultiSend Vector</source>
-        <translation>Adicsphxar ao vetor MultiSend</translation>
+        <translation>Adicionar ao vetor MultiSend</translation>
     </message>
     <message>
         <source>Add</source>
-        <translation>Adicsphxar</translation>
+        <translation>Adicionar</translation>
     </message>
     <message>
         <source>Deactivate MultiSend</source>
@@ -1449,7 +1449,7 @@ Favor verificar o endereço e tente novamente.</translation>
     </message>
     <message>
         <source>Please select a privacy level.</source>
-        <translation>Favor selecsphxar o nível de privacidade.</translation>
+        <translation>Favor selecionar o nível de privacidade.</translation>
     </message>
     <message>
         <source>Use 2 separate masternodes to mix funds up to 10000 SPHX</source>
@@ -1512,11 +1512,11 @@ Favor verificar o endereço e tente novamente.</translation>
     </message>
     <message>
         <source>Select payment request file</source>
-        <translation>Selecsphxar arquivo de requisição de pagamento</translation>
+        <translation>Selecionar arquivo de requisição de pagamento</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>Selecsphxe o arquivo de requisição de pagamento para abrir</translation>
+        <translation>Selecione o arquivo de requisição de pagamento para abrir</translation>
     </message>
 </context>
 <context>
@@ -1547,7 +1547,7 @@ Favor verificar o endereço e tente novamente.</translation>
     </message>
     <message>
         <source>Automatically open the Sphinx client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automaticamente a porta do cliente Sphinx no roteador. Isto somente funcsphxa quando seu roteador suporta UPnP e este esteja habilitado.</translation>
+        <translation>Abrir automaticamente a porta do cliente Sphinx no roteador. Isto somente funciona quando seu roteador suporta UPnP e este esteja habilitado.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1648,7 +1648,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;Unidades para mostrar as quantias:</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Escolha uma unidade padrão para mostrar quando estiver enviando moedas.</translation>
     </message>
     <message>
@@ -1809,7 +1809,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
@@ -1865,7 +1865,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Coloque uma etiqueta neste endereço para adicsphxá-lo à lista de endereços utilizados</translation>
+        <translation>Coloque uma etiqueta neste endereço para adicioná-lo à lista de endereços utilizados</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
@@ -2086,7 +2086,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Select a peer to view detailed information.</source>
-        <translation>Selecsphxe um par para ver informações detalhadas</translation>
+        <translation>Selecione um par para ver informações detalhadas</translation>
     </message>
     <message>
         <source>Direction</source>
@@ -2097,7 +2097,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Protocolo</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versão</translation>
     </message>
     <message>
@@ -2229,7 +2229,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
-        <translation>Um rótulo opcsphxal para associar a novos endereços de recebimento.</translation>
+        <translation>Um rótulo opcional para associar a novos endereços de recebimento.</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
@@ -2257,7 +2257,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>Mostra as requisições selecsphxadas (faz o mesmo que dois clicas em uma entrada)</translation>
+        <translation>Mostra as requisições selecionadas (faz o mesmo que dois clicas em uma entrada)</translation>
     </message>
     <message>
         <source>Show</source>
@@ -2265,7 +2265,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>Remove as entradas selecsphxadas da lista</translation>
+        <translation>Remove as entradas selecionadas da lista</translation>
     </message>
     <message>
         <source>Remove</source>
@@ -2514,7 +2514,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>Adicsphxar &amp;Recipiente</translation>
+        <translation>Adicionar &amp;Recipiente</translation>
     </message>
     <message>
         <source>SwiftTX</source>
@@ -2582,7 +2582,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>are added as transaction fee</source>
-        <translation>foi adicsphxado como taxa de transação</translation>
+        <translation>foi adicionado como taxa de transação</translation>
     </message>
     <message>
         <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
@@ -2685,7 +2685,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>Coloque uma etiqueta neste endereço para adicsphxá-lo à lista de endereços utilizados</translation>
+        <translation>Coloque uma etiqueta neste endereço para adicioná-lo à lista de endereços utilizados</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
@@ -2713,7 +2713,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Coloque uma etiqueta neste endereço para adicsphxá-lo à lista de contatos</translation>
+        <translation>Coloque uma etiqueta neste endereço para adicioná-lo à lista de contatos</translation>
     </message>
 </context>
 <context>
@@ -2865,7 +2865,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Versão %1</translation>
     </message>
     <message>
@@ -3178,7 +3178,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>Quantia removida ou adicsphxada ao saldo.</translation>
+        <translation>Quantia removida ou adicionada ao saldo.</translation>
     </message>
 </context>
 <context>
@@ -3344,7 +3344,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
-        <translation>Unidade para mostrar as quantias. Clique para selecsphxar outra unidade.</translation>
+        <translation>Unidade para mostrar as quantias. Clique para selecionar outra unidade.</translation>
     </message>
 </context>
 <context>
@@ -3377,7 +3377,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Selected amount:</source>
-        <translation>Quantidade selecsphxada:</translation>
+        <translation>Quantidade selecionada:</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -3405,7 +3405,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -3419,7 +3419,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Disable all Sphinx specific functionality (Masternodes, Obfuscation, SwiftTX, Budgeting) (0-1, default: %u)</source>
-        <translation>Desabilitar todas as funcsphxalidades específicas Sphinx (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
+        <translation>Desabilitar todas as funcionalidades específicas Sphinx (Masternodes, Ofuscação, SwiftTX, Budgeting) (0-1, padrão: %u)</translation>
     </message>
     <message>
         <source>Error: Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
@@ -3479,7 +3479,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Warning: Please check that your computer's date and time are correct! If your clock is wrong Sphinx Core will not work properly.</source>
-        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core Sphinx não vai funcsphxar corretamente.</translation>
+        <translation>Aviso: Favor verificar se o horário e data de seu computador estão corretos! Se o seu relógio estiver errado o Core Sphinx não vai funcionar corretamente.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
@@ -3515,7 +3515,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Adicsphxar um nó para conectar e tentar manter uma conexão aberta</translation>
+        <translation>Adicionar um nó para conectar e tentar manter uma conexão aberta</translation>
     </message>
     <message>
         <source>Already have that input.</source>
@@ -3655,7 +3655,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Fee (in SPHX/kB) to add to transactions you send (default: %s)</source>
-        <translation>Taxa (em SPHX/kB) a adicsphxar em transações que você enviar (padrão: %s)</translation>
+        <translation>Taxa (em SPHX/kB) a adicionar em transações que você enviar (padrão: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -3710,8 +3710,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Fundos insuficientes.</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>Inválido -onsphx endereço: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>Inválido -onion endereço: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -3870,8 +3870,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Requisição de ofuscação incompleta:</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>Somente conecte a nós da rede &lt;net&gt; (Ipv4, ipv6 ou onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Somente conecte a nós da rede &lt;net&gt; (Ipv4, ipv6 ou onion)</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -3906,11 +3906,11 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Chave privada do servidor (padrão: %s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Sessão não está completa!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
+        <source>Session timed out.</source>
         <translation>Sessão expirou.</translation>
     </message>
     <message>
@@ -4131,7 +4131,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Your entries added successfully.</source>
-        <translation>Suas entradas foram adicsphxadas com sucesso.</translation>
+        <translation>Suas entradas foram adicionadas com sucesso.</translation>
     </message>
     <message>
         <source>Your transaction was accepted into the pool!</source>

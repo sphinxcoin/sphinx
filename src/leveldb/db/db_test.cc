@@ -242,7 +242,7 @@ class DBTest {
         options.filter_policy = filter_policy_;
         break;
       case kUncompressed:
-        options.compresssphx = kNoCompresssphx;
+        options.compression = kNoCompression;
         break;
       default:
         break;
@@ -550,7 +550,7 @@ TEST(DBTest, GetFromImmutableLayer) {
   } while (ChangeOptions());
 }
 
-TEST(DBTest, GetFromVerssphxs) {
+TEST(DBTest, GetFromVersions) {
   do {
     ASSERT_OK(Put("foo", "v1"));
     dbfull()->TEST_CompactMemTable();
@@ -1007,7 +1007,7 @@ TEST(DBTest, RepeatedWritesToSameKey) {
 
 TEST(DBTest, SparseMerge) {
   Options options = CurrentOptions();
-  options.compresssphx = kNoCompresssphx;
+  options.compression = kNoCompression;
   Reopen(&options);
 
   FillLevels("A", "Z");
@@ -1060,7 +1060,7 @@ TEST(DBTest, ApproximateSizes) {
   do {
     Options options = CurrentOptions();
     options.write_buffer_size = 100000000;        // Large write buffer
-    options.compresssphx = kNoCompresssphx;
+    options.compression = kNoCompression;
     DestroyAndReopen();
 
     ASSERT_TRUE(Between(Size("", "xyz"), 0, 0));
@@ -1071,7 +1071,7 @@ TEST(DBTest, ApproximateSizes) {
     ASSERT_EQ(NumTableFilesAtLevel(0), 0);
     const int N = 80;
     static const int S1 = 100000;
-    static const int S2 = 105000;  // Allow some expanssphx from metadata
+    static const int S2 = 105000;  // Allow some expansion from metadata
     Random rnd(301);
     for (int i = 0; i < N; i++) {
       ASSERT_OK(Put(Key(i), RandomString(&rnd, S1)));
@@ -1109,7 +1109,7 @@ TEST(DBTest, ApproximateSizes) {
 TEST(DBTest, ApproximateSizes_MixOfSmallAndLarge) {
   do {
     Options options = CurrentOptions();
-    options.compresssphx = kNoCompresssphx;
+    options.compression = kNoCompression;
     Reopen();
 
     Random rnd(301);
@@ -1932,7 +1932,7 @@ class ModelDB: public DB {
 
 static std::string RandomKey(Random* rnd) {
   int len = (rnd->OneIn(3)
-             ? 1                // Short sometimes to encourage collissphxs
+             ? 1                // Short sometimes to encourage collision
              : (rnd->OneIn(100) ? rnd->Skewed(10) : rnd->Uniform(10)));
   return test::RandomKey(rnd, len);
 }
@@ -2083,9 +2083,9 @@ void BM_LogAndApply(int iters, int num_base_files) {
 
   InternalKeyComparator cmp(BytewiseComparator());
   Options options;
-  VerssphxSet vset(dbname, &options, NULL, &cmp);
+  VersionSet vset(dbname, &options, NULL, &cmp);
   ASSERT_OK(vset.Recover());
-  VerssphxEdit vbase;
+  VersionEdit vbase;
   uint64_t fnum = 1;
   for (int i = 0; i < num_base_files; i++) {
     InternalKey start(MakeKey(2*fnum), 1, kTypeValue);
@@ -2097,7 +2097,7 @@ void BM_LogAndApply(int iters, int num_base_files) {
   uint64_t start_micros = env->NowMicros();
 
   for (int i = 0; i < iters; i++) {
-    VerssphxEdit vedit;
+    VersionEdit vedit;
     vedit.DeleteFile(2, fnum);
     InternalKey start(MakeKey(2*fnum), 1, kTypeValue);
     InternalKey limit(MakeKey(2*fnum+1), 1, kTypeDeletion);

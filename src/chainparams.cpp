@@ -161,12 +161,12 @@ public:
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
-        genesis.nVerssphx = 1;
+        genesis.nVersion = 1;
         genesis.nBits = 0x1f00ffff;
         genesis.nNonce = 668663;
 
         hashGenesisBlock = genesis.GetHash();
-	//printf("nVerssphx = %d\n,genensis = %s\n;hashGenesisBlock = %s\n",genesis.nVerssphx,genesis.ToString().c_str(),hashGenesisBlock.ToString().c_str());
+	//printf("nVersion = %d\n,genensis = %s\n;hashGenesisBlock = %s\n",genesis.nVersion,genesis.ToString().c_str(),hashGenesisBlock.ToString().c_str());
 	//printf("genesis.hashMerkleRoot = %s\n",genesis.hashMerkleRoot.GetHex().c_str());
         assert(hashGenesisBlock == uint256("0x0000031c79da6e1f6696f8cace965a197cb066da695081cae656ee90d7c44835"));
         assert(genesis.hashMerkleRoot == uint256("0x39dcb47ad0e3112e85eb60dd69cbdf6a5b3bbf3b63330c258858707ecf216c73"));
@@ -213,7 +213,7 @@ public:
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVerssphx = 8; //Block headers must be this version once zerocoin is active
+        nZerocoinHeaderVersion = 8; //Block headers must be this version once zerocoin is active
         nBudget_Fee_Confirmations = 6; // Number of confirmations for the finalization fee
     }
 
@@ -324,7 +324,7 @@ public:
         nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         nRequiredAccumulation = 1;
         nDefaultSecurityLevel = 100; //full security level for accumulators
-        nZerocoinHeaderVerssphx = 8; //Block headers must be this version once zerocoin is active
+        nZerocoinHeaderVersion = 8; //Block headers must be this version once zerocoin is active
         nBudget_Fee_Confirmations = 3; // Number of confirmations for the finalization fee. We have to make this very short
                                        // here because we only have a 8 block finalization window on testnet
     }
@@ -336,7 +336,7 @@ public:
 static CTestNetParams testNetParams;
 
 /**
- * Regresssphx test
+ * Regression test
  */
 class CRegTestParams : public CTestNetParams
 {

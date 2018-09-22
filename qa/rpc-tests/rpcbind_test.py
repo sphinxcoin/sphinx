@@ -120,7 +120,7 @@ def main():
 
     os.environ['PATH'] = options.srcdir+":"+os.environ['PATH']
 
-    check_json_precissphx()
+    check_json_precision()
 
     success = False
     nodes = []

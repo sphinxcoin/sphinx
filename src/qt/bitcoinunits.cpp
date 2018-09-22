@@ -44,9 +44,9 @@ QString BitcoinUnits::id(int unit)
     case SPHX:
         return QString("sphx");
     case mSPHX:
-        return QString("msphx");
+        return QString("mion");
     case uSPHX:
-        return QString::fromUtf8("usphx");
+        return QString::fromUtf8("uion");
     default:
         return QString("???");
     }
@@ -233,7 +233,7 @@ bool BitcoinUnits::parse(int unit, const QString& value, CAmount* val_out)
         decimals = parts[1];
     }
     if (decimals.size() > num_decimals) {
-        return false; // Exceeds max precissphx
+        return false; // Exceeds max precision
     }
     bool ok = false;
     QString str = whole + decimals.leftJustified(num_decimals, '0');

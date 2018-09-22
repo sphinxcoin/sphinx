@@ -338,7 +338,7 @@ UniValue listmasternodes(const UniValue& params, bool fHelp)
             obj.push_back(Pair("outidx", (uint64_t)oIdx));
             obj.push_back(Pair("status", strStatus));
             obj.push_back(Pair("addr", CBitcoinAddress(mn->pubKeyCollateralAddress.GetID()).ToString()));
-            obj.push_back(Pair("version", mn->protocolVerssphx));
+            obj.push_back(Pair("version", mn->protocolVersion));
             obj.push_back(Pair("lastseen", (int64_t)mn->lastPing.sigTime));
             obj.push_back(Pair("activetime", (int64_t)(mn->lastPing.sigTime - mn->sigTime)));
             obj.push_back(Pair("lastpaid", (int64_t)mn->GetLastPaid()));
@@ -396,12 +396,12 @@ UniValue getmasternodecount (const UniValue& params, bool fHelp)
 
     UniValue obj(UniValue::VOBJ);
     int nCount = 0;
-    int ipv4 = 0, ipv6 = 0, onsphx = 0;
+    int ipv4 = 0, ipv6 = 0, onion = 0;
 
     if (chainActive.Tip())
         mnodeman.GetNextMasternodeInQueueForPayment(chainActive.Tip()->nHeight, true, nCount);
 
-    mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onsphx);
+    mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onion);
 
     obj.push_back(Pair("total", mnodeman.size()));
     obj.push_back(Pair("stable", mnodeman.stable_size()));
@@ -410,7 +410,7 @@ UniValue getmasternodecount (const UniValue& params, bool fHelp)
     obj.push_back(Pair("inqueue", nCount));
     obj.push_back(Pair("ipv4", ipv4));
     obj.push_back(Pair("ipv6", ipv6));
-    obj.push_back(Pair("onsphx", onsphx));
+    obj.push_back(Pair("onion", onion));
 
     return obj;
 }
@@ -437,7 +437,7 @@ UniValue masternodecurrent (const UniValue& params, bool fHelp)
     if (winner) {
         UniValue obj(UniValue::VOBJ);
 
-        obj.push_back(Pair("protocol", (int64_t)winner->protocolVerssphx));
+        obj.push_back(Pair("protocol", (int64_t)winner->protocolVersion));
         obj.push_back(Pair("txhash", winner->vin.prevout.hash.ToString()));
         obj.push_back(Pair("pubkey", CBitcoinAddress(winner->pubKeyCollateralAddress.GetID()).ToString()));
         obj.push_back(Pair("lastseen", (winner->lastPing == CMasternodePing()) ? winner->sigTime : (int64_t)winner->lastPing.sigTime));

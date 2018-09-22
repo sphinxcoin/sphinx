@@ -77,7 +77,7 @@ void PaymentServerTests::paymentServerTests()
     r.paymentRequest.getMerchant(caStore, merchant);
     QCOMPARE(merchant, QString("testmerchant.org"));
 
-    // Verssphx of the above, with an expired certificate:
+    // Version of the above, with an expired certificate:
     data = DecodeBase64(paymentrequest2_BASE64);
     r = handleRequest(server, data);
     r.paymentRequest.getMerchant(caStore, merchant);

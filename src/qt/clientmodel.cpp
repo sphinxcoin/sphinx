@@ -74,11 +74,11 @@ int ClientModel::getNumConnections(unsigned int flags) const
 
 QString ClientModel::getMasternodeCountString() const
 {
-    int ipv4 = 0, ipv6 = 0, onsphx = 0;
-    mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onsphx);
-    int nUnknown = mnodeman.size() - ipv4 - ipv6 - onsphx;
+    int ipv4 = 0, ipv6 = 0, onion = 0;
+    mnodeman.CountNetworks(ActiveProtocol(), ipv4, ipv6, onion);
+    int nUnknown = mnodeman.size() - ipv4 - ipv6 - onion;
     if(nUnknown < 0) nUnknown = 0;
-    return tr("Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)").arg(QString::number((int)mnodeman.size())).arg(QString::number((int)ipv4)).arg(QString::number((int)ipv6)).arg(QString::number((int)onsphx)).arg(QString::number((int)nUnknown));
+    return tr("Total: %1 (IPv4: %2 / IPv6: %3 / Tor: %4 / Unknown: %5)").arg(QString::number((int)mnodeman.size())).arg(QString::number((int)ipv4)).arg(QString::number((int)ipv6)).arg(QString::number((int)onion)).arg(QString::number((int)nUnknown));
 }
 
 int ClientModel::getNumBlocks() const
@@ -223,9 +223,9 @@ BanTableModel *ClientModel::getBanTableModel()
     return banTableModel;
 }
 
-QString ClientModel::formatFullVerssphx() const
+QString ClientModel::formatFullVersion() const
 {
-    return QString::fromStdString(FormatFullVerssphx());
+    return QString::fromStdString(FormatFullVersion());
 }
 
 QString ClientModel::formatBuildDate() const
@@ -233,9 +233,9 @@ QString ClientModel::formatBuildDate() const
     return QString::fromStdString(CLIENT_DATE);
 }
 
-bool ClientModel::isReleaseVerssphx() const
+bool ClientModel::isReleaseVersion() const
 {
-    return CLIENT_VERSSPHX_IS_RELEASE;
+    return CLIENT_VERSION_IS_RELEASE;
 }
 
 QString ClientModel::clientName() const

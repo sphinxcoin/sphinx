@@ -2,18 +2,18 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file. See the AUTHORS file for names of contributors.
 //
-// The representation of a DBImpl consists of a set of Verssphxs.  The
+// The representation of a DBImpl consists of a set of Versions.  The
 // newest version is called "current".  Older versions may be kept
 // around to provide a consistent view to live iterators.
 //
-// Each Verssphx keeps track of a set of Table files per level.  The
-// entire set of versions is maintained in a VerssphxSet.
+// Each Version keeps track of a set of Table files per level.  The
+// entire set of versions is maintained in a VersionSet.
 //
-// Verssphx,VerssphxSet are thread-compatible, but require external
+// Version,VersionSet are thread-compatible, but require external
 // synchronization on all accesses.
 
-#ifndef STORAGE_LEVELDB_DB_VERSSPHX_SET_H_
-#define STORAGE_LEVELDB_DB_VERSSPHX_SET_H_
+#ifndef STORAGE_LEVELDB_DB_VERSION_SET_H_
+#define STORAGE_LEVELDB_DB_VERSION_SET_H_
 
 #include <map>
 #include <set>
@@ -32,8 +32,8 @@ class Iterator;
 class MemTable;
 class TableBuilder;
 class TableCache;
-class Verssphx;
-class VerssphxSet;
+class Version;
+class VersionSet;
 class WritableFile;
 
 // Return the smallest index i such that files[i]->largest >= key.
@@ -56,11 +56,11 @@ extern bool SomeFileOverlapsRange(
     const Slice* smallest_user_key,
     const Slice* largest_user_key);
 
-class Verssphx {
+class Version {
  public:
   // Append to *iters a sequence of iterators that will
-  // yield the contents of this Verssphx when merged together.
-  // REQUIRES: This version has been saved (see VerssphxSet::SaveTo)
+  // yield the contents of this Version when merged together.
+  // REQUIRES: This version has been saved (see VersionSet::SaveTo)
   void AddIterators(const ReadOptions&, std::vector<Iterator*>* iters);
 
   // Lookup the value for key.  If found, store it in *val and
@@ -84,7 +84,7 @@ class Verssphx {
   // REQUIRES: lock is held
   bool RecordReadSample(Slice key);
 
-  // Reference count management (so Verssphxs do not disappear out from
+  // Reference count management (so Versions do not disappear out from
   // under live iterators)
   void Ref();
   void Unref();
@@ -115,7 +115,7 @@ class Verssphx {
 
  private:
   friend class Compaction;
-  friend class VerssphxSet;
+  friend class VersionSet;
 
   class LevelFileNumIterator;
   Iterator* NewConcatenatingIterator(const ReadOptions&, int level) const;
@@ -129,9 +129,9 @@ class Verssphx {
                           void* arg,
                           bool (*func)(void*, int, FileMetaData*));
 
-  VerssphxSet* vset_;            // VerssphxSet to which this Verssphx belongs
-  Verssphx* next_;               // Next version in linked list
-  Verssphx* prev_;               // Previous version in linked list
+  VersionSet* vset_;            // VersionSet to which this Version belongs
+  Version* next_;               // Next version in linked list
+  Version* prev_;               // Previous version in linked list
   int refs_;                    // Number of live refs to this version
 
   // List of files per level
@@ -147,7 +147,7 @@ class Verssphx {
   double compaction_score_;
   int compaction_level_;
 
-  explicit Verssphx(VerssphxSet* vset)
+  explicit Version(VersionSet* vset)
       : vset_(vset), next_(this), prev_(this), refs_(0),
         file_to_compact_(NULL),
         file_to_compact_level_(-1),
@@ -155,34 +155,34 @@ class Verssphx {
         compaction_level_(-1) {
   }
 
-  ~Verssphx();
+  ~Version();
 
   // No copying allowed
-  Verssphx(const Verssphx&);
-  void operator=(const Verssphx&);
+  Version(const Version&);
+  void operator=(const Version&);
 };
 
-class VerssphxSet {
+class VersionSet {
  public:
-  VerssphxSet(const std::string& dbname,
+  VersionSet(const std::string& dbname,
              const Options* options,
              TableCache* table_cache,
              const InternalKeyComparator*);
-  ~VerssphxSet();
+  ~VersionSet();
 
   // Apply *edit to the current version to form a new descriptor that
   // is both saved to persistent state and installed as the new
   // current version.  Will release *mu while actually writing to the file.
   // REQUIRES: *mu is held on entry.
   // REQUIRES: no other thread concurrently calls LogAndApply()
-  Status LogAndApply(VerssphxEdit* edit, port::Mutex* mu)
+  Status LogAndApply(VersionEdit* edit, port::Mutex* mu)
       EXCLUSIVE_LOCKS_REQUIRED(mu);
 
   // Recover the last saved descriptor from persistent storage.
   Status Recover();
 
   // Return the current version.
-  Verssphx* current() const { return current_; }
+  Version* current() const { return current_; }
 
   // Return the current manifest file number
   uint64_t ManifestFileNumber() const { return manifest_file_number_; }
@@ -249,7 +249,7 @@ class VerssphxSet {
 
   // Returns true iff some level needs a compaction.
   bool NeedsCompaction() const {
-    Verssphx* v = current_;
+    Version* v = current_;
     return (v->compaction_score_ >= 1) || (v->file_to_compact_ != NULL);
   }
 
@@ -259,7 +259,7 @@ class VerssphxSet {
 
   // Return the approximate offset in the database of the data for
   // "key" as of version "v".
-  uint64_t ApproximateOffsetOf(Verssphx* v, const InternalKey& key);
+  uint64_t ApproximateOffsetOf(Version* v, const InternalKey& key);
 
   // Return a human-readable short (single-line) summary of the number
   // of files per level.  Uses *scratch as backing store.
@@ -272,9 +272,9 @@ class VerssphxSet {
   class Builder;
 
   friend class Compaction;
-  friend class Verssphx;
+  friend class Version;
 
-  void Finalize(Verssphx* v);
+  void Finalize(Version* v);
 
   void GetRange(const std::vector<FileMetaData*>& inputs,
                 InternalKey* smallest,
@@ -290,7 +290,7 @@ class VerssphxSet {
   // Save current contents to *log
   Status WriteSnapshot(log::Writer* log);
 
-  void AppendVerssphx(Verssphx* v);
+  void AppendVersion(Version* v);
 
   Env* const env_;
   const std::string dbname_;
@@ -306,16 +306,16 @@ class VerssphxSet {
   // Opened lazily
   WritableFile* descriptor_file_;
   log::Writer* descriptor_log_;
-  Verssphx dummy_versions_;  // Head of circular doubly-linked list of versions.
-  Verssphx* current_;        // == dummy_versions_.prev_
+  Version dummy_versions_;  // Head of circular doubly-linked list of versions.
+  Version* current_;        // == dummy_versions_.prev_
 
   // Per-level key at which the next compaction at that level should start.
   // Either an empty string, or a valid InternalKey.
   std::string compact_pointer_[config::kNumLevels];
 
   // No copying allowed
-  VerssphxSet(const VerssphxSet&);
-  void operator=(const VerssphxSet&);
+  VersionSet(const VersionSet&);
+  void operator=(const VersionSet&);
 };
 
 // A Compaction encapsulates information about a compaction.
@@ -329,7 +329,7 @@ class Compaction {
 
   // Return the object that holds the edits to the descriptor done
   // by this compaction.
-  VerssphxEdit* edit() { return &edit_; }
+  VersionEdit* edit() { return &edit_; }
 
   // "which" must be either 0 or 1
   int num_input_files(int which) const { return inputs_[which].size(); }
@@ -345,7 +345,7 @@ class Compaction {
   bool IsTrivialMove() const;
 
   // Add all inputs to this compaction as delete operations to *edit.
-  void AddInputDeletions(VerssphxEdit* edit);
+  void AddInputDeletions(VersionEdit* edit);
 
   // Returns true if the information we have available guarantees that
   // the compaction is producing data in "level+1" for which no data exists
@@ -361,15 +361,15 @@ class Compaction {
   void ReleaseInputs();
 
  private:
-  friend class Verssphx;
-  friend class VerssphxSet;
+  friend class Version;
+  friend class VersionSet;
 
   explicit Compaction(int level);
 
   int level_;
   uint64_t max_output_file_size_;
-  Verssphx* input_version_;
-  VerssphxEdit edit_;
+  Version* input_version_;
+  VersionEdit edit_;
 
   // Each compaction reads inputs from "level_" and "level_+1"
   std::vector<FileMetaData*> inputs_[2];      // The two sets of inputs
@@ -393,4 +393,4 @@ class Compaction {
 
 }  // namespace leveldb
 
-#endif  // STORAGE_LEVELDB_DB_VERSSPHX_SET_H_
+#endif  // STORAGE_LEVELDB_DB_VERSION_SET_H_

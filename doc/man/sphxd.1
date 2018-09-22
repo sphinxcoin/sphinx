@@ -96,7 +96,7 @@ Delete blockchain folders and resync from scratch on startup
 .HP
 \fB\-sysperms\fR
 .IP
-Create new files with system default permisssphxs, instead of umask 077
+Create new files with system default permissions, instead of umask 077
 (only effective with disabled wallet functionality)
 .HP
 \fB\-txindex\fR
@@ -157,7 +157,7 @@ Always query for peer addresses via DNS lookup (default: 0)
 .IP
 Accept connections from outside (default: 1 if no \fB\-proxy\fR or \fB\-connect\fR)
 .HP
-\fB\-listenonsphx\fR
+\fB\-listenonion\fR
 .IP
 Automatically create Tor hidden service (default: 1)
 .HP
@@ -173,14 +173,14 @@ Maximum per\-connection receive buffer, <n>*1000 bytes (default: 5000)
 .IP
 Maximum per\-connection send buffer, <n>*1000 bytes (default: 1000)
 .HP
-\fB\-onsphx=\fR<ip:port>
+\fB\-onion=\fR<ip:port>
 .IP
 Use separate SOCKS5 proxy to reach peers via Tor hidden services
 (default: \fB\-proxy\fR)
 .HP
 \fB\-onlynet=\fR<net>
 .IP
-Only connect to nodes in network <net> (ipv4, ipv6 or onsphx)
+Only connect to nodes in network <net> (ipv4, ipv6 or onion)
 .HP
 \fB\-permitbaremultisig\fR
 .IP
@@ -214,7 +214,7 @@ Specify connection timeout in milliseconds (minimum: 1, default: 5000)
 .HP
 \fB\-torcontrol=\fR<ip>:<port>
 .IP
-Tor control port to use if onsphx listening enabled (default:
+Tor control port to use if onion listening enabled (default:
 127.0.0.1:9051)
 .HP
 \fB\-torpassword=\fR<pass>

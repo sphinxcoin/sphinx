@@ -1,7 +1,7 @@
 Release 1.2 2011-05-16
 ----------------------
 
-Fixes for larger databases (tested up to one billsphx 100-byte entries,
+Fixes for larger databases (tested up to one billion 100-byte entries,
 i.e., ~100GB).
 
 (1) Place hard limit on number of level-0 files.  This fixes errors

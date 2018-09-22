@@ -54,7 +54,7 @@ static int64_t TotalFileSize(const std::vector<FileMetaData*>& files) {
   return sum;
 }
 
-Verssphx::~Verssphx() {
+Version::~Version() {
   assert(refs_ == 0);
 
   // Remove from linked list
@@ -151,7 +151,7 @@ bool SomeFileOverlapsRange(
 // is the largest key that occurs in the file, and value() is an
 // 16-byte value containing the file number and file size, both
 // encoded using EncodeFixed64.
-class Verssphx::LevelFileNumIterator : public Iterator {
+class Version::LevelFileNumIterator : public Iterator {
  public:
   LevelFileNumIterator(const InternalKeyComparator& icmp,
                        const std::vector<FileMetaData*>* flist)
@@ -215,14 +215,14 @@ static Iterator* GetFileIterator(void* arg,
   }
 }
 
-Iterator* Verssphx::NewConcatenatingIterator(const ReadOptions& options,
+Iterator* Version::NewConcatenatingIterator(const ReadOptions& options,
                                             int level) const {
   return NewTwoLevelIterator(
       new LevelFileNumIterator(vset_->icmp_, &files_[level]),
       &GetFileIterator, vset_->table_cache_, options);
 }
 
-void Verssphx::AddIterators(const ReadOptions& options,
+void Version::AddIterators(const ReadOptions& options,
                            std::vector<Iterator*>* iters) {
   // Merge all level zero files together since they may overlap
   for (size_t i = 0; i < files_[0].size(); i++) {
@@ -275,10 +275,10 @@ static bool NewestFirst(FileMetaData* a, FileMetaData* b) {
   return a->number > b->number;
 }
 
-void Verssphx::ForEachOverlapping(Slice user_key, Slice internal_key,
+void Version::ForEachOverlapping(Slice user_key, Slice internal_key,
                                  void* arg,
                                  bool (*func)(void*, int, FileMetaData*)) {
-  // TODO(sanjay): Change Verssphx::Get() to use this function.
+  // TODO(sanjay): Change Version::Get() to use this function.
   const Comparator* ucmp = vset_->icmp_.user_comparator();
 
   // Search level-0 in order from newest to oldest.
@@ -320,7 +320,7 @@ void Verssphx::ForEachOverlapping(Slice user_key, Slice internal_key,
   }
 }
 
-Status Verssphx::Get(const ReadOptions& options,
+Status Version::Get(const ReadOptions& options,
                     const LookupKey& k,
                     std::string* value,
                     GetStats* stats) {
@@ -419,7 +419,7 @@ Status Verssphx::Get(const ReadOptions& options,
   return Status::NotFound(Slice());  // Use an empty error message for speed
 }
 
-bool Verssphx::UpdateStats(const GetStats& stats) {
+bool Version::UpdateStats(const GetStats& stats) {
   FileMetaData* f = stats.seek_file;
   if (f != NULL) {
     f->allowed_seeks--;
@@ -432,7 +432,7 @@ bool Verssphx::UpdateStats(const GetStats& stats) {
   return false;
 }
 
-bool Verssphx::RecordReadSample(Slice internal_key) {
+bool Version::RecordReadSample(Slice internal_key) {
   ParsedInternalKey ikey;
   if (!ParseInternalKey(internal_key, &ikey)) {
     return false;
@@ -470,11 +470,11 @@ bool Verssphx::RecordReadSample(Slice internal_key) {
   return false;
 }
 
-void Verssphx::Ref() {
+void Version::Ref() {
   ++refs_;
 }
 
-void Verssphx::Unref() {
+void Version::Unref() {
   assert(this != &vset_->dummy_versions_);
   assert(refs_ >= 1);
   --refs_;
@@ -483,14 +483,14 @@ void Verssphx::Unref() {
   }
 }
 
-bool Verssphx::OverlapInLevel(int level,
+bool Version::OverlapInLevel(int level,
                              const Slice* smallest_user_key,
                              const Slice* largest_user_key) {
   return SomeFileOverlapsRange(vset_->icmp_, (level > 0), files_[level],
                                smallest_user_key, largest_user_key);
 }
 
-int Verssphx::PickLevelForMemTableOutput(
+int Version::PickLevelForMemTableOutput(
     const Slice& smallest_user_key,
     const Slice& largest_user_key) {
   int level = 0;
@@ -519,7 +519,7 @@ int Verssphx::PickLevelForMemTableOutput(
 }
 
 // Store in "*inputs" all files in "level" that overlap [begin,end]
-void Verssphx::GetOverlappingInputs(
+void Version::GetOverlappingInputs(
     int level,
     const InternalKey* begin,
     const InternalKey* end,
@@ -562,7 +562,7 @@ void Verssphx::GetOverlappingInputs(
   }
 }
 
-std::string Verssphx::DebugString() const {
+std::string Version::DebugString() const {
   std::string r;
   for (int level = 0; level < config::kNumLevels; level++) {
     // E.g.,
@@ -590,8 +590,8 @@ std::string Verssphx::DebugString() const {
 
 // A helper class so we can efficiently apply a whole sequence
 // of edits to a particular state without creating intermediate
-// Verssphxs that contain full copies of the intermediate state.
-class VerssphxSet::Builder {
+// Versions that contain full copies of the intermediate state.
+class VersionSet::Builder {
  private:
   // Helper to sort by v->files_[file_number].smallest
   struct BySmallestKey {
@@ -614,13 +614,13 @@ class VerssphxSet::Builder {
     FileSet* added_files;
   };
 
-  VerssphxSet* vset_;
-  Verssphx* base_;
+  VersionSet* vset_;
+  Version* base_;
   LevelState levels_[config::kNumLevels];
 
  public:
   // Initialize a builder with the files from *base and other info from *vset
-  Builder(VerssphxSet* vset, Verssphx* base)
+  Builder(VersionSet* vset, Version* base)
       : vset_(vset),
         base_(base) {
     base_->Ref();
@@ -653,7 +653,7 @@ class VerssphxSet::Builder {
   }
 
   // Apply all of the edits in *edit to the current state.
-  void Apply(VerssphxEdit* edit) {
+  void Apply(VersionEdit* edit) {
     // Update compaction pointers
     for (size_t i = 0; i < edit->compact_pointers_.size(); i++) {
       const int level = edit->compact_pointers_[i].first;
@@ -662,8 +662,8 @@ class VerssphxSet::Builder {
     }
 
     // Delete files
-    const VerssphxEdit::DeletedFileSet& del = edit->deleted_files_;
-    for (VerssphxEdit::DeletedFileSet::const_iterator iter = del.begin();
+    const VersionEdit::DeletedFileSet& del = edit->deleted_files_;
+    for (VersionEdit::DeletedFileSet::const_iterator iter = del.begin();
          iter != del.end();
          ++iter) {
       const int level = iter->first;
@@ -699,7 +699,7 @@ class VerssphxSet::Builder {
   }
 
   // Save the current state in *v.
-  void SaveTo(Verssphx* v) {
+  void SaveTo(Version* v) {
     BySmallestKey cmp;
     cmp.internal_comparator = &vset_->icmp_;
     for (int level = 0; level < config::kNumLevels; level++) {
@@ -747,7 +747,7 @@ class VerssphxSet::Builder {
     }
   }
 
-  void MaybeAddFile(Verssphx* v, int level, FileMetaData* f) {
+  void MaybeAddFile(Version* v, int level, FileMetaData* f) {
     if (levels_[level].deleted_files.count(f->number) > 0) {
       // File is deleted: do nothing
     } else {
@@ -763,7 +763,7 @@ class VerssphxSet::Builder {
   }
 };
 
-VerssphxSet::VerssphxSet(const std::string& dbname,
+VersionSet::VersionSet(const std::string& dbname,
                        const Options* options,
                        TableCache* table_cache,
                        const InternalKeyComparator* cmp)
@@ -781,17 +781,17 @@ VerssphxSet::VerssphxSet(const std::string& dbname,
       descriptor_log_(NULL),
       dummy_versions_(this),
       current_(NULL) {
-  AppendVerssphx(new Verssphx(this));
+  AppendVersion(new Version(this));
 }
 
-VerssphxSet::~VerssphxSet() {
+VersionSet::~VersionSet() {
   current_->Unref();
   assert(dummy_versions_.next_ == &dummy_versions_);  // List must be empty
   delete descriptor_log_;
   delete descriptor_file_;
 }
 
-void VerssphxSet::AppendVerssphx(Verssphx* v) {
+void VersionSet::AppendVersion(Version* v) {
   // Make "v" current
   assert(v->refs_ == 0);
   assert(v != current_);
@@ -808,7 +808,7 @@ void VerssphxSet::AppendVerssphx(Verssphx* v) {
   v->next_->prev_ = v;
 }
 
-Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
+Status VersionSet::LogAndApply(VersionEdit* edit, port::Mutex* mu) {
   if (edit->has_log_number_) {
     assert(edit->log_number_ >= log_number_);
     assert(edit->log_number_ < next_file_number_);
@@ -823,7 +823,7 @@ Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
   edit->SetNextFile(next_file_number_);
   edit->SetLastSequence(last_sequence_);
 
-  Verssphx* v = new Verssphx(this);
+  Version* v = new Version(this);
   {
     Builder builder(this, current_);
     builder.Apply(edit);
@@ -876,7 +876,7 @@ Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
 
   // Install the new version
   if (s.ok()) {
-    AppendVerssphx(v);
+    AppendVersion(v);
     log_number_ = edit->log_number_;
     prev_log_number_ = edit->prev_log_number_;
   } else {
@@ -893,7 +893,7 @@ Status VerssphxSet::LogAndApply(VerssphxEdit* edit, port::Mutex* mu) {
   return s;
 }
 
-Status VerssphxSet::Recover() {
+Status VersionSet::Recover() {
   struct LogReporter : public log::Reader::Reporter {
     Status* status;
     virtual void Corruption(size_t bytes, const Status& s) {
@@ -936,7 +936,7 @@ Status VerssphxSet::Recover() {
     Slice record;
     std::string scratch;
     while (reader.ReadRecord(&record, &scratch) && s.ok()) {
-      VerssphxEdit edit;
+      VersionEdit edit;
       s = edit.DecodeFrom(record);
       if (s.ok()) {
         if (edit.has_comparator_ &&
@@ -993,11 +993,11 @@ Status VerssphxSet::Recover() {
   }
 
   if (s.ok()) {
-    Verssphx* v = new Verssphx(this);
+    Version* v = new Version(this);
     builder.SaveTo(v);
     // Install recovered version
     Finalize(v);
-    AppendVerssphx(v);
+    AppendVersion(v);
     manifest_file_number_ = next_file;
     next_file_number_ = next_file + 1;
     last_sequence_ = last_sequence;
@@ -1008,13 +1008,13 @@ Status VerssphxSet::Recover() {
   return s;
 }
 
-void VerssphxSet::MarkFileNumberUsed(uint64_t number) {
+void VersionSet::MarkFileNumberUsed(uint64_t number) {
   if (next_file_number_ <= number) {
     next_file_number_ = number + 1;
   }
 }
 
-void VerssphxSet::Finalize(Verssphx* v) {
+void VersionSet::Finalize(Version* v) {
   // Precomputed best level for next compaction
   int best_level = -1;
   double best_score = -1;
@@ -1031,7 +1031,7 @@ void VerssphxSet::Finalize(Verssphx* v) {
       // (2) The files in level-0 are merged on every read and
       // therefore we wish to avoid too many files when the individual
       // file size is small (perhaps because of a small write-buffer
-      // setting, or very high compresssphx ratios, or lots of
+      // setting, or very high compression ratios, or lots of
       // overwrites/deletions).
       score = v->files_[level].size() /
           static_cast<double>(config::kL0_CompactionTrigger);
@@ -1051,11 +1051,11 @@ void VerssphxSet::Finalize(Verssphx* v) {
   v->compaction_score_ = best_score;
 }
 
-Status VerssphxSet::WriteSnapshot(log::Writer* log) {
+Status VersionSet::WriteSnapshot(log::Writer* log) {
   // TODO: Break up into multiple records to reduce memory usage on recovery?
 
   // Save metadata
-  VerssphxEdit edit;
+  VersionEdit edit;
   edit.SetComparatorName(icmp_.user_comparator()->Name());
 
   // Save compaction pointers
@@ -1081,13 +1081,13 @@ Status VerssphxSet::WriteSnapshot(log::Writer* log) {
   return log->AddRecord(record);
 }
 
-int VerssphxSet::NumLevelFiles(int level) const {
+int VersionSet::NumLevelFiles(int level) const {
   assert(level >= 0);
   assert(level < config::kNumLevels);
   return current_->files_[level].size();
 }
 
-const char* VerssphxSet::LevelSummary(LevelSummaryStorage* scratch) const {
+const char* VersionSet::LevelSummary(LevelSummaryStorage* scratch) const {
   // Update code if kNumLevels changes
   assert(config::kNumLevels == 7);
   snprintf(scratch->buffer, sizeof(scratch->buffer),
@@ -1102,7 +1102,7 @@ const char* VerssphxSet::LevelSummary(LevelSummaryStorage* scratch) const {
   return scratch->buffer;
 }
 
-uint64_t VerssphxSet::ApproximateOffsetOf(Verssphx* v, const InternalKey& ikey) {
+uint64_t VersionSet::ApproximateOffsetOf(Version* v, const InternalKey& ikey) {
   uint64_t result = 0;
   for (int level = 0; level < config::kNumLevels; level++) {
     const std::vector<FileMetaData*>& files = v->files_[level];
@@ -1134,8 +1134,8 @@ uint64_t VerssphxSet::ApproximateOffsetOf(Verssphx* v, const InternalKey& ikey) 
   return result;
 }
 
-void VerssphxSet::AddLiveFiles(std::set<uint64_t>* live) {
-  for (Verssphx* v = dummy_versions_.next_;
+void VersionSet::AddLiveFiles(std::set<uint64_t>* live) {
+  for (Version* v = dummy_versions_.next_;
        v != &dummy_versions_;
        v = v->next_) {
     for (int level = 0; level < config::kNumLevels; level++) {
@@ -1147,13 +1147,13 @@ void VerssphxSet::AddLiveFiles(std::set<uint64_t>* live) {
   }
 }
 
-int64_t VerssphxSet::NumLevelBytes(int level) const {
+int64_t VersionSet::NumLevelBytes(int level) const {
   assert(level >= 0);
   assert(level < config::kNumLevels);
   return TotalFileSize(current_->files_[level]);
 }
 
-int64_t VerssphxSet::MaxNextLevelOverlappingBytes() {
+int64_t VersionSet::MaxNextLevelOverlappingBytes() {
   int64_t result = 0;
   std::vector<FileMetaData*> overlaps;
   for (int level = 1; level < config::kNumLevels - 1; level++) {
@@ -1173,7 +1173,7 @@ int64_t VerssphxSet::MaxNextLevelOverlappingBytes() {
 // Stores the minimal range that covers all entries in inputs in
 // *smallest, *largest.
 // REQUIRES: inputs is not empty
-void VerssphxSet::GetRange(const std::vector<FileMetaData*>& inputs,
+void VersionSet::GetRange(const std::vector<FileMetaData*>& inputs,
                           InternalKey* smallest,
                           InternalKey* largest) {
   assert(!inputs.empty());
@@ -1198,7 +1198,7 @@ void VerssphxSet::GetRange(const std::vector<FileMetaData*>& inputs,
 // Stores the minimal range that covers all entries in inputs1 and inputs2
 // in *smallest, *largest.
 // REQUIRES: inputs is not empty
-void VerssphxSet::GetRange2(const std::vector<FileMetaData*>& inputs1,
+void VersionSet::GetRange2(const std::vector<FileMetaData*>& inputs1,
                            const std::vector<FileMetaData*>& inputs2,
                            InternalKey* smallest,
                            InternalKey* largest) {
@@ -1207,7 +1207,7 @@ void VerssphxSet::GetRange2(const std::vector<FileMetaData*>& inputs1,
   GetRange(all, smallest, largest);
 }
 
-Iterator* VerssphxSet::MakeInputIterator(Compaction* c) {
+Iterator* VersionSet::MakeInputIterator(Compaction* c) {
   ReadOptions options;
   options.verify_checksums = options_->paranoid_checks;
   options.fill_cache = false;
@@ -1229,7 +1229,7 @@ Iterator* VerssphxSet::MakeInputIterator(Compaction* c) {
       } else {
         // Create concatenating iterator for the files from this level
         list[num++] = NewTwoLevelIterator(
-            new Verssphx::LevelFileNumIterator(icmp_, &c->inputs_[which]),
+            new Version::LevelFileNumIterator(icmp_, &c->inputs_[which]),
             &GetFileIterator, table_cache_, options);
       }
     }
@@ -1240,7 +1240,7 @@ Iterator* VerssphxSet::MakeInputIterator(Compaction* c) {
   return result;
 }
 
-Compaction* VerssphxSet::PickCompaction() {
+Compaction* VersionSet::PickCompaction() {
   Compaction* c;
   int level;
 
@@ -1294,7 +1294,7 @@ Compaction* VerssphxSet::PickCompaction() {
   return c;
 }
 
-void VerssphxSet::SetupOtherInputs(Compaction* c) {
+void VersionSet::SetupOtherInputs(Compaction* c) {
   const int level = c->level();
   InternalKey smallest, largest;
   GetRange(c->inputs_[0], &smallest, &largest);
@@ -1354,14 +1354,14 @@ void VerssphxSet::SetupOtherInputs(Compaction* c) {
   }
 
   // Update the place where we will do the next compaction for this level.
-  // We update this immediately instead of waiting for the VerssphxEdit
+  // We update this immediately instead of waiting for the VersionEdit
   // to be applied so that if the compaction fails, we will try a different
   // key range next time.
   compact_pointer_[level] = largest.Encode().ToString();
   c->edit_.SetCompactPointer(level, largest);
 }
 
-Compaction* VerssphxSet::CompactRange(
+Compaction* VersionSet::CompactRange(
     int level,
     const InternalKey* begin,
     const InternalKey* end) {
@@ -1423,7 +1423,7 @@ bool Compaction::IsTrivialMove() const {
           TotalFileSize(grandparents_) <= kMaxGrandParentOverlapBytes);
 }
 
-void Compaction::AddInputDeletions(VerssphxEdit* edit) {
+void Compaction::AddInputDeletions(VersionEdit* edit) {
   for (int which = 0; which < 2; which++) {
     for (size_t i = 0; i < inputs_[which].size(); i++) {
       edit->DeleteFile(level_ + which, inputs_[which][i]->number);

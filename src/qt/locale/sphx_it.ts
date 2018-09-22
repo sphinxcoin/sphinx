@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copia l'indirizzo selexsphxato negli appunti</translation>
+        <translation>Copia l'indirizzo selexionato negli appunti</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Elimina l'indirizzo selexsphxato dalla lista</translation>
+        <translation>Elimina l'indirizzo selexionato dalla lista</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -43,31 +43,31 @@
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>Selexsphxa l'indirizzo a cui inviare valuta</translation>
+        <translation>Selexiona l'indirizzo a cui inviare valuta</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>Selexsphxa l'indirizzo a cui ricevere valuta</translation>
+        <translation>Selexiona l'indirizzo a cui ricevere valuta</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>&amp;Selexsphxa</translation>
+        <translation>&amp;Selexiona</translation>
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>Indirizzi di destinaxsphxe</translation>
+        <translation>Indirizzi di destinaxione</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>Indirizzi di ricexsphxe</translation>
+        <translation>Indirizzi di ricexione</translation>
     </message>
     <message>
         <source>These are your Sphinx addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Questi sono gli indirizzi Sphinx per l'invio di pagamenti. Controlla sempre l'importo e l'indirizzo di ricexsphxe prima di inviare valuta.</translation>
+        <translation>Questi sono gli indirizzi Sphinx per l'invio di pagamenti. Controlla sempre l'importo e l'indirizzo di ricexione prima di inviare valuta.</translation>
     </message>
     <message>
         <source>These are your Sphinx addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Questi sono gli indirizzi Sphinx per la ricexsphxe di pagamenti. Si raccomanda di utilizzare un indirizzo diverso per ogni transaxsphxe.</translation>
+        <translation>Questi sono gli indirizzi Sphinx per la ricexione di pagamenti. Si raccomanda di utilizzare un indirizzo diverso per ogni transaxione.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -91,7 +91,7 @@
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>Esportaxsphxe fallita</translation>
+        <translation>Esportaxione fallita</translation>
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
@@ -137,7 +137,7 @@
     </message>
     <message>
         <source>For anonymization and staking only</source>
-        <translation>Esclusivamente per anonimizzaxsphxe e staking</translation>
+        <translation>Esclusivamente per anonimizzaxione e staking</translation>
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
@@ -149,7 +149,7 @@
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Questa operaxsphxe richiede la parola d'ordine per sbloccare il portafoglio.</translation>
+        <translation>Questa operaxione richiede la parola d'ordine per sbloccare il portafoglio.</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
@@ -157,7 +157,7 @@
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Questa operaxsphxe richiede la parola d'ordine per decrittografare il portafoglio.</translation>
+        <translation>Questa operaxione richiede la parola d'ordine per decrittografare il portafoglio.</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
@@ -185,7 +185,7 @@
     </message>
     <message>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR SPHX&lt;/b&gt;!</source>
-        <translation>Attenxsphxe: Se crittografi il portafoglio e poi perdi la parola d'ordine, &lt;b&gt;PERDERAI TUTTI I TUOI SPHX&lt;7b&gt;!</translation>
+        <translation>Attenxione: Se crittografi il portafoglio e poi perdi la parola d'ordine, &lt;b&gt;PERDERAI TUTTI I TUOI SPHX&lt;7b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -213,11 +213,11 @@
     </message>
     <message>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>La frase immessa per la decifraxsphxe del portafoglio era errata.</translation>
+        <translation>La frase immessa per la decifraxione del portafoglio era errata.</translation>
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>Decriptaxsphxe portafoglio fallita</translation>
+        <translation>Decriptaxione portafoglio fallita</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
@@ -225,7 +225,7 @@
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Attenxsphxe: il tasto Caps Lock è attivato!</translation>
+        <translation>Attenxione: il tasto Caps Lock è attivato!</translation>
     </message>
 </context>
 <context>
@@ -360,7 +360,7 @@
     </message>
     <message>
         <source>Failed to decrypt.</source>
-        <translation>Decriptaxsphxe fallita.</translation>
+        <translation>Decriptaxione fallita.</translation>
     </message>
     <message>
         <source>Please check the key and passphrase and try again.</source>
@@ -376,7 +376,7 @@
     </message>
     <message>
         <source>Please wait while key is imported</source>
-        <translation>Per favore attendere l'importaxsphxe della chiave</translation>
+        <translation>Per favore attendere l'importaxione della chiave</translation>
     </message>
     <message>
         <source>Key Already Held By Wallet</source>
@@ -419,11 +419,11 @@
     </message>
     <message>
         <source>&amp;Transactions</source>
-        <translation>&amp;Transaxsphxi</translation>
+        <translation>&amp;Transaxioni</translation>
     </message>
     <message>
         <source>Browse transaction history</source>
-        <translation>Espora la cronologia delle transaxsphxi</translation>
+        <translation>Espora la cronologia delle transaxioni</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -431,19 +431,19 @@
     </message>
     <message>
         <source>Quit application</source>
-        <translation>Chiude l'applicaxsphxe</translation>
+        <translation>Chiude l'applicaxione</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
-        <translation>Informaxsphxi su &amp;Qt</translation>
+        <translation>Informaxioni su &amp;Qt</translation>
     </message>
     <message>
         <source>Show information about Qt</source>
-        <translation>Visualizza informaxsphxi su Qt</translation>
+        <translation>Visualizza informaxioni su Qt</translation>
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>&amp;Opxsphxi...</translation>
+        <translation>&amp;Opxioni...</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -467,7 +467,7 @@
     </message>
     <message>
         <source>Backup wallet to another location</source>
-        <translation>Fa una copia di sicurezza del tuo portafoglio in un'altra posixsphxe</translation>
+        <translation>Fa una copia di sicurezza del tuo portafoglio in un'altra posixione</translation>
     </message>
     <message>
         <source>&amp;Change Passphrase...</source>
@@ -499,11 +499,11 @@
     </message>
     <message>
         <source>&amp;Information</source>
-        <translation>&amp;Informaxsphxi</translation>
+        <translation>&amp;Informaxioni</translation>
     </message>
     <message>
         <source>Show diagnostic information</source>
-        <translation>Visualizza informaxsphxi di diagnostica</translation>
+        <translation>Visualizza informaxioni di diagnostica</translation>
     </message>
     <message>
         <source>&amp;Debug console</source>
@@ -527,7 +527,7 @@
     </message>
     <message>
         <source>Show peers info</source>
-        <translation>Mostra le informaxsphxi sui peer</translation>
+        <translation>Mostra le informaxioni sui peer</translation>
     </message>
     <message>
         <source>Wallet &amp;Repair</source>
@@ -535,11 +535,11 @@
     </message>
     <message>
         <source>Show wallet repair options</source>
-        <translation>Mostra opxsphxi di riparaxsphxe del portafoglio</translation>
+        <translation>Mostra opxioni di riparaxione del portafoglio</translation>
     </message>
     <message>
         <source>Open configuration file</source>
-        <translation>Apri il file di configuraxsphxe</translation>
+        <translation>Apri il file di configuraxione</translation>
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
@@ -559,11 +559,11 @@
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>&amp;Indirizzi di Destinaxsphxe</translation>
+        <translation>&amp;Indirizzi di Destinaxione</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>Mostra l'elenco degli indirizzi e delle etichette di ricexsphxe utilizzati</translation>
+        <translation>Mostra l'elenco degli indirizzi e delle etichette di ricexione utilizzati</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
@@ -571,11 +571,11 @@
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
-        <translation>Sincronizzaxsphxe dati addixsphxali: %p%</translation>
+        <translation>Sincronizzaxione dati addixionali: %p%</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>&amp;Impostaxsphxi</translation>
+        <translation>&amp;Impostaxioni</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
@@ -611,15 +611,15 @@
     </message>
     <message>
         <source>&amp;About Sphinx Core</source>
-        <translation>&amp;Informaxsphxi Sphinx Core</translation>
+        <translation>&amp;Informaxioni Sphinx Core</translation>
     </message>
     <message>
         <source>Show information about Sphinx Core</source>
-        <translation>Visualizza informaxsphxi su Sphinx Core</translation>
+        <translation>Visualizza informaxioni su Sphinx Core</translation>
     </message>
     <message>
         <source>Modify configuration options for SPHX</source>
-        <translation>Modifica le opxsphxi di configuraxsphxe per SPHX</translation>
+        <translation>Modifica le opxioni di configuraxione per SPHX</translation>
     </message>
     <message>
         <source>Sign messages with your Sphinx addresses to prove you own them</source>
@@ -635,7 +635,7 @@
     </message>
     <message>
         <source>MultiSend Settings</source>
-        <translation>Impostaxsphxi MultiSend</translation>
+        <translation>Impostaxioni MultiSend</translation>
     </message>
     <message>
         <source>Open a SPHX: URI or payment request</source>
@@ -647,19 +647,19 @@
     </message>
     <message>
         <source>Show the Sphinx Core help message to get a list with possible Sphinx command-line options</source>
-        <translation>Mostra il messaggio di aiuto Sphinx Core per ottenere un elenco con le possibili opxsphxi di riga di comando SPHX</translation>
+        <translation>Mostra il messaggio di aiuto Sphinx Core per ottenere un elenco con le possibili opxioni di riga di comando SPHX</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
-        <translation>Sincronizzaxsphxe con la rete ...</translation>
+        <translation>Sincronizzaxione con la rete ...</translation>
     </message>
     <message>
         <source>Importing blocks from disk...</source>
-        <translation>Importaxsphxe di blocchi dal disco ...</translation>
+        <translation>Importaxione di blocchi dal disco ...</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
-        <translation>Reindicizzaxsphxe blocchi su disco ...</translation>
+        <translation>Reindicizzaxione blocchi su disco ...</translation>
     </message>
     <message>
         <source>No block source available...</source>
@@ -675,7 +675,7 @@
     </message>
     <message>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>Le transaxsphxi successive non saranno visibili per ora.</translation>
+        <translation>Le transaxioni successive non saranno visibili per ora.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -687,19 +687,19 @@
     </message>
     <message>
         <source>Information</source>
-        <translation>Informaxsphxi</translation>
+        <translation>Informaxioni</translation>
     </message>
     <message>
         <source>Sent transaction</source>
-        <translation>Transaxsphxi Inviate</translation>
+        <translation>Transaxioni Inviate</translation>
     </message>
     <message>
         <source>Incoming transaction</source>
-        <translation>Transaxsphxe in entrata</translation>
+        <translation>Transaxione in entrata</translation>
     </message>
     <message>
         <source>Sent MultiSend transaction</source>
-        <translation>Transaxsphxi MultiSend inviate</translation>
+        <translation>Transaxioni MultiSend inviate</translation>
     </message>
     <message>
         <source>Date: %1
@@ -735,7 +735,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization and staking only</source>
-        <translation>Il portafoglio è &lt;b&gt;crittografato&lt;/b&gt; e attualmente &lt;b&gt;sbloccato&lt;/b&gt; per l'anonimizzaxsphxe e il solo stacking</translation>
+        <translation>Il portafoglio è &lt;b&gt;crittografato&lt;/b&gt; e attualmente &lt;b&gt;sbloccato&lt;/b&gt; per l'anonimizzaxione e il solo stacking</translation>
     </message>
     </context>
 <context>
@@ -746,7 +746,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Address / Block / Transaction</source>
-        <translation>Indirizzo / Blocco / Transaxsphxe</translation>
+        <translation>Indirizzo / Blocco / Transaxione</translation>
     </message>
     <message>
         <source>Search</source>
@@ -754,7 +754,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Not all transactions will be shown. To view all transactions you need to set txindex=1 in the configuration file (sphinxcoin.conf).</source>
-        <translation>Non tutte le transaxsphxi verranno visualizzate. Per vedere tutte le transaxsphxi è necessario aggiungere txindex=1 nel file di configuraxsphxe (sphinxcoin.conf)</translation>
+        <translation>Non tutte le transaxioni verranno visualizzate. Per vedere tutte le transaxioni è necessario aggiungere txindex=1 nel file di configuraxione (sphinxcoin.conf)</translation>
     </message>
 </context>
 <context>
@@ -832,11 +832,11 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Copia ID transaxsphxe</translation>
+        <translation>Copia ID transaxione</translation>
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
-        <translation>Prego selexsphxare "Modalità lista" per utilizzare questa funxsphxe</translation>
+        <translation>Prego selexionare "Modalità lista" per utilizzare questa funxione</translation>
     </message>
     <message>
         <source>yes</source>
@@ -848,7 +848,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Questa etichetta diventerà rossa se la transaxsphxe supera i 1000 bytes</translation>
+        <translation>Questa etichetta diventerà rossa se la transaxione supera i 1000 bytes</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -897,7 +897,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Command-line options</source>
-        <translation>Opxsphxi linea di comando</translation>
+        <translation>Opxioni linea di comando</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -905,7 +905,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>command-line options</source>
-        <translation>opxsphxi linea di comando</translation>
+        <translation>opxioni linea di comando</translation>
     </message>
     </context>
 <context>
@@ -1028,7 +1028,7 @@ MultiSend: %1</translation>
     <name>RPCConsole</name>
     <message>
         <source>&amp;Information</source>
-        <translation>&amp;Informaxsphxi</translation>
+        <translation>&amp;Informaxioni</translation>
     </message>
     </context>
 <context>
@@ -1263,7 +1263,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>Copia ID transaxsphxe</translation>
+        <translation>Copia ID transaxione</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
@@ -1287,7 +1287,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>Esportaxsphxe fallita</translation>
+        <translation>Esportaxione fallita</translation>
     </message>
     </context>
 <context>
@@ -1311,7 +1311,7 @@ MultiSend: %1</translation>
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>
@@ -1321,7 +1321,7 @@ MultiSend: %1</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>Informaxsphxi</translation>
+        <translation>Informaxioni</translation>
     </message>
     <message>
         <source>Warning</source>

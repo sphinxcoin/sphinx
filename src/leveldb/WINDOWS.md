@@ -12,12 +12,12 @@ Download and extract the [Snappy source distribution](http://snappy.googlecode.c
 
 ## Building the Static lib 
 
-* 32 bit Verssphx 
+* 32 bit Version 
 
         setenv /x86
         msbuild.exe /p:Configuration=Release /p:Platform=Win32 /p:Snappy=..\snappy-1.0.5
 
-* 64 bit Verssphx 
+* 64 bit Version 
 
         setenv /x64
         msbuild.exe /p:Configuration=Release /p:Platform=x64 /p:Snappy=..\snappy-1.0.5
@@ -25,13 +25,13 @@ Download and extract the [Snappy source distribution](http://snappy.googlecode.c
 
 ## Building and Running the Benchmark app
 
-* 32 bit Verssphx 
+* 32 bit Version 
 
 	    setenv /x86
 	    msbuild.exe /p:Configuration=Benchmark /p:Platform=Win32 /p:Snappy=..\snappy-1.0.5
 		Benchmark\leveldb.exe
 
-* 64 bit Verssphx 
+* 64 bit Version 
 
 	    setenv /x64
 	    msbuild.exe /p:Configuration=Benchmark /p:Platform=x64 /p:Snappy=..\snappy-1.0.5

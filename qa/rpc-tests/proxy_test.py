@@ -19,7 +19,7 @@ Test plan:
 - Verify that proxies are connected to, and the right connection command is given
 - Proxy configurations to test on bitcoind side:
     - `-proxy` (proxy everything)
-    - `-onsphx` (proxy just onsphxs)
+    - `-onion` (proxy just onions)
     - `-proxyrandomize` Circuit randomization
 - Proxy configurations to test on proxy side,
     - support no authentication (other proxy)
@@ -32,7 +32,7 @@ Test plan:
 
 addnode connect to IPv4
 addnode connect to IPv6
-addnode connect to onsphx
+addnode connect to onion
 addnode connect to generic DNS name
 '''
 
@@ -68,7 +68,7 @@ class ProxyTest(BitcoinTestFramework):
         # this is because the proxy to use is based on CService.GetNetwork(), which return NET_UNROUTABLE for localhost
         return start_nodes(4, self.options.tmpdir, extra_args=[
             ['-listen', '-debug=net', '-debug=proxy', '-proxy=%s:%i' % (self.conf1.addr),'-proxyrandomize=1'],
-            ['-listen', '-debug=net', '-debug=proxy', '-proxy=%s:%i' % (self.conf1.addr),'-onsphx=%s:%i' % (self.conf2.addr),'-proxyrandomize=0'],
+            ['-listen', '-debug=net', '-debug=proxy', '-proxy=%s:%i' % (self.conf1.addr),'-onion=%s:%i' % (self.conf2.addr),'-proxyrandomize=0'],
             ['-listen', '-debug=net', '-debug=proxy', '-proxy=%s:%i' % (self.conf2.addr),'-proxyrandomize=1'],
             ['-listen', '-debug=net', '-debug=proxy', '-proxy=[%s]:%i' % (self.conf3.addr),'-proxyrandomize=0']
             ])
@@ -101,12 +101,12 @@ class ProxyTest(BitcoinTestFramework):
             assert_equal(cmd.password, None)
         rv.append(cmd)
 
-        # Test: outgoing onsphx connection through node
-        node.addnode("sphxvj7kcklujarx.onsphx:12700", "onetry")
+        # Test: outgoing onion connection through node
+        node.addnode("sphxvj7kcklujarx.onion:12700", "onetry")
         cmd = proxies[2].queue.get()
         assert(isinstance(cmd, Socks5Command))
         assert_equal(cmd.atyp, AddressType.DOMAINNAME)
-        assert_equal(cmd.addr, "sphxvj7kcklujarx.onsphx")
+        assert_equal(cmd.addr, "sphxvj7kcklujarx.onion")
         assert_equal(cmd.port, 12700)
         if not auth:
             assert_equal(cmd.username, None)
@@ -131,10 +131,10 @@ class ProxyTest(BitcoinTestFramework):
         # basic -proxy
         self.node_test(self.nodes[0], [self.serv1, self.serv1, self.serv1, self.serv1], False)
 
-        # -proxy plus -onsphx
+        # -proxy plus -onion
         self.node_test(self.nodes[1], [self.serv1, self.serv1, self.serv2, self.serv1], False)
 
-        # -proxy plus -onsphx, -proxyrandomize
+        # -proxy plus -onion, -proxyrandomize
         rv = self.node_test(self.nodes[2], [self.serv2, self.serv2, self.serv2, self.serv2], True)
         # Check that credentials as used for -proxyrandomize connections are unique
         credentials = set((x.username,x.password) for x in rv)

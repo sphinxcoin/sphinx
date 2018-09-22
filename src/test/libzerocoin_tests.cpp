@@ -240,7 +240,7 @@ Test_Accumulator()
 		}
 
 		// Serialization test: see if we can serialize the accumulator
-		CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 		ss << accOne;
 
 		// Deserialize it into a new object
@@ -280,7 +280,7 @@ Test_EqualityPoK()
 			                               one, two);
 
 			// Serialize the proof into a stream
-			CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+			CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 			ss << pok;
 
 			// Deserialize back into a PoK object
@@ -293,7 +293,7 @@ Test_EqualityPoK()
 			}
 
 			// Just for fun, deserialize the proof a second time
-			CDataStream ss2(SER_NETWORK, PROTOCOL_VERSSPHX);
+			CDataStream ss2(SER_NETWORK, PROTOCOL_VERSION);
 			ss2 << pok;
 
 			// This time tamper with it, then deserialize it back into a PoK
@@ -326,7 +326,7 @@ Test_MintCoin()
             gCoins[i] = new PrivateCoin(g_Params,libzerocoin::CoinDenomination::ZQ_ONE);
 
 			PublicCoin pc = gCoins[i]->getPublicCoin();
-			CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+			CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 			ss << pc;
 			gCoinSize += ss.size();
 		}
@@ -371,7 +371,7 @@ bool Test_InvalidCoin()
 		}
 		
 		// Serialize and deserialize the coin
-		CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 		ss << pubCoin;
 		PublicCoin pubCoin4(g_Params, ss);
 		if (pubCoin4.validate()) {
@@ -414,14 +414,14 @@ Test_MintAndSpend()
 
 		// Now spend the coin
 		//SpendMetaData m(1,1);
-		CDataStream cc(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream cc(SER_NETWORK, PROTOCOL_VERSION);
 		cc << *gCoins[0];
 		PrivateCoin myCoin(g_Params,cc);
 
 		CoinSpend spend(g_Params, myCoin, acc, 0, wAcc, 0);
 
 		// Serialize the proof and deserialize into newSpend
-		CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
 		ss << spend;
 		gProofSize = ss.size();
 		CoinSpend newSpend(g_Params, ss);
@@ -485,7 +485,7 @@ Test_RunAllTests()
 BOOST_AUTO_TEST_SUITE(libzerocoin)
 BOOST_AUTO_TEST_CASE(libzerocoin_tests)
 {
-	cout << "libzerocoin v" << ZEROCOIN_VERSSPHX_STRING << " test utility." << endl << endl;
+	cout << "libzerocoin v" << ZEROCOIN_VERSION_STRING << " test utility." << endl << endl;
 	
 	Test_RunAllTests();
 }

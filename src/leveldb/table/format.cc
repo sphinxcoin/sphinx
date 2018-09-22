@@ -99,7 +99,7 @@ Status ReadBlock(RandomAccessFile* file,
   }
 
   switch (data[n]) {
-    case kNoCompresssphx:
+    case kNoCompression:
       if (data != buf) {
         // File implementation gave us pointer to some other data.
         // Use it directly under the assumption that it will be live
@@ -116,7 +116,7 @@ Status ReadBlock(RandomAccessFile* file,
 
       // Ok
       break;
-    case kSnappyCompresssphx: {
+    case kSnappyCompression: {
       size_t ulength = 0;
       if (!port::Snappy_GetUncompressedLength(data, n, &ulength)) {
         delete[] buf;

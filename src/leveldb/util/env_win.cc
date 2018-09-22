@@ -119,9 +119,9 @@ private:
     HANDLE _hFile;
     size_t _page_size;
     size_t _map_size;       // How much extra memory to map at a time
-    char* _base;            // The mapped regsphx
+    char* _base;            // The mapped region
     HANDLE _base_handle;	
-    char* _limit;           // Limit of the mapped regsphx
+    char* _limit;           // Limit of the mapped region
     char* _dst;             // Where to write next  (in range [base_,limit_])
     char* _last_sync;       // Where have we synced up to
     uint64_t _file_offset;  // Offset of base_ in file
@@ -132,8 +132,8 @@ private:
     // Roundup x to a multiple of y
     static size_t _Roundup(size_t x, size_t y);
     size_t _TruncateToPageBoundary(size_t s);
-    bool _UnmapCurrentRegsphx();
-    bool _MapNewRegsphx();
+    bool _UnmapCurrentRegion();
+    bool _MapNewRegion();
     DISALLOW_COPY_AND_ASSIGN(Win32MapFile);
     BOOL _Init(LPCWSTR Path);
 };
@@ -454,7 +454,7 @@ size_t Win32MapFile::_TruncateToPageBoundary( size_t s )
     return s;
 }
 
-bool Win32MapFile::_UnmapCurrentRegsphx()
+bool Win32MapFile::_UnmapCurrentRegion()
 {
     bool result = true;
     if (_base != NULL) {
@@ -478,7 +478,7 @@ bool Win32MapFile::_UnmapCurrentRegsphx()
     return result;
 }
 
-bool Win32MapFile::_MapNewRegsphx()
+bool Win32MapFile::_MapNewRegion()
 {
     assert(_base == NULL);
     //LONG newSizeHigh = (LONG)((file_offset_ + map_size_) >> 32);
@@ -542,9 +542,9 @@ Status Win32MapFile::Append( const Slice& data )
         assert(_dst <= _limit);
         size_t avail = _limit - _dst;
         if (avail == 0) {
-            if (!_UnmapCurrentRegsphx() ||
-                !_MapNewRegsphx()) {
-                    return Status::IOError("WinMmapFile.Append::UnmapCurrentRegsphx or MapNewRegsphx: ", Win32::GetLastErrSz());
+            if (!_UnmapCurrentRegion() ||
+                !_MapNewRegion()) {
+                    return Status::IOError("WinMmapFile.Append::UnmapCurrentRegion or MapNewRegion: ", Win32::GetLastErrSz());
             }
         }
         size_t n = (left <= avail) ? left : avail;
@@ -560,8 +560,8 @@ Status Win32MapFile::Close()
 {
     Status s;
     size_t unused = _limit - _dst;
-    if (!_UnmapCurrentRegsphx()) {
-        s = Status::IOError("WinMmapFile.Close::UnmapCurrentRegsphx: ",Win32::GetLastErrSz());
+    if (!_UnmapCurrentRegion()) {
+        s = Status::IOError("WinMmapFile.Close::UnmapCurrentRegion: ",Win32::GetLastErrSz());
     } else if (unused > 0) {
         // Trim the extra space at the end of the file
         LARGE_INTEGER newSize;

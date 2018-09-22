@@ -50,7 +50,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(*(CAddress*)this);
         READWRITE(source);
@@ -273,12 +273,12 @@ public:
      * very little in common.
      */
     template <typename Stream>
-    void Serialize(Stream& s, int nType, int nVerssphxDummy) const
+    void Serialize(Stream& s, int nType, int nVersionDummy) const
     {
         LOCK(cs);
 
-        unsigned char nVerssphx = 1;
-        s << nVerssphx;
+        unsigned char nVersion = 1;
+        s << nVersion;
         s << ((unsigned char)32);
         s << nKey;
         s << nNew;
@@ -323,14 +323,14 @@ public:
     }
 
     template <typename Stream>
-    void Unserialize(Stream& s, int nType, int nVerssphxDummy)
+    void Unserialize(Stream& s, int nType, int nVersionDummy)
     {
         LOCK(cs);
 
         Clear();
 
-        unsigned char nVerssphx;
-        s >> nVerssphx;
+        unsigned char nVersion;
+        s >> nVersion;
         unsigned char nKeySize;
         s >> nKeySize;
         if (nKeySize != 32) throw std::ios_base::failure("Incorrect keysize in addrman deserialization");
@@ -339,7 +339,7 @@ public:
         s >> nTried;
         int nUBuckets = 0;
         s >> nUBuckets;
-        if (nVerssphx != 0) {
+        if (nVersion != 0) {
             nUBuckets ^= (1 << 30);
         }
 
@@ -350,8 +350,8 @@ public:
             mapAddr[info] = n;
             info.nRandomPos = vRandom.size();
             vRandom.push_back(n);
-            if (nVerssphx != 1 || nUBuckets != ADDRMAN_NEW_BUCKET_COUNT) {
-                // In case the new table data cannot be used (nVerssphx unknown, or bucket count wrong),
+            if (nVersion != 1 || nUBuckets != ADDRMAN_NEW_BUCKET_COUNT) {
+                // In case the new table data cannot be used (nVersion unknown, or bucket count wrong),
                 // immediately try to give them a reference based on their primary source address.
                 int nUBucket = info.GetNewBucket(nKey);
                 int nUBucketPos = info.GetBucketPosition(nKey, true, nUBucket);
@@ -394,7 +394,7 @@ public:
                 if (nIndex >= 0 && nIndex < nNew) {
                     CAddrInfo& info = mapInfo[nIndex];
                     int nUBucketPos = info.GetBucketPosition(nKey, true, bucket);
-                    if (nVerssphx == 1 && nUBuckets == ADDRMAN_NEW_BUCKET_COUNT && vvNew[bucket][nUBucketPos] == -1 && info.nRefCount < ADDRMAN_NEW_BUCKETS_PER_ADDRESS) {
+                    if (nVersion == 1 && nUBuckets == ADDRMAN_NEW_BUCKET_COUNT && vvNew[bucket][nUBucketPos] == -1 && info.nRefCount < ADDRMAN_NEW_BUCKETS_PER_ADDRESS) {
                         info.nRefCount++;
                         vvNew[bucket][nUBucketPos] = nIndex;
                     }
@@ -402,7 +402,7 @@ public:
             }
         }
 
-        // Prune new entries with refcount 0 (as a result of collissphxs).
+        // Prune new entries with refcount 0 (as a result of collision).
         int nLostUnk = 0;
         for (std::map<int, CAddrInfo>::const_iterator it = mapInfo.begin(); it != mapInfo.end();) {
             if (it->second.fInTried == false && it->second.nRefCount == 0) {
@@ -414,15 +414,15 @@ public:
             }
         }
         if (nLost + nLostUnk > 0) {
-            LogPrint("addrman", "addrman lost %i new and %i tried addresses due to collissphxs\n", nLostUnk, nLost);
+            LogPrint("addrman", "addrman lost %i new and %i tried addresses due to collision\n", nLostUnk, nLost);
         }
 
         Check();
     }
 
-    unsigned int GetSerializeSize(int nType, int nVerssphx) const
+    unsigned int GetSerializeSize(int nType, int nVersion) const
     {
-        return (CSizeComputer(nType, nVerssphx) << *this).size();
+        return (CSizeComputer(nType, nVersion) << *this).size();
     }
 
     void Clear()

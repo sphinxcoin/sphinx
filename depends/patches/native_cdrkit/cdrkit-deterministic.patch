@@ -49,7 +49,7 @@
  	}
  #ifdef	ABORT_DEEP_ISO_ONLY
 @@ -1208,7 +1210,7 @@
- 			errmsgno(EX_BAD, "use Rock Ridge extenssphxs via -R or -r,\n");
+ 			errmsgno(EX_BAD, "use Rock Ridge extensions via -R or -r,\n");
  			errmsgno(EX_BAD, "or allow deep ISO9660 directory nesting via -D.\n");
  		}
 -		closedir(current_dir);

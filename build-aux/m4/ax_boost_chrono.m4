@@ -82,15 +82,15 @@ AC_DEFUN([AX_BOOST_CHRONO],
 			LDFLAGS_SAVE=$LDFLAGS
             if test "x$ax_boost_user_chrono_lib" = "x"; then
                 ax_lib=
-                for libextenssphx in `ls $BOOSTLIBDIR/libboost_chrono*.so* $BOOSTLIBDIR/libboost_chrono*.dylib* $BOOSTLIBDIR/libboost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_chrono.*\)\.so.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.dylib.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.a.*$;\1;'` ; do
-                     ax_lib=${libextenssphx}
+                for libextension in `ls $BOOSTLIBDIR/libboost_chrono*.so* $BOOSTLIBDIR/libboost_chrono*.dylib* $BOOSTLIBDIR/libboost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^lib\(boost_chrono.*\)\.so.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.dylib.*$;\1;' -e 's;^lib\(boost_chrono.*\)\.a.*$;\1;'` ; do
+                     ax_lib=${libextension}
 				    AC_CHECK_LIB($ax_lib, exit,
                                  [BOOST_CHRONO_LIB="-l$ax_lib"; AC_SUBST(BOOST_CHRONO_LIB) link_chrono="yes"; break],
                                  [link_chrono="no"])
 				done
                 if test "x$link_chrono" != "xyes"; then
-                for libextenssphx in `ls $BOOSTLIBDIR/boost_chrono*.dll* $BOOSTLIBDIR/boost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^\(boost_chrono.*\)\.dll.*$;\1;' -e 's;^\(boost_chrono.*\)\.a.*$;\1;'` ; do
-                     ax_lib=${libextenssphx}
+                for libextension in `ls $BOOSTLIBDIR/boost_chrono*.dll* $BOOSTLIBDIR/boost_chrono*.a* 2>/dev/null | sed 's,.*/,,' | sed -e 's;^\(boost_chrono.*\)\.dll.*$;\1;' -e 's;^\(boost_chrono.*\)\.a.*$;\1;'` ; do
+                     ax_lib=${libextension}
 				    AC_CHECK_LIB($ax_lib, exit,
                                  [BOOST_CHRONO_LIB="-l$ax_lib"; AC_SUBST(BOOST_CHRONO_LIB) link_chrono="yes"; break],
                                  [link_chrono="no"])

@@ -106,7 +106,7 @@ class BitcoinTestFramework(object):
 
         os.environ['PATH'] = self.options.srcdir+":"+os.environ['PATH']
 
-        check_json_precissphx()
+        check_json_precision()
 
         success = False
         try:

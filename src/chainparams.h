@@ -30,7 +30,7 @@ struct CDNSSeedData {
  * CChainParams defines various tweakable parameters of a given instance of the
  * Sphinx system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
- * a regresssphx test mode which is intended for private networks only. It has
+ * a regression test mode which is intended for private networks only. It has
  * minimal difficulty to ensure that blocks can be found instantly.
  */
 class CChainParams
@@ -107,7 +107,7 @@ public:
     int Zerocoin_MintRequiredConfirmations() const { return nMintRequiredConfirmations; }
     int Zerocoin_RequiredAccumulation() const { return nRequiredAccumulation; }
     int Zerocoin_DefaultSpendSecurity() const { return nDefaultSecurityLevel; }
-    int Zerocoin_HeaderVerssphx() const { return nZerocoinHeaderVerssphx; }
+    int Zerocoin_HeaderVersion() const { return nZerocoinHeaderVersion; }
 
     /** Height or Time Based Activations **/
     int LAST_POW_BLOCK() const { return nLastPOWBlock; }
@@ -172,7 +172,7 @@ protected:
     int nMintRequiredConfirmations;
     int nRequiredAccumulation;
     int nDefaultSecurityLevel;
-    int nZerocoinHeaderVerssphx;
+    int nZerocoinHeaderVersion;
     int64_t nBudget_Fee_Confirmations;
     int nZerocoinStartHeight;
     int nZerocoinStartTime;

@@ -76,7 +76,7 @@ bool AppInit(int argc, char* argv[])
 
     // Process help and version before taking care about datadir
     if (mapArgs.count("-?") || mapArgs.count("-help") || mapArgs.count("-version")) {
-        std::string strUsage = _("Sphinx Core Daemon") + " " + _("version") + " " + FormatFullVerssphx() + "\n";
+        std::string strUsage = _("Sphinx Core Daemon") + " " + _("version") + " " + FormatFullVersion() + "\n";
 
         if (mapArgs.count("-version")) {
             strUsage += LicenseInfo();

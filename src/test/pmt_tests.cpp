@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE(pmt_test1)
             nHeight++;
         }
 
-        // check with random subsets with inclussphx chances 1, 1/2, 1/4, ..., 1/128
+        // check with random subsets with inclusion chances 1, 1/2, 1/4, ..., 1/128
         for (int att = 1; att < 15; att++) {
             // build random subset of txid's
             std::vector<bool> vMatch(nTx, false);
@@ -70,7 +70,7 @@ BOOST_AUTO_TEST_CASE(pmt_test1)
             CPartialMerkleTree pmt1(vTxid, vMatch);
 
             // serialize
-            CDataStream ss(SER_NETWORK, PROTOCOL_VERSSPHX);
+            CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
             ss << pmt1;
 
             // verify CPartialMerkleTree's size guarantees

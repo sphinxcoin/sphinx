@@ -29,7 +29,7 @@ CCriticalSection cs_mapAlerts;
 
 void CUnsignedAlert::SetNull()
 {
-    nVerssphx = 1;
+    nVersion = 1;
     nRelayUntil = 0;
     nExpiration = 0;
     nID = 0;
@@ -55,7 +55,7 @@ std::string CUnsignedAlert::ToString() const
         strSetSubVer += "\"" + str + "\" ";
     return strprintf(
         "CAlert(\n"
-        "    nVerssphx     = %d\n"
+        "    nVersion     = %d\n"
         "    nRelayUntil  = %d\n"
         "    nExpiration  = %d\n"
         "    nID          = %d\n"
@@ -68,7 +68,7 @@ std::string CUnsignedAlert::ToString() const
         "    strComment   = \"%s\"\n"
         "    strStatusBar = \"%s\"\n"
         ")\n",
-        nVerssphx,
+        nVersion,
         nRelayUntil,
         nExpiration,
         nID,
@@ -111,17 +111,17 @@ bool CAlert::Cancels(const CAlert& alert) const
     return (alert.nID <= nCancel || setCancel.count(alert.nID));
 }
 
-bool CAlert::AppliesTo(int nVerssphx, std::string strSubVerIn) const
+bool CAlert::AppliesTo(int nVersion, std::string strSubVerIn) const
 {
     // TODO: rework for client-version-embedded-in-strSubVer ?
     return (IsInEffect() &&
-            nMinVer <= nVerssphx && nVerssphx <= nMaxVer &&
+            nMinVer <= nVersion && nVersion <= nMaxVer &&
             (setSubVer.empty() || setSubVer.count(strSubVerIn)));
 }
 
 bool CAlert::AppliesToMe() const
 {
-    return AppliesTo(PROTOCOL_VERSSPHX, FormatSubVerssphx(CLIENT_NAME, CLIENT_VERSSPHX, std::vector<std::string>()));
+    return AppliesTo(PROTOCOL_VERSION, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<std::string>()));
 }
 
 bool CAlert::RelayTo(CNode* pnode) const
@@ -129,11 +129,11 @@ bool CAlert::RelayTo(CNode* pnode) const
     if (!IsInEffect())
         return false;
     // don't relay to nodes which haven't sent their version message
-    if (pnode->nVerssphx == 0)
+    if (pnode->nVersion == 0)
         return false;
     // returns true if wasn't already contained in the set
     if (pnode->setKnown.insert(GetHash()).second) {
-        if (AppliesTo(pnode->nVerssphx, pnode->strSubVer) ||
+        if (AppliesTo(pnode->nVersion, pnode->strSubVer) ||
             AppliesToMe() ||
             GetAdjustedTime() < nRelayUntil) {
             pnode->PushMessage("alert", *this);
@@ -150,7 +150,7 @@ bool CAlert::CheckSignature() const
         return error("CAlert::CheckSignature() : verify signature failed");
 
     // Now unserialize the data
-    CDataStream sMsg(vchMsg, SER_NETWORK, PROTOCOL_VERSSPHX);
+    CDataStream sMsg(vchMsg, SER_NETWORK, PROTOCOL_VERSION);
     sMsg >> *(CUnsignedAlert*)this;
     return true;
 }

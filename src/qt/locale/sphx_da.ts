@@ -1732,7 +1732,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>&amp;Enhed som beløb vises i</translation>
     </message>
     <message>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Vælg standard inddelingsenhed der vises når der afsendes mønter</translation>
     </message>
     <message>
@@ -1969,8 +1969,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Adresse/Hostnavn</translation>
     </message>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Ping Time</source>
@@ -2214,7 +2214,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
     <message>
         <source>Build date</source>
-        <translation>Verssphxsdato</translation>
+        <translation>Versionsdato</translation>
     </message>
     <message>
         <source>Current number of blocks</source>
@@ -2285,8 +2285,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Protokol</translation>
     </message>
     <message>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <source>Services</source>
@@ -3177,8 +3177,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>SPHX kerne</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
-        <translation>Verssphx %1</translation>
+        <source>Version %1</source>
+        <translation>Version %1</translation>
     </message>
     <message>
         <source>The Bitcoin Core developers</source>
@@ -3351,7 +3351,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Forhandler</translation>
     </message>
     <message>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
         <translation>Genererede mønter skal modnes i %1 blokke førend de kan anvendes. Da denne blok blev genereret, blev den udsendt til netværket for at blive tilføjet til blokkæden. Hvis det skulle mislykkes, vil status skifte til "afvist!" og den vil derefter ikke være brugbar. Dette sker ind i mellem, når en anden node genererer en blok nærligt samtidigt.</translation>
     </message>
     <message>
@@ -3765,7 +3765,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>0</source>
         <translation>0</translation>
@@ -3810,7 +3810,7 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Bedøm ubegrænsede transaktioner til &lt;n&gt;*1000 bytes pr. minut kontinuerligt (default:%u)</translation>
     </message>
     <message>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
         <translation>Opret nye filer med systemets default tilladelser i stedet for umask 077 (virker kun med tegnebogsfunktionen slået fra)</translation>
     </message>
     <message>
@@ -3835,8 +3835,8 @@ https://www.transifex.com/cevap/cevap-translations</translation>
         <translation>Aktiver swifttx, vis bekræftelser for låste transaktioner (bool, default: %s)</translation>
     </message>
     <message>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Opgiv regresssphx test mode, der bruger en særlig kæde, hvor blokke kan løses med det samme</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <translation>Opgiv regression test mode, der bruger en særlig kæde, hvor blokke kan løses med det samme</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
@@ -3970,7 +3970,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s "SPHX Alert" admin@foo.com
 </source>
@@ -4271,8 +4271,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Fejl! Der er ikke nok plads på disken.</translation>
     </message>
     <message>
-        <source>Error: Unsupported argument -tor found, use -onsphx.</source>
-        <translation>Fejl! Argumentet er ikke understøttet - tor fundet, brug -onsphx</translation>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation>Fejl! Argumentet er ikke understøttet - tor fundet, brug -onion</translation>
     </message>
     <message>
         <source>Error: Wallet locked, unable to create transaction!</source>
@@ -4363,8 +4363,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Utilstrækkelige midler</translation>
     </message>
     <message>
-        <source>Invalid -onsphx address: '%s'</source>
-        <translation>Ugyldig -onsphx adresse: '%s'</translation>
+        <source>Invalid -onion address: '%s'</source>
+        <translation>Ugyldig -onion adresse: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address: '%s'</source>
@@ -4583,8 +4583,8 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Accepter kun blokkæde matchende indbyggede kontrolpunkter (defaut %u)</translation>
     </message>
     <message>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation>Forbind udelukkende til noder i netværket &lt;net&gt; (ipv4, ipv6 eller onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Forbind udelukkende til noder i netværket &lt;net&gt; (ipv4, ipv6 eller onion)</translation>
     </message>
     <message>
         <source>Options:</source>
@@ -4663,12 +4663,12 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Server private nøgle (default: %s)</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
-        <translation>Sesssphxen blev ikke færdiggjort!</translation>
+        <source>Session not complete!</source>
+        <translation>Sessionen blev ikke færdiggjort!</translation>
     </message>
     <message>
-        <source>Sesssphx timed out.</source>
-        <translation>Sesssphxen brugte for meget tid.</translation>
+        <source>Session timed out.</source>
+        <translation>Sessionen brugte for meget tid.</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
@@ -4811,7 +4811,7 @@ For eksempel: alertnotify=Echo %% | mail - s "SPHX ALARM!" e-mail@administrator.
         <translation>Denne software er eksperimentiel</translation>
     </message>
     <message>
-        <source>This is intended for regresssphx testing tools and app development.</source>
+        <source>This is intended for regression testing tools and app development.</source>
         <translation>Dette er ment som et tilbagekørings test- og appudviklingsværktøj.</translation>
     </message>
     <message>

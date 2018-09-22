@@ -44,7 +44,7 @@ QT_TRANSLATE_NOOP("sphx-core", ""
 "Continuously rate-limit free transactions to <n>*1000 bytes per minute "
 "(default:%u)"),
 QT_TRANSLATE_NOOP("sphx-core", ""
-"Create new files with system default permisssphxs, instead of umask 077 (only "
+"Create new files with system default permissions, instead of umask 077 (only "
 "effective with disabled wallet functionality)"),
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Delete all wallet transactions and only recover those parts of the "
@@ -63,7 +63,7 @@ QT_TRANSLATE_NOOP("sphx-core", ""
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Enable spork administration functionality with the appropriate private key."),
 QT_TRANSLATE_NOOP("sphx-core", ""
-"Enter regresssphx test mode, which uses a special chain in which blocks can "
+"Enter regression test mode, which uses a special chain in which blocks can "
 "be solved instantly."),
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Error: Listening for incoming connections failed (listen returned error %s)"),
@@ -178,7 +178,7 @@ QT_TRANSLATE_NOOP("sphx-core", ""
 "(you do not need to remember this password)\n"
 "The username and password MUST NOT be the same.\n"
 "If the file does not exist, create it with owner-readable-only file "
-"permisssphxs.\n"
+"permissions.\n"
 "It is also recommended to set alertnotify so you are notified of problems;\n"
 "for example: alertnotify=echo %%s | mail -s \"SPHX Alert\" admin@foo.com\n"),
 QT_TRANSLATE_NOOP("sphx-core", ""
@@ -297,7 +297,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Error"),
 QT_TRANSLATE_NOOP("sphx-core", "Error: A fatal internal error occured, see debug.log for details"),
 QT_TRANSLATE_NOOP("sphx-core", "Error: Can't select current denominated inputs"),
 QT_TRANSLATE_NOOP("sphx-core", "Error: Disk space is low!"),
-QT_TRANSLATE_NOOP("sphx-core", "Error: Unsupported argument -tor found, use -onsphx."),
+QT_TRANSLATE_NOOP("sphx-core", "Error: Unsupported argument -tor found, use -onion."),
 QT_TRANSLATE_NOOP("sphx-core", "Error: Wallet locked, unable to create transaction!"),
 QT_TRANSLATE_NOOP("sphx-core", "Error: You already have pending entries in the Obfuscation pool"),
 QT_TRANSLATE_NOOP("sphx-core", "Failed to calculate accumulator checkpoint"),
@@ -324,7 +324,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Initialization sanity check failed. Sphinx Core 
 QT_TRANSLATE_NOOP("sphx-core", "Input is not valid."),
 QT_TRANSLATE_NOOP("sphx-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("sphx-core", "Insufficient funds."),
-QT_TRANSLATE_NOOP("sphx-core", "Invalid -onsphx address or hostname: '%s'"),
+QT_TRANSLATE_NOOP("sphx-core", "Invalid -onion address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("sphx-core", "Invalid -proxy address or hostname: '%s'"),
 QT_TRANSLATE_NOOP("sphx-core", "Invalid amount for -maxtxfee=<amount>: '%s'"),
 QT_TRANSLATE_NOOP("sphx-core", "Invalid amount for -minrelaytxfee=<amount>: '%s'"),
@@ -378,7 +378,7 @@ QT_TRANSLATE_NOOP("sphx-core", "Obfuscation is idle."),
 QT_TRANSLATE_NOOP("sphx-core", "Obfuscation request complete:"),
 QT_TRANSLATE_NOOP("sphx-core", "Obfuscation request incomplete:"),
 QT_TRANSLATE_NOOP("sphx-core", "Only accept block chain matching built-in checkpoints (default: %u)"),
-QT_TRANSLATE_NOOP("sphx-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onsphx)"),
+QT_TRANSLATE_NOOP("sphx-core", "Only connect to nodes in network <net> (ipv4, ipv6 or onion)"),
 QT_TRANSLATE_NOOP("sphx-core", "Options:"),
 QT_TRANSLATE_NOOP("sphx-core", "Password for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("sphx-core", "Percentage of automatically minted Zerocoin  (10-100, default: %u)"),
@@ -406,8 +406,8 @@ QT_TRANSLATE_NOOP("sphx-core", "Run in the background as a daemon and accept com
 QT_TRANSLATE_NOOP("sphx-core", "Send transactions as zero-fee transactions if possible (default: %u)"),
 QT_TRANSLATE_NOOP("sphx-core", "Server certificate file (default: %s)"),
 QT_TRANSLATE_NOOP("sphx-core", "Server private key (default: %s)"),
-QT_TRANSLATE_NOOP("sphx-core", "Sesssphx not complete!"),
-QT_TRANSLATE_NOOP("sphx-core", "Sesssphx timed out."),
+QT_TRANSLATE_NOOP("sphx-core", "Session not complete!"),
+QT_TRANSLATE_NOOP("sphx-core", "Session timed out."),
 QT_TRANSLATE_NOOP("sphx-core", "Set database cache size in megabytes (%d to %d, default: %d)"),
 QT_TRANSLATE_NOOP("sphx-core", "Set external address:port to get to this masternode (example: %s)"),
 QT_TRANSLATE_NOOP("sphx-core", "Set key pool size to <n> (default: %u)"),
@@ -445,11 +445,11 @@ QT_TRANSLATE_NOOP("sphx-core", "Synchronizing masternodes..."),
 QT_TRANSLATE_NOOP("sphx-core", "Synchronizing sporks..."),
 QT_TRANSLATE_NOOP("sphx-core", "This help message"),
 QT_TRANSLATE_NOOP("sphx-core", "This is experimental software."),
-QT_TRANSLATE_NOOP("sphx-core", "This is intended for regresssphx testing tools and app development."),
+QT_TRANSLATE_NOOP("sphx-core", "This is intended for regression testing tools and app development."),
 QT_TRANSLATE_NOOP("sphx-core", "This is not a Masternode."),
 QT_TRANSLATE_NOOP("sphx-core", "Threshold for disconnecting misbehaving peers (default: %u)"),
 QT_TRANSLATE_NOOP("sphx-core", "Tor control port password (default: empty)"),
-QT_TRANSLATE_NOOP("sphx-core", "Tor control port to use if onsphx listening enabled (default: %s)"),
+QT_TRANSLATE_NOOP("sphx-core", "Tor control port to use if onion listening enabled (default: %s)"),
 QT_TRANSLATE_NOOP("sphx-core", "Transaction amount too small"),
 QT_TRANSLATE_NOOP("sphx-core", "Transaction amounts must be positive"),
 QT_TRANSLATE_NOOP("sphx-core", "Transaction created successfully."),

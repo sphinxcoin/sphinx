@@ -39,7 +39,7 @@ bool CMasternodePaymentDB::Write(const CMasternodePayments& objToSave)
     int64_t nStart = GetTimeMillis();
 
     // serialize, checksum data up to that point, then append checksum
-    CDataStream ssObj(SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssObj(SER_DISK, CLIENT_VERSION);
     ssObj << strMagicMessage;                   // masternode cache file specific magic message
     ssObj << FLATDATA(Params().MessageStart()); // network specific magic number
     ssObj << objToSave;
@@ -48,7 +48,7 @@ bool CMasternodePaymentDB::Write(const CMasternodePayments& objToSave)
 
     // open output file, and associate with CAutoFile
     FILE* file = fopen(pathDB.string().c_str(), "wb");
-    CAutoFile fileout(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
     if (fileout.IsNull())
         return error("%s : Failed to open file %s", __func__, pathDB.string());
 
@@ -70,7 +70,7 @@ CMasternodePaymentDB::ReadResult CMasternodePaymentDB::Read(CMasternodePayments&
     int64_t nStart = GetTimeMillis();
     // open input file, and associate with CAutoFile
     FILE* file = fopen(pathDB.string().c_str(), "rb");
-    CAutoFile filein(file, SER_DISK, CLIENT_VERSSPHX);
+    CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
     if (filein.IsNull()) {
         error("%s : Failed to open file %s", __func__, pathDB.string());
         return FileError;
@@ -96,7 +96,7 @@ CMasternodePaymentDB::ReadResult CMasternodePaymentDB::Read(CMasternodePayments&
     }
     filein.fclose();
 
-    CDataStream ssObj(vchData, SER_DISK, CLIENT_VERSSPHX);
+    CDataStream ssObj(vchData, SER_DISK, CLIENT_VERSION);
 
     // verify stored checksum matches input data
     uint256 hashTmp = Hash(ssObj.begin(), ssObj.end());
@@ -338,7 +338,7 @@ int CMasternodePayments::GetMinMasternodePaymentsProto()
     if (IsSporkActive(SPORK_7_MASTERNODE_PAY_UPDATED_NODES))
         return ActiveProtocol();                          // Allow only updated peers
     else
-        return MIN_PEER_PROTO_VERSSPHX_BEFORE_ENFORCEMENT; // Also allow old peers as long as they are allowed to run
+        return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT; // Also allow old peers as long as they are allowed to run
 }
 
 void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
@@ -370,7 +370,7 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
         CMasternodePaymentWinner winner;
         vRecv >> winner;
 
-        if (pfrom->nVerssphx < ActiveProtocol()) return;
+        if (pfrom->nVersion < ActiveProtocol()) return;
 
         int nHeight;
         {
@@ -657,8 +657,8 @@ bool CMasternodePaymentWinner::IsValid(CNode* pnode, std::string& strError)
         return false;
     }
 
-    if (pmn->protocolVerssphx < ActiveProtocol()) {
-        strError = strprintf("Masternode protocol too old %d - req %d", pmn->protocolVerssphx, ActiveProtocol());
+    if (pmn->protocolVersion < ActiveProtocol()) {
+        strError = strprintf("Masternode protocol too old %d - req %d", pmn->protocolVersion, ActiveProtocol());
         LogPrint("masternode","CMasternodePaymentWinner::IsValid - %s\n", strError);
         return false;
     }

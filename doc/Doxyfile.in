@@ -34,11 +34,11 @@ DOXYFILE_ENCODING      = UTF-8
 
 PROJECT_NAME           = "Sphinx Core"
 
-# The PROJECT_NUMBER tag can be used to enter a project or revissphx number. This
+# The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = @PACKAGE_VERSSPHX@
+PROJECT_NUMBER         = @PACKAGE_VERSION@
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -274,10 +274,10 @@ OPTIMIZE_FOR_FORTRAN   = NO
 
 OPTIMIZE_OUTPUT_VHDL   = NO
 
-# Doxygen selects the parser to use depending on the extenssphx of the files it
+# Doxygen selects the parser to use depending on the extension of the files it
 # parses. With this tag you can assign which parser to use for a given
-# extenssphx. Doxygen has a built-in mapping, but you can override or extend it
-# using this tag. The format is ext=language, where ext is a file extenssphx, and
+# extension. Doxygen has a built-in mapping, but you can override or extend it
+# using this tag. The format is ext=language, where ext is a file extension, and
 # language is one of the parsers supported by doxygen: IDL, Java, Javascript,
 # C#, C, C++, D, PHP, Objective-C, Python, Fortran (fixed format Fortran:
 # FortranFixed, free formatted Fortran: FortranFree, unknown formatted Fortran:
@@ -286,12 +286,12 @@ OPTIMIZE_OUTPUT_VHDL   = NO
 # instance to make doxygen treat .inc files as Fortran files (default is PHP),
 # and .f files as C (default is Fortran), use: inc=Fortran f=C.
 #
-# Note: For files without extenssphx you can use no_extenssphx as a placeholder.
+# Note: For files without extension you can use no_extension as a placeholder.
 #
-# Note that for custom extenssphxs you also need to set FILE_PATTERNS otherwise
+# Note that for custom extensions you also need to set FILE_PATTERNS otherwise
 # the files are not read by doxygen.
 
-EXTENSSPHX_MAPPING      =
+EXTENSION_MAPPING      =
 
 # If the MARKDOWN_SUPPORT tag is enabled then doxygen pre-processes all comments
 # according to the Markdown format, which allows for more readable
@@ -378,7 +378,7 @@ GROUP_NESTED_COMPOUNDS = NO
 
 SUBGROUPING            = YES
 
-# When the INLINE_GROUPED_CLASSES tag is set to YES, classes, structs and unsphxs
+# When the INLINE_GROUPED_CLASSES tag is set to YES, classes, structs and unions
 # are shown inside the group in which they are included (e.g. using \ingroup)
 # instead of on a separate page (for HTML and Man pages) or section (for LaTeX
 # and RTF).
@@ -389,18 +389,18 @@ SUBGROUPING            = YES
 
 INLINE_GROUPED_CLASSES = NO
 
-# When the INLINE_SIMPLE_STRUCTS tag is set to YES, structs, classes, and unsphxs
+# When the INLINE_SIMPLE_STRUCTS tag is set to YES, structs, classes, and unions
 # with only public data fields or simple typedef fields will be shown inline in
 # the documentation of the scope in which they are defined (i.e. file,
 # namespace, or group documentation), provided this scope is documented. If set
-# to NO, structs, classes, and unsphxs are shown on a separate page (for HTML and
+# to NO, structs, classes, and unions are shown on a separate page (for HTML and
 # Man pages) or section (for LaTeX and RTF).
 # The default value is: NO.
 
 INLINE_SIMPLE_STRUCTS  = NO
 
-# When TYPEDEF_HIDES_STRUCT tag is enabled, a typedef of a struct, unsphx, or
-# enum is documented as struct, unsphx, or enum with the name of the typedef. So
+# When TYPEDEF_HIDES_STRUCT tag is enabled, a typedef of a struct, union, or
+# enum is documented as struct, union, or enum with the name of the typedef. So
 # typedef struct TypeS {} TypeT, will appear in the documentation as a struct
 # with name TypeT. When disabled the typedef will appear as a member of a file,
 # namespace, or class. And the struct will be named TypeS. This can typically be
@@ -497,7 +497,7 @@ HIDE_UNDOC_MEMBERS     = NO
 HIDE_UNDOC_CLASSES     = NO
 
 # If the HIDE_FRIEND_COMPOUNDS tag is set to YES, doxygen will hide all friend
-# (class|struct|unsphx) declarations. If set to NO, these declarations will be
+# (class|struct|union) declarations. If set to NO, these declarations will be
 # included in the documentation.
 # The default value is: NO.
 
@@ -681,15 +681,15 @@ SHOW_FILES             = YES
 
 SHOW_NAMESPACES        = YES
 
-# The FILE_VERSSPHX_FILTER tag can be used to specify a program or script that
+# The FILE_VERSION_FILTER tag can be used to specify a program or script that
 # doxygen should invoke to get the current version for each file (typically from
 # the version control system). Doxygen will invoke the program by executing (via
 # popen()) the command command input-file, where command is the value of the
-# FILE_VERSSPHX_FILTER tag, and input-file is the name of an input file provided
+# FILE_VERSION_FILTER tag, and input-file is the name of an input file provided
 # by doxygen. Whatever the program writes to standard output is used as the file
 # version. For an example see the documentation.
 
-FILE_VERSSPHX_FILTER    =
+FILE_VERSION_FILTER    =
 
 # The LAYOUT_FILE tag can be used to specify a layout file which will be parsed
 # by doxygen. The layout file controls the global structure of the generated
@@ -706,7 +706,7 @@ LAYOUT_FILE            =
 
 # The CITE_BIB_FILES tag can be used to specify one or more bib files containing
 # the reference definitions. This must be a list of .bib files. The .bib
-# extenssphx is automatically appended if omitted. This requires the bibtex tool
+# extension is automatically appended if omitted. This requires the bibtex tool
 # to be installed. See also http://en.wikipedia.org/wiki/BibTeX for more info.
 # For LaTeX the style of the bibliography can be controlled using
 # LATEX_BIB_STYLE. To use this feature you need bibtex and perl available in the
@@ -768,7 +768,7 @@ WARN_AS_ERROR          = NO
 # will be replaced by the file and line number from which the warning originated
 # and the warning text. Optionally the format may contain $version, which will
 # be replaced by the version of the file (if it could be obtained via
-# FILE_VERSSPHX_FILTER)
+# FILE_VERSION_FILTER)
 # The default value is: $file:$line: $text.
 
 WARN_FORMAT            = "$file:$line: $text"
@@ -786,7 +786,7 @@ WARN_LOGFILE           =
 # The INPUT tag is used to specify the files and/or directories that contain
 # documented source files. You may enter file names like myfile.cpp or
 # directories like /usr/src/myproject. Separate the files or directories with
-# spaces. See also FILE_PATTERNS and EXTENSSPHX_MAPPING
+# spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = src
@@ -804,8 +804,8 @@ INPUT_ENCODING         = UTF-8
 # FILE_PATTERNS tag to specify one or more wildcard patterns (like *.cpp and
 # *.h) to filter out the source-files in the directories.
 #
-# Note that for custom extenssphxs or not directly supported extenssphxs you also
-# need to set EXTENSSPHX_MAPPING for the extenssphx otherwise the files are not
+# Note that for custom extensions or not directly supported extensions you also
+# need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # read by doxygen.
 #
 # If left blank the following patterns are tested:*.c, *.cc, *.cxx, *.cpp,
@@ -934,8 +934,8 @@ IMAGE_PATH             =
 # code is scanned, but not when the output code is generated. If lines are added
 # or removed, the anchors will not be placed correctly.
 #
-# Note that for custom extenssphxs or not directly supported extenssphxs you also
-# need to set EXTENSSPHX_MAPPING for the extenssphx otherwise the files are not
+# Note that for custom extensions or not directly supported extensions you also
+# need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
 INPUT_FILTER           =
@@ -947,8 +947,8 @@ INPUT_FILTER           =
 # filters are used. If the FILTER_PATTERNS tag is empty or if none of the
 # patterns match the file name, INPUT_FILTER is applied.
 #
-# Note that for custom extenssphxs or not directly supported extenssphxs you also
-# need to set EXTENSSPHX_MAPPING for the extenssphx otherwise the files are not
+# Note that for custom extensions or not directly supported extensions you also
+# need to set EXTENSION_MAPPING for the extension otherwise the files are not
 # properly processed by doxygen.
 
 FILTER_PATTERNS        =
@@ -1067,7 +1067,7 @@ VERBATIM_HEADERS       = YES
 
 # If the ALPHABETICAL_INDEX tag is set to YES, an alphabetical index of all
 # compounds will be generated. Enable this if the project contains a lot of
-# classes, structs, unsphxs or interfaces.
+# classes, structs, unions or interfaces.
 # The default value is: YES.
 
 ALPHABETICAL_INDEX     = YES
@@ -1104,12 +1104,12 @@ GENERATE_HTML          = YES
 
 HTML_OUTPUT            = html
 
-# The HTML_FILE_EXTENSSPHX tag can be used to specify the file extenssphx for each
+# The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).
 # The default value is: .html.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_FILE_EXTENSSPHX    = .html
+HTML_FILE_EXTENSION    = .html
 
 # The HTML_HEADER tag can be used to specify a user-defined HTML header file for
 # each generated HTML page. If the tag is left blank doxygen will generate a
@@ -1530,12 +1530,12 @@ MATHJAX_FORMAT         = HTML-CSS
 
 MATHJAX_RELPATH        = http://www.mathjax.org/mathjax
 
-# The MATHJAX_EXTENSSPHXS tag can be used to specify one or more MathJax
-# extenssphx names that should be enabled during MathJax rendering. For example
-# MATHJAX_EXTENSSPHXS = TeX/AMSmath TeX/AMSsymbols
+# The MATHJAX_EXTENSIONS tag can be used to specify one or more MathJax
+# extension names that should be enabled during MathJax rendering. For example
+# MATHJAX_EXTENSIONS = TeX/AMSmath TeX/AMSsymbols
 # This tag requires that the tag USE_MATHJAX is set to YES.
 
-MATHJAX_EXTENSSPHXS     =
+MATHJAX_EXTENSIONS     =
 
 # The MATHJAX_CODEFILE tag can be used to specify a file with javascript pieces
 # of code that will be used on startup of the MathJax code. See the MathJax site
@@ -1850,11 +1850,11 @@ RTF_HYPERLINKS         = NO
 RTF_STYLESHEET_FILE    =
 
 # Set optional variables used in the generation of an RTF document. Syntax is
-# similar to doxygen's config file. A template extenssphxs file can be generated
-# using doxygen -e rtf extenssphxFile.
+# similar to doxygen's config file. A template extensions file can be generated
+# using doxygen -e rtf extensionFile.
 # This tag requires that the tag GENERATE_RTF is set to YES.
 
-RTF_EXTENSSPHXS_FILE    =
+RTF_EXTENSIONS_FILE    =
 
 # If the RTF_SOURCE_CODE tag is set to YES then doxygen will include source code
 # with syntax highlighting in the RTF output.
@@ -1885,18 +1885,18 @@ GENERATE_MAN           = NO
 
 MAN_OUTPUT             = man
 
-# The MAN_EXTENSSPHX tag determines the extenssphx that is added to the generated
+# The MAN_EXTENSION tag determines the extension that is added to the generated
 # man pages. In case the manual section does not start with a number, the number
-# 3 is prepended. The dot (.) at the beginning of the MAN_EXTENSSPHX tag is
+# 3 is prepended. The dot (.) at the beginning of the MAN_EXTENSION tag is
 # optional.
 # The default value is: .3.
 # This tag requires that the tag GENERATE_MAN is set to YES.
 
-MAN_EXTENSSPHX          = .3
+MAN_EXTENSION          = .3
 
 # The MAN_SUBDIR tag determines the name of the directory created within
 # MAN_OUTPUT in which the man pages are placed. If defaults to man followed by
-# MAN_EXTENSSPHX with the initial . removed.
+# MAN_EXTENSION with the initial . removed.
 # This tag requires that the tag GENERATE_MAN is set to YES.
 
 MAN_SUBDIR             =
@@ -2024,17 +2024,17 @@ PERLMOD_MAKEVAR_PREFIX =
 
 ENABLE_PREPROCESSING   = YES
 
-# If the MACRO_EXPANSSPHX tag is set to YES, doxygen will expand all macro names
+# If the MACRO_EXPANSION tag is set to YES, doxygen will expand all macro names
 # in the source code. If set to NO, only conditional compilation will be
-# performed. Macro expanssphx can be done in a controlled way by setting
+# performed. Macro expansion can be done in a controlled way by setting
 # EXPAND_ONLY_PREDEF to YES.
 # The default value is: NO.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
-MACRO_EXPANSSPHX        = NO
+MACRO_EXPANSION        = NO
 
-# If the EXPAND_ONLY_PREDEF and MACRO_EXPANSSPHX tags are both set to YES then
-# the macro expanssphx is limited to the macros specified with the PREDEFINED and
+# If the EXPAND_ONLY_PREDEF and MACRO_EXPANSION tags are both set to YES then
+# the macro expansion is limited to the macros specified with the PREDEFINED and
 # EXPAND_AS_DEFINED tags.
 # The default value is: NO.
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
@@ -2073,7 +2073,7 @@ INCLUDE_FILE_PATTERNS  =
 
 PREDEFINED             =
 
-# If the MACRO_EXPANSSPHX and EXPAND_ONLY_PREDEF tags are set to YES then this
+# If the MACRO_EXPANSION and EXPAND_ONLY_PREDEF tags are set to YES then this
 # tag can be used to specify a list of macro names that should be expanded. The
 # macro definition that is found in the sources will be used. Use the PREDEFINED
 # tag if you want to use a different macro definition that overrules the
@@ -2336,7 +2336,7 @@ DIRECTORY_GRAPH        = YES
 # generated by dot. For an explanation of the image formats see the section
 # output formats in the documentation of the dot tool (Graphviz (see:
 # http://www.graphviz.org/)).
-# Note: If you choose svg you need to set HTML_FILE_EXTENSSPHX to xhtml in order
+# Note: If you choose svg you need to set HTML_FILE_EXTENSION to xhtml in order
 # to make the SVG files visible in IE 9+ (other browsers do not have this
 # requirement).
 # Possible values are: png, jpg, gif, svg, png:gd, png:gd:gd, png:cairo,
@@ -2352,7 +2352,7 @@ DOT_IMAGE_FORMAT       = svg
 #
 # Note that this requires a modern browser other than Internet Explorer. Tested
 # and working are Firefox, Chrome, Safari, and Opera.
-# Note: For IE 9+ you need to set HTML_FILE_EXTENSSPHX to xhtml in order to make
+# Note: For IE 9+ you need to set HTML_FILE_EXTENSION to xhtml in order to make
 # the SVG files visible. Older versions of IE do not have SVG support.
 # The default value is: NO.
 # This tag requires that the tag HAVE_DOT is set to YES.

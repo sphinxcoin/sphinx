@@ -37,7 +37,7 @@
 #include <QTimer>
 #include <QStringList>
 
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
 #include <QUrl>
 #endif
 
@@ -288,13 +288,13 @@ RPCConsole::RPCConsole(QWidget* parent) : QDialog(parent),
     connect(ui->btn_resync, SIGNAL(clicked()), this, SLOT(walletResync()));
 
     // set library version labels
-    ui->openSSLVerssphx->setText(SSLeay_version(SSLEAY_VERSSPHX));
+    ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
 #ifdef ENABLE_WALLET
-    ui->berkeleyDBVerssphx->setText(DbEnv::version(0, 0, 0));
+    ui->berkeleyDBVersion->setText(DbEnv::version(0, 0, 0));
     ui->wallet_path->setText(QString::fromStdString(GetDataDir().string() + QDir::separator().toLatin1() + GetArg("-wallet", "wallet.dat")));
 #else
-    ui->label_berkeleyDBVerssphx->hide();
-    ui->berkeleyDBVerssphx->hide();
+    ui->label_berkeleyDBVersion->hide();
+    ui->berkeleyDBVersion->hide();
 #endif
     // Register RPC timer interface
     rpcTimerInterface = new QtRPCTimerInterface();
@@ -393,7 +393,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         ui->peerWidget->setSelectionMode(QAbstractItemView::SingleSelection);
         ui->peerWidget->setContextMenuPolicy(Qt::CustomContextMenu);
         ui->peerWidget->setColumnWidth(PeerTableModel::Address, ADDRESS_COLUMN_WIDTH);
-        ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSSPHX_COLUMN_WIDTH);
+        ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSION_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
 
@@ -465,7 +465,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         showOrHideBanTableIfRequired();
 
         // Provide initial values
-        ui->clientVerssphx->setText(model->formatFullVerssphx());
+        ui->clientVersion->setText(model->formatFullVersion());
         ui->clientName->setText(model->clientName());
         ui->buildDate->setText(model->formatBuildDate());
         ui->startupTime->setText(model->formatClientStartupTime());
@@ -893,7 +893,7 @@ void RPCConsole::updateNodeDetail(const CNodeCombinedStats* stats)
     ui->peerPingTime->setText(GUIUtil::formatPingTime(stats->nodeStats.dPingTime));
     ui->peerPingWait->setText(GUIUtil::formatPingTime(stats->nodeStats.dPingWait));
     ui->timeoffset->setText(GUIUtil::formatTimeOffset(stats->nodeStats.nTimeOffset));
-    ui->peerVerssphx->setText(QString("%1").arg(QString::number(stats->nodeStats.nVerssphx)));
+    ui->peerVersion->setText(QString("%1").arg(QString::number(stats->nodeStats.nVersion)));
     ui->peerSubversion->setText(QString::fromStdString(stats->nodeStats.cleanSubVer));
     ui->peerDirection->setText(stats->nodeStats.fInbound ? tr("Inbound") : tr("Outbound"));
     ui->peerHeight->setText(QString("%1").arg(QString::number(stats->nodeStats.nStartingHeight)));

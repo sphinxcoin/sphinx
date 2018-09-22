@@ -161,7 +161,7 @@ public:
     int64_t nTimeConnected;
     int64_t nTimeOffset;
     std::string addrName;
-    int nVerssphx;
+    int nVersion;
     std::string cleanSubVer;
     bool fInbound;
     int nStartingHeight;
@@ -188,7 +188,7 @@ public:
 
     int64_t nTime; // time (in microseconds) of message receipt.
 
-    CNetMessage(int nTypeIn, int nVerssphxIn) : hdrbuf(nTypeIn, nVerssphxIn), vRecv(nTypeIn, nVerssphxIn)
+    CNetMessage(int nTypeIn, int nVersionIn) : hdrbuf(nTypeIn, nVersionIn), vRecv(nTypeIn, nVersionIn)
     {
         hdrbuf.resize(24);
         in_data = false;
@@ -204,10 +204,10 @@ public:
         return (hdr.nMessageSize == nDataPos);
     }
 
-    void SetVerssphx(int nVerssphxIn)
+    void SetVersion(int nVersionIn)
     {
-        hdrbuf.SetVerssphx(nVerssphxIn);
-        vRecv.SetVerssphx(nVerssphxIn);
+        hdrbuf.SetVersion(nVersionIn);
+        vRecv.SetVersion(nVersionIn);
     }
 
     int readHeader(const char* pch, unsigned int nBytes);
@@ -225,8 +225,8 @@ typedef enum BanReason
 class CBanEntry
 {
 public:
-    static const int CURRENT_VERSSPHX=1;
-    int nVerssphx;
+    static const int CURRENT_VERSION=1;
+    int nVersion;
     int64_t nCreateTime;
     int64_t nBanUntil;
     uint8_t banReason;
@@ -245,9 +245,9 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx) {
-        READWRITE(this->nVerssphx);
-        nVerssphx = this->nVerssphx;
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
         READWRITE(nCreateTime);
         READWRITE(nBanUntil);
         READWRITE(banReason);
@@ -255,7 +255,7 @@ public:
 
     void SetNull()
     {
-        nVerssphx = CBanEntry::CURRENT_VERSSPHX;
+        nVersion = CBanEntry::CURRENT_VERSION;
         nCreateTime = 0;
         nBanUntil = 0;
         banReason = BanReasonUnknown;
@@ -295,7 +295,7 @@ public:
     std::deque<CNetMessage> vRecvMsg;
     CCriticalSection cs_vRecvMsg;
     uint64_t nRecvBytes;
-    int nRecvVerssphx;
+    int nRecvVersion;
 
     int64_t nLastSend;
     int64_t nLastRecv;
@@ -304,7 +304,7 @@ public:
     CAddress addr;
     std::string addrName;
     CService addrLocal;
-    int nVerssphx;
+    int nVersion;
     // strSubVer is whatever byte array we read from the wire. However, this field is intended
     // to be printed out, displayed to humans in various forms and so on. So we sanitize it and
     // store the sanitized version in cleanSubVer. The original should be used when dealing with
@@ -416,11 +416,11 @@ public:
     bool ReceiveMsgBytes(const char* pch, unsigned int nBytes);
 
     // requires LOCK(cs_vRecvMsg)
-    void SetRecvVerssphx(int nVerssphxIn)
+    void SetRecvVersion(int nVersionIn)
     {
-        nRecvVerssphx = nVerssphxIn;
+        nRecvVersion = nVersionIn;
         BOOST_FOREACH (CNetMessage& msg, vRecvMsg)
-            msg.SetVerssphx(nVerssphxIn);
+            msg.SetVersion(nVersionIn);
     }
 
     CNode* AddRef()
@@ -483,7 +483,7 @@ public:
     // TODO: Document the precondition of this function.  Is cs_vSend locked?
     void EndMessage() UNLOCK_FUNCTION(cs_vSend);
 
-    void PushVerssphx();
+    void PushVersion();
 
 
     void PushMessage(const char* pszCommand)
@@ -683,7 +683,7 @@ public:
     void Subscribe(unsigned int nChannel, unsigned int nHops = 0);
     void CancelSubscribe(unsigned int nChannel);
     void CloseSocketDisconnect();
-    bool DisconnectOldProtocol(int nVerssphxRequired, std::string strLastCommand = "");
+    bool DisconnectOldProtocol(int nVersionRequired, std::string strLastCommand = "");
 
     // Denial-of-service detection/prevention
     // The idea is to detect peers that are behaving

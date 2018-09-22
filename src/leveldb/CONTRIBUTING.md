@@ -19,9 +19,9 @@ instructions for how to sign and return it.
 ## Submitting a Patch
 
 1. Sign the contributors license agreement above.
-2. Decide which code you want to submit. A submisssphx should be a set of changes
+2. Decide which code you want to submit. A submission should be a set of changes
 that addresses one issue in the [issue tracker](https://github.com/google/leveldb/issues).
-Please don't mix more than one logical change per submisssphx, because it makes
+Please don't mix more than one logical change per submission, because it makes
 the history hard to follow. If you want to make a change
 (e.g. add a sample or feature) that doesn't have a corresponding issue in the
 issue tracker, please create one.

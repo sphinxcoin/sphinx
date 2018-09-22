@@ -30,7 +30,7 @@ class CActiveMasternode;
 #define POOL_STATUS_ACCEPTING_ENTRIES 3    // accepting entries
 #define POOL_STATUS_FINALIZE_TRANSACTION 4 // master node will broadcast what it accepted
 #define POOL_STATUS_SIGNING 5              // check inputs/outputs, sign final tx
-#define POOL_STATUS_TRANSMISSSPHX 6         // transmit transaction
+#define POOL_STATUS_TRANSMISSION 6         // transmit transaction
 #define POOL_STATUS_ERROR 7                // error
 #define POOL_STATUS_SUCCESS 8              // success
 
@@ -181,7 +181,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(nDenom);
         READWRITE(vin);
@@ -201,11 +201,11 @@ public:
     }
 
     /// Get the protocol version
-    bool GetProtocolVerssphx(int& protocolVerssphx)
+    bool GetProtocolVersion(int& protocolVersion)
     {
         CMasternode* pmn = mnodeman.Find(vin);
         if (pmn != NULL) {
-            protocolVerssphx = pmn->protocolVerssphx;
+            protocolVersion = pmn->protocolVersion;
             return true;
         }
         return false;
@@ -282,11 +282,11 @@ private:
     std::string lastMessage;
     bool unitTest;
 
-    int sesssphxID;
+    int sessionID;
 
-    int sesssphxUsers;            //N Users have said they'll join
-    bool sesssphxFoundMasternode; //If we've found a compatible Masternode
-    std::vector<CTransaction> vecSesssphxCollateral;
+    int sessionUsers;            //N Users have said they'll join
+    bool sessionFoundMasternode; //If we've found a compatible Masternode
+    std::vector<CTransaction> vecSessionCollateral;
 
     int cachedLastSuccess;
 
@@ -316,9 +316,9 @@ public:
         ERR_NOT_A_MN,
         ERR_QUEUE_FULL,
         ERR_RECENT,
-        ERR_SESSSPHX,
+        ERR_SESSION,
         ERR_MISSING_TX,
-        ERR_VERSSPHX,
+        ERR_VERSION,
         MSG_NOERR,
         MSG_SUCCESS,
         MSG_ENTRIES_ADDED
@@ -328,7 +328,7 @@ public:
     CScript collateralPubKey;
 
     CMasternode* pSubmittedToMasternode;
-    int sesssphxDenom;    //Users must submit an denom matching this
+    int sessionDenom;    //Users must submit an denom matching this
     int cachedNumBlocks; //used for the overview screen
 
     CObfuscationPool()
@@ -420,7 +420,7 @@ public:
         if (state != newState) {
             lastTimeChanged = GetTimeMillis();
             if (fMasterNode) {
-                RelayStatus(obfuScationPool.sesssphxID, obfuScationPool.GetState(), obfuScationPool.GetEntriesCount(), MASTERNODE_RESET);
+                RelayStatus(obfuScationPool.sessionID, obfuScationPool.GetState(), obfuScationPool.GetEntriesCount(), MASTERNODE_RESET);
             }
         }
         state = newState;
@@ -433,16 +433,16 @@ public:
     }
 
     /// Do we have enough users to take entries?
-    bool IsSesssphxReady()
+    bool IsSessionReady()
     {
-        return sesssphxUsers >= GetMaxPoolTransactions();
+        return sessionUsers >= GetMaxPoolTransactions();
     }
 
     /// Are these outputs compatible with other client in the pool?
     bool IsCompatibleWithEntries(std::vector<CTxOut>& vout);
 
     /// Is this amount compatible with other client in the pool?
-    bool IsCompatibleWithSesssphx(CAmount nAmount, CTransaction txCollateral, int& errorID);
+    bool IsCompatibleWithSession(CAmount nAmount, CTransaction txCollateral, int& errorID);
 
     /// Passively run Obfuscation in the background according to the configuration in settings (only for QT)
     bool DoAutomaticDenominating(bool fDryRun = false);
@@ -470,7 +470,7 @@ public:
     /// As a client, send a transaction to a Masternode to start the denomination process
     void SendObfuscationDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, CAmount amount);
     /// Get Masternode updates about the progress of Obfuscation
-    bool StatusUpdate(int newState, int newEntriesCount, int newAccepted, int& errorID, int newSesssphxID = 0);
+    bool StatusUpdate(int newState, int newEntriesCount, int newAccepted, int& errorID, int newSessionID = 0);
 
     /// As a client, check and sign the final transaction
     bool SignFinalTransaction(CTransaction& finalTransactionNew, CNode* node);
@@ -504,12 +504,12 @@ public:
     // Relay Obfuscation Messages
     //
 
-    void RelayFinalTransaction(const int sesssphxID, const CTransaction& txNew);
+    void RelayFinalTransaction(const int sessionID, const CTransaction& txNew);
     void RelaySignaturesAnon(std::vector<CTxIn>& vin);
     void RelayInAnon(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout);
     void RelayIn(const std::vector<CTxDSIn>& vin, const CAmount& nAmount, const CTransaction& txCollateral, const std::vector<CTxDSOut>& vout);
-    void RelayStatus(const int sesssphxID, const int newState, const int newEntriesCount, const int newAccepted, const int errorID = MSG_NOERR);
-    void RelayCompletedTransaction(const int sesssphxID, const bool error, const int errorID);
+    void RelayStatus(const int sessionID, const int newState, const int newEntriesCount, const int newAccepted, const int errorID = MSG_NOERR);
+    void RelayCompletedTransaction(const int sessionID, const bool error, const int errorID);
 };
 
 void ThreadCheckObfuScationPool();

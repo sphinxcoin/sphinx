@@ -1489,7 +1489,7 @@ MultiSend: %1</translation>
         <translation>Adres/Hostnaam</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versie</translation>
     </message>
     <message>
@@ -1777,7 +1777,7 @@ MultiSend: %1</translation>
         <translation>Protocol</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versie</translation>
     </message>
     <message>
@@ -2365,7 +2365,7 @@ MultiSend: %1</translation>
         <translation>SPHX Kern</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Versie %1</translation>
     </message>
     <message>
@@ -2737,7 +2737,7 @@ MultiSend: %1</translation>
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
         <source>Select xSPHX to Spend</source>
         <translation>Selecteer xSPHX om te spenderen</translation>
@@ -2950,7 +2950,7 @@ MultiSend: %1</translation>
         <translation>RPC server opties:</translation>
     </message>
     <message>
-        <source>Sesssphx not complete!</source>
+        <source>Session not complete!</source>
         <translation>Sessie niet voltooid!</translation>
     </message>
     <message>

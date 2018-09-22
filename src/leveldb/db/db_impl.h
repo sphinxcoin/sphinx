@@ -19,9 +19,9 @@ namespace leveldb {
 
 class MemTable;
 class TableCache;
-class Verssphx;
-class VerssphxEdit;
-class VerssphxSet;
+class Version;
+class VersionEdit;
+class VersionSet;
 
 class DBImpl : public DB {
  public:
@@ -78,7 +78,7 @@ class DBImpl : public DB {
   // Recover the descriptor from persistent storage.  May do a significant
   // amount of work to recover recently logged updates.  Any changes to
   // be made to the descriptor are added to *edit.
-  Status Recover(VerssphxEdit* edit) EXCLUSIVE_LOCKS_REQUIRED(mutex_);
+  Status Recover(VersionEdit* edit) EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
   void MaybeIgnoreError(Status* s) const;
 
@@ -91,11 +91,11 @@ class DBImpl : public DB {
   void CompactMemTable() EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
   Status RecoverLogFile(uint64_t log_number,
-                        VerssphxEdit* edit,
+                        VersionEdit* edit,
                         SequenceNumber* max_sequence)
       EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
-  Status WriteLevel0Table(MemTable* mem, VerssphxEdit* edit, Verssphx* base)
+  Status WriteLevel0Table(MemTable* mem, VersionEdit* edit, Version* base)
       EXCLUSIVE_LOCKS_REQUIRED(mutex_);
 
   Status MakeRoomForWrite(bool force /* compact even if there is room? */)
@@ -168,7 +168,7 @@ class DBImpl : public DB {
   };
   ManualCompaction* manual_compaction_;
 
-  VerssphxSet* versions_;
+  VersionSet* versions_;
 
   // Have we encountered a background error in paranoid mode?
   Status bg_error_;

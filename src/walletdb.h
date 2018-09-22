@@ -48,8 +48,8 @@ enum DBErrors {
 class CKeyMetadata
 {
 public:
-    static const int CURRENT_VERSSPHX = 1;
-    int nVerssphx;
+    static const int CURRENT_VERSION = 1;
+    int nVersion;
     int64_t nCreateTime; // 0 means unknown
 
     CKeyMetadata()
@@ -58,23 +58,23 @@ public:
     }
     CKeyMetadata(int64_t nCreateTime_)
     {
-        nVerssphx = CKeyMetadata::CURRENT_VERSSPHX;
+        nVersion = CKeyMetadata::CURRENT_VERSION;
         nCreateTime = nCreateTime_;
     }
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
-        READWRITE(this->nVerssphx);
-        nVerssphx = this->nVerssphx;
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
         READWRITE(nCreateTime);
     }
 
     void SetNull()
     {
-        nVerssphx = CKeyMetadata::CURRENT_VERSSPHX;
+        nVersion = CKeyMetadata::CURRENT_VERSION;
         nCreateTime = 0;
     }
 };
@@ -128,7 +128,7 @@ public:
     bool WritePool(int64_t nPool, const CKeyPool& keypool);
     bool ErasePool(int64_t nPool);
 
-    bool WriteMinVerssphx(int nVerssphx);
+    bool WriteMinVersion(int nVersion);
 
     /// This writes directly to the database, and will not update the CWallet's cached accounting entries!
     /// Use wallet.AddAccountingEntry instead, to write *and* update its caches.

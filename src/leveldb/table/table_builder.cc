@@ -146,14 +146,14 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
   Slice raw = block->Finish();
 
   Slice block_contents;
-  CompresssphxType type = r->options.compresssphx;
-  // TODO(postrelease): Support more compresssphx options: zlib?
+  CompressionType type = r->options.compression;
+  // TODO(postrelease): Support more compression options: zlib?
   switch (type) {
-    case kNoCompresssphx:
+    case kNoCompression:
       block_contents = raw;
       break;
 
-    case kSnappyCompresssphx: {
+    case kSnappyCompression: {
       std::string* compressed = &r->compressed_output;
       if (port::Snappy_Compress(raw.data(), raw.size(), compressed) &&
           compressed->size() < raw.size() - (raw.size() / 8u)) {
@@ -162,7 +162,7 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
         // Snappy not supported, or compressed less than 12.5%, so just
         // store uncompressed form
         block_contents = raw;
-        type = kNoCompresssphx;
+        type = kNoCompression;
       }
       break;
     }
@@ -173,7 +173,7 @@ void TableBuilder::WriteBlock(BlockBuilder* block, BlockHandle* handle) {
 }
 
 void TableBuilder::WriteRawBlock(const Slice& block_contents,
-                                 CompresssphxType type,
+                                 CompressionType type,
                                  BlockHandle* handle) {
   Rep* r = rep_;
   handle->set_offset(r->offset);
@@ -206,7 +206,7 @@ Status TableBuilder::Finish() {
 
   // Write filter block
   if (ok() && r->filter_block != NULL) {
-    WriteRawBlock(r->filter_block->Finish(), kNoCompresssphx,
+    WriteRawBlock(r->filter_block->Finish(), kNoCompression,
                   &filter_block_handle);
   }
 

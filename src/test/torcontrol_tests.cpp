@@ -21,8 +21,8 @@ BOOST_AUTO_TEST_CASE(util_SplitTorReplyLine)
 {
     // Data we should receive during normal usage
     CheckSplitTorReplyLine(
-        "PROTOCOLINFO PIVERSSPHX",
-        "PROTOCOLINFO", "PIVERSSPHX");
+        "PROTOCOLINFO PIVERSION",
+        "PROTOCOLINFO", "PIVERSION");
     CheckSplitTorReplyLine(
         "AUTH METHODS=COOKIE,SAFECOOKIE COOKIEFILE=\"/home/x/.tor/control_auth_cookie\"",
         "AUTH", "METHODS=COOKIE,SAFECOOKIE COOKIEFILE=\"/home/x/.tor/control_auth_cookie\"");
@@ -33,8 +33,8 @@ BOOST_AUTO_TEST_CASE(util_SplitTorReplyLine)
         "AUTH METHODS=HASHEDPASSWORD",
         "AUTH", "METHODS=HASHEDPASSWORD");
     CheckSplitTorReplyLine(
-        "VERSSPHX Tor=\"0.2.9.8 (git-a0df013ea241b026)\"",
-        "VERSSPHX", "Tor=\"0.2.9.8 (git-a0df013ea241b026)\"");
+        "VERSION Tor=\"0.2.9.8 (git-a0df013ea241b026)\"",
+        "VERSION", "Tor=\"0.2.9.8 (git-a0df013ea241b026)\"");
     CheckSplitTorReplyLine(
         "AUTHCHALLENGE SERVERHASH=aaaa SERVERNONCE=bbbb",
         "AUTHCHALLENGE", "SERVERHASH=aaaa SERVERNONCE=bbbb");
@@ -91,8 +91,8 @@ BOOST_AUTO_TEST_CASE(util_ParseTorReplyMapping)
             {"SERVERNONCE", "bbbb"},
         });
     CheckParseTorReplyMapping(
-        "ServiceID=exampleonsphx1234", {
-            {"ServiceID", "exampleonsphx1234"},
+        "ServiceID=exampleonion1234", {
+            {"ServiceID", "exampleonion1234"},
         });
     CheckParseTorReplyMapping(
         "PrivateKey=RSA1024:BLOB", {
@@ -172,7 +172,7 @@ BOOST_AUTO_TEST_CASE(util_ParseTorReplyMapping)
     BOOST_CHECK_EQUAL(r_it->second.size(), 1);
     BOOST_CHECK_EQUAL(r_it->second[0], '\0');
 
-    // A more complex valid grammar. PROTOCOLINFO accepts a VerssphxLine that
+    // A more complex valid grammar. PROTOCOLINFO accepts a VersionLine that
     // takes a key=value pair followed by an OptArguments, making this valid.
     // Because an OptArguments contains no semantic data, there is no point in
     // parsing it.

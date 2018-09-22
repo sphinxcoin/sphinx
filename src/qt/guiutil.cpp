@@ -40,7 +40,7 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
-#if BOOST_FILESYSTEM_VERSSPHX >= 3
+#if BOOST_FILESYSTEM_VERSION >= 3
 #include <boost/filesystem/detail/utf8_codecvt_facet.hpp>
 #endif
 
@@ -58,23 +58,23 @@
 #include <QTextDocument> // for Qt::mightBeRichText
 #include <QThread>
 
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
 #include <QUrl>
 #else
 #include <QUrlQuery>
 #endif
 
-#if BOOST_FILESYSTEM_VERSSPHX >= 3
+#if BOOST_FILESYSTEM_VERSION >= 3
 static boost::filesystem::detail::utf8_codecvt_facet utf8;
 #endif
 
 #if defined(Q_OS_MAC)
-extern double NSAppKitVerssphxNumber;
-#if !defined(NSAppKitVerssphxNumber10_8)
-#define NSAppKitVerssphxNumber10_8 1187
+extern double NSAppKitVersionNumber;
+#if !defined(NSAppKitVersionNumber10_8)
+#define NSAppKitVersionNumber10_8 1187
 #endif
-#if !defined(NSAppKitVerssphxNumber10_9)
-#define NSAppKitVerssphxNumber10_9 1265
+#if !defined(NSAppKitVersionNumber10_9)
+#define NSAppKitVersionNumber10_9 1265
 #endif
 #endif
 
@@ -95,7 +95,7 @@ QString dateTimeStr(qint64 nTime)
 QFont bitcoinAddressFont()
 {
     QFont font("Monospace");
-#if QT_VERSSPHX >= 0x040800
+#if QT_VERSION >= 0x040800
     font.setStyleHint(QFont::Monospace);
 #else
     font.setStyleHint(QFont::TypeWriter);
@@ -108,7 +108,7 @@ void setupAddressWidget(QValidatedLineEdit* widget, QWidget* parent)
     parent->setFocusProxy(widget);
 
     widget->setFont(bitcoinAddressFont());
-#if QT_VERSSPHX >= 0x040700
+#if QT_VERSION >= 0x040700
     // We don't want translators to use own addresses in translations
     // and this is the only place, where this address is supplied.
     widget->setPlaceholderText(QObject::tr("Enter a Sphinx address (e.g. %1)").arg("idaeAtzaCGnJ5SUPXKoFxtgzbvv5nfBSDn"));
@@ -140,7 +140,7 @@ bool parseBitcoinURI(const QUrl& uri, SendCoinsRecipient* out)
     }
     rv.amount = 0;
 
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
     QList<QPair<QString, QString> > items = uri.queryItems();
 #else
     QUrlQuery uriQuery(uri);
@@ -226,7 +226,7 @@ bool isDust(const QString& address, const CAmount& amount)
 
 QString HtmlEscape(const QString& str, bool fMultiLine)
 {
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
     QString escaped = Qt::escape(str);
 #else
     QString escaped = str.toHtmlEscaped();
@@ -274,7 +274,7 @@ QString getSaveFileName(QWidget* parent, const QString& caption, const QString& 
     QString myDir;
     if (dir.isEmpty()) // Default to user documents location
     {
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
         myDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
 #else
         myDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
@@ -316,7 +316,7 @@ QString getOpenFileName(QWidget* parent, const QString& caption, const QString& 
     QString myDir;
     if (dir.isEmpty()) // Default to user documents location
     {
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
         myDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
 #else
         myDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
@@ -411,9 +411,9 @@ void SubstituteFonts(const QString& language)
 // Solution: If building with the 10.7 SDK or lower and the user's platform
 // is 10.9 or higher at runtime, substitute the correct font. This needs to
 // happen before the QApplication is created.
-#if defined(MAC_OS_X_VERSSPHX_MAX_ALLOWED) && MAC_OS_X_VERSSPHX_MAX_ALLOWED < MAC_OS_X_VERSSPHX_10_8
-    if (floor(NSAppKitVerssphxNumber) > NSAppKitVerssphxNumber10_8) {
-        if (floor(NSAppKitVerssphxNumber) <= NSAppKitVerssphxNumber10_9)
+#if defined(MAC_OS_X_VERSION_MAX_ALLOWED) && MAC_OS_X_VERSION_MAX_ALLOWED < MAC_OS_X_VERSION_10_8
+    if (floor(NSAppKitVersionNumber) > NSAppKitVersionNumber10_8) {
+        if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_9)
             /* On a 10.9 - 10.9.x system */
             QFont::insertSubstitution(".Lucida Grande UI", "Lucida Grande");
         else {
@@ -471,7 +471,7 @@ void TableViewLastColumnResizingFixer::disconnectViewHeadersSignals()
 // Refactored here for readability.
 void TableViewLastColumnResizingFixer::setViewHeaderResizeMode(int logicalIndex, QHeaderView::ResizeMode resizeMode)
 {
-#if QT_VERSSPHX < 0x050000
+#if QT_VERSION < 0x050000
     tableView->horizontalHeader()->setResizeMode(logicalIndex, resizeMode);
 #else
     tableView->horizontalHeader()->setSectionResizeMode(logicalIndex, resizeMode);
@@ -741,10 +741,10 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
         UInt32 resolutionFlags = kLSSharedFileListNoUserInteraction | kLSSharedFileListDoNotMountVolumes;
         CFURLRef currentItemURL = NULL;
 
-#if defined(MAC_OS_X_VERSSPHX_MAX_ALLOWED) && MAC_OS_X_VERSSPHX_MAX_ALLOWED >= 10100
+#if defined(MAC_OS_X_VERSION_MAX_ALLOWED) && MAC_OS_X_VERSION_MAX_ALLOWED >= 10100
     if(&LSSharedFileListItemCopyResolvedURL)
         currentItemURL = LSSharedFileListItemCopyResolvedURL(item, resolutionFlags, NULL);
-#if defined(MAC_OS_X_VERSSPHX_MIN_REQUIRED) && MAC_OS_X_VERSSPHX_MIN_REQUIRED < 10100
+#if defined(MAC_OS_X_VERSION_MIN_REQUIRED) && MAC_OS_X_VERSION_MIN_REQUIRED < 10100
     else
         LSSharedFileListItemResolve(item, resolutionFlags, &currentItemURL, NULL);
 #endif
@@ -767,7 +767,7 @@ LSSharedFileListItemRef findStartupItemInList(LSSharedFileListRef list, CFURLRef
 bool GetStartOnSystemStartup()
 {
     CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSesssphxLoginItems, NULL);
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
     return !!foundItem; // return boolified object
 }
@@ -775,7 +775,7 @@ bool GetStartOnSystemStartup()
 bool SetStartOnSystemStartup(bool fAutoStart)
 {
     CFURLRef bitcoinAppUrl = CFBundleCopyBundleURL(CFBundleGetMainBundle());
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSesssphxLoginItems, NULL);
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     LSSharedFileListItemRef foundItem = findStartupItemInList(loginItems, bitcoinAppUrl);
 
     if (fAutoStart && !foundItem) {
@@ -868,7 +868,7 @@ void setClipboard(const QString& str)
     QApplication::clipboard()->setText(str, QClipboard::Selection);
 }
 
-#if BOOST_FILESYSTEM_VERSSPHX >= 3
+#if BOOST_FILESYSTEM_VERSION >= 3
 boost::filesystem::path qstringToBoostPath(const QString& path)
 {
     return boost::filesystem::path(path.toStdString(), utf8);

@@ -48,7 +48,7 @@ static bool AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || mapArgs.count("-?") || mapArgs.count("-help")) {
         // First part of help message is specific to this utility
-        std::string strUsage = _("Sphinx Core sphx-tx utility version") + " " + FormatFullVerssphx() + "\n\n" +
+        std::string strUsage = _("Sphinx Core sphx-tx utility version") + " " + FormatFullVersion() + "\n\n" +
                                _("Usage:") + "\n" +
                                "  sphx-tx [options] <hex-tx> [commands]  " + _("Update hex-encoded sphx transaction") + "\n" +
                                "  sphx-tx [options] -create [commands]   " + _("Create hex-encoded sphx transaction") + "\n" +
@@ -61,7 +61,7 @@ static bool AppInitRawTx(int argc, char* argv[])
         strUsage += HelpMessageOpt("-create", _("Create new, empty TX."));
         strUsage += HelpMessageOpt("-json", _("Select JSON output"));
         strUsage += HelpMessageOpt("-txid", _("Output only the hex-encoded transaction id of the resultant transaction."));
-        strUsage += HelpMessageOpt("-regtest", _("Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly."));
+        strUsage += HelpMessageOpt("-regtest", _("Enter regression test mode, which uses a special chain in which blocks can be solved instantly."));
         strUsage += HelpMessageOpt("-testnet", _("Use the test network"));
 
         fprintf(stdout, "%s", strUsage.c_str());
@@ -158,13 +158,13 @@ static void RegisterLoad(const string& strInput)
     RegisterSetJson(key, valStr);
 }
 
-static void MutateTxVerssphx(CMutableTransaction& tx, const string& cmdVal)
+static void MutateTxVersion(CMutableTransaction& tx, const string& cmdVal)
 {
-    int64_t newVerssphx = atoi64(cmdVal);
-    if (newVerssphx < 1 || newVerssphx > CTransaction::CURRENT_VERSSPHX)
+    int64_t newVersion = atoi64(cmdVal);
+    if (newVersion < 1 || newVersion > CTransaction::CURRENT_VERSION)
         throw runtime_error("Invalid TX version requested");
 
-    tx.nVerssphx = (int)newVerssphx;
+    tx.nVersion = (int)newVersion;
 }
 
 static void MutateTxLocktime(CMutableTransaction& tx, const string& cmdVal)
@@ -451,7 +451,7 @@ static void MutateTxSign(CMutableTransaction& tx, const string& flagStr)
 static void MutateTx(CMutableTransaction& tx, const string& command, const string& commandVal)
 {
     if (command == "nversion")
-        MutateTxVerssphx(tx, commandVal);
+        MutateTxVersion(tx, commandVal);
     else if (command == "locktime")
         MutateTxLocktime(tx, commandVal);
 

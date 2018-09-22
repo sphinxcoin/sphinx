@@ -128,7 +128,7 @@ bool TCONCAT(_Test_ignored_,name) =                                     \
 void TCONCAT(_Test_,name)::_Run()
 
 // Register the specified test.  Typically not used directly, but
-// invoked via the macro expanssphx of TEST.
+// invoked via the macro expansion of TEST.
 extern bool RegisterTest(const char* base, const char* name, void (*func)());
 
 

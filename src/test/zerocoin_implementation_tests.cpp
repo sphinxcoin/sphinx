@@ -225,7 +225,7 @@ BOOST_AUTO_TEST_CASE(checkzerocoinspend_test)
     BOOST_CHECK_MESSAGE(coinSpend.Verify(accumulator), "CoinSpend object failed to validate");
 
     //serialize the spend
-    CDataStream serializedCoinSpend2(SER_NETWORK, PROTOCOL_VERSSPHX);
+    CDataStream serializedCoinSpend2(SER_NETWORK, PROTOCOL_VERSION);
     serializedCoinSpend2 << coinSpend;
     std::vector<unsigned char> data(serializedCoinSpend2.begin(), serializedCoinSpend2.end());
 

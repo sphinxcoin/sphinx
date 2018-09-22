@@ -9,7 +9,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #
 
-from __future__ import print_function, divissphx
+from __future__ import print_function, division
 import json
 import struct
 import re

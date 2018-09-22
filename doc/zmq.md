@@ -7,7 +7,7 @@ request/reply, and push/pull.
 
 The Sphinx Core daemon can be configured to act as a trusted "border
 router", implementing the sphx wire protocol and relay, making
-consensus decissphxs, maintaining the local blockchain database,
+consensus decisions, maintaining the local blockchain database,
 broadcasting locally generated transactions into the network, and
 providing a queryable RPC interface to interact on a polled basis for
 requesting blockchain related data. However, there exists only a
@@ -103,6 +103,6 @@ and just the tip will be notified. It is up to the subscriber to
 retrieve the chain from the last known block to the new tip.
 
 There are several possibilities that ZMQ notification can get lost
-during transmisssphx depending on the communication type your are
+during transmission depending on the communication type your are
 using. sphxd appends an up-counting sequence number to each
 notification which allows listeners to detect lost notifications.

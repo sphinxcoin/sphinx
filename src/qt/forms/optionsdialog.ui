@@ -559,7 +559,7 @@ https://www.transifex.com/cevap/cevap-translations</string>
          <item>
           <widget class="QValueComboBox" name="unit">
            <property name="toolTip">
-            <string>Choose the default subdivissphx unit to show in the interface and when sending coins.</string>
+            <string>Choose the default subdivision unit to show in the interface and when sending coins.</string>
            </property>
           </widget>
          </item>

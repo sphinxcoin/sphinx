@@ -1,12 +1,12 @@
 dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
-define(_CLIENT_VERSSPHX_MAJOR, 1)
-define(_CLIENT_VERSSPHX_MINOR, 9)
-define(_CLIENT_VERSSPHX_REVISSPHX, 9)
-define(_CLIENT_VERSSPHX_BUILD, 4)
-define(_CLIENT_VERSSPHX_IS_RELEASE, true)
+define(_CLIENT_VERSION_MAJOR, 1)
+define(_CLIENT_VERSION_MINOR, 9)
+define(_CLIENT_VERSION_REVISION, 9)
+define(_CLIENT_VERSION_BUILD, 4)
+define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2018)
-AC_INIT([Sphinx Core],[_CLIENT_VERSSPHX_MAJOR._CLIENT_VERSSPHX_MINOR._CLIENT_VERSSPHX_REVISSPHX],[www.sphinxcore.com],[sphx])
+AC_INIT([Sphinx Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[www.sphinxcore.com],[sphx])
 AC_CONFIG_SRCDIR([src/main.cpp])
 AC_CONFIG_HEADERS([src/config/sphx-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -58,7 +58,7 @@ case $host in
      lt_cv_deplibs_check_method="pass_all"
   ;;
 esac
-dnl Require C++11 compiler (no GNU extenssphxs)
+dnl Require C++11 compiler (no GNU extensions)
 AX_CXX_COMPILE_STDCXX([11], [noext], [mandatory], [nodefault])
 dnl Check if -latomic is required for <std::atomic>
 CHECK_ATOMIC
@@ -683,7 +683,7 @@ if test x$use_reduce_exports = xyes; then
   AC_PREPROC_IFELSE([AC_LANG_PROGRAM([[
       @%:@include <boost/version.hpp>
     ]], [[
-      #if BOOST_VERSSPHX >= 104900
+      #if BOOST_VERSION >= 104900
       // Everything is okay
       #else
       #  error Boost version is too old
@@ -757,7 +757,7 @@ AC_MSG_CHECKING([for mismatched boost c++11 scoped enums])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #include <boost/config.hpp>
   #include <boost/version.hpp>
-  #if !defined(BOOST_NO_SCOPED_ENUMS) && !defined(BOOST_NO_CXX11_SCOPED_ENUMS) && BOOST_VERSSPHX < 105700
+  #if !defined(BOOST_NO_SCOPED_ENUMS) && !defined(BOOST_NO_CXX11_SCOPED_ENUMS) && BOOST_VERSION < 105700
   #define BOOST_NO_SCOPED_ENUMS
   #define BOOST_NO_CXX11_SCOPED_ENUMS
   #define CHECK
@@ -787,7 +787,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #include <boost/thread/thread.hpp>
   #include <boost/version.hpp>
   ]],[[
-  #if BOOST_VERSSPHX >= 105000 && (!defined(BOOST_HAS_NANOSLEEP) || BOOST_VERSSPHX >= 105200)
+  #if BOOST_VERSION >= 105000 && (!defined(BOOST_HAS_NANOSLEEP) || BOOST_VERSION >= 105200)
       boost::this_thread::sleep_for(boost::chrono::milliseconds(0));
   #else
    choke me
@@ -809,7 +809,7 @@ AC_LINK_IFELSE([AC_LANG_PROGRAM([[
   #include <boost/thread.hpp>
   #include <boost/date_time/posix_time/posix_time_types.hpp>
   ]],[[
-  #if BOOST_VERSSPHX <= 105600
+  #if BOOST_VERSION <= 105600
       boost::this_thread::sleep(boost::posix_time::milliseconds(0));
   #else
    choke me
@@ -1105,17 +1105,17 @@ AM_CONDITIONAL([GLIBC_BACK_COMPAT],[test x$use_glibc_compat = xyes])
 AM_CONDITIONAL([HARDEN],[test x$use_hardening = xyes])
 AM_CONDITIONAL([USE_LIBSECP256K1],[test x$use_libsecp256k1 = xyes])
 
-AC_DEFINE(CLIENT_VERSSPHX_MAJOR, _CLIENT_VERSSPHX_MAJOR, [Major version])
-AC_DEFINE(CLIENT_VERSSPHX_MINOR, _CLIENT_VERSSPHX_MINOR, [Minor version])
-AC_DEFINE(CLIENT_VERSSPHX_REVISSPHX, _CLIENT_VERSSPHX_REVISSPHX, [Build revissphx])
-AC_DEFINE(CLIENT_VERSSPHX_BUILD, _CLIENT_VERSSPHX_BUILD, [Verssphx Build])
-AC_DEFINE(CLIENT_VERSSPHX_IS_RELEASE, _CLIENT_VERSSPHX_IS_RELEASE, [Verssphx is release])
-AC_DEFINE(COPYRIGHT_YEAR, _COPYRIGHT_YEAR, [Verssphx is release])
-AC_SUBST(CLIENT_VERSSPHX_MAJOR, _CLIENT_VERSSPHX_MAJOR)
-AC_SUBST(CLIENT_VERSSPHX_MINOR, _CLIENT_VERSSPHX_MINOR)
-AC_SUBST(CLIENT_VERSSPHX_REVISSPHX, _CLIENT_VERSSPHX_REVISSPHX)
-AC_SUBST(CLIENT_VERSSPHX_BUILD, _CLIENT_VERSSPHX_BUILD)
-AC_SUBST(CLIENT_VERSSPHX_IS_RELEASE, _CLIENT_VERSSPHX_IS_RELEASE)
+AC_DEFINE(CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MAJOR, [Major version])
+AC_DEFINE(CLIENT_VERSION_MINOR, _CLIENT_VERSION_MINOR, [Minor version])
+AC_DEFINE(CLIENT_VERSION_REVISION, _CLIENT_VERSION_REVISION, [Build revision])
+AC_DEFINE(CLIENT_VERSION_BUILD, _CLIENT_VERSION_BUILD, [Version Build])
+AC_DEFINE(CLIENT_VERSION_IS_RELEASE, _CLIENT_VERSION_IS_RELEASE, [Version is release])
+AC_DEFINE(COPYRIGHT_YEAR, _COPYRIGHT_YEAR, [Version is release])
+AC_SUBST(CLIENT_VERSION_MAJOR, _CLIENT_VERSION_MAJOR)
+AC_SUBST(CLIENT_VERSION_MINOR, _CLIENT_VERSION_MINOR)
+AC_SUBST(CLIENT_VERSION_REVISION, _CLIENT_VERSION_REVISION)
+AC_SUBST(CLIENT_VERSION_BUILD, _CLIENT_VERSION_BUILD)
+AC_SUBST(CLIENT_VERSION_IS_RELEASE, _CLIENT_VERSION_IS_RELEASE)
 AC_SUBST(COPYRIGHT_YEAR, _COPYRIGHT_YEAR)
 AC_SUBST(BITCOIN_DAEMON_NAME)
 AC_SUBST(BITCOIN_GUI_NAME)

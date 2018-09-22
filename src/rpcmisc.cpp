@@ -98,11 +98,11 @@ UniValue getinfo(const UniValue& params, bool fHelp)
     GetProxy(NET_IPV4, proxy);
 
     UniValue obj(UniValue::VOBJ);
-    obj.push_back(Pair("version", FormatFullVerssphx()));
-    obj.push_back(Pair("protocolversion", PROTOCOL_VERSSPHX));
+    obj.push_back(Pair("version", FormatFullVersion()));
+    obj.push_back(Pair("protocolversion", PROTOCOL_VERSION));
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
-        obj.push_back(Pair("walletversion", pwalletMain->GetVerssphx()));
+        obj.push_back(Pair("walletversion", pwalletMain->GetVersion()));
         obj.push_back(Pair("balance", ValueFromAmount(pwalletMain->GetBalance())));
         obj.push_back(Pair("zerocoinbalance", ValueFromAmount(pwalletMain->GetZerocoinBalance(true))));
     }
@@ -121,12 +121,12 @@ UniValue getinfo(const UniValue& params, bool fHelp)
     }
 
     obj.push_back(Pair("moneysupply",ValueFromAmount(chainActive.Tip()->nMoneySupply)));
-/*    UniValue xsphxObj(UniValue::VOBJ);
+/*    UniValue xionObj(UniValue::VOBJ);
     for (auto denom : libzerocoin::zerocoinDenomList) {
-        xsphxObj.push_back(Pair(to_string(denom), ValueFromAmount(chainActive.Tip()->mapZerocoinSupply.at(denom) * (denom*COIN))));
+        xionObj.push_back(Pair(to_string(denom), ValueFromAmount(chainActive.Tip()->mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
-    xsphxObj.push_back(Pair("total", ValueFromAmount(chainActive.Tip()->GetZerocoinSupply())));
-    obj.push_back(Pair("xSPHXsupply", xsphxObj));
+    xionObj.push_back(Pair("total", ValueFromAmount(chainActive.Tip()->GetZerocoinSupply())));
+    obj.push_back(Pair("xSPHXsupply", xionObj));
 */
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
@@ -520,7 +520,7 @@ UniValue setmocktime(const UniValue& params, bool fHelp)
             "   Pass 0 to go back to using the system time.");
 
     if (!Params().MineBlocksOnDemand())
-        throw runtime_error("setmocktime for regresssphx testing (-regtest mode) only");
+        throw runtime_error("setmocktime for regression testing (-regtest mode) only");
 
     LOCK(cs_main);
 

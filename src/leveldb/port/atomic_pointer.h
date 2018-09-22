@@ -59,7 +59,7 @@ inline void MemoryBarrier() {
 // Gcc on x86
 #elif defined(ARCH_CPU_X86_FAMILY) && defined(__GNUC__)
 inline void MemoryBarrier() {
-  // See http://gcc.gnu.org/ml/gcc/2003-04/msg01180.html for a discusssphx on
+  // See http://gcc.gnu.org/ml/gcc/2003-04/msg01180.html for a disscusion on
   // this idiom. Also see http://en.wikipedia.org/wiki/Memory_ordering.
   __asm__ __volatile__("" : : : "memory");
 }
@@ -68,7 +68,7 @@ inline void MemoryBarrier() {
 // Sun Studio
 #elif defined(ARCH_CPU_X86_FAMILY) && defined(__SUNPRO_CC)
 inline void MemoryBarrier() {
-  // See http://gcc.gnu.org/ml/gcc/2003-04/msg01180.html for a discusssphx on
+  // See http://gcc.gnu.org/ml/gcc/2003-04/msg01180.html for a disscusion on
   // this idiom. Also see http://en.wikipedia.org/wiki/Memory_ordering.
   asm volatile("" : : : "memory");
 }

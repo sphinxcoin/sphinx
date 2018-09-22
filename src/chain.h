@@ -27,7 +27,7 @@ struct CDiskBlockPos {
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(VARINT(nFile));
         READWRITE(VARINT(nPos));
@@ -169,7 +169,7 @@ public:
     int64_t nMoneySupply;
 
     //! block header
-    int nVerssphx;
+    int nVersion;
     uint256 hashMerkleRoot;
     unsigned int nTime;
     unsigned int nBits;
@@ -206,7 +206,7 @@ public:
         prevoutStake.SetNull();
         nStakeTime = 0;
 
-        nVerssphx = 0;
+        nVersion = 0;
         hashMerkleRoot = uint256();
         nTime = 0;
         nBits = 0;
@@ -228,12 +228,12 @@ public:
     {
         SetNull();
 
-        nVerssphx = block.nVerssphx;
+        nVersion = block.nVersion;
         hashMerkleRoot = block.hashMerkleRoot;
         nTime = block.nTime;
         nBits = block.nBits;
         nNonce = block.nNonce;
-        if(block.nVerssphx > 3)
+        if(block.nVersion > 3)
             nAccumulatorCheckpoint = block.nAccumulatorCheckpoint;
 
         //Proof of Stake
@@ -279,7 +279,7 @@ public:
     CBlockHeader GetBlockHeader() const
     {
         CBlockHeader block;
-        block.nVerssphx = nVerssphx;
+        block.nVersion = nVersion;
         if (pprev)
             block.hashPrevBlock = pprev->GetBlockHash();
         block.hashMerkleRoot = hashMerkleRoot;
@@ -375,11 +375,11 @@ public:
     }
 
     /**
-     * Returns true if there are nRequired or more blocks of minVerssphx or above
+     * Returns true if there are nRequired or more blocks of minVersion or above
      * in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart 
      * and going backwards.
      */
-    static bool IsSuperMajority(int minVerssphx, const CBlockIndex* pstart, unsigned int nRequired);
+    static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired);
 
     std::string ToString() const
     {
@@ -441,10 +441,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         if (!(nType & SER_GETHASH))
-            READWRITE(VARINT(nVerssphx));
+            READWRITE(VARINT(nVersion));
 
         READWRITE(VARINT(nHeight));
         READWRITE(VARINT(nStatus));
@@ -471,14 +471,14 @@ public:
         }
 
         // block header
-        READWRITE(this->nVerssphx);
+        READWRITE(this->nVersion);
         READWRITE(hashPrev);
         READWRITE(hashNext);
         READWRITE(hashMerkleRoot);
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
-        if(this->nVerssphx > 3) {
+        if(this->nVersion > 3) {
             READWRITE(nAccumulatorCheckpoint);
             READWRITE(mapZerocoinSupply);
             READWRITE(vMintDenominationsInBlock);
@@ -489,7 +489,7 @@ public:
     uint256 GetBlockHash() const
     {
         CBlockHeader block;
-        block.nVerssphx = nVerssphx;
+        block.nVersion = nVersion;
         block.hashPrevBlock = hashPrev;
         block.hashMerkleRoot = hashMerkleRoot;
         block.nTime = nTime;

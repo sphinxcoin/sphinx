@@ -230,7 +230,7 @@ std::string BlockToString(CBlockIndex* pBlock)
     std::string BlockContentCells[] =
         {
             _("Height"), itostr(pBlock->nHeight),
-            _("Size"), itostr(GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSSPHX)),
+            _("Size"), itostr(GetSerializeSize(block, SER_NETWORK, PROTOCOL_VERSION)),
             _("Number of Transactions"), itostr(block.vtx.size()),
             _("Value Out"), ValueToString(OutVolume),
             _("Fees"), ValueToString(Fees),
@@ -239,7 +239,7 @@ std::string BlockToString(CBlockIndex* pBlock)
             _("Difficulty"), strprintf("%.4f", GetDifficulty(pBlock)),
             _("Bits"), utostr(block.nBits),
             _("Nonce"), utostr(block.nNonce),
-            _("Verssphx"), itostr(block.nVerssphx),
+            _("Version"), itostr(block.nVersion),
             _("Hash"), "<pre>" + block.GetHash().GetHex() + "</pre>",
             _("Merkle Root"), "<pre>" + block.hashMerkleRoot.GetHex() + "</pre>",
             // _("Hash Whole Block"), "<pre>" + block.hashWholeBlock.GetHex() + "</pre>"
@@ -344,7 +344,7 @@ std::string TxToString(uint256 BlockHash, const CTransaction& tx)
     std::string Labels[] =
         {
             _("In Block"), "",
-            _("Size"), itostr(GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSSPHX)),
+            _("Size"), itostr(GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION)),
             _("Input"), tx.IsCoinBase() ? "-" : ValueToString(Input),
             _("Output"), ValueToString(Output),
             _("Fees"), tx.IsCoinBase() ? "-" : ValueToString(Input - Output),

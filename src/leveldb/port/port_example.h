@@ -18,7 +18,7 @@ namespace port {
 
 // The following boolean constant must be true on a little-endian machine
 // and false otherwise.
-static const bool kLittleEndian = true /* or some other expresssphx */;
+static const bool kLittleEndian = true /* or some other expression */;
 
 // ------------------ Threading -------------------
 
@@ -99,9 +99,9 @@ class AtomicPointer {
   void NoBarrier_Store(void* v);
 };
 
-// ------------------ Compresssphx -------------------
+// ------------------ Compression -------------------
 
-// Store the snappy compresssphx of "input[0,input_length-1]" in *output.
+// Store the snappy compression of "input[0,input_length-1]" in *output.
 // Returns false if snappy is not supported by this port.
 extern bool Snappy_Compress(const char* input, size_t input_length,
                             std::string* output);

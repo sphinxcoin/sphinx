@@ -25,12 +25,12 @@ from jsonrpc import ServiceProxy, json
 
 BASE_FEE=Decimal("0.001")
 
-def check_json_precissphx():
-    """Make sure json library being used does not lose precissphx converting BTC values"""
+def check_json_precision():
+    """Make sure json library being used does not lose precision converting BTC values"""
     n = Decimal("20000000.00000003")
     satoshis = int(json.loads(json.dumps(float(n)))*1.0e8)
     if satoshis != 2000000000000003:
-        raise RuntimeError("JSON encode/decode loses precissphx")
+        raise RuntimeError("JSON encode/decode loses precision")
 
 def determine_db_dir():
     """Return the default location of the sphinxcoin data directory"""
@@ -204,7 +204,7 @@ def sanity_test_fee(sphxd, txdata_hex, max_fee):
             raise FeeError("Rejecting transaction, unreasonable fee of "+str(total_in-total_out))
 
         tx_size = len(txdata_hex)/2
-        kb = tx_size/1000  # integer divissphx rounds down
+        kb = tx_size/1000  # integer division rounds down
         if kb > 1 and fee < BASE_FEE:
             raise FeeError("Rejecting no-fee transaction, larger than 1000 bytes")
         if total_in < 0.01 and fee < BASE_FEE:
@@ -237,7 +237,7 @@ def main():
 
     (options, args) = parser.parse_args()
 
-    check_json_precissphx()
+    check_json_precision()
     config = read_bitcoin_config(options.datadir)
     if options.testnet: config['testnet'] = True
     sphxd = connect_JSON(config)

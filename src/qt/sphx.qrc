@@ -43,11 +43,11 @@
         <file alias="tx_output">res/icons/tx_output.png</file>
         <file alias="tx_inout">res/icons/tx_inout.png</file>
         <file alias="unit_sphx">res/icons/unit_sphx.png</file>
-        <file alias="unit_msphx">res/icons/unit_msphx.png</file>
-        <file alias="unit_usphx">res/icons/unit_usphx.png</file>
+        <file alias="unit_mion">res/icons/unit_mion.png</file>
+        <file alias="unit_uion">res/icons/unit_uion.png</file>
         <file alias="unit_tion">res/icons/unit_tion.png</file>
-        <file alias="unit_tmsphx">res/icons/unit_tmsphx.png</file>
-        <file alias="unit_tusphx">res/icons/unit_tusphx.png</file>
+        <file alias="unit_tmion">res/icons/unit_tmion.png</file>
+        <file alias="unit_tuion">res/icons/unit_tuion.png</file>
         <file alias="lock_closed">res/icons/lock_closed.png</file>
         <file alias="lock_open">res/icons/lock_open.png</file>
         <file alias="key">res/icons/key.png</file>

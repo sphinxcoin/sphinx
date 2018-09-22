@@ -2510,8 +2510,8 @@ https://www.transifex.com/cevap/cevap-translations</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Choose the default subdivissphx unit to show in the interface and when sending coins.</source>
-        <translation>Choose the default subdivissphx unit to show in the interface and when sending coins.</translation>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation>Choose the default subdivision unit to show in the interface and when sending coins.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -2960,8 +2960,8 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     </message>
     <message>
         <location line="+0"/>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -3887,8 +3887,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+23"/>
-        <source>Verssphx</source>
-        <translation>Verssphx</translation>
+        <source>Version</source>
+        <translation>Version</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -5091,8 +5091,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Verssphx %1</source>
-        <translation>Verssphx %1</translation>
+        <source>Version %1</source>
+        <translation>Version %1</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5347,8 +5347,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+6"/>
-        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occassphxally happen if another node generates a block within a few seconds of yours.</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -5927,9 +5927,9 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
 </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     <message>
-        <location filename="../forms/xsphxcontroldialog.ui" line="+20"/>
+        <location filename="../forms/xioncontroldialog.ui" line="+20"/>
         <source>Select xSPHX to Spend</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6014,8 +6014,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+3"/>
-        <source>Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation type="unfinished">Create new files with system default permisssphxs, instead of umask 077 (only effective with disabled wallet functionality)</translation>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation type="unfinished">Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -6034,8 +6034,8 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+2"/>
-        <source>Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation type="unfinished">Enter regresssphx test mode, which uses a special chain in which blocks can be solved instantly.</translation>
+        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
+        <translation type="unfinished">Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -6201,7 +6201,7 @@ rpcuser=sphxrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
-If the file does not exist, create it with owner-readable-only file permisssphxs.
+If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
 for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
 </source>
@@ -6598,8 +6598,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Error: Unsupported argument -tor found, use -onsphx.</source>
-        <translation type="unfinished">Error: Unsupported argument -tor found, use -onsphx.</translation>
+        <source>Error: Unsupported argument -tor found, use -onion.</source>
+        <translation type="unfinished">Error: Unsupported argument -tor found, use -onion.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -6733,7 +6733,7 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Invalid -onsphx address or hostname: &apos;%s&apos;</source>
+        <source>Invalid -onion address or hostname: &apos;%s&apos;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7115,8 +7115,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</source>
-        <translation type="unfinished">Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onsphx)</translation>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation type="unfinished">Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7255,13 +7255,13 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Sesssphx not complete!</source>
-        <translation type="unfinished">Sesssphx not complete!</translation>
+        <source>Session not complete!</source>
+        <translation type="unfinished">Session not complete!</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Sesssphx timed out.</source>
-        <translation type="unfinished">Sesssphx timed out.</translation>
+        <source>Session timed out.</source>
+        <translation type="unfinished">Session timed out.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7445,8 +7445,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>This is intended for regresssphx testing tools and app development.</source>
-        <translation type="unfinished">This is intended for regresssphx testing tools and app development.</translation>
+        <source>This is intended for regression testing tools and app development.</source>
+        <translation type="unfinished">This is intended for regression testing tools and app development.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7465,7 +7465,7 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Tor control port to use if onsphx listening enabled (default: %s)</source>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

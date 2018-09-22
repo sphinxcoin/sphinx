@@ -30,7 +30,7 @@ extern CCriticalSection cs_mapAlerts;
 class CUnsignedAlert
 {
 public:
-    int nVerssphx;
+    int nVersion;
     int64_t nRelayUntil; // when newer nodes stop relaying to newer nodes
     int64_t nExpiration;
     int nID;
@@ -49,10 +49,10 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
-        READWRITE(this->nVerssphx);
-        nVerssphx = this->nVerssphx;
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
         READWRITE(nRelayUntil);
         READWRITE(nExpiration);
         READWRITE(nID);
@@ -88,7 +88,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVerssphx)
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
     {
         READWRITE(vchMsg);
         READWRITE(vchSig);
@@ -99,7 +99,7 @@ public:
     uint256 GetHash() const;
     bool IsInEffect() const;
     bool Cancels(const CAlert& alert) const;
-    bool AppliesTo(int nVerssphx, std::string strSubVerIn) const;
+    bool AppliesTo(int nVersion, std::string strSubVerIn) const;
     bool AppliesToMe() const;
     bool RelayTo(CNode* pnode) const;
     bool CheckSignature() const;

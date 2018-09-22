@@ -2,7 +2,7 @@
 <!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
 <plist version="0.9">
 <dict>
-  <key>LSMinimumSystemVerssphx</key>
+  <key>LSMinimumSystemVersion</key>
   <string>10.8.0</string>
 
   <key>LSArchitecturePriority</key>
@@ -17,13 +17,13 @@
   <string>APPL</string>
 
   <key>CFBundleGetInfoString</key>
-  <string>@CLIENT_VERSSPHX_MAJOR@.@CLIENT_VERSSPHX_MINOR@.@CLIENT_VERSSPHX_REVISSPHX@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, @COPYRIGHT_YEAR@ The Sphinx Core developers</string>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@, Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, @COPYRIGHT_YEAR@ The Sphinx Core developers</string>
 
-  <key>CFBundleShortVerssphxString</key>
-  <string>@CLIENT_VERSSPHX_MAJOR@.@CLIENT_VERSSPHX_MINOR@.@CLIENT_VERSSPHX_REVISSPHX@</string>
+  <key>CFBundleShortVersionString</key>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
 
-  <key>CFBundleVerssphx</key>
-  <string>@CLIENT_VERSSPHX_MAJOR@.@CLIENT_VERSSPHX_MINOR@.@CLIENT_VERSSPHX_REVISSPHX@</string>
+  <key>CFBundleVersion</key>
+  <string>@CLIENT_VERSION_MAJOR@.@CLIENT_VERSION_MINOR@.@CLIENT_VERSION_REVISION@</string>
 
   <key>CFBundleSignature</key>
   <string>????</string>
@@ -69,7 +69,7 @@
       <dict>
         <key>public.mime-type</key>
         <string>application/x-sphx-payment-request</string>
-        <key>public.filename-extenssphx</key>
+        <key>public.filename-extension</key>
         <array>
           <string>sphxpaymentrequest</string>
         </array>

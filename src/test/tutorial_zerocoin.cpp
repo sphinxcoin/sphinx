@@ -102,7 +102,7 @@ ZerocoinTutorial()
 		cout << "Successfully minted a zerocoin." << endl;
 
 		// Serialize the public coin to a CDataStream object.
-		CDataStream serializedCoin(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream serializedCoin(SER_NETWORK, PROTOCOL_VERSION);
 		serializedCoin << pubCoin;
 
 		/********************************************************************/
@@ -163,7 +163,7 @@ ZerocoinTutorial()
 		// then serialize the resulting Accumulator object to obtain the
 		// new checkpoint. All block verifiers should do the same thing
 		// to check their work.
-		CDataStream serializedAccumulator(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream serializedAccumulator(SER_NETWORK, PROTOCOL_VERSION);
 		serializedAccumulator << accumulator;
 
 		// Deserialize the accumulator object
@@ -219,7 +219,7 @@ ZerocoinTutorial()
 		}
 		
 		// Serialize the CoinSpend object into a buffer.
-		CDataStream serializedCoinSpend(SER_NETWORK, PROTOCOL_VERSSPHX);
+		CDataStream serializedCoinSpend(SER_NETWORK, PROTOCOL_VERSION);
 		serializedCoinSpend << spend;
 		
 		cout << "Successfully generated a coin spend transaction." << endl;
@@ -276,7 +276,7 @@ ZerocoinTutorial()
 BOOST_AUTO_TEST_SUITE(tutorial_libzerocoin)
 BOOST_AUTO_TEST_CASE(tutorial_libzerocoin_tests)
 {
-	cout << "libzerocoin v" << ZEROCOIN_VERSSPHX_STRING << " tutorial." << endl << endl;
+	cout << "libzerocoin v" << ZEROCOIN_VERSION_STRING << " tutorial." << endl << endl;
 
 	ZerocoinTutorial();
 }

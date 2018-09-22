@@ -141,7 +141,7 @@ DBImpl::DBImpl(const Options& raw_options, const std::string& dbname)
   const int table_cache_size = options_.max_open_files - kNumNonTableCacheFiles;
   table_cache_ = new TableCache(dbname_, &options_, table_cache_size);
 
-  versions_ = new VerssphxSet(dbname_, &options_, table_cache_,
+  versions_ = new VersionSet(dbname_, &options_, table_cache_,
                              &internal_comparator_);
 }
 
@@ -175,7 +175,7 @@ DBImpl::~DBImpl() {
 }
 
 Status DBImpl::NewDB() {
-  VerssphxEdit new_db;
+  VersionEdit new_db;
   new_db.SetComparatorName(user_comparator()->Name());
   new_db.SetLogNumber(0);
   new_db.SetNextFile(2);
@@ -271,7 +271,7 @@ void DBImpl::DeleteObsoleteFiles() {
   }
 }
 
-Status DBImpl::Recover(VerssphxEdit* edit) {
+Status DBImpl::Recover(VersionEdit* edit) {
   mutex_.AssertHeld();
 
   // Ignore error from CreateDir since the creation of the DB is
@@ -345,7 +345,7 @@ Status DBImpl::Recover(VerssphxEdit* edit) {
 
       // The previous incarnation may not have written any MANIFEST
       // records after allocating this log number.  So we manually
-      // update the file number allocation counter in VerssphxSet.
+      // update the file number allocation counter in VersionSet.
       versions_->MarkFileNumberUsed(logs[i]);
     }
 
@@ -360,7 +360,7 @@ Status DBImpl::Recover(VerssphxEdit* edit) {
 }
 
 Status DBImpl::RecoverLogFile(uint64_t log_number,
-                              VerssphxEdit* edit,
+                              VersionEdit* edit,
                               SequenceNumber* max_sequence) {
   struct LogReporter : public log::Reader::Reporter {
     Env* env;
@@ -454,8 +454,8 @@ Status DBImpl::RecoverLogFile(uint64_t log_number,
   return status;
 }
 
-Status DBImpl::WriteLevel0Table(MemTable* mem, VerssphxEdit* edit,
-                                Verssphx* base) {
+Status DBImpl::WriteLevel0Table(MemTable* mem, VersionEdit* edit,
+                                Version* base) {
   mutex_.AssertHeld();
   const uint64_t start_micros = env_->NowMicros();
   FileMetaData meta;
@@ -505,8 +505,8 @@ void DBImpl::CompactMemTable() {
   assert(imm_ != NULL);
 
   // Save the contents of the memtable as a new Table
-  VerssphxEdit edit;
-  Verssphx* base = versions_->current();
+  VersionEdit edit;
+  Version* base = versions_->current();
   base->Ref();
   Status s = WriteLevel0Table(imm_, &edit, base);
   base->Unref();
@@ -537,7 +537,7 @@ void DBImpl::CompactRange(const Slice* begin, const Slice* end) {
   int max_level_with_files = 1;
   {
     MutexLock l(&mutex_);
-    Verssphx* base = versions_->current();
+    Version* base = versions_->current();
     for (int level = 1; level < config::kNumLevels; level++) {
       if (base->OverlapInLevel(level, begin, end)) {
         max_level_with_files = level;
@@ -694,7 +694,7 @@ void DBImpl::BackgroundCompaction() {
     if (!status.ok()) {
       RecordBackgroundError(status);
     }
-    VerssphxSet::LevelSummaryStorage tmp;
+    VersionSet::LevelSummaryStorage tmp;
     Log(options_.info_log, "Moved #%lld to level-%d %lld bytes %s: %s\n",
         static_cast<unsigned long long>(f->number),
         c->level() + 1,
@@ -1007,7 +1007,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
   if (!status.ok()) {
     RecordBackgroundError(status);
   }
-  VerssphxSet::LevelSummaryStorage tmp;
+  VersionSet::LevelSummaryStorage tmp;
   Log(options_.info_log,
       "compacted to: %s", versions_->LevelSummary(&tmp));
   return status;
@@ -1016,7 +1016,7 @@ Status DBImpl::DoCompactionWork(CompactionState* compact) {
 namespace {
 struct IterState {
   port::Mutex* mu;
-  Verssphx* version;
+  Version* version;
   MemTable* mem;
   MemTable* imm;
 };
@@ -1088,13 +1088,13 @@ Status DBImpl::Get(const ReadOptions& options,
 
   MemTable* mem = mem_;
   MemTable* imm = imm_;
-  Verssphx* current = versions_->current();
+  Version* current = versions_->current();
   mem->Ref();
   if (imm != NULL) imm->Ref();
   current->Ref();
 
   bool have_stat_update = false;
-  Verssphx::GetStats stats;
+  Version::GetStats stats;
 
   // Unlock while reading from files and memtables
   {
@@ -1404,7 +1404,7 @@ void DBImpl::GetApproximateSizes(
     const Range* range, int n,
     uint64_t* sizes) {
   // TODO(opt): better implementation
-  Verssphx* v;
+  Version* v;
   {
     MutexLock l(&mutex_);
     versions_->current()->Ref();
@@ -1448,7 +1448,7 @@ Status DB::Open(const Options& options, const std::string& dbname,
 
   DBImpl* impl = new DBImpl(options, dbname);
   impl->mutex_.Lock();
-  VerssphxEdit edit;
+  VersionEdit edit;
   Status s = impl->Recover(&edit); // Handles create_if_missing, error_if_exists
   if (s.ok()) {
     uint64_t new_log_number = impl->versions_->NewFileNumber();

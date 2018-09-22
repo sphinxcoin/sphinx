@@ -47,7 +47,7 @@ bool CCoins::Spend(const COutPoint& out, CTxInUndo& undo)
         undo.nHeight = nHeight;
         undo.fCoinBase = fCoinBase;
         undo.fCoinStake = fCoinStake;
-        undo.nVerssphx = this->nVerssphx;
+        undo.nVersion = this->nVersion;
     }
     return true;
 }

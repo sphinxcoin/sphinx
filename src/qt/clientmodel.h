@@ -70,9 +70,9 @@ public:
     //! Return warnings to be displayed in status bar
     QString getStatusBarWarnings() const;
 
-    QString formatFullVerssphx() const;
+    QString formatFullVersion() const;
     QString formatBuildDate() const;
-    bool isReleaseVerssphx() const;
+    bool isReleaseVersion() const;
     QString clientName() const;
     QString formatClientStartupTime() const;
 

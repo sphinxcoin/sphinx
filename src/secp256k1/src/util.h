@@ -47,7 +47,7 @@
 } while(0)
 #endif
 
-/* Like assert(), but safe to use on expresssphxs with side effects. */
+/* Like assert(), but safe to use on expressions with side effects. */
 #ifndef NDEBUG
 #define DEBUG_CHECK CHECK
 #else
@@ -65,7 +65,7 @@
 #if defined(SECP256K1_BUILD) && defined(VERIFY)
 # define SECP256K1_RESTRICT
 #else
-# if (!defined(__STDC_VERSSPHX__) || (__STDC_VERSSPHX__ < 199901L) )
+# if (!defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L) )
 #  if SECP256K1_GNUC_PREREQ(3,0)
 #   define SECP256K1_RESTRICT __restrict__
 #  elif (defined(_MSC_VER) && _MSC_VER >= 1400)

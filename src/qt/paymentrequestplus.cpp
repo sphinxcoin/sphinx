@@ -100,7 +100,7 @@ bool PaymentRequestPlus::getMerchant(X509_STORE* certStore, QString& merchant) c
             qWarning() << "PaymentRequestPlus::getMerchant : Payment request: certificate expired or not yet active: " << qCert;
             return false;
         }
-#if QT_VERSSPHX >= 0x050000
+#if QT_VERSION >= 0x050000
         if (qCert.isBlacklisted()) {
             qWarning() << "PaymentRequestPlus::getMerchant : Payment request: certificate blacklisted: " << qCert;
             return false;
@@ -154,7 +154,7 @@ bool PaymentRequestPlus::getMerchant(X509_STORE* certStore, QString& merchant) c
         std::string data_to_verify; // Everything but the signature
         rcopy.SerializeToString(&data_to_verify);
 
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
         EVP_MD_CTX *ctx = EVP_MD_CTX_new();
         if (!ctx) throw SSLVerifyError("Error allocating OpenSSL context.");
 #else
@@ -169,7 +169,7 @@ bool PaymentRequestPlus::getMerchant(X509_STORE* certStore, QString& merchant) c
             !EVP_VerifyFinal(ctx, (const unsigned char*)paymentRequest.signature().data(), paymentRequest.signature().size(), pubkey)) {
             throw SSLVerifyError("Bad signature, invalid PaymentRequest.");
         }
-#if OPENSSL_VERSSPHX_NUMBER >= 0x10100000L
+#if OPENSSL_VERSION_NUMBER >= 0x10100000L
         EVP_MD_CTX_free(ctx);
 #endif
 

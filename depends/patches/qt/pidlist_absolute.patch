@@ -5,14 +5,14 @@ diff -dur old/qtbase/src/plugins/platforms/windows/qwindowscontext.h new/qtbase/
      inline void init();
  
      typedef HRESULT (WINAPI *SHCreateItemFromParsingName)(PCWSTR, IBindCtx *, const GUID&, void **);
-+#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSSPHX_MAJOR) || __MINGW64_VERSSPHX_MAJOR < 3)
++#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSION_MAJOR) || __MINGW64_VERSION_MAJOR < 3)
 +    typedef HRESULT (WINAPI *SHGetKnownFolderIDList)(const GUID &, DWORD, HANDLE, ITEMIDLIST **);
 +#else
      typedef HRESULT (WINAPI *SHGetKnownFolderIDList)(const GUID &, DWORD, HANDLE, PIDLIST_ABSOLUTE *);
 +#endif
      typedef HRESULT (WINAPI *SHGetStockIconInfo)(int , int , _SHSTOCKICONINFO *);
      typedef HRESULT (WINAPI *SHGetImageList)(int, REFIID , void **);
-+#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSSPHX_MAJOR) || __MINGW64_VERSSPHX_MAJOR < 3)
++#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSION_MAJOR) || __MINGW64_VERSION_MAJOR < 3)
 +    typedef HRESULT (WINAPI *SHCreateItemFromIDList)(const ITEMIDLIST *, REFIID, void **);
 +#else
      typedef HRESULT (WINAPI *SHCreateItemFromIDList)(PCIDLIST_ABSOLUTE, REFIID, void **);
@@ -27,7 +27,7 @@ diff -dur old/qtbase/src/plugins/platforms/windows/qwindowsdialoghelpers.cpp new
              qWarning() << __FUNCTION__ << ": Invalid CLSID: " << url.path();
              return Q_NULLPTR;
          }
-+#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSSPHX_MAJOR) || __MINGW64_VERSSPHX_MAJOR < 3)
++#if defined(Q_CC_MINGW) && (!defined(__MINGW64_VERSION_MAJOR) || __MINGW64_VERSION_MAJOR < 3)
 +        ITEMIDLIST *idList;
 +#else
          PIDLIST_ABSOLUTE idList;

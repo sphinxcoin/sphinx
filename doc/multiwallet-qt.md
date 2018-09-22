@@ -41,7 +41,7 @@ following two steps:
 	window.addWallet("~Default", &walletModel);
 	window.setCurrentWallet("~Default");
 
-The string parameter is just an arbitrary name given to the default wallet. It's been prepended with a tilde to avoid name collissphxs in the future with additional wallets.
+The string parameter is just an arbitrary name given to the default wallet. It's been prepended with a tilde to avoid name collision in the future with additional wallets.
 
 The shutdown call `window.setWalletModel(0)` has also been removed. In its place is now:
 

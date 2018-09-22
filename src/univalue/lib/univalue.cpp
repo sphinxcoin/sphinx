@@ -141,7 +141,7 @@ bool UniValue::setFloat(double val_)
 {
     ostringstream oss;
 
-    oss << std::setprecissphx(16) << val_;
+    oss << std::setprecision(16) << val_;
 
     bool ret = setNumStr(oss.str());
     typ = VNUM;

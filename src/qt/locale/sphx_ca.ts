@@ -15,7 +15,7 @@
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copia l'adreça seleccsphxada al porta-retalls del sistema</translation>
+        <translation>Copia l'adreça seleccionada al porta-retalls del sistema</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
@@ -23,7 +23,7 @@
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>Elimina l'adreça seleccsphxada de la llista</translation>
+        <translation>Elimina l'adreça seleccionada de la llista</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
@@ -243,11 +243,11 @@
     </message>
     <message>
         <source>&amp;Transactions</source>
-        <translation>&amp;Transaccsphxs</translation>
+        <translation>&amp;Transaccions</translation>
     </message>
     <message>
         <source>Browse transaction history</source>
-        <translation>Mostra històric de transaccsphxs</translation>
+        <translation>Mostra històric de transaccions</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -267,7 +267,7 @@
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>&amp;Opcsphxs...</translation>
+        <translation>&amp;Opcions...</translation>
     </message>
     <message>
         <source>Show or hide the main Window</source>
@@ -456,7 +456,7 @@
     </message>
     <message>
         <source>Confirmations</source>
-        <translation>Confirmacsphxs</translation>
+        <translation>Confirmacions</translation>
     </message>
     <message>
         <source>Confirmed</source>
@@ -679,7 +679,7 @@
     <name>OptionsDialog</name>
     <message>
         <source>Options</source>
-        <translation>Opcsphxs</translation>
+        <translation>Opcions</translation>
     </message>
     <message>
         <source>MB</source>
@@ -687,7 +687,7 @@
     </message>
     <message>
         <source>Allow incoming connections</source>
-        <translation>Permet connexsphxs entrants</translation>
+        <translation>Permet connexions entrants</translation>
     </message>
     <message>
         <source>Expert</source>
@@ -703,7 +703,7 @@
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>&amp;Restableix les opcsphxs</translation>
+        <translation>&amp;Restableix les opcions</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
@@ -730,7 +730,7 @@
     </message>
     <message>
         <source>Recent transactions</source>
-        <translation>Transaccsphxs recents</translation>
+        <translation>Transaccions recents</translation>
     </message>
     </context>
 <context>
@@ -739,7 +739,7 @@
 <context>
     <name>PeerTableModel</name>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versió</translation>
     </message>
     <message>
@@ -852,7 +852,7 @@
     </message>
     <message>
         <source>Number of connections</source>
-        <translation>Nombre de connexsphxs</translation>
+        <translation>Nombre de connexions</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -887,7 +887,7 @@
         <translation>Protocol</translation>
     </message>
     <message>
-        <source>Verssphx</source>
+        <source>Version</source>
         <translation>Versió</translation>
     </message>
     <message>
@@ -1151,7 +1151,7 @@
         <translation>Sphinx Core</translation>
     </message>
     <message>
-        <source>Verssphx %1</source>
+        <source>Version %1</source>
         <translation>Versió %1</translation>
     </message>
     </context>
@@ -1307,7 +1307,7 @@
     </message>
     </context>
 <context>
-    <name>XSPHXControlDialog</name>
+    <name>XIONControlDialog</name>
     </context>
 <context>
     <name>sphx-core</name>
@@ -1321,7 +1321,7 @@
     </message>
     <message>
         <source>Options:</source>
-        <translation>Opcsphxs:</translation>
+        <translation>Opcions:</translation>
     </message>
     <message>
         <source>Synchronization finished</source>

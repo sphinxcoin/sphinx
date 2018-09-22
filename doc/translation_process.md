@@ -103,7 +103,7 @@ To create a new language template, you will need to edit the languages manifest 
 </qresource>
 ```
 
-**Note:** that the language translation file **must end in `.qm`** (the compiled extenssphx), and not `.ts`.
+**Note:** that the language translation file **must end in `.qm`** (the compiled extension), and not `.ts`.
 
 ### Questions and general assistance
 The Sphinx Core translation maintainers include *Fuzzbawls and s3v3nh4cks*. You can find them, and others, in the [SPHX Discord](https://discord.sphinx-coin.com).
