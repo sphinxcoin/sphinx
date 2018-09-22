@@ -111,7 +111,7 @@ bool isObscured(QWidget* w);
 // Open debug.log
 void openDebugLogfile();
 
-// Open sphinxcoin.conf
+// Open Sphinxcoin.conf
 void openConfigfile();
 
 // Open masternode.conf
