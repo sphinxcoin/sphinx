@@ -109,8 +109,8 @@ directory. We have to first create the RPC configuration file, though.
 Run `./sphxd` to get the filename where it should be put, or just try these
 commands:
 
-    echo -e "rpcuser=sphxrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/sphinxcoin/sphinxcoin.conf"
-    chmod 600 "/Users/${USER}/Library/Application Support/sphinxcoin/sphinxcoin.conf"
+    echo -e "rpcuser=sphxrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/sphinxcoin/Sphinxcoin.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/sphinxcoin/Sphinxcoin.conf"
 
 The next time you run it, it will start downloading the blockchain, but it won't
 output anything while it's doing this. This process may take several hours;

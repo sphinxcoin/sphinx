@@ -35,10 +35,10 @@ generate one from the shell yourself like this:
 
 bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'
 
-Once you have a password in hand, set rpcpassword= in /etc/sphx/sphinxcoin.conf
+Once you have a password in hand, set rpcpassword= in /etc/sphx/Sphinxcoin.conf
 
 For an example configuration file that describes the configuration settings,
-see contrib/debian/examples/sphinxcoin.conf.
+see contrib/debian/examples/Sphinxcoin.conf.
 
 3. Paths
 ---------------------------------
@@ -46,7 +46,7 @@ see contrib/debian/examples/sphinxcoin.conf.
 All three configurations assume several paths that might need to be adjusted.
 
 Binary:              /usr/bin/sphxd
-Configuration file:  /etc/sphx/sphinxcoin.conf
+Configuration file:  /etc/sphx/Sphinxcoin.conf
 Data directory:      /var/lib/sphxd
 PID file:            /var/run/sphxd/sphxd.pid (OpenRC and Upstart)
                      /var/lib/sphxd/sphxd.pid (systemd)

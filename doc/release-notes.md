@@ -118,7 +118,7 @@ Auto Wallet Backup
 ---------------------
 In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each xSPHX mint operation (xSPHX spends which re-mint their change are also included in this). This functionality is controlled by the `-backupxion` command-line option, which defaults to `1` (enabled, auto-backup).
 
-Users that wish to prevent this behavior (not recommended) can pass `-backupxion=0` at the command-line when starting the client, or add `backupxion=0` to their `sphinxcoin.conf` file.
+Users that wish to prevent this behavior (not recommended) can pass `-backupxion=0` at the command-line when starting the client, or add `backupxion=0` to their `Sphinxcoin.conf` file.
 
 xSPHX Automint Calculations
 ---------------------
