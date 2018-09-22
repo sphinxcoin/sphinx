@@ -10,9 +10,9 @@ Type=forking
 PIDFile=/var/lib/sphxd/sphxd.pid
 
 ExecStart=/usr/bin/sphxd -daemon -pid=/var/lib/sphxd/sphxd.pid \
-          -conf=/etc/sphx/sphinxcoin.conf -datadir=/var/lib/sphxd
+          -conf=/etc/sphx/Sphinxcoin.conf -datadir=/var/lib/sphxd
 
-ExecStop=-/usr/bin/sphx-cli -conf=/etc/sphx/sphinxcoin.conf \
+ExecStop=-/usr/bin/sphx-cli -conf=/etc/sphx/Sphinxcoin.conf \
          -datadir=/var/lib/sphxd stop
 
 Restart=always

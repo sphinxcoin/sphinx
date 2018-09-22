@@ -1,7 +1,7 @@
 # /etc/conf.d/sphxd: config file for /etc/init.d/sphxd
 
 # Config file location
-#BITCOIND_CONFIGFILE="/etc/sphx/sphinxcoin.conf"
+#BITCOIND_CONFIGFILE="/etc/sphx/Sphinxcoin.conf"
 
 # What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
 #BITCOIND_PIDDIR="/var/run/sphxd"
