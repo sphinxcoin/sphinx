@@ -112,20 +112,20 @@ mn01 127.0.0.1:12700 93HaYBVUCYjEMeeH1Y4sBGLALQZE1Yc1K64xiqgX37tGBDQL8Xg 2bcd3c8
 mn02 127.0.0.2:12700 93WaAb3htPJEV8E9aQcN23Jt97bPex7YvWfgMDTUdWJvzmrMqey aa9f1034d973377a5e733272c3d0eced1de22555ad45d6b24abadff8087948d4 0 7gnwGHt17heGpG9Crfeh4KGpYNFugPhJdh:25
 ```
 
-## What about the sphinxcoin.conf file?
+## What about the Sphinxcoin.conf file?
 
-If you are using a masternode.conf file you no longer need the sphinxcoin.conf file. The exception is if you need custom settings (thanks oblox). 
+If you are using a masternode.conf file you no longer need the Sphinxcoin.conf file. The exception is if you need custom settings (thanks oblox). 
 
-## Update sphinxcoin.conf on server
+## Update Sphinxcoin.conf on server
 
-If you generated a new masternode private key, you will need to update the remote sphinxcoin.conf files.
+If you generated a new masternode private key, you will need to update the remote Sphinxcoin.conf files.
 
 Shut down the daemon and then edit the file.
 
-```sudo nano .sphinxcoin/sphinxcoin.conf```
+```sudo nano .sphinxcoin/Sphinxcoin.conf```
 
 ### Edit the masternodeprivkey
-If you generated a new masternode private key, you will need to update the masternodeprivkey value in your remote sphinxcoin.conf file.
+If you generated a new masternode private key, you will need to update the masternodeprivkey value in your remote Sphinxcoin.conf file.
 
 ## Start your MasterNodes
 
