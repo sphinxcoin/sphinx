@@ -876,7 +876,7 @@
                          </property>
                         </spacer>
                        </item>
-                      </layout>
+                      </layout> 
                      </item>
                      <item>
                       <widget class="Line" name="line_ZerocoinBalance">
@@ -1043,7 +1043,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
                          </property>
                         </spacer>
                        </item>
-                      </layout>
+                      </layout> 
                      </item>
                      <item>
                       <spacer name="verticalSpacer_4">
