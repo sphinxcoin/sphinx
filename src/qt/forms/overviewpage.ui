@@ -995,7 +995,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
                          </property>
                         </widget>
                        </item>
-                       <item row="4" column="0">
+                       <!--<item row="4" column="0">
                         <widget class="QLabel" name="labelzBalanceText">
                          <property name="toolTip">
                           <string>Your current xSPHX balance, unconfirmed and immature xSPHX included.</string>
@@ -1004,8 +1004,8 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
                           <string>Total:</string>
                          </property>
                         </widget>
-                       </item>
-                       <item row="4" column="1">
+                       </item>-->
+                       <!--<item row="4" column="1">
                         <widget class="QLabel" name="labelzBalance">
                          <property name="font">
                           <font>
@@ -1029,7 +1029,7 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
                           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                          </property>
                         </widget>
-                       </item>
+                       </item>-->
                        <item row="4" column="2">
                         <spacer name="horizontalSpacer_4">
                          <property name="orientation">
