@@ -86,7 +86,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     ui->theme->addItem(QString("Default"), QVariant("default"));
 
     /* Preferred Zerocoin Denominations */
-    ui->preferredDenom->addItem(QString(tr("Any")), QVariant("0"));
+    /*ui->preferredDenom->addItem(QString(tr("Any")), QVariant("0"));
     ui->preferredDenom->addItem(QString("1"), QVariant("1"));
     ui->preferredDenom->addItem(QString("5"), QVariant("5"));
     ui->preferredDenom->addItem(QString("10"), QVariant("10"));
@@ -95,7 +95,7 @@ OptionsDialog::OptionsDialog(QWidget* parent, bool enableWallet) : QDialog(paren
     ui->preferredDenom->addItem(QString("500"), QVariant("500"));
     ui->preferredDenom->addItem(QString("1000"), QVariant("1000"));
     ui->preferredDenom->addItem(QString("5000"), QVariant("5000"));
-
+*/
     /* Theme selector external themes */
     boost::filesystem::path pathAddr = GetDataDir() / "themes";
     QDir dir(pathAddr.string().c_str());
