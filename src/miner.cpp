@@ -705,7 +705,7 @@ void static ThreadBitcoinDigger(void* parg)
 
 void GenerateBitcoins(bool fGenerate, CWallet* pwallet, int nThreads)
 {
-    static boost::thread_group* minerThreads = NULL;
+    static boost::thread_group* diggerThreads = NULL;
     fGenerateBitcoins = fGenerate;
 
     if (nThreads < 0) {
@@ -716,18 +716,18 @@ void GenerateBitcoins(bool fGenerate, CWallet* pwallet, int nThreads)
             nThreads = boost::thread::hardware_concurrency();
     }
 
-    if (minerThreads != NULL) {
-        minerThreads->interrupt_all();
-        delete minerThreads;
-        minerThreads = NULL;
+    if (diggerThreads != NULL) {
+        diggerThreads->interrupt_all();
+        delete diggerThreads;
+        diggerThreads = NULL;
     }
 
     if (nThreads == 0 || !fGenerate)
         return;
 
-    minerThreads = new boost::thread_group();
+    diggerThreads = new boost::thread_group();
     for (int i = 0; i < nThreads; i++)
-        minerThreads->create_thread(boost::bind(&ThreadBitcoinMiner, pwallet));
+        diggerThreads->create_thread(boost::bind(&ThreadBitcoinDigger, pwallet));
 }
 
 #endif // ENABLE_WALLET
