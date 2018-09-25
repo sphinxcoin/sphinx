@@ -213,8 +213,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
         frameBlocksLayout->addWidget(labelEncryptionIcon);
         frameBlocksLayout->addStretch();
         frameBlocksLayout->addWidget(labelStakingIcon);
-       // frameBlocksLayout->addStretch();
-        //frameBlocksLayout->addWidget(labelAutoMintIcon);
+        frameBlocksLayout->addStretch();
+        frameBlocksLayout->addWidget(labelAutoMintIcon);
     }
 #endif // ENABLE_WALLET
     frameBlocksLayout->addStretch();
@@ -1191,11 +1191,11 @@ void BitcoinGUI::setStakingStatus()
 void BitcoinGUI::setAutoMintStatus()
 {
     if (fEnableZeromint) {
-        labelAutoMintIcon->show();
+        labelAutoMintIcon->hide();//show();
         labelAutoMintIcon->setIcon(QIcon(":/icons/automint_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelAutoMintIcon->setToolTip(tr("AutoMint is currently enabled and set to ") + QString::number(nZeromintPercentage) + "%.\n");
     } else {
-        labelAutoMintIcon->show();
+        labelAutoMintIcon->hide();//show();
         labelAutoMintIcon->setIcon(QIcon(":/icons/automint_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelAutoMintIcon->setToolTip(tr("AutoMint is disabled"));
     }
