@@ -130,7 +130,7 @@
          </property>
         </spacer>
        </item>
-       <item>
+       <!--<item>
         <widget class="QCheckBox" name="checkBoxZeromintEnable">
          <property name="toolTip">
           <string>Enable automatic minting of Sphinx units to xSPHX</string>
@@ -142,8 +142,8 @@
           <string>Enable xSPHX Automint</string>
          </property>
         </widget>
-       </item>
-       <item>
+       </item>-->
+       <!--<item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
           <widget class="QLabel" name="percentage_label">
@@ -154,8 +154,8 @@
             <string>Percentage of autominted xSPHX</string>
            </property>
           </widget>
-         </item>
-         <item>
+         </item>-->
+         <!--<item>
           <widget class="QSpinBox" name="zeromintPercentage">
            <property name="minimum">
             <number>1</number>
@@ -166,7 +166,7 @@
           </widget>
          </item>
         </layout>
-       </item>
+       </item>-->
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
          <property name="sizeConstraint">
