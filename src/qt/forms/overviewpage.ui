@@ -836,7 +836,7 @@
                     <layout class="QVBoxLayout" name="verticalLayout_7">
                      <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="0">
-                       <item>
+                       <!--<item>
                         <widget class="QLabel" name="label_5z_3">
                          <property name="minimumSize">
                           <size>
@@ -855,8 +855,8 @@
                           <string>xSPHX Balance</string>
                          </property>
                         </widget>
-                       </item>
-                       <item>
+                       </item>-->
+                       <!--<item>
                         <widget class="QLabel" name="labelxSPHXPercent">
                          <property name="text">
                           <string notr="true">0 %</string>
@@ -875,7 +875,7 @@
                           </size>
                          </property>
                         </spacer>
-                       </item>
+                       </item>-->
                       </layout> 
                      </item>
                      <item>

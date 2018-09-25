@@ -250,7 +250,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // Percentage labels
     ui->labelSPHXPercent->setText(sPercentage);
-    ui->labelxSPHXPercent->setText(szPercentage);
+    //ui->labelxSPHXPercent->setText(szPercentage);
 
     // Adjust bubble-help according to AutoMint settings
     QString automintHelp = tr("Current percentage of xSPHX.\nIf AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).\n");
@@ -302,7 +302,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     ui->labelzBalanceImmatureText->setVisible(showxSPHXImmature);
     bool showPercentages = ! (zerocoinBalance == 0 && nTotalBalance == 0);
     ui->labelSPHXPercent->setVisible(showPercentages);
-    ui->labelxSPHXPercent->setVisible(showPercentages);
+    //ui->labelxSPHXPercent->setVisible(showPercentages);
 
     static int cachedTxLocks = 0;
 
