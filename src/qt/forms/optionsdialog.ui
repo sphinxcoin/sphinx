@@ -188,7 +188,7 @@
            </property>
           </widget>
          </item>-->
-         <item>
+         <!--<item>
           <widget class="QComboBox" name="preferredDenom">
            <property name="maximumSize">
             <size>
@@ -206,7 +206,7 @@
             <number>9</number>
            </property>
           </widget>
-         </item>
+         </item>-->
         </layout>
        </item>
       </layout>
