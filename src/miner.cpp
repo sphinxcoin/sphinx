@@ -500,7 +500,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     {
         LOCK(cs_main);
         if (pblock->hashPrevBlock != chainActive.Tip()->GetBlockHash())
-            return error("SPHXMiner : generated block is stale");
+            return error("SPHXDigger : generated block is stale");
     }
 
     // Remove key from key pool
@@ -518,7 +518,7 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     // Process this block the same as if we had received it from another node
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock))
-        return error("SPHXMiner : ProcessNewBlock, block not accepted");
+        return error("SPHXDigger : ProcessNewBlock, block not accepted");
 
     for (CNode* node : vNodes) {
         node->PushInventory(CInv(MSG_BLOCK, pblock->GetHash()));
@@ -592,14 +592,14 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
 
         //Stake miner main
         if (fProofOfStake) {
-            LogPrintf("CPUMiner : proof-of-stake block found %s \n", pblock->GetHash().ToString().c_str());
+            LogPrintf("CPUDigger : proof-of-stake block found %s \n", pblock->GetHash().ToString().c_str());
 
             if (!pblock->SignBlock(*pwallet)) {
-                LogPrintf("BitcoinMiner(): Signing new block failed \n");
+                LogPrintf("BitcoinDigger(): Signing new block failed \n");
                 continue;
             }
 
-            LogPrintf("CPUMiner : proof-of-stake block was signed %s \n", pblock->GetHash().ToString().c_str());
+            LogPrintf("CPUDigger : proof-of-stake block was signed %s \n", pblock->GetHash().ToString().c_str());
             SetThreadPriority(THREAD_PRIORITY_NORMAL);
             ProcessBlockFound(pblock, *pwallet, reservekey);
             SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -607,7 +607,7 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
             continue;
         }
 
-        LogPrintf("Running SPHXMiner with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
+        LogPrintf("Running SPHXDigger with %u transactions in block (%u bytes)\n", pblock->vtx.size(),
             ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
 
         //
@@ -624,7 +624,6 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
                 if (hash <= hashTarget) {
                     // Found a solution
                     SetThreadPriority(THREAD_PRIORITY_NORMAL);
-                    LogPrintf("BitcoinMiner:\n");
                     LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", hash.GetHex(), hashTarget.GetHex());
                     ProcessBlockFound(pblock, *pwallet, reservekey);
                     SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -696,12 +695,12 @@ void static ThreadBitcoinMiner(void* parg)
         BitcoinMiner(pwallet, false);
         boost::this_thread::interruption_point();
     } catch (std::exception& e) {
-        LogPrintf("ThreadBitcoinMiner() exception");
+        LogPrintf("ThreadBitcoinDigger() exception");
     } catch (...) {
-        LogPrintf("ThreadBitcoinMiner() exception");
+        LogPrintf("ThreadBitcoinDigger() exception");
     }
 
-    LogPrintf("ThreadBitcoinMiner exiting\n");
+    LogPrintf("ThreadBitcoinDigger exiting\n");
 }
 
 void GenerateBitcoins(bool fGenerate, CWallet* pwallet, int nThreads)

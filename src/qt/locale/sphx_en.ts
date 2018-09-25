@@ -6249,8 +6249,8 @@ for example: alertnotify=echo %%s | mail -s &quot;SPHX Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation type="unfinished">Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</translation>
+        <source>Warning: The network does not appear to fully agree! Some diggers appear to be experiencing issues.</source>
+        <translation type="unfinished">Warning: The network does not appear to fully agree! Some diggers appear to be experiencing issues.</translation>
     </message>
     <message>
         <location line="+3"/>

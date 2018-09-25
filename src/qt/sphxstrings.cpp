@@ -204,7 +204,7 @@ QT_TRANSLATE_NOOP("sphx-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
 "your clock is wrong Sphinx Core will not work properly."),
 QT_TRANSLATE_NOOP("sphx-core", ""
-"Warning: The network does not appear to fully agree! Some miners appear to "
+"Warning: The network does not appear to fully agree! Some diggers appear to "
 "be experiencing issues."),
 QT_TRANSLATE_NOOP("sphx-core", ""
 "Warning: We do not appear to fully agree with our peers! You may need to "

@@ -5311,7 +5311,7 @@ string GetWarnings(string strFor)
 
     if (fLargeWorkForkFound) {
         nPriority = 2000;
-        strStatusBar = strRPC = _("Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.");
+        strStatusBar = strRPC = _("Warning: The network does not appear to fully agree! Some diggers appear to be experiencing issues.");
     } else if (fLargeWorkInvalidChainFound) {
         nPriority = 2000;
         strStatusBar = strRPC = _("Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.");
