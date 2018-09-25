@@ -531,7 +531,7 @@ bool fGenerateBitcoins = false;
 
 // ***TODO*** that part changed in bitcoin, we are using a mix with old one here for now
 
-void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
+void BitcoinDigger(CWallet* pwallet, bool fProofOfStake)
 {
     LogPrintf("SPHXDigger started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
@@ -687,12 +687,12 @@ void BitcoinMiner(CWallet* pwallet, bool fProofOfStake)
     }
 }
 
-void static ThreadBitcoinMiner(void* parg)
+void static ThreadBitcoinDigger(void* parg)
 {
     boost::this_thread::interruption_point();
     CWallet* pwallet = (CWallet*)parg;
     try {
-        BitcoinMiner(pwallet, false);
+        BitcoinDigger(pwallet, false);
         boost::this_thread::interruption_point();
     } catch (std::exception& e) {
         LogPrintf("ThreadBitcoinDigger() exception");
