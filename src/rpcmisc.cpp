@@ -139,8 +139,6 @@ UniValue getinfo(const UniValue& params, bool fHelp)
 #endif
     obj.push_back(Pair("relayfee", ValueFromAmount(::minRelayTxFee.GetFeePerK())));
     bool nStaking = false;
-LogPrintf("STAKING: %d\n",mapHashedBlocks.count(chainActive.Tip()->nHeight));
-LogPrintf("STAKING: %d,%d\n",mapHashedBlocks.count(chainActive.Tip()->nHeight - 1),nLastCoinStakeSearchInterval);
 
     if (mapHashedBlocks.count(chainActive.Tip()->nHeight)) {
         nStaking = true;
